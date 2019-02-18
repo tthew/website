@@ -1,0 +1,41 @@
+@import './variables.css';
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--body-font-family);
+  font-size: var(--base-font-size);
+  color: var(--light);
+  background: var(--darkest);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+}
+
+h1,
+h2 {
+  font-family: var(--header-font-family);
+}
+
+h3 {
+  font-family: var(--sub-header-font-family);
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
