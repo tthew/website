@@ -15,7 +15,7 @@ const ContactForm = () => {
         <div className={s.contactBody}>
           <p>I'm currently <Link to='/words/open-for-new-opportunties-beginning-march-2019'>open for new opportunities beginning March 2019</Link>.</p>
           <p>If you think I'd be a good match for a project or if you'd like to reach out for any other reason, I'd love to hear from you.</p>
-          <p>You can catch me in all the usual places or feel free to <a href='mailto:hallo@tthew.berlin'>drop me an email</a> or send me a message using the contact form:</p>
+          <p>You can catch me in all the usual places. Feel free to reach out. You can also send me a message using the contact form or alternatively <a href='mailto:hallo@tthew.berlin'>drop me an email</a>.</p>
           <ul className={s.socialLinks}>
             <li className={s.socialLink}>
               <a

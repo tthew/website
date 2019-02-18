@@ -22,7 +22,7 @@ const Experience = ({
       >
         <div className={s.primaryContent}>
           <h2 className={s.title}>
-            Bringing over 15 years experience buildng Progressive Web Applications, web sites and digital products.
+            Bringing over 15 years experience buildng Web Applications, web sites and digital products.
           </h2>
           <div className={s.thingsCallout}>
             <h3 className={s.thingsCalloutTitle}>Things I'm good at and like doing:</h3>
