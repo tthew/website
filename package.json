@@ -1,0 +1,48 @@
+{
+  "name": "tthew-website",
+  "private": true,
+  "description": "The https://tthew.berlin website",
+  "version": "1.0.0",
+  "author": "Matt Richards <hallo@tthew.berlin>",
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "gatsby": "^2.0.111",
+    "gatsby-image": "^2.0.29",
+    "gatsby-plugin-manifest": "^2.0.17",
+    "gatsby-plugin-offline": "^2.0.22",
+    "gatsby-plugin-prefetch-google-fonts": "^1.4.0",
+    "gatsby-plugin-react-helmet": "^3.0.6",
+    "gatsby-plugin-sharp": "^2.0.20",
+    "gatsby-plugin-sitemap": "^2.0.5",
+    "gatsby-plugin-typography": "^2.2.7",
+    "gatsby-remark-prismjs": "^3.2.4",
+    "gatsby-remark-reading-time": "^1.0.1",
+    "gatsby-source-contentful": "^2.0.29",
+    "gatsby-source-filesystem": "^2.0.20",
+    "gatsby-transformer-remark": "^2.2.5",
+    "gatsby-transformer-sharp": "^2.1.13",
+    "prismjs": "^1.15.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "react-helmet": "^5.2.0",
+    "react-spring": "^8.0.5",
+    "react-typography": "^0.16.18",
+    "typography": "^0.16.18"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tthew/website"
+  },
+  "bugs": {
+    "url": "https://github.com/tthew/website"
+  }
+}
