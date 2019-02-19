@@ -26,24 +26,26 @@
     margin: 0;
     top: 0;
     left: 0;
-    margin-top: -3000px;
+    right: 0;
+    bottom: 0;
+    width: 95vw;
+    height: 100vh;
     display: block;
     padding: 0 0 0 1rem;
     background: var(--light);
-    width: 95vw;
-    height: 100vh;
     font-size: 16vw;
     color: var(--dark);
-    transition: margin-top 300ms var(--transition-curve);
+    transform: translateY(-100%);
+    transition: transform 300ms var(--transition-curve);
+    will-change: transform;
     z-index: 30;
   }
 
   .visible .navigationItems {
     position: absolute;
-    margin: 0;
+    top: 0;
     left: 0;
     right: 0;
-    top: 0;
     bottom: 0;
     width: 100vw;
     height: 100vh;
@@ -54,7 +56,9 @@
     box-shadow: 0px 0px 10px #777;
     font-size: 16vw;
     color: var(--dark);
-    transition: margin-top 1s var(--transition-curve);
+    transform: translateY(0);
+    transition: transform 300ms var(--transition-curve);
+    will-change: transform;
     z-index: 30;
   }
 
