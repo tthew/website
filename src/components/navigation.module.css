@@ -22,20 +22,21 @@
 
 @media only screen and (max-width: 50em) {
   .navigationItems {
+    box-sizing: border-box;
+    padding: 3rem 0 0 3rem;
     position: absolute;
     margin: 0;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    width: 95vw;
+    width: 100vw;
     height: 100vh;
     display: block;
-    padding: 0 0 0 1rem;
     background: var(--light);
     font-size: 16vw;
     color: var(--dark);
-    transform: translateY(-100%);
+    transform: translateY(-200%);
     transition: transform 300ms var(--transition-curve);
     will-change: transform;
     z-index: 30;
@@ -47,7 +48,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    width: 95vw;
+    width: 100vw;
     height: 100vh;
     min-height: 6.5em;
     display: block;
@@ -57,7 +58,7 @@
     font-size: 16vw;
     color: var(--dark);
     transform: translateY(0);
-    transition: transform 300ms var(--transition-curve);
+    transition: transform 1s var(--transition-curve);
     will-change: transform;
     z-index: 30;
   }
