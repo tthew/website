@@ -1,20 +1,26 @@
 .header {
   position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem 1rem 1rem;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
   font-size: 1rem;
   font-family: var(--header-font-family);
   color: var(--light);
+  padding: 2rem 0;
   z-index: 10;
   transition: padding 300ms var(--transition-curve);
 }
 
 .headerTitle {
+  grid-column: 2 / 6;
   font-weight: bold;
   font-size: 1.3rem;
   transition: font-size 300ms;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: row-reverse;
+  grid-column: 11 / 12;
 }
 
 .header a:link,
@@ -27,12 +33,16 @@
 
 @media only screen and (min-width: 50rem) {
   .header {
-    padding: 3rem 3rem 1rem 3rem;
+    /* padding: 3rem 3rem 1rem 3rem; */
     transition: padding 300ms var(--transition-curve);
   }
   .headerTitle {
     font-size: 2rem;
     transition: font-size 300ms;
+    grid-column: 2 / 4;
+  }
+  .navigation {
+    grid-column: 4 / 12;
   }
 }
 
