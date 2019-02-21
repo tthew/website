@@ -3,11 +3,9 @@
   display: grid;
   grid-template-columns: var(--grid-cols-12);
   grid-template-rows: repeat(6, auto);
-  min-height: auto;
   background: var(--darkest);
   color: rgba(255, 255, 255, 0.9);
   transition: min-height 300ms var(--transition-curve);
-  flex: 0 1 100%;
 }
 
 .heroWrapper {
@@ -18,7 +16,7 @@
 .heroTitle {
   margin: 0;
   line-height: 0.9em;
-  grid-row: 2 / 6;
+  grid-row: 2 / 7;
   grid-column: 2  / 12;
   cursor: pointer;
   position: absolute;
@@ -30,13 +28,13 @@
 }
 
 .heroPicWrapper {
-  grid-column: span 12;
-  grid-row: span 7;
+  grid-column: 1 / 13;
+  grid-row: 1 / 7;
 }
 
 .heroControl {
   position: absolute;
-  grid-row: 7;
+  grid-row: 6;
   grid-column: 2 / 6;
   background: rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -47,73 +45,37 @@
 }
 
 @media only screen and (min-width: 40rem) {
+  .heroTitleBreak {
+    white-space: nowrap;
+  }
+
   .heroControl {
     grid-row: 6;
   }
+
   .hero {
+    margin-top: -8rem;
     grid-template-rows: repeat(6, 1fr);
-    min-height: 50vh;
-    max-height: 50vh;
     transition: min-height 300ms var(--transition-curve);
   }
+
   .heroTitle {
-    position: static;
-    grid-column: 5 / 12;
-    grid-row: 3 / auto;
-    font-size: 9vw;
+    grid-column: 4 / 11;
+    font-size: 12vw;
+    grid-row: none;
+    top: 50%;
+    margin-top: -25%;
   }
-  .heroSubTitle {
-    grid-column: 7 / 12;
-    grid-row: 4;
-    font-size: 1.5rem;
-    line-height: 1.5rem;
-    align-self: center;
-    color: rgba(255, 255, 255, 0.3);
-  }
+
   .heroPicWrapper {
     grid-column: 1 / 7;
-    grid-row: span 3;
+    grid-row: 1 / 7;
     align-self: end;
   }
 }
 
-@media only screen and (min-width: 70rem) {
-  .hero {
-    min-height: 70vh;
-    max-height: 70vh;
-    transition: min-height 300ms var(--transition-curve);
-  }
-  .heroSubTitle {
-    grid-column: 8 / 11;
-    font-size: 2rem;
-    line-height: 2rem;
-  }
-}
-
-@media only screen and (min-width: 80rem) {
-  .hero {
-    min-height: 80vh;
-    max-height: 80vh;
-    transition: min-height 300ms var(--transition-curve);
-  }
-}
-
-@media only screen and (min-width: 90rem) {
-  .hero {
-    min-height: 90vh;
-    max-height: 90vh;
-    transition: min-height 300ms var(--transition-curve);
-  }
-}
-
-@media only screen and (min-width: 100rem) {
-  .hero {
-    min-height: 100vh;
-    max-height: 100vh;
-    transition: min-height 300ms var(--transition-curve);
-  }
-  .heroSubTitle {
-    grid-row: 4 / 6;
-    align-self: center;
+@media only screen and (min-width: 50rem) {
+  .heroTitle {
+    font-size: 12vmax;
   }
 }
