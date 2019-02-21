@@ -34,7 +34,7 @@
 
 @media only screen and (min-width: 50rem) {
   .header {
-    /* padding: 3rem 0; */
+    padding: 2rem 0 0rem;
     transition: padding 300ms var(--transition-curve);
   }
   .headerTitle {
