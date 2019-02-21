@@ -39,7 +39,9 @@ const Header = ({ siteTitle }) => {
             <Link to='/'>@tthew</Link>
         </animated.div>
       </span>
-      <Navigation />
+      <div className={s.navigation}>
+        <Navigation />
+      </div>
     </header>
   )
 }
