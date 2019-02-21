@@ -17,8 +17,10 @@
 .heroTitle {
   margin: 0;
   line-height: 0.9em;
-  grid-row: 2 / 7;
   grid-column: 2  / 12;
+  grid-row: none;
+  top: 50%;
+  margin-top: -40%;
   cursor: pointer;
   position: absolute;
   font-size: 19vw;
@@ -55,7 +57,7 @@
   }
 
   .hero {
-    margin-top: -8rem;
+    margin-top: -6rem;
     grid-template-rows: repeat(6, 1fr);
     transition: min-height 300ms var(--transition-curve);
   }
@@ -63,9 +65,7 @@
   .heroTitle {
     grid-column: 4 / 11;
     font-size: 12vw;
-    grid-row: none;
-    top: 50%;
-    margin-top: -25%;
+    margin-top: -25%;;
   }
 
   .heroPicWrapper {

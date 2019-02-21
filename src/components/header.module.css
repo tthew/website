@@ -2,10 +2,11 @@
   position: relative;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  align-items: center;
   font-size: 1rem;
   font-family: var(--header-font-family);
   color: var(--light);
-  padding: 2rem 0;
+  padding: 1rem 0;
   z-index: 10;
   transition: padding 300ms var(--transition-curve);
 }
@@ -33,7 +34,7 @@
 
 @media only screen and (min-width: 50rem) {
   .header {
-    /* padding: 3rem 3rem 1rem 3rem; */
+    /* padding: 3rem 0; */
     transition: padding 300ms var(--transition-curve);
   }
   .headerTitle {

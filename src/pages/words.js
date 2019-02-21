@@ -15,7 +15,7 @@ const Words = ({ data }) => (
         <h1>Words</h1>
         <div className={s.articles}>
           {data.allContentfulArticle.edges.map(({ node }) => (
-            <div className={s.article}>
+            <div className={s.article} key={node.slug}>
               <div className={s.hero}>
                 <h2
                   className={s.articleTitle}
