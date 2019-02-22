@@ -1,5 +1,6 @@
 .navigationItems {
   list-style: none;
+  font-family: var(--header-font-family);
 }
 
 .navigationItem {
@@ -13,8 +14,8 @@
   color: inherit;
 }
 
-.navigation .navigationItemActive:link,
-.navigation .navigationItemActive:visited,
+.navigationItemActive:link,
+.navigationItemActive:visited,
 .navigation .navigationItemActive:hover,
 .navigation .navigationItemActive:active {
   text-decoration: underline;
@@ -31,34 +32,27 @@
     right: 0;
     bottom: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100vmax;
     display: block;
     background: var(--light);
     font-size: 16vw;
     color: var(--dark);
-    transform: translateY(-1000px);
-    transition: transform 300ms var(--transition-curve);
+    transform: translateY(-100vmax);
+    box-shadow: 0px 0px 10px #777;
+    z-index: 10;
     will-change: transform;
-    z-index: 30;
   }
 
-  .visible .navigationItems {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100vw;
-    height: 100vh;
-    min-height: 6.5em;
-    display: block;
-    background: var(--light);
-    box-shadow: 0px 0px 10px #777;
-    color: var(--dark);
-    transform: translateY(0);
-    transition: transform 1s var(--transition-curve);
-    will-change: transform;
-    z-index: 30;
+  .navigationItems.visible {
+    transform: none;
+  }
+
+  .navigationItems.animatable {
+    transition: transform 300ms var(--transition-curve);
+  }
+
+  .navigationItems.visible.animatable {
+    transition: transform 500ms var(--transition-curve);
   }
 
   .hamburger {
@@ -70,12 +64,13 @@
     cursor: pointer;
     transform: translate(0px, 0px);
     transition: transform 0.5s var(--transition-curve);
-    z-index: 1;
+    will-change: transform;
+    z-index: 50;
   }
 
   .visible .hamburger {
     transform: translate(6px, 0px);
-    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+    transition: transform 0.5s var(--transition-curve);
   }
 
   .hamburgerLine {
@@ -87,8 +82,8 @@
     transform-origin: -4px 0%;
     background: var(--light);
     border-radius: 3px;
-    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+    transition: transform 0.5s var(--transition-curve),
+                background 0.5s var(--transition-curve),
                 opacity 0.55s ease;
     z-index: 1;
   }
@@ -102,7 +97,6 @@
   }
 
   .visible .hamburger {
-    z-index: 50;
   }
 
   .visible .hamburgerLine {
