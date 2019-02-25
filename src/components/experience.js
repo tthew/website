@@ -52,6 +52,8 @@ const Experience = ({
           <p className={s.strongText}>
             I thrive in diverse teams, ambitious contexts &amp; fast-paced environments.
           </p>
+          <p className={s.strongText}>I like Javscript, CSS, nice people &amp; building great things with them.</p>
+
           <p className={s.strongText}>For more in depth information feel free to <Link to='#contact'>reach out &amp; contact me</Link> or head over to <a href='https://stackoverflow.com/story/tthew'>StackOverflow to check out my Developer Story</a>.</p>
         </div>
       </section>

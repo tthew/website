@@ -3,8 +3,12 @@
  *
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
-require('prismjs/themes/prism-tomorrow.css')
+import React from 'react'
+import ReactDOM from 'react-dom'
 
+import UpdateBanner from './src/components/update-banner'
+
+import 'prismjs/themes/prism-tomorrow.css'
 
 console.group(`👋 Hey there`)
 console.info(`🔍 Wanna see what's under the hood?`)
@@ -13,3 +17,16 @@ console.info(`🔗 https://github.com/tthew/website`)
 console.info(`🤔 Like what you see? Let's chat?`)
 console.info(`📧 hallo@tthew.berlin`)
 console.groupEnd()
+
+const renderUpdateBanner = () => {
+  const el = document.querySelector('.update-banner-container') || document.createElement('div')
+  el.classList.add('update-banner-container')
+  const bodyEl = document.querySelector('body')
+  bodyEl.insertBefore(el, bodyEl.firstChild)
+  ReactDOM.render(<UpdateBanner/>, el)
+  setTimeout(() => {
+    el.classList.add('update-banner-container--visible')
+  }, 2000)
+}
+
+export const onServiceWorkerUpdateReady = () => renderUpdateBanner()
