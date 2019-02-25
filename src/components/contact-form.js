@@ -23,7 +23,7 @@ const ContactForm = () => {
                 target='_blank'
                 rel='noopener noreferrer'
               >
-                <img alt='Github' src={githubLogo} />
+                <img alt='Github' src={githubLogo} alt='' />
                 <span className={s.socialLinkLabel}>
                   Github
                 </span>
@@ -35,7 +35,7 @@ const ContactForm = () => {
                 target='_blank'
                 rel='noopener noreferrer'
               >
-                <img alt='LinkedIn' src={linkedInLogo} />
+                <img alt='LinkedIn' src={linkedInLogo} alt='' />
                 <span className={s.socialLinkLabel}>
                   LinkedIn
                 </span>
@@ -47,7 +47,7 @@ const ContactForm = () => {
                 target='_blank'
                 rel='noopener noreferrer'
               >
-                <img alt='Twitter' src={twitterLogo} />
+                <img alt='Twitter' src={twitterLogo} alt='' />
                 <span className={s.socialLinkLabel}>
                   Twitter
                 </span>
@@ -58,15 +58,28 @@ const ContactForm = () => {
       </div>
       <form
         data-netlify={true}
-        data-netlify-honeypot='bot-field'
+        data-netlify-honeypot='username'
         method='post'
         name='contact'
         className={s.contactForm}
       >
+        <input
+          name='username'
+          className={s.contactFormUsername} // This is a honeypot field
+          style={{ position: 'absolute', visibility: 'hidden' }}
+        />
         <div
           className={s.contactFormField}
         >
+          <label
+            htmlFor='contact-form-field__name'
+            className={s.contactFormFieldLabel}
+          >
+            Name
+          </label>
+
           <input
+            id='contact-form-field__name'
             placeholder='Name'
             name='name'
             type='text'
@@ -77,7 +90,14 @@ const ContactForm = () => {
         <div
           className={s.contactFormField}
         >
+          <label
+            htmlFor='contact-form-field__email'
+            className={s.contactFormFieldLabel}
+          >
+            Email
+          </label>
           <input
+            id='contact-form-field__email'
             placeholder='Email'
             name='email'
             type='email'
@@ -88,7 +108,14 @@ const ContactForm = () => {
         <div
           className={s.contactFormField}
         >
+          <label
+            htmlFor='contact-form-field__message'
+            className={s.contactFormFieldLabel}
+          >
+            Message
+          </label>
           <textarea
+            id='contact-form-field__message'
             name='message'
             placeholder='How can I help?'
             className={s.contactFormInput}
@@ -97,7 +124,6 @@ const ContactForm = () => {
         </div>
 
         <input type='hidden' name='form-name' value='contact' />
-        <div data-netlify-recaptcha='true'></div>
         <button
           type='submit'
           className={s.contactFormButton}

@@ -33,6 +33,11 @@
   width: 100%;
 }
 
+.contactFormFieldLabel {
+  visibility: hidden;
+  position: absolute;
+}
+
 .contactFormInput {
   flex: 1 0 auto;
   padding: 1rem 0.5rem;
