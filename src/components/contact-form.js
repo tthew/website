@@ -58,11 +58,16 @@ const ContactForm = () => {
       </div>
       <form
         data-netlify={true}
-        data-netlify-honeypot='bot-field'
+        data-netlify-honeypot='username'
         method='post'
         name='contact'
         className={s.contactForm}
       >
+        <input
+          name='username'
+          className={s.contactFormUsername} // This is a honeypot field
+          style={{ position: 'absolute', visibility: 'hidden' }}
+        />
         <div
           className={s.contactFormField}
         >
@@ -72,6 +77,7 @@ const ContactForm = () => {
           >
             Name
           </label>
+
           <input
             id='contact-form-field__name'
             placeholder='Name'
@@ -118,7 +124,6 @@ const ContactForm = () => {
         </div>
 
         <input type='hidden' name='form-name' value='contact' />
-        <div data-netlify-recaptcha='true'></div>
         <button
           type='submit'
           className={s.contactFormButton}
