@@ -5,6 +5,8 @@ import classnames from 'classnames'
 
 import s from './navigation.module.css'
 
+const { window } = global
+
 const NavigationItems = ({
   toggle,
   showMenu,
