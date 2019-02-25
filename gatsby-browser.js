@@ -24,6 +24,9 @@ const renderUpdateBanner = () => {
   const bodyEl = document.querySelector('body')
   bodyEl.insertBefore(el, bodyEl.firstChild)
   ReactDOM.render(<UpdateBanner/>, el)
+  setTimeout(() => {
+    el.classList.add('update-banner-container--visible')
+  }, 2000)
 }
 
 export const onServiceWorkerUpdateReady = () => renderUpdateBanner()

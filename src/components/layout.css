@@ -39,3 +39,16 @@ a:active {
   display: flex;
   flex-direction: column;
 }
+
+.update-banner-container {
+  transform: translateY(-100%);
+  max-height: 0;
+  overflow: hidden;
+  transition: transform 300ms cubic-bezier(0, 0, 0.3, 1), max-height 300ms cubic-bezier(0, 0, 0.3, 1);
+}
+
+.update-banner-container--visible {
+  overflow: visible;
+  max-height: 100%;
+  transform: none;
+}
