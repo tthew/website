@@ -5,7 +5,15 @@ import classnames from 'classnames'
 
 import s from './navigation.module.css'
 
-const { window } = global
+const {
+  window = {
+    addEventListener: () => {},
+    removeEventListener: () => {},
+  },
+  document = {
+    getElementById: () => {},
+  }
+} = global
 
 const NavigationItems = ({
   toggle,
