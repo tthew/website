@@ -116,23 +116,12 @@ const Navigation = ({ mobileMenuBreakpoint = 800 }) => {
         <span className={s.hamburgerLine} />
         <span className={s.hamburgerLine} />
       </div>
-      {renderPortal && portalContainer && (
-        createPortal(
-          <NavigationItems
-            toggle={toggle}
-            showMenu={showMenu}
-            animatable={animatable}
-            onTransitionEnd={handleTransitionEnd}
-          />,
-          portalContainer
-        )
-      )}
-      {!renderPortal && (
-        <NavigationItems
-          toggle={toggle}
-          showMenu={showMenu}
-        />
-      )}
+      <NavigationItems
+        toggle={toggle}
+        showMenu={showMenu}
+        animatable={animatable}
+        onTransitionEnd={handleTransitionEnd}
+      />
     </div>
   )
 }

@@ -8,7 +8,6 @@ import './layout.css'
 
 const Layout = ({ children }) => (
   <>
-    <div id='mobile-nav-container' />
     <div className='container'>
       <Header />
       <main>
