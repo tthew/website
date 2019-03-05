@@ -9,7 +9,7 @@ import './layout.css'
 const Layout = ({ children }) => (
   <div className='container'>
     <Header />
-    <main>
+    <main id='main' role='main'>
       {children}
     </main>
     <Footer />

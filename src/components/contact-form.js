@@ -23,7 +23,7 @@ const ContactForm = () => {
                 target='_blank'
                 rel='noopener noreferrer'
               >
-                <img alt='Github' src={githubLogo} alt='' />
+                <img alt='Github' src={githubLogo} />
                 <span className={s.socialLinkLabel}>
                   Github
                 </span>
@@ -35,7 +35,7 @@ const ContactForm = () => {
                 target='_blank'
                 rel='noopener noreferrer'
               >
-                <img alt='LinkedIn' src={linkedInLogo} alt='' />
+                <img alt='LinkedIn' src={linkedInLogo} />
                 <span className={s.socialLinkLabel}>
                   LinkedIn
                 </span>
@@ -47,7 +47,7 @@ const ContactForm = () => {
                 target='_blank'
                 rel='noopener noreferrer'
               >
-                <img alt='Twitter' src={twitterLogo} alt='' />
+                <img alt='Twitter' src={twitterLogo} />
                 <span className={s.socialLinkLabel}>
                   Twitter
                 </span>
