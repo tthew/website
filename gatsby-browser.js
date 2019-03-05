@@ -10,7 +10,7 @@ import UpdateBanner from './src/components/update-banner'
 
 import 'prismjs/themes/prism-tomorrow.css'
 
-console.group(`👋 Hey there`)
+console.groupCollapsed(`👋 Hey there`)
 console.info(`🔍 Wanna see what's under the hood?`)
 console.info(`💻 Head over to Github for the for the full source:`)
 console.info(`🔗 https://github.com/tthew/website`)
