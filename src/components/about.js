@@ -23,6 +23,7 @@ const About = () => {
             </div>
           </div>
           <div
+            aria-hidden
             className={s.aboutContentSecondary}
           >
             <figure

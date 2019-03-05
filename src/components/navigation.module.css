@@ -20,6 +20,16 @@
   text-decoration: underline;
 }
 
+.skipToContent {
+  composes: visuallyHidden from './utils.module.css';
+}
+
+.skipToContent a:focus {
+  position: static;
+  width: auto;
+  height: auto;
+}
+
 @media only screen and (max-width: 50em) {
   .navigationItems {
     box-sizing: border-box;

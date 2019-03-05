@@ -17,6 +17,7 @@ const Navigation = () => {
       }
     >
       <div
+        aria-hidden
         className={s.hamburger}
         onClick={() => toggle(!showMenu)}
       >
@@ -24,47 +25,58 @@ const Navigation = () => {
         <span className={s.hamburgerLine} />
         <span className={s.hamburgerLine} />
       </div>
-      <ul
-        className={s.navigationItems}
+      <p
+        className={s.skipToContent}
       >
-        <li className={s.navigationItem}>
-          <Link
-            to='/#about'
-            activeClassName={s.navigationItemActive}
-            onClick={() => toggle(!showMenu)}
-          >
-            About
-          </Link>
-        </li>
-        <li className={s.navigationItem}
+        <a
+          href='#main'
         >
-          <Link
-            to='/#experience'
-            activeClassName={s.navigationItemActive}
-            onClick={() => toggle(!showMenu)}
-          >
-            Experience
-          </Link>
-        </li>
-        <li className={s.navigationItem}>
-          <Link
-            to='/words/'
-            getProps={({ isPartiallyCurrent }) => isPartiallyCurrent ? { className: s.navigationItemActive } : null    }
-            onClick={() => toggle(!showMenu)}
-          >
-            Words
-          </Link>
-        </li>
-        <li className={s.navigationItem}>
-          <Link
-            to='/#contact'
-            activeClassName={s.navigaionItemActive}
-            onClick={() => toggle(!showMenu)}
-          >
-            Contact
-          </Link>
-        </li>
-      </ul>
+          Skip to main content
+        </a>
+      </p>
+
+      <nav
+        role="navigation"
+        aria-label="Main navigation"
+      >
+        <ul
+          className={s.navigationItems}
+        >
+          <li className={s.navigationItem}>
+            <a
+              href='/#about'
+              onClick={() => toggle(!showMenu)}
+            >
+              About
+            </a>
+          </li>
+          <li className={s.navigationItem}>
+            <a
+              href='/#experience'
+              onClick={() => toggle(!showMenu)}
+            >
+              Experience
+            </a>
+          </li>
+          <li className={s.navigationItem}>
+            <Link
+              to='/words/'
+              getProps={({ isPartiallyCurrent }) => isPartiallyCurrent ? { className: s.navigationItemActive } : null    }
+              onClick={() => toggle(!showMenu)}
+            >
+              Words
+            </Link>
+          </li>
+          <li className={s.navigationItem}>
+            <a
+              href='/#contact'
+              onClick={() => toggle(!showMenu)}
+            >
+              Contact
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
   )
 }

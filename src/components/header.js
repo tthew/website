@@ -23,6 +23,7 @@ const Header = ({ siteTitle }) => {
   return (
     <header className={s.header}>
       <span
+        aria-hidden
         className={s.headerTitle}
         style={{ margin: 0 }}
         onClick={() => triggerShakeEffect(!shakeEffectState)}

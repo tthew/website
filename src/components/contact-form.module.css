@@ -33,9 +33,14 @@
   width: 100%;
 }
 
+input.contactFormInput:focus,
+textarea.contactFormInput:focus {
+  outline: 1px solid teal;
+  border-color: transparent;
+}
+
 .contactFormFieldLabel {
-  visibility: hidden;
-  position: absolute;
+  composes: visuallyHidden from './utils.module.css';
 }
 
 .contactFormInput {
@@ -60,6 +65,10 @@
   font-weight: bold;
   color: var(--dark);
   background: rgba(255, 255, 255, 0.5);
+}
+
+button.contactFormButton:focus {
+  outline: 1px solid teal;
 }
 
 .highlight {
