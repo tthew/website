@@ -5,6 +5,7 @@
   "version": "1.0.0",
   "author": "Matt Richards <hallo@tthew.berlin>",
   "dependencies": {
+    "@loadable/component": "^5.6.1",
     "classnames": "^2.2.6",
     "gatsby": "^2.0.111",
     "gatsby-image": "^2.0.29",
