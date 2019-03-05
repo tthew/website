@@ -1,27 +1,21 @@
 import React, { Suspense } from 'react'
+import loadable from '@loadable/component'
 
-const Layout = React.lazy(() => import('../components/layout'))
-const SEO = React.lazy(() => import('../components/seo'))
-const Hero = React.lazy(() => import('../components/hero'))
-const About = React.lazy(() => import('../components/about'))
-const Experience = React.lazy(() => import('../components/experience'))
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import Hero from '../components/hero'
+
+const About = loadable(() => import('../components/about'))
+const Experience = loadable(() => import('../components/experience'))
 
 const IndexPage = ({ data }) => {
   return (
-    <Suspense fallback={() => null}>
-      <Layout>
-        <SEO title='Freelance Web Development' keywords={[`freelance`, `web developer`, `berlin`]} />
-        <Suspense>
-          <Hero />
-        </Suspense>
-        <Suspense>
-          <About />
-        </Suspense>
-        <Suspense>
-          <Experience />
-        </Suspense>
-      </Layout>
-    </Suspense>
+    <Layout>
+      <SEO title='Freelance Web Development' keywords={[`freelance`, `web developer`, `berlin`]} />
+      <Hero />
+      <About />
+      <Experience />
+    </Layout>
   )
 }
 
