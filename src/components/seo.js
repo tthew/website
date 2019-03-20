@@ -50,6 +50,14 @@ function SEO({ description, lang, meta, keywords, title }) {
                 name: `twitter:description`,
                 content: metaDescription,
               },
+              {
+                name: `mobile-web-app-capable`,
+                content: `yes`
+              },
+              {
+                name: `apple-mobile-web-app-capable`,
+                content: `yes`
+              }
             ]
               .concat(
                 keywords.length > 0
