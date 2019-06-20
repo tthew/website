@@ -1,56 +1,57 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import React from "react";
+import { Link } from "gatsby";
 
-import s from './contact-form.module.css'
+import s from "./contact-form.module.css";
 
-import githubLogo from '../images/github.svg'
-import twitterLogo from '../images/twitter.svg'
-import linkedInLogo from '../images/linkedin.svg'
+import githubLogo from "../images/github.svg";
+import twitterLogo from "../images/twitter.svg";
+import linkedInLogo from "../images/linkedin.svg";
 
 const ContactForm = () => {
   return (
-    <section id='contact' className={s.contact}>
+    <section id="contact" className={s.contact}>
       <div className={s.contactContent}>
         <h2 className={s.contactContentTitle}>Get in touch</h2>
         <div className={s.contactBody}>
-          <p>I'm currently <em>booked until the end of May 2019</em></p>
-          <p>If you think I'd be a good match for a project or if you'd like to reach out for any other reason, I'd love to hear from you.</p>
-          <p>You can catch me in all the usual places. Feel free to reach out. You can also send me a message using the contact form or alternatively <a href='mailto:hallo@tthew.berlin'>drop me an email</a>.</p>
+          <p>I'm currently happily employed.</p>
+          <p>
+            Nevertheless, if you'd like to reach out for any reason, I'd love to
+            hear from you.
+          </p>
+          <p>
+            You can catch me in all the usual places. Feel free to send me a
+            message using the contact form or alternatively{" "}
+            <a href="mailto:hallo@tthew.berlin">drop me an email</a>.
+          </p>
           <ul className={s.socialLinks}>
             <li className={s.socialLink}>
               <a
-                href='https://github.com/tthew'
-                target='_blank'
-                rel='noopener noreferrer'
+                href="https://github.com/tthew"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <img alt='Github' src={githubLogo} />
-                <span className={s.socialLinkLabel}>
-                  Github
-                </span>
+                <img alt="Github" src={githubLogo} />
+                <span className={s.socialLinkLabel}>Github</span>
               </a>
             </li>
             <li className={s.socialLink}>
               <a
-                href='https://www.linkedin.com/in/lucidmoon/'
-                target='_blank'
-                rel='noopener noreferrer'
+                href="https://www.linkedin.com/in/lucidmoon/"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <img alt='LinkedIn' src={linkedInLogo} />
-                <span className={s.socialLinkLabel}>
-                  LinkedIn
-                </span>
+                <img alt="LinkedIn" src={linkedInLogo} />
+                <span className={s.socialLinkLabel}>LinkedIn</span>
               </a>
             </li>
             <li className={s.socialLink}>
               <a
-                href='https://twitter.com/_tthew'
-                target='_blank'
-                rel='noopener noreferrer'
+                href="https://twitter.com/_tthew"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <img alt='Twitter' src={twitterLogo} />
-                <span className={s.socialLinkLabel}>
-                  Twitter
-                </span>
+                <img alt="Twitter" src={twitterLogo} />
+                <span className={s.socialLinkLabel}>Twitter</span>
               </a>
             </li>
           </ul>
