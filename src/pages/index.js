@@ -1,20 +1,14 @@
-import React from 'react'
+import React from "react";
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
-import Hero from '../components/hero'
-import About from '../components/about'
-import Experience from '../components/experience'
+import Layout from "../components/layout";
+import SEO from "../components/seo";
 
 const IndexPage = ({ data }) => {
   return (
     <Layout>
-      <SEO title='Freelance Web Development' keywords={[`freelance`, `web developer`, `berlin`]} />
-      <Hero />
-      <About />
-      <Experience />
+      <SEO title="EPITAPH" />
     </Layout>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;
