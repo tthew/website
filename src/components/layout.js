@@ -1,18 +1,20 @@
 import React from "react";
+import styled from "styled-components";
+import { ThemeProvider } from "styled-components";
 import PropTypes from "prop-types";
 
-import "./layout.css";
+import theme from "../style/theme";
 
 const Layout = ({ children }) => (
-  <div className="container">
-    <main id="main" role="main">
-      {children}
-    </main>
-  </div>
+  <ThemeProvider theme={theme}>
+    <Wrapper>{children}</Wrapper>
+  </ThemeProvider>
 );
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired
 };
+
+const Wrapper = styled.main``;
 
 export default Layout;
