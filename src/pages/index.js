@@ -15,8 +15,8 @@ const GlobalStyle = createGlobalStyle`
     font-family: Staatliches, sans-serif;
   }
 
-  body > div,
-  body > div > div {
+  body > #___gatsby,
+  body > #___gatsby > div {
     height: 100%
   }
 `;

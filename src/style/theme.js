@@ -1,5 +1,5 @@
 import { colors } from "./colors";
-import { breakpoint, mediaQueries } from "./mediaQueries";
+import { breakpoint, mq } from "./mediaQueries";
 
 export const base = {
   primary100: colors.tombstoneGrey100,
@@ -14,9 +14,10 @@ export const base = {
   primary10: colors.tombstoneGrey10,
   uiBlack: colors.tombstoneGrey105,
   // uiBlack: `#08090d`,
-  uiWhite: `#f5f5f5`
+  uiWhite: `#f5f5f5`,
+  colors,
+  mq,
+  breakpoint
 };
-
-export { colors, mediaQueries };
 
 export default base;
