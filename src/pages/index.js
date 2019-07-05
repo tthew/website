@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import SEO from "../components/seo";
 import Layout from "../components/layout";
@@ -17,14 +17,23 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const IndexPage = ({ data }) => {
+  const [showText, setShowText] = useState(false);
+  const [showTitle, setShowTitle] = useState(false);
+  useEffect(() => {
+    setShowText(true);
+    setTimeout(() => {
+      setShowTitle(true);
+    }, 1000);
+  }, []);
+
   return (
     <>
       <Layout>
         <GlobalStyle />
         <SEO title="EPITAPH" />
         <Flex>
-          <Header>EPITAPH!</Header>
-          <Tombstone />
+          <Header showText={showTitle}>COMING SOON!</Header>
+          <Tombstone showText={showText} />
         </Flex>
         {/* <Section>
           <Heading>One day.</Heading>
@@ -83,9 +92,15 @@ const Header = styled.h1`
   margin: 0;
   grid-row: 2;
   grid-column: 1 / -1;
-  font-size: 25vmin;
+  font-size: 15vmin;
   color: ${p => p.theme.primary90};
   height: 25vmin;
+  margin-top: 5vmin;
+
+  white-space: nowrap;
+
+  opacity: ${p => (p.showText ? 1 : 0)};
+  transition: opacity 1000ms cubic-bezier(0, 0, 0.3, 0);
 `;
 
 const Tombstone = styled.div`
@@ -113,6 +128,9 @@ const Tombstone = styled.div`
     justify-self: center;
     z-index: 1;
     transform: skewY(-1deg);
+
+    opacity: ${p => (p.showText ? 1 : 0)};
+    transition: opacity 300ms cubic-bezier(0, 0, 0.3, 0);
   }
 
   ::after {
