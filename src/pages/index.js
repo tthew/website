@@ -108,7 +108,7 @@ const Header = styled.h1`
 
   opacity: ${p => (p.titleIsVisible ? 1 : 0)};
   transition: opacity 1000ms cubic-bezier(0, 0, 0.3, 0);
-  // transform: skewY(-5deg);
+  transform: skewX(-10deg);
 `;
 
 const Tombstone = styled.div`
