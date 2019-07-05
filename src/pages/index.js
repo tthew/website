@@ -26,13 +26,13 @@ const IndexPage = ({ data }) => {
   const [epitaphIsVisible, setEpitaphVisibility] = useState(false);
   const [titleIsVisible, setTitleVisibility] = useState(false);
   useEffect(() => {
-    setTombstoneVisibility(true);
+    setEpitaphVisibility(true);
     setTimeout(() => {
-      setEpitaphVisibility(true);
+      setTombstoneVisibility(true);
       setTimeout(() => {
         setTitleVisibility(true);
       }, 1000);
-    }, 1000);
+    }, 3000);
   }, []);
 
   return (
@@ -42,10 +42,11 @@ const IndexPage = ({ data }) => {
         <SEO title="EPITAPH" />
         <Flex>
           <Header titleIsVisible={titleIsVisible}>COMING SOON!</Header>
-          <Tombstone
-            tombstoneIsVisible={tombstoneIsVisible}
-            epitaphIsVisible={epitaphIsVisible}
-          />
+          <Tombstone tombstoneIsVisible={tombstoneIsVisible}>
+            <Epitaph epitaphIsVisible={epitaphIsVisible}>
+              YOU'RE GOING TO DIE!
+            </Epitaph>
+          </Tombstone>
         </Flex>
         {/* <Section>
           <Heading>One day.</Heading>
@@ -105,7 +106,7 @@ const Header = styled.h1`
   grid-row: 2;
   grid-column: 1 / -1;
   font-size: 15vmin;
-  color: ${p => p.theme.primary90};
+  color: ${p => p.theme.primary10};
   height: 25vmin;
   margin-top: 5vmin;
 
@@ -116,10 +117,27 @@ const Header = styled.h1`
   transform: skewX(-10deg);
 `;
 
+const Epitaph = styled.div`
+  text-align: center;
+  position: absolute;
+  margin: -15vmin 0 0 15vmin;
+  padding: 0 5vmin 5vmin;
+  color: ${p => p.theme.primary20};
+  top: 50%;
+  font-size: 7vmin;
+  align-self: center;
+  justify-self: center;
+  transform: skewY(-1deg);
+  z-index: 2;
+
+  opacity: ${p => (p.epitaphIsVisible ? 1 : 0)};
+  transition: opacity 600ms cubic-bezier(0, 0, 0.3, 0),
+    color 600ms cubic-bezier(0, 0, 0.3, 0);
+`;
+
 const Tombstone = styled.div`
   grid-column: 1 / 12;
   position: relative;
-  background: ${p => p.theme.primary100};
   width: 42vmin;
   height: 56vmin;
   border-top-right-radius: 45%;
@@ -127,24 +145,32 @@ const Tombstone = styled.div`
 
   margin: 5vmin 5vmin 0;
   transform: translateX(-1vmin) skewY(-5deg) rotate(5deg);
-  opacity: ${p => (p.tombstoneIsVisible ? 1 : 0)};
-  transition: opacity 600ms cubic-bezier(0, 0, 0.3, 0);
+
+  ${Epitaph} {
+    transform: scale(${p => (p.tombstoneIsVisible ? 1 : 3)})
+      ${p =>
+        p.tombstoneIsVisible
+          ? css`translate(0, 0)`
+          : css`translate(-2.5vmin, 6vmin)`};
+
+    color: ${p =>
+      p.tombstoneIsVisible ? p.theme.primary100 : p.theme.primary20};
+
+    transition: opacity 600ms cubic-bezier(0, 0, 0.3, 0),
+      color 600ms cubic-bezier(0, 0, 0.3, 0),
+      transform 600ms cubic-bezier(0, 0, 0.3, 0);
+  }
 
   ::before {
-    content: "YOU'RE GOING TO DIE!";
-    text-align: center;
     position: absolute;
-    margin: -15vmin 0 0 15vmin;
-    padding: 0 5vmin 5vmin;
-    color: ${p => p.theme.primary100};
-    top: 50%;
-    font-size: 7vmin;
-    align-self: center;
-    justify-self: center;
-    z-index: 1;
-    transform: skewY(-1deg);
-
-    opacity: ${p => (p.epitaphIsVisible ? 1 : 0)};
+    display: block;
+    content: " ";
+    width: 42vmin;
+    height: 56vmin;
+    border-top-right-radius: 45%;
+    border-top-left-radius: 45%;
+    background: ${p => p.theme.primary100};
+    opacity: ${p => (p.tombstoneIsVisible ? 1 : 0)};
     transition: opacity 600ms cubic-bezier(0, 0, 0.3, 0);
   }
 
@@ -160,6 +186,9 @@ const Tombstone = styled.div`
     border-top-left-radius: 45%;
     border: 1vmin solid #000;
     border-bottom: none;
+
+    opacity: ${p => (p.tombstoneIsVisible ? 1 : 0)};
+    transition: opacity 600ms cubic-bezier(0, 0, 0.3, 0);
   }
 `;
 
