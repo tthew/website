@@ -1,13 +1,41 @@
-import React from 'react'
-
-import s from './update-banner.module.css'
+import React from "react";
+import styled from "styled-components";
 
 const UpdateBanner = () => {
   return (
-    <div className={s.updateBanner}>
-      <p>This website has been updated! <a href='#' onClick={(e) => e.preventDefault() || window.location.reload()}>Refresh now to get the latest content</a>.</p>
-    </div>
-  )
-}
+    <Wrapper>
+      <p>
+        This website has been updated!{" "}
+        <Link
+          href="#"
+          onClick={e => e.preventDefault() || window.location.reload()}
+        >
+          Refresh now to get the latest content
+        </Link>
+        .
+      </p>
+    </Wrapper>
+  );
+};
 
-export default UpdateBanner
+const Link = styled.a`
+  :link,
+  :visited,
+  :hover,
+  :active {
+    color: green;
+  }
+`;
+
+const Wrapper = styled.div`
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
+  background: ${p => p.theme.primary100};
+  color: ${p => p.theme.primary20};
+  font-family: verdana;
+  font-weight: bold;
+  margin-bottom: 1rem;
+`;
+
+export default UpdateBanner;
