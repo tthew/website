@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
+import Layout from "../components/layout";
+import SEO from "../components/seo";
 
-import pageStyles from './page.module.css'
+import pageStyles from "./page.module.css";
 
 const Page = ({ data }) => (
   <Layout>
@@ -12,27 +12,27 @@ const Page = ({ data }) => (
       <div className={pageStyles.primaryContent}>
         <h1>{data.contentfulPage.title}</h1>
         <div
-            dangerouslySetInnerHTML={{
+          dangerouslySetInnerHTML={{
             __html: data.contentfulPage.body.childMarkdownRemark.html
           }}
         />
       </div>
     </div>
   </Layout>
-)
+);
 
-export const pageQuery = graphql`
-  query($slug: String!) {
-    contentfulPage(slug: { eq: $slug }) {
-      title
-      body {
-        childMarkdownRemark {
-          html
-        }
-      }
-      slug
-    }
-  }
-`
+// export const pageQuery = graphql`
+//   query($slug: String!) {
+//     contentfulPage(slug: { eq: $slug }) {
+//       title
+//       body {
+//         childMarkdownRemark {
+//           html
+//         }
+//       }
+//       slug
+//     }
+//   }
+// `
 
-export default Page
+export default Page;

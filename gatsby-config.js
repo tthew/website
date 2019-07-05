@@ -11,13 +11,13 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-source-contentful`,
-      options: {
-        spaceId: process.env.TTHEW_SITE_CONTENTFUL_SPACE_ID,
-        accessToken: process.env.TTHEW_SITE_CONTENTFUL_ACCESS_TOKEN
-      }
-    },
+    // {
+    //   resolve: `gatsby-source-contentful`,
+    //   options: {
+    //     spaceId: process.env.TTHEW_SITE_CONTENTFUL_SPACE_ID,
+    //     accessToken: process.env.TTHEW_SITE_CONTENTFUL_ACCESS_TOKEN
+    //   }
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -87,10 +87,7 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-styled-components`,
-      options: {
-        // Add any options here
-      }
+      resolve: `gatsby-plugin-styled-components`
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
