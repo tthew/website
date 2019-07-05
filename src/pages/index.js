@@ -14,6 +14,11 @@ const GlobalStyle = createGlobalStyle`
     background: ${p => p.theme.uiBlack};
     font-family: Staatliches, sans-serif;
   }
+
+  body > div,
+  body > div > div {
+    height: 100%
+  }
 `;
 
 const IndexPage = ({ data }) => {
@@ -71,7 +76,7 @@ const Flex = styled.div`
   align-items: center;
   justify-content: center;
 
-  height: 100vh;
+  height: 100%;
 `;
 
 const Section = styled.div`

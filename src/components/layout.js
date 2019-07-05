@@ -15,6 +15,8 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired
 };
 
-const Wrapper = styled.main``;
+const Wrapper = styled.main`
+  height: 100%;
+`;
 
 export default Layout;
