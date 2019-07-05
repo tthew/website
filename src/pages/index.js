@@ -22,10 +22,10 @@ const IndexPage = ({ data }) => {
       <Layout>
         <GlobalStyle />
         <SEO title="EPITAPH" />
-        <Grid>
+        <Flex>
           <Header>EPITAPH!</Header>
           <Tombstone />
-        </Grid>
+        </Flex>
         {/* <Section>
           <Heading>One day.</Heading>
         </Section>
@@ -48,16 +48,14 @@ const Heading = styled.h2`
   text-align: center;
 `;
 
-const Grid = styled.div`
-  display: grid;
+const Flex = styled.div`
+  display: flex;
+
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
 
   height: 95vh;
-
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: auto 1fr;
-  grid-gap: 8px;
-
-  justify-items: center;
 `;
 
 const Section = styled.div`
@@ -100,7 +98,7 @@ const Tombstone = styled.div`
   border-top-left-radius: 45%;
 
   margin: 5vmin 5vmin 0;
-  transform: translateX(5vmin);
+  transform: translateX(-1vmin);
 
   ::before {
     content: "YOU'RE GOING TO DIE!";
