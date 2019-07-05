@@ -17,12 +17,16 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const IndexPage = ({ data }) => {
-  const [showText, setShowText] = useState(false);
-  const [showTitle, setShowTitle] = useState(false);
+  const [tombstoneIsVisible, setTombstoneVisibility] = useState(false);
+  const [epitaphIsVisible, setEpitaphVisibility] = useState(false);
+  const [titleIsVisible, setTitleVisibility] = useState(false);
   useEffect(() => {
-    setShowText(true);
+    setTombstoneVisibility(true);
     setTimeout(() => {
-      setShowTitle(true);
+      setEpitaphVisibility(true);
+      setTimeout(() => {
+        setTitleVisibility(true);
+      }, 1000);
     }, 1000);
   }, []);
 
@@ -32,8 +36,11 @@ const IndexPage = ({ data }) => {
         <GlobalStyle />
         <SEO title="EPITAPH" />
         <Flex>
-          <Header showText={showTitle}>COMING SOON!</Header>
-          <Tombstone showText={showText} />
+          <Header titleIsVisible={titleIsVisible}>COMING SOON!</Header>
+          <Tombstone
+            tombstoneIsVisible={tombstoneIsVisible}
+            epitaphIsVisible={epitaphIsVisible}
+          />
         </Flex>
         {/* <Section>
           <Heading>One day.</Heading>
@@ -99,8 +106,9 @@ const Header = styled.h1`
 
   white-space: nowrap;
 
-  opacity: ${p => (p.showText ? 1 : 0)};
+  opacity: ${p => (p.titleIsVisible ? 1 : 0)};
   transition: opacity 1000ms cubic-bezier(0, 0, 0.3, 0);
+  // transform: skewY(-5deg);
 `;
 
 const Tombstone = styled.div`
@@ -113,7 +121,9 @@ const Tombstone = styled.div`
   border-top-left-radius: 45%;
 
   margin: 5vmin 5vmin 0;
-  transform: translateX(-1vmin);
+  transform: translateX(-1vmin) skewY(-5deg) rotate(5deg);
+  opacity: ${p => (p.tombstoneIsVisible ? 1 : 0)};
+  transition: opacity 600ms cubic-bezier(0, 0, 0.3, 0);
 
   ::before {
     content: "YOU'RE GOING TO DIE!";
@@ -129,18 +139,18 @@ const Tombstone = styled.div`
     z-index: 1;
     transform: skewY(-1deg);
 
-    opacity: ${p => (p.showText ? 1 : 0)};
-    transition: opacity 300ms cubic-bezier(0, 0, 0.3, 0);
+    opacity: ${p => (p.epitaphIsVisible ? 1 : 0)};
+    transition: opacity 600ms cubic-bezier(0, 0, 0.3, 0);
   }
 
   ::after {
     grid-column: 3 / 10;
-    transform: translateX(5vmin) translateY(1vmin);
+    transform: translateX(5vmin) translateY(0.5vmin);
     display: block;
     content: " ";
     background: ${p => p.theme.primary90};
     width: 42vmin;
-    height: 54vmin;
+    height: 54.5vmin;
     border-top-right-radius: 45%;
     border-top-left-radius: 45%;
     border: 1vmin solid #000;
