@@ -64,7 +64,7 @@ const Flex = styled.div`
   align-items: center;
   justify-content: center;
 
-  height: 95vh;
+  height: 100vh;
 `;
 
 const Section = styled.div`

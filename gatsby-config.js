@@ -4,7 +4,7 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Embrace your values`,
+    title: `Embrace your mortality`,
     description: ``,
     author: `Matt Richards`,
     siteUrl: `https://epitaph.tthew.berlin`
