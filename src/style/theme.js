@@ -13,8 +13,12 @@ export const base = {
   primary20: colors.tombstoneGrey20,
   primary10: colors.tombstoneGrey10,
   uiBlack: colors.tombstoneGrey105,
-  // uiBlack: `#08090d`,
   uiWhite: `#f5f5f5`,
+  uiRed: `#e55e7d`,
+  uiOrange: `#efc667`,
+  uiYellow: `#e4ef6e`,
+  uiGreen: `#19d18d`,
+  uiPurple: `#6b52d8`,
   colors,
   mq,
   breakpoint

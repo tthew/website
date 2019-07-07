@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 
 import SEO from "../components/seo";
 import Layout from "../components/layout";
-import styled, { css, createGlobalStyle } from "styled-components/macro";
+import styled, {
+  css,
+  createGlobalStyle,
+  keyframes
+} from "styled-components/macro";
 
 const GlobalStyle = createGlobalStyle`
   html,
@@ -117,6 +121,106 @@ const Header = styled.h1`
   transform: skewX(-10deg);
 `;
 
+const rainbow = keyframes`
+  0% {
+    color: #111;
+  }
+
+  10% {
+    color: cyan;
+  }
+
+  15% {
+    color: magenta;
+  }
+
+  20% {
+    color: #111;
+  }
+
+  30% {
+    color: blue;
+  }
+
+  35% {
+    color: lime;
+  }
+
+  40% {
+    color: #111;
+  }
+
+  50% {
+    color: cyan;
+  }
+
+  60% {
+    color: #111;
+  }
+
+  70% {
+    color: red;
+  }
+
+  80% {
+    color: #111;
+  }
+
+  90% {
+    color: blue;
+  }
+
+  100% {
+    color: cyan;
+  }
+`;
+
+const rainbowEasy = keyframes`
+  0% {
+    color: cyan;
+  }
+
+  10% {
+    color: magenta;
+  }
+
+  20% {
+    color: blue;
+  }
+
+  30% {
+    color: lime;
+  }
+
+  40% {
+    color: cyan;
+  }
+
+  50% {
+    color: red;
+  }
+
+  60% {
+    color: blue;
+  }
+
+  70% {
+    color: magenta;
+  }
+
+  80% {
+    color: yellow;
+  }
+
+  90% {
+    color: lime;
+  }
+
+  90% {
+    color: spearmint;
+  }
+`;
+
 const Epitaph = styled.div`
   text-align: center;
   position: absolute;
@@ -129,6 +233,8 @@ const Epitaph = styled.div`
   justify-self: center;
   transform: skewY(-1deg);
   z-index: 2;
+  animation: ${rainbow} 1s cubic-bezier(0, 0, 0.3, 0) 2s 2,
+    ${rainbowEasy} 20s cubic-bezier(0, 0, 0.15, 1) 3.6s infinite;
 
   opacity: ${p => (p.epitaphIsVisible ? 1 : 0)};
   transition: opacity 600ms cubic-bezier(0, 0, 0.3, 0),
