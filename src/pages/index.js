@@ -171,7 +171,7 @@ const rainbow = keyframes`
   }
 
   100% {
-    color: cyan;
+    color: #fff;
   }
 `;
 
@@ -233,7 +233,7 @@ const Epitaph = styled.div`
   justify-self: center;
   transform: skewY(-1deg);
   z-index: 2;
-  animation: ${rainbow} 1s cubic-bezier(0, 0, 0.3, 0) 2s 2,
+  animation: ${rainbow} 1s cubic-bezier(0, 0, 0.3, 0) 2s 1,
     ${rainbowEasy} 20s cubic-bezier(0, 0, 0.15, 1) 3.6s infinite;
 
   opacity: ${p => (p.epitaphIsVisible ? 1 : 0)};
