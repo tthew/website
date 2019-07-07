@@ -151,7 +151,7 @@ const Tombstone = styled.div`
       ${p =>
         p.tombstoneIsVisible
           ? css`translate(0, 0)`
-          : css`translate(-2.5vmin, 6vmin)`};
+          : css`translate(-1.5vmin, 6vmin)`};
 
     color: ${p =>
       p.tombstoneIsVisible ? p.theme.primary100 : p.theme.primary20};
