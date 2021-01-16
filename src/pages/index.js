@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { Suspense } from 'react'
+import loadable from '@loadable/component'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Hero from '../components/hero'
-import About from '../components/about'
-import Experience from '../components/experience'
+
+const About = loadable(() => import('../components/about'))
+const Experience = loadable(() => import('../components/experience'))
 
 const IndexPage = ({ data }) => {
   return (

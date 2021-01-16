@@ -1,10 +1,11 @@
 import React from "react"
 import PropTypes from "prop-types"
+import loadable from '@loadable/component'
 
 import Header from './header'
-import Footer from './footer'
-
 import './layout.css'
+
+const Footer =  loadable(() => import('./footer'))
 
 const Layout = ({ children }) => (
   <div className='container'>
