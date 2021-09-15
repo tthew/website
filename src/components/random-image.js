@@ -10,21 +10,21 @@ const getRandomImageKey = (data) => {
 
 const RandomImage = ({ imageSharpData, maxDuration = 10000, play = true, ...restProps }) => {
   const [ randomImageKey, setRandomImageKey ] = useState(getRandomImageKey(imageSharpData))
+  const interval = Math.floor(Math.random() * Math.floor(maxDuration))
 
   useInterval(() => {
     setRandomImageKey(getRandomImageKey(imageSharpData))
-  }, play ?  Math.floor(Math.random() * Math.floor(maxDuration)): null)
+  }, play ?  interval : null)
 
   return (
     <>
-      {[...Object.keys(imageSharpData).find(key => key === randomImageKey)].map((key) => (
+      {imageSharpData[randomImageKey] && (
         <Img
           {...restProps}
-          key={key}
-          fluid={restProps.fluid ? imageSharpData[key].childImageSharp.fluid : null}
-          fixed={restProps.fixed ? imageSharpData[key].childImageSharp.fixed : null}
+          fluid={restProps.fluid ? imageSharpData[randomImageKey]?.childImageSharp.fluid : null}
+          fixed={restProps.fixed ? imageSharpData[randomImageKey]?.childImageSharp.fixed : null}
         />
-      ))}
+      )}
     </>
   )
 }
