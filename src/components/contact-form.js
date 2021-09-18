@@ -1,11 +1,8 @@
 import React from "react";
-import { Link } from "gatsby";
-
-import s from "./contact-form.module.css";
-
 import githubLogo from "../images/github.svg";
-import twitterLogo from "../images/twitter.svg";
 import linkedInLogo from "../images/linkedin.svg";
+import twitterLogo from "../images/twitter.svg";
+import s from "./contact-form.module.css";
 
 const ContactForm = () => {
   return (
@@ -59,81 +56,72 @@ const ContactForm = () => {
       </div>
       <form
         data-netlify={true}
-        data-netlify-honeypot='username'
-        method='post'
-        name='contact'
+        data-netlify-honeypot="username"
+        method="post"
+        name="contact"
         className={s.contactForm}
       >
         <input
-          name='username'
+          name="username"
           className={s.contactFormUsername} // This is a honeypot field
-          style={{ position: 'absolute', visibility: 'hidden' }}
+          style={{ position: "absolute", visibility: "hidden" }}
         />
-        <div
-          className={s.contactFormField}
-        >
+        <div className={s.contactFormField}>
           <label
-            htmlFor='contact-form-field__name'
+            htmlFor="contact-form-field__name"
             className={s.contactFormFieldLabel}
           >
             Name
           </label>
 
           <input
-            id='contact-form-field__name'
-            placeholder='Name'
-            name='name'
-            type='text'
+            id="contact-form-field__name"
+            placeholder="Name"
+            name="name"
+            type="text"
             className={s.contactFormInput}
             required
           />
         </div>
-        <div
-          className={s.contactFormField}
-        >
+        <div className={s.contactFormField}>
           <label
-            htmlFor='contact-form-field__email'
+            htmlFor="contact-form-field__email"
             className={s.contactFormFieldLabel}
           >
             Email
           </label>
           <input
-            id='contact-form-field__email'
-            placeholder='Email'
-            name='email'
-            type='email'
+            id="contact-form-field__email"
+            placeholder="Email"
+            name="email"
+            type="email"
             className={s.contactFormInput}
             required
           />
         </div>
-        <div
-          className={s.contactFormField}
-        >
+        <div className={s.contactFormField}>
           <label
-            htmlFor='contact-form-field__message'
+            htmlFor="contact-form-field__message"
             className={s.contactFormFieldLabel}
           >
             Message
           </label>
           <textarea
-            id='contact-form-field__message'
-            name='message'
-            placeholder='How can I help?'
+            id="contact-form-field__message"
+            name="message"
+            placeholder="How can I help?"
             className={s.contactFormInput}
             rows={5}
           />
         </div>
 
-        <input type='hidden' name='form-name' value='contact' />
-        <button
-          type='submit'
-          className={s.contactFormButton}
-        >
+        <input type="hidden" name="form-name" value="contact" />
+        <button type="submit" className={s.contactFormButton}>
           Hit me up!
         </button>
       </form>
     </section>
-  )
-}
+  );
+};
 
-export default ContactForm
+export default ContactForm;
