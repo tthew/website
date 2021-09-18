@@ -29,7 +29,7 @@ const Experience = ({
             <ul className={s.things}>
               <li className={s.thing}>
                 Building rich web applications with{" "}
-                <a href="http://react.org">React</a>,{" "}
+                <a href="https://reactjs.org">React</a>,{" "}
                 <a href="https://styled-components.com/">Styled-Components</a>,{" "}
                 , <a href="https://graphql.org/">GraphQL</a> &amp;{" "}
                 <a href="https://nextjs.org/">Next.js</a>.
