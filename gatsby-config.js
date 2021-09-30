@@ -1,6 +1,6 @@
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
 module.exports = {
   siteMetadata: {
@@ -45,28 +45,23 @@ module.exports = {
         fonts: [
           {
             family: `Staatliches`,
-            subsets: [`latin`],
+            weights: ["400"],
           },
           {
             family: `Montserrat`,
-            subsets: [`latin`],
           },
           {
             family: `Lato`,
-            subsets: [`latin`],
+            weights: ["400", "700"],
           },
         ],
       },
-
     },
     {
-      resolve: 'gatsby-transformer-remark',
+      resolve: "gatsby-transformer-remark",
       options: {
-        plugins: [
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-reading-time`,
-        ]
-      }
+        plugins: [`gatsby-remark-prismjs`, `gatsby-remark-reading-time`],
+      },
     },
     {
       resolve: `gatsby-plugin-sitemap`,
@@ -87,11 +82,11 @@ module.exports = {
               }
             }
           }
-        `
+        `,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
-    'gatsby-plugin-offline',
+    "gatsby-plugin-offline",
   ],
-}
+};
