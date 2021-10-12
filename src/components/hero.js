@@ -47,11 +47,12 @@ const Hero = () => {
                         range: [0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 1],
                         output: [1, 0.97, 0.9, 1.1, 0.9, 1.1, 1.03, 1]
                       })
-                      .interpolate(x => `scale(${x})`)
-                  }}>
-                    <span className={s.heroTitleBreak}>Front-end&nbsp;</span>
-                    <span className={s.heroTitleBreak}>Web Developer&nbsp;</span>
-                    <span className={s.heroTitleBreak}>Berlin</span>
+                      .interpolate((x) => `scale(${x})`),
+                  }}
+                >
+                  <span className={s.heroTitleBreak}>Full Stack&nbsp;</span>
+                  <span className={s.heroTitleBreak}>Web Developer&nbsp;</span>
+                  <span className={s.heroTitleBreak}>Berlin</span>
                 </animated.div>
               </h1>
               <button
