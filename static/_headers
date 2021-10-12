@@ -2,4 +2,4 @@
   X-Frame-Options: DENY
   X-XSS-Protection: 1; mode=block
   X-Content-Type-Options: nosniff
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' www.google.com www.gstatic.com; object-src 'none'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src * data:; media-src *; frame-src www.google.com www.gstatic.com; font-src 'self' data: fonts.gstatic.com; connect-src fonts.googleapis.com 'self'; form-action 'self'; frame-ancestors 'none';
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' www.google.com www.gstatic.com; object-src 'none'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src * data:; media-src *; frame-src www.google.com www.gstatic.com; font-src 'self' data: fonts.gstatic.com; connect-src 'self' fonts.googleapis.com; form-action 'self'; frame-ancestors 'none';
