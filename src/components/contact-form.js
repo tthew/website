@@ -10,11 +10,8 @@ const ContactForm = () => {
       <div className={s.contactContent}>
         <h2 className={s.contactContentTitle}>Get in touch</h2>
         <div className={s.contactBody}>
-          <p>I'm currently happily employed.</p>
-          <p>
-            Nevertheless, if you'd like to reach out for any reason, I'd love to
-            hear from you.
-          </p>
+          <p>I'm currently open for new opportunties.</p>
+          <p>If you'd like to reach out, I'd love to hear from you.</p>
           <p>
             You can catch me in all the usual places. Feel free to send me a
             message using the contact form or alternatively{" "}
