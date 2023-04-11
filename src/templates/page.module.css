@@ -1,0 +1,26 @@
+.page {
+  display: grid;
+  grid-template-columns: var(--grid-cols-12);
+  background: var(--light);
+  color: var(--dark);
+  padding: 10rem 0;
+}
+
+.primaryContent {
+  grid-column: 2 / 12;
+}
+
+.primaryContent h1 {
+  font-size: 5rem;
+  line-height: 0.9em;
+}
+
+.primaryContent h2 {
+  margin: 5rem 0 1rem;
+}
+
+@media only screen and (min-width: 70rem) {
+  .primaryContent {
+    grid-column: 4 / 9
+  }
+}

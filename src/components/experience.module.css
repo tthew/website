@@ -1,0 +1,76 @@
+.experience {
+  display: grid;
+  grid-template-columns: var(--grid-cols-12);
+  background: teal;
+  padding: 5rem 0;
+}
+
+.secondaryContent {
+  grid-column: 2 / 12;
+  grid-row: 1;
+}
+
+.primaryContent {
+  grid-column: 2 / 12;
+  grid-row: 2;
+  font-family: var(--sub-header-font-family);
+}
+
+.title {
+  margin: 0 0 1rem;
+  font-size: 3rem;
+  line-height: 0.9em;
+}
+
+.thingsCallout {
+  margin-top: 3rem;
+  border: 3px solid var(--light);
+  padding: 2rem;
+  font-size: 1.5rem;
+
+}
+
+.thingsCalloutTitle {
+  margin: 0 0 1rem 0;
+  line-height: 1em;
+  font-family: var(--header-font-family);
+  font-size: 1.5rem;
+}
+
+.things {
+  margin: 0;
+  padding: 1rem 0 0 2rem;
+  list-style: square;
+}
+
+.thing {
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.strongText {
+  font-family: var(--header-font-family);
+  font-size: 1.5rem;
+  line-height: 1.2em;
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 50rem) {
+  .title {
+    font-size: 4vw;
+    line-height: 3.5vw;
+    margin-bottom: 5rem;
+    line-height: 0.9em;
+  }
+  .thingsCallout {
+    font-size: 1rem;
+  }
+  .secondaryContent {
+    grid-column: 2 / 6;
+    grid-row: 1;
+  }
+  .primaryContent {
+    grid-column: 8 / 12;
+    grid-row: 1;
+  }
+}

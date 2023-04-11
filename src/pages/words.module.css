@@ -1,0 +1,42 @@
+.writing {
+  display: grid;
+  grid-template-columns: var(--grid-cols-12);
+  grid-template-rows: 3 auto;
+  background-color: var(--light);
+  color: var(--dark);
+  padding: 5rem 0;
+}
+
+.primaryContent {
+  grid-column: 2 / 13;
+}
+
+.articles {
+  display: grid;
+  grid-template-columns: var(--grid-cols-12);
+  grid-gap: 1rem;
+}
+
+.article {
+  grid-column: 1 / 12;
+}
+
+.articleTitle {
+  font-family: 'Staatliches';
+  font-size: 1.5rem;
+  line-height: 0.9em;
+}
+
+.hero {
+  height: 10rem;
+  overflow: hidden;
+}
+
+@media only screen and (min-width: 50rem) {
+  .primaryContent {
+    grid-column: 2 / 12;
+  }
+  .article {
+    grid-column: span 4;
+  }
+}
