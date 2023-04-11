@@ -1,0 +1,29 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import Hero from "../components/Homepage/Hero.astro";
+import About from "../components/Homepage/About.astro";
+import Experience from "../components/Homepage/Experience.astro";
+import Contact from "../components/Homepage/Contact.astro";
+
+const heroText = SITE_DESCRIPTION.split(" ");
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header title={SITE_TITLE} />
+    <main id="main" role="main">
+      <Hero />
+      <About />
+      <Experience />
+      <Contact />
+    </main>
+    <Footer />
+  </body>
+</html>
