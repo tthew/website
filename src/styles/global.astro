@@ -1,127 +1,104 @@
 ---
-import spacing from "../design-tokens/spacing.json";
-import textSizes from "../design-tokens/text-sizes.json";
-import colors from "../design-tokens/colors.json";
-import fonts from "../design-tokens/fonts.json";
-import { clampGenerator } from "../utils/clamp-generator";
-import { tokensToCustomProperties } from "../utils/tokens-to-custom-properties";
-
-const customProperties = [
-  ...tokensToCustomProperties(colors.items, "color"),
-  ...tokensToCustomProperties(clampGenerator(spacing.items), "space"),
-  ...tokensToCustomProperties(clampGenerator(textSizes.items)),
-  ...tokensToCustomProperties(fonts.items, "font"),
-].join("\n    ");
-
-const designTokens = `
-:root {
-  	${customProperties}
-}
-`;
+import { customProperties } from "../design-tokens";
 ---
 
-<style type="text/css" is:inline set:text={designTokens}></style>
+<style type="text/css" is:inline set:text={customProperties}></style>
 
 <style is:global>
-  /*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
-  html {
-    padding: 0;
-    margin: 0;
+  /* Modern CSS reset: https://github.com/hankchizljaw/modern-css-reset */
+
+  /* Box sizing rules */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
   }
-  body {
-    font-family: var(--font-base);
-    font-size: var(--step-0);
+
+  /* Remove default padding */
+  ul[class],
+  ol[class] {
     padding: 0;
-    margin: 0;
   }
+
+  /* Remove default margin */
+  body,
   h1,
   h2,
   h3,
   h4,
-  h5,
-  h6,
-  strong,
-  b {
-    color: #222;
-  }
-  a {
-    color: #3273dc;
-  }
-  nav a {
-    margin-right: 10px;
-  }
-  textarea {
-    width: 100%;
-    font-size: 16px;
-  }
-  input {
-    font-size: 16px;
-  }
-  content {
-    line-height: 1.6;
-  }
-  table {
-    width: 100%;
-  }
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-  code {
-    padding: 2px 5px;
-    background-color: #f2f2f2;
-  }
-  pre {
-    padding: 1rem;
-  }
-  pre > code {
-    all: unset;
-  }
-  blockquote {
-    border: 1px solid #999;
-    color: #222;
-    padding: 2px 0px 2px 20px;
-    margin: 0px;
-    font-style: italic;
+  p,
+  ul[class],
+  ol[class],
+  figure,
+  blockquote,
+  dl,
+  dd {
+    margin: 0;
   }
 
-  h1 {
-    font-size: var(--step-5);
-    font-weight: 900;
-    margin-bottom: var(--space-m-l);
+  /* Set core root defaults */
+  html {
+    scroll-behavior: smooth;
   }
 
-  h2 {
-    font-size: var(--step-4);
-    margin-bottom: var(--space-m-l);
-  }
-
-  h3 {
-    font-size: var(--step-3);
-    margin-bottom: var(--space-m);
-  }
-
-  h5 {
-    font-size: var(--step-2);
-    margin-bottom: var(--space-s-m);
-  }
-  h6 {
-    font-size: var(--step-1);
-    margin-bottom: var(--space-s);
-  }
-
-  p {
+  /* Set core body defaults */
+  body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+    font-family: var(--font-base);
     font-size: var(--step-0);
-    margin-bottom: var(--space-s);
+    overflow-x: hidden;
   }
 
-  p.leading {
+  /* Remove list styles on ul, ol elements with a class attribute */
+  ul[class],
+  ol[class] {
+    list-style: none;
+  }
+
+  /* A elements that don't have a class get default styles */
+  a:not([class]) {
+    text-decoration-skip-ink: auto;
+  }
+
+  /* Make images easier to work with */
+  img,
+  picture {
+    max-width: 100%;
+    display: block;
+  }
+
+  /* Natural flow and rhythm in articles by default */
+  .flow > * + *,
+  article > * + * {
+    margin-top: var(--space-m);
+  }
+
+  /* Inherit fonts for inputs and buttons */
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  /* Blur images when they have no alt attribute */
+  img:not([alt]) {
+    filter: blur(10px);
+  }
+
+  /* Remove all animations and transitions for people that prefer not to see them */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  .leading {
     font-size: var(--step-1);
-    margin-bottom: var(--space-xs);
     font-weight: 600;
   }
 
@@ -141,9 +118,6 @@ const designTokens = `
   }
 
   #main {
-    margin: auto;
-    padding-top: var(--space-2xl);
-    /* max-width: 65ch; */
     text-align: left;
     background-color: #fff;
     word-wrap: break-word;
@@ -154,8 +128,7 @@ const designTokens = `
 
   a:link,
   a:visited {
-	color: var(--color-primary);
+    color: var(--link-color, var(--color-primary));
   }
-
   /* @link https://utopia.fyi/type/calculator?c=320,18,1.2,1240,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 </style>

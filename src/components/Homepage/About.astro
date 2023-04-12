@@ -1,5 +1,5 @@
-<section id="about">
-  <div class="container">
+<section id="about" >
+  <div class="container flow">
     <p class="leading">
       Cutting my teeth building table based layouts with CGI backends as a
       teenager in the late 90s.
@@ -21,10 +21,11 @@
       <a href="https://typescript.org/">Typescript</a>,
       <a href="https://typescript.org/">Astro</a>,
       <a href="https://typescript.org/">11ty</a>,
+      <a href="https://typescript.org/">Remix</a>,
+      <a href="https://typescript.org/">Next.js</a>,
       <a href="http://reactjs.org">React</a>,
       <a href="https://graphql.org/">GraphQL</a>,
-      <a href="https://nodejs.org">Node</a>,
-      <a href="https://www.postgresql.org/">PostgreSQL</a> &amp;
+      <a href="https://nodejs.org">Node</a>  &amp;
       <a href="https://storybook.js.org/">Storybook</a>.
     </p>
     <p>
@@ -45,11 +46,17 @@
 <style>
 
   section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: #222;
     color: #fff;
     max-width: 100%;
     padding: var(--space-m) 0;
     font-size: var(--step-3);
+    background: url(/body-glitch-3.webp);
+    background-size: cover;
+    min-height: 100vh;
   }
 
   section p {
@@ -58,10 +65,14 @@
 
   section .container {
     max-width: 1350px;;
-    margin: auto;
-    padding: var(--space-2xl) var(--space-xl);
+    margin: 0 auto;
     text-align: left;
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3);
+    padding: var(--space-xl);
+    min-height: 100vh;
+    background: var(--color-secondary-glare);
   }
+
 
   @media only screen and (min-width: 800px) {
     section {
@@ -69,8 +80,11 @@
     }
     section .container {
         column-count: 2;
-        column-gap: var(--space-xl);
-        padding: var(--space-2xl) var(--space-m);
+        column-gap: var(--space-2xl);
+        padding: var(--space-2xl) var(--space-xl);
+    }
+    section p {
+      font-size: var(--step-1);
     }
   }
   
@@ -83,6 +97,12 @@
 
    p:first-child {
     margin-top: 0;
+  }
+
+
+  a:link,
+  a:visited {
+    color: var(--color-light);
   }
 </style>
 

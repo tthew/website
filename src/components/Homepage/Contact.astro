@@ -1,23 +1,61 @@
-<section id="contact">
+<section id="contact" class="flow">
   <h2>Get in touch</h2>
 
-  <p>I'm currently open for new opportunties.</p>
-  <p>If you'd like to reach out, I'd love to hear from you.</p>
+  <div>
+    <p>If you'd like to reach out, I'd love to hear from you.</p>
+    <p>You can catch me in the following places:</p>
+  </div>
 
-  <p>You can catch me in all the usual places.</p>
-  <ul>
-    <li>
-      <a href="https://techhub.social/@tthew"> Mastodon</a>
-    </li>
-    <li>
-      <a href="https://github.com/tthew"> Github</a>
-    </li>
-    <li>
-      <a href="https://www.linkedin.com/in/lucidmoon/"> LinkedIn</a>
-    </li>
-  </ul>
-  <p>
-    Feel free to reach out to me there, or alternatively
-    <a href="mailto:hallo@tthew.berlin">drop me an email</a>.
-  </p>
+  <div>
+    <ul>
+      <li>
+        <a href="https://techhub.social/@tthew"> Mastodon</a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/in/lucidmoon/"> LinkedIn</a>
+      </li>
+      <li>
+        <a href="https://github.com/tthew"> Github</a>
+      </li>
+      <li>
+        <a href="mailto:hallo@tthew.berlin">Email</a>
+      </li>
+    </ul>
+  </div>
 </section>
+
+<style>
+  section {
+    background: #222;
+    text-align: center;
+    padding: var(--space-2xl) 0;
+    font-size: var(--step-1);
+  }
+
+  section p,
+  section h2 {
+    margin: 0;
+    color: #fff;
+  }
+
+  section h2::before {
+    content: "🤙 ";
+  }
+
+  section > div {
+    max-width: 1350px;
+    margin: auto;
+  }
+
+  ul {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-l);
+    margin: var(--space-2xl) 0;
+  }
+  li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+</style>

@@ -1,4 +1,4 @@
-import viewports from "../design-tokens/viewports.json";
+import viewports from "../design-tokens/tokens/viewports.json";
 /**
  * Takes an array of tokens and sends back and array of name
  * and clamp pairs for CSS fluid values.

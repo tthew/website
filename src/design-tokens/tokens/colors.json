@@ -16,7 +16,7 @@
     },
     {
       "name": "Primary",
-      "value": "hsla(300, 100%, 50%, 1)"
+      "value": "hsla(99.5, 19.4%, 58.6%, 1);"
     },
     {
       "name": "Primary Glare",
@@ -24,11 +24,11 @@
     },
     {
       "name": "Secondary",
-      "value": "#EE5141"
+      "value": "hsla(273.7, 21.9%, 36.7%, 0.7)"
     },
     {
       "name": "Secondary Glare",
-      "value": "#FFE3E5"
+      "value": "hsla(273.7, 21.9%, 36.7%, 0.8)"
     }
   ]
 }

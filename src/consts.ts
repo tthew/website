@@ -3,4 +3,4 @@
 
 export const SITE_TITLE = "Lead Frontend Developer Berlin";
 export const SITE_DESCRIPTION =
-  "👋 Hi, I'm Matt. A Lead Frontend Developer & Staff Engineer based in Berlin, Germany. I've been building, designing & leading teams that build for the web for over 20 years.";
+  "👋 Hi, I'm Matt. A Lead Frontend Developer & Staff Engineer based in Berlin.\nI've been building, designing & leading teams that build for the web for over 20 years.";

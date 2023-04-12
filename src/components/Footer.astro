@@ -1,10 +1,18 @@
 ---
+import type { HTMLAttributes } from 'astro/types';
+
 const today = new Date();
+
+type Props = HTMLAttributes<'footer'> & {
+  variant?: 'dark' | 'light'
+};
+
+
+const { variant = 'light', ...props } = Astro.props;
 ---
 
-<hr />
 
-<footer>
+<footer {...props} class:list={[variant, 'flow']}>
   <ul>
     <li>
       <a href="/impressum">Impressum</a>
@@ -26,21 +34,26 @@ const today = new Date();
 </footer>
 
 <style>
-  hr {
+  /* hr {
     margin: 2rem 0 0;
-  }
+  } */
   footer {
     padding: 25px;
     text-align: center;
 	margin: auto;
-	padding: 20px;
-	max-width: 65ch;
+	padding: var(--space-l);
 	text-align: center;
 	background-color: #fff;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	line-height: 1.5;
 	color: #444;
+  border-top: 1px solid #111;
+  font-size: var(--step-0);
+  }
+
+  footer.dark {
+    background: #222;
   }
   footer ul {
     display: flex;
@@ -48,6 +61,11 @@ const today = new Date();
     margin: auto;
     list-style: none;
     column-gap: 2rem;
+  }
+
+  footer a:link,
+  footer a:visited {
+    --link-color: var(--color-primary);
   }
 </style>
 

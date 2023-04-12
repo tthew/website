@@ -1,0 +1,26 @@
+{
+  "title": "Breakpoints",
+  "description": "Media Query Breakpoints",
+  "items": [
+    {
+      "name": "sm",
+      "value": "576px"
+    },
+    {
+      "name": "m",
+      "value": "768px"
+    },
+    {
+      "name": "l",
+      "value": "992px"
+    },
+    {
+      "name": "XL",
+      "value": "1200px"
+    },
+    {
+      "name": "XXL",
+      "value": "1400px"
+    }
+  ]
+}

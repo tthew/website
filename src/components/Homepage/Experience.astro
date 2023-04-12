@@ -1,12 +1,12 @@
-<h2>
-  <em
-    >Bringing over 20 years of experience building web applications, web sites
-    and digital products.</em
-  >
-</h2>
 <section id="experience">
-  <div>
-    <p>
+  <div class="flow">
+    <h2>
+      <em
+        >Bringing web apps, web
+        sites and digital products to life.</em
+      >
+    </h2>
+    <p class="leading">
       With experience at every layer of the stack & specialisation in the
       front-end I'm well placed to bring value to any organisation.
     </p>
@@ -42,11 +42,11 @@
       <li>
         <a href="https://jamstack.org/">JAM Stacks</a>
       </li>
-      <li>Bootstrapping projects &amp; app boilerplate</li><li>
-        Universal (isomorphic/SSR) rendering
-      </li>
-      <li>Async work</li>
-      <li>Scaling code bases</li>
+      <li>Bootstrapping projects &amp; app boilerplate</li>
+        <!-- Universal (isomorphic/SSR) rendering -->
+      <!-- </li> -->
+      <!-- <li>Async work</li> -->
+      <!-- <li>Scaling code bases</li> -->
       <li>Mentoring & Coaching</li>
       <li>Functional Programming</li>
       <li>Dev Tooling &amp; Experience</li>
@@ -59,33 +59,92 @@
   section {
     display: block;
     column-gap: var(--space-2xl);
-    /* padding: var(--space-xl) var(--space-2xl); */
+    padding: calc(var(--space-2xl)) var(--space-2xl);
     max-width: 1350px;
     margin: auto;
+    
   }
 
-  @media only screen and (min-width: 1050px) {
-    section {
-        display: flex;
-    }
-  }
-  section > div {
-    padding: var(--space-m);
-  }
   section p {
     margin-top: 0;
+    font-size: var(--step-0);
   }
 
-  .callout {
-    background: hsla(300, 100%, 50%, 0.332);
+  section p.leading {
+    margin: 0 0 var(--space-m) 0;
   }
 
-h2 {
-    padding: var(--space-2xl);
-    margin: var(--space-2xl);
-    max-width: 1350px;
-    text-align: center;
-    margin: auto;
+  section .callout {
+    background: var(--color-secondary);
+    border: 12px double rgba(255, 255, 255, .95);
+    padding: var(--space-m) ;
+    margin: var(--space-l) 0 0 0;
+    font-size: var(--step-0);
+    color: #fff;
+    border-radius: 20px;
+
+  }
+    section .callout a:link,
+    section .callout a:visited {
+      --link-color: #fff;
+    }
+
+  section h2 {
+    margin: 0 0 var(--space-m) 0;
     font-weight: 900;
-}
+    font-size: var(--step-3);
+    line-height: var(--step-4);
+  }
+
+  section ul {
+    /* display:flex; */
+    /* flex-direction: column; */
+    column-count: 1;
+    /* column-gap: var(--space-xl); */
+    /* row-gap: var(--space-s); */
+  }
+ 
+  @counter-style thumbs {
+    system: cyclic;
+    symbols: "🔧" "📵" "👨🏼‍🎨" "⚡️" "⌨️" "👨🏻‍💻" "🤓" "🚀" "✍️";
+    suffix: " ";
+  }
+
+
+  section li {
+    padding: var(--space-s);;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    /* margin: 0 0 0 var(--space-l); */
+    list-style-type: thumbs;
+    list-style-position: inside;
+    margin-bottom: var(--space-s);
+    
+  }
+  
+  @media only screen and (min-width: 992px) {
+    section {
+      display: flex;
+      justify-content: center;
+    }
+
+    section > div {
+      width: 50%;
+    }
+
+    section .callout {
+      margin-top: 0;
+    }
+
+    section ul {
+      column-count: 2;
+    }
+  }
+
+  @media only screen and (min-width: 1600px) {
+
+      section {
+      margin: var(--space-2xl) auto;
+      }
+  }
 </style>

@@ -3,65 +3,81 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 
 const heroText = SITE_DESCRIPTION.split(" ");
 ---
-
 <div class="hero">
+<!-- <div class="bg"></div> -->
+ <!-- <div class="bg bg2"></div> -->
+<!-- <div class="bg bg3"></div>  -->
+
   <h1>
     <a href="/">{SITE_TITLE}</a>
   </h1>
   <h2>
-    {heroText.map((word, index: number) => <span class="word">{word} </span>)}
+    {SITE_DESCRIPTION}
   </h2>
 </div>
 
 <style>
   h1 {
+    font-size: var(--step-6);
+    font-style: italic;
+    font-weight: 900;
+    /* text-shadow: 16px 1px 0px #000 */
   }
   h2 {
     display: flex;
     flex-wrap: wrap;
-    /* column-gap: var(--space-xs); */
     row-gap: var(--space-xs);
     justify-content: center;
+    /* font-size: var(--step-1); */
+    font-weight: 200;
   }
   .word {
-    /* display: inline-block; */
-    font-size: var(--step-3);
     word-break: word;
-    background: var(--color-primary-glare);
+    background: rgba(0, 0, 0, 0.6);
     line-height: 1em;
     padding: 0 var(--space-xs);
-    /* line-height: 0; */
   }
   .hero {
+    isolation: isolate;
     text-align: center;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     row-gap: var(--space-m);
-    padding: var(--space-l) var(--space-2xl) 0;
-    max-height: calc(100vh);
+    padding: 0 var(--space-xl);
+    margin: 0;
+    min-height: 100vh;
+    background: url(/mountain-glitch-4.webp);
+    background-size: cover;
   }
 
 
   .hero a:link,
   .hero a:visited {
-    color: #333;
+    color: #fff;
   }
   .hero h1 {
     margin: 0;
-    /* padding: var(--space-m); */
     display: inline-block;
-    font-size: var(--step-6);
     line-height: 1em;
   }
   .hero h2 {
-    margin-top: var(--space-xl);
+    /* margin-top: var(--space-xl); */
+    margin-bottom: 0;
+    color: #fff;
+    white-space: pre-line;
   }
-  @media only screen and (min-width: 1650px) {
+  @media only screen and (min-width: 1430px) {
+    .hero h2 {
+      font-size: var(--step-2);
+    }
+  }
+  @media only screen and (min-width: 1600px) {
     .hero {
-      /* max-width: 1350px; */
       margin: auto;
-      margin: var(--space-2xl) auto 0;
-      padding: var(--space-2xl) var(--space-2xl);
+      margin: auto 0;
+      padding:  0 var(--space-m);
     }
     
     .hero h1 {
@@ -70,7 +86,49 @@ const heroText = SITE_DESCRIPTION.split(" ");
 
     .hero h2 {
       max-width: 1350px;
-      margin: var(--space-xl) auto 0;
+      margin: var(--space-2xl) auto 0;
+      font-size: var(--step-2);
     }
   }
+
+
+  .bg {
+  /* animation:slide 9s ease-in-out infinite alternate; */
+  /* background-image: linear-gradient(0deg, var(--color-primary) 0%, var(--color-secondary) 30%, #000 99%); */
+  background-image: linear-gradient(0deg, transparent 100%, #000 10%);
+  /* background: var(--color-primary); */
+  bottom:0;
+  /* left:-50%; */
+  left: 0;
+  right: 0;
+  opacity: .6;
+  width: 500%;
+  position:absolute;
+  /* height: 100vh; */
+  /* right:50%; */
+  top:0;
+  z-index:-1;
+  /* transform: scale(0.1); */
+}
+
+.bg2 {
+  animation-direction:alternate-reverse;
+  /* background-image: linear-gradient(60deg, transparent 50%, var(--color-primary) 50%); */
+  animation-duration:6s;
+}
+
+.bg3 {
+  animation-duration:4s;
+  left: -50%;
+  right: -50%;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-25%) ;
+  }
+  100% {
+    transform:translateX(50%);
+  }
+}
 </style>

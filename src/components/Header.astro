@@ -6,45 +6,95 @@ import { SITE_TITLE } from "../consts";
 <header>
   <nav>
     <HeaderLink href="#main" class="sr-only">Skip to Main Content</HeaderLink>
-	<HeaderLink href="/">👨🏼‍🎨 tthew</HeaderLink>
-    <HeaderLink href="/#about">About</HeaderLink>
-    <HeaderLink href="/#experience">Experience</HeaderLink>
-    <HeaderLink href="/words">Words</HeaderLink>
+    <HeaderLink href="/" class="logo">tthew</HeaderLink>
+    <div class="menu">
+      <HeaderLink href="/#about">About</HeaderLink>
+      <HeaderLink href="/#experience">Experience</HeaderLink>
+      <HeaderLink href="/words">Words</HeaderLink>
+    </div>
+    <button>🍔</button>
   </nav>
-<style>
-	nav {
-		display: flex;
-		justify-content: flex-end;
-		column-gap: var(--space-xs);
-		padding: var(--space-xs);
-		font-size: var(--step-1);
-	}
-	nav a:nth-child(2) {
-		font-weight: bold;
-		margin-right: auto;
-	}
-</style>
+
+  <style>
+
+  </style>
 </header>
 
 <style>
-	header {
-		/* padding: 1rem; */
-		/* background: #333; */
-		background: rgba(255, 255, 255, 0.77);
-		backdrop-filter: blur(21px);
-		/* border-bottom: 1px solid #eee; */
-		position: fixed;
-		width: 100%;
-	}
+  header {
+    /* padding: 1rem; */
+    /* background: #333; */
+    /* background: rgba(255, 255, 255, 0.1); */
+    /* backdrop-filter: blur(21px); */
+    /* border-bottom: 1px solid #eee; */
+    position: absolute;
+    z-index:1;
+    width: 100%;
+  }
 
-	header a:link, 
-	header a:visited {
-		color: #333;
-		text-decoration: none;
-	}
-	header a:hover {
-	}
+  header a:link,
+  header a:visited {
+    color: #fff;
+    text-decoration: none;
+  }
+  header a:hover {
+  }
+  .logo::before {
+    content: "👨🏼‍🎨";
+  }
+  
+  nav {
+      display: flex;
+      justify-content: flex-end;
+      column-gap: var(--space-xs);
+      padding: var(--space-xs);
+      font-size: var(--step-1);
+    }
 
+    nav > a:nth-child(2) {
+      font-weight: bold;
+      margin-right: auto;
+    }
+
+    .menu {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      right: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #fff;
+      transform: translate3d(100vw, 0, 0);
+      transition: transform 300ms ease-in;
+    }
+
+    nav:has(button:focus-within) > .menu {
+      outline: 1px solid red;
+      transform: translate3d(0, 0, 0);
+      transition: transform 300ms ease-out;
+    }
+
+    button {
+      border: none;
+	  margin: 0;
+      padding: 0;
+	  padding-right: var(--space-xs);
+      background: none;
+      font-size: var(--step-2);
+    }
+
+    @media only screen and (min-width: 800px) {
+      .menu {
+        position: static;
+        
+        height: auto;
+        width: auto;
+		transform: none;
+		background: none;
+      }
+
+	  button {
+		display: none;
+	  }
+    }
 </style>
-
-
