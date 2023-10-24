@@ -1,18 +1,16 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
+import type { HTMLAttributes } from "astro/types";
 
 const today = new Date();
 
-type Props = HTMLAttributes<'footer'> & {
-  variant?: 'dark' | 'light'
+type Props = HTMLAttributes<"footer"> & {
+  variant?: "dark" | "light";
 };
 
-
-const { variant = 'light', ...props } = Astro.props;
+const { variant = "light", ...props } = Astro.props;
 ---
 
-
-<footer {...props} class:list={[variant, 'flow']}>
+<footer {...props} class:list={[variant, "flow"]}>
   <ul>
     <li>
       <a href="/impressum">Impressum</a>
@@ -40,24 +38,37 @@ const { variant = 'light', ...props } = Astro.props;
   footer {
     padding: 25px;
     text-align: center;
-	margin: auto;
-	padding: var(--space-l);
-	text-align: center;
-	background-color: #fff;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	line-height: 1.5;
-	color: #444;
-  border-top: 1px solid #111;
-  font-size: var(--step-0);
+    margin: auto;
+    padding: var(--space-l);
+    text-align: center;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #fff;
+    border-top: 1px solid #111;
+    font-size: var(--step-0);
+    background-color: #111;
+    opacity: 1;
+    background-size: 40px 40px;
+    background-image: repeating-linear-gradient(
+      45deg,
+      var(--color-primary) 0,
+      var(--color-primary) 2px,
+      #111 0,
+      #111 50%
+    );
   }
 
   footer.dark {
-    background: #222;
+    /* background: #111; */
   }
   footer ul {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    column-gap: var(--space-m);
+    row-gap: var(--space-s);
     margin: auto;
     list-style: none;
     column-gap: 2rem;
@@ -65,7 +76,6 @@ const { variant = 'light', ...props } = Astro.props;
 
   footer a:link,
   footer a:visited {
-    --link-color: var(--color-primary);
+    --link-color: #fff;
   }
 </style>
-

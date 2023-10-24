@@ -1,35 +1,32 @@
-<section id="contact" class="flow">
+<section id="contact">
   <h2>Get in touch</h2>
 
-  <div>
-    <p>If you'd like to reach out, I'd love to hear from you.</p>
-    <p>You can catch me in the following places:</p>
-  </div>
-
-  <div>
-    <ul>
-      <li>
-        <a href="https://techhub.social/@tthew"> Mastodon</a>
-      </li>
-      <li>
-        <a href="https://www.linkedin.com/in/lucidmoon/"> LinkedIn</a>
-      </li>
-      <li>
-        <a href="https://github.com/tthew"> Github</a>
-      </li>
-      <li>
-        <a href="mailto:hallo@tthew.berlin">Email</a>
-      </li>
-    </ul>
-  </div>
+  <ul>
+    <li>
+      <a href="https://techhub.social/@tthew">Mastodon</a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/in/lucidmoon/">LinkedIn</a>
+    </li>
+    <li>
+      <a href="https://github.com/tthew">Github</a>
+    </li>
+    <li>
+      <a href="mailto:hallo@tthew.berlin">Email</a>
+    </li>
+  </ul>
 </section>
 
 <style>
   section {
-    background: #222;
+    background: var(--color-primary);
     text-align: center;
-    padding: var(--space-2xl) 0;
+    padding: var(--space-m);
     font-size: var(--step-1);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: var(--space-m);
   }
 
   section p,
@@ -38,24 +35,32 @@
     color: #fff;
   }
 
+  h2 {
+    text-align: right;
+  }
   section h2::before {
     content: "🤙 ";
   }
 
   section > div {
-    max-width: 1350px;
-    margin: auto;
+    /* max-width: 1350px; */
+    /* margin: auto; */
   }
 
-  ul {
+  section ul {
     display: flex;
-    justify-content: center;
-    gap: var(--space-l);
-    margin: var(--space-2xl) 0;
+    align-items: center;
+    justify-content: start;
+    column-gap: var(--space-m);
   }
   li {
     margin: 0;
     padding: 0;
     list-style: none;
+  }
+
+  section a:link,
+  section a:visited {
+    --link-color: var(--color-light);
   }
 </style>

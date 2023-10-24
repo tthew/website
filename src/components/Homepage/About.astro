@@ -1,21 +1,28 @@
-<section id="about" >
+---
+import { SITE_DESCRIPTION } from "../../consts";
+---
+
+<section id="about">
+  <h2>
+    {SITE_DESCRIPTION}
+  </h2>
   <div class="container flow">
     <p class="leading">
       Cutting my teeth building table based layouts with CGI backends as a
       teenager in the late 90s.
     </p>
-    <p>
+    <!-- <p>
       The journey ever since has been one of self-learning, self-evalutation,
       reflection, re-learning &amp; iteration.
-    </p>
+    </p> -->
     <p>
       Fast forward two decades and you'll find me building &amp; leading teams
-      who build highly performant, useable and accessible
+      that build highly performant, useable and accessible
       <abbr title="Progressive Web Applications">PWAs</abbr>,
       <abbr title="Single Page Applications">SPAs</abbr>,
-      <abbr title="Multi Page Applications">MPAs</abbr> &amp; web sites leveraging
-      the <a href="https://developer.mozilla.org/">Web Platform</a>, modern
-      stacks &amp; best practice with tools like
+      <abbr title="Multi Page Applications">MPAs</abbr> &amp; web sites for the <a
+        href="https://developer.mozilla.org/">Web Platform</a
+      >, with modern stacks &amp; best practice with tools like
       <a href="">HTML</a>,
       <a href="">CSS</a>,
       <a href="https://typescript.org/">Typescript</a>,
@@ -25,7 +32,7 @@
       <a href="https://typescript.org/">Next.js</a>,
       <a href="http://reactjs.org">React</a>,
       <a href="https://graphql.org/">GraphQL</a>,
-      <a href="https://nodejs.org">Node</a>  &amp;
+      <a href="https://nodejs.org">Node</a> &amp;
       <a href="https://storybook.js.org/">Storybook</a>.
     </p>
     <p>
@@ -37,57 +44,76 @@
       I have an eye for detail and an appreciation for aesthetics &amp; try my
       best to apply design thinking to all areas of my work.
     </p>
-    <p>
+    <!-- <p>
       <em>Sounds interesting?</em>
     </p>
-    <p><strong>I'd love to <a href="/#contact">hear from you</a>.</strong></p>
+    <p><strong>I'd love to <a href="/#contact">hear from you</a>.</strong></p> -->
   </div>
 </section>
 <style>
-
   section {
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
-    background: #222;
+    flex-direction: column;
+    /* background: #333; */
+    background: var(--color-primary);
     color: #fff;
-    max-width: 100%;
-    padding: var(--space-m) 0;
+    /* padding: var(--space-m) 0; */
     font-size: var(--step-3);
-    background: url(/body-glitch-3.webp);
-    background-size: cover;
+    /* background: url(/body-glitch-3.webp); */
+    /* background-size: cover; */
     min-height: 100vh;
+    text-wrap: balance;
+    padding: 0 var(--space-m) var(--space-2xl) var(--space-m);
+  }
+
+  section h2 {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: var(--space-xs);
+    line-height: 6rem;
+    justify-content: center;
+    /* font-size: var(--step-1); */
+    padding: 0 var(--space-m);
+    font-weight: 200;
+    text-wrap: balance;
   }
 
   section p {
     font-size: var(--step-1);
   }
 
+  section .leading {
+    text-wrap: balance;
+  }
+
   section .container {
-    max-width: 1350px;;
-    margin: 0 auto;
+    /* max-width: 1350px; */
+    border-radius: 2rem;
+    /* margin: 0 auto; */
     text-align: left;
     text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3);
     padding: var(--space-xl);
-    min-height: 100vh;
-    background: var(--color-secondary-glare);
+    /* min-height: 100vh; */
+    background-color: rgba(0, 0, 0, 0.1);
+    /* background: var(--color-secondary-glare); */
   }
-
 
   @media only screen and (min-width: 800px) {
     section {
-        padding: var(--space-m) var(--space-2xl);
+      padding: 0 var(--space-2xl) var(--space-2xl);
     }
     section .container {
-        column-count: 2;
-        column-gap: var(--space-2xl);
-        padding: var(--space-2xl) var(--space-xl);
+      column-count: 2;
+      column-gap: var(--space-2xl);
+      padding: var(--space-2xl) var(--space-xl);
     }
     section p {
       font-size: var(--step-1);
     }
   }
-  
+
   h2 {
     margin-top: 0;
     font-weight: 900;
@@ -95,14 +121,12 @@
     text-align: center;
   }
 
-   p:first-child {
+  p:first-child {
     margin-top: 0;
   }
-
 
   a:link,
   a:visited {
     color: var(--color-light);
   }
 </style>
-

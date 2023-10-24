@@ -2,20 +2,21 @@
   <div class="flow">
     <h2>
       <em
-        >Bringing web apps, web
-        sites and digital products to life.</em
+        >Building, and leading teams that build apps, sites and digital products
+        for the web platform</em
       >
     </h2>
     <p class="leading">
-      With experience at every layer of the stack & specialisation in the
-      front-end I'm well placed to bring value to any organisation.
+      With experience at every layer of the stack, a specialisation in the
+      front-end, and a breadth of experience building for and leading teams that
+      build for the web, I'm well placed to deliver value to any organisation
+      from the get go
     </p>
     <p>
       I thrive in diverse teams, ambitious contexts & fast-paced environments.
     </p>
     <p>
-      I like <strike>Javscript</strike> Typescript, CSS, people & building great
-      things with them.
+      I like Typescript, HTML, CSS, people & building great things with them.
     </p>
     <p>
       For more in depth information feel free to reach out or connect with me
@@ -23,12 +24,13 @@
     </p>
   </div>
   <div class="callout">
-    <p class="leading">Things I'm good at and like doing:</p>
+    <p class="leading">Things I'm good at:</p>
     <ul>
       <li>
         Architechting scalable web applications for the web platform leveraging
-        modern web technologies &amp; tooling.
+        modern web technologies &amp; tooling
       </li>
+      <li>Leading highly performant teams in high intensity environments</li>
       <li>
         Building offline/local-first
         <abbr title="Progressive Web Apps">PWAs</abbr> with
@@ -43,7 +45,7 @@
         <a href="https://jamstack.org/">JAM Stacks</a>
       </li>
       <li>Bootstrapping projects &amp; app boilerplate</li>
-        <!-- Universal (isomorphic/SSR) rendering -->
+      <!-- Universal (isomorphic/SSR) rendering -->
       <!-- </li> -->
       <!-- <li>Async work</li> -->
       <!-- <li>Scaling code bases</li> -->
@@ -60,40 +62,50 @@
     display: block;
     column-gap: var(--space-2xl);
     padding: calc(var(--space-2xl)) var(--space-2xl);
-    max-width: 1350px;
     margin: auto;
-    
+    background: var(--color-secondary);
+    color: var(--color-light);
+
+    & a:link,
+    & a:visited {
+      color: var(--color-light);
+    }
   }
 
   section p {
     margin-top: 0;
     font-size: var(--step-0);
+    text-wrap: balance;
   }
 
   section p.leading {
     margin: 0 0 var(--space-m) 0;
+    line-height: var(--space-1);
+    /* padding-right: var(--space-4); */
+    /* max-width: 80%; */
+    text-wrap: balance;
   }
 
   section .callout {
-    background: var(--color-secondary);
-    border: 12px double rgba(255, 255, 255, .95);
-    padding: var(--space-m) ;
+    /* background: var(--color-primary); */
+    /* border: 12px double var(--color-light); */
+    /* padding: var(--space-m); */
     margin: var(--space-l) 0 0 0;
     font-size: var(--step-0);
-    color: #fff;
     border-radius: 20px;
-
+    text-wrap: balance;
   }
-    section .callout a:link,
-    section .callout a:visited {
-      --link-color: #fff;
-    }
+  section .callout a:link,
+  section .callout a:visited {
+    --link-color: var(--color-light);
+  }
 
   section h2 {
     margin: 0 0 var(--space-m) 0;
     font-weight: 900;
     font-size: var(--step-3);
-    line-height: var(--step-4);
+    line-height: var(--step-3);
+    text-wrap: balance;
   }
 
   section ul {
@@ -103,25 +115,22 @@
     /* column-gap: var(--space-xl); */
     /* row-gap: var(--space-s); */
   }
- 
+
   @counter-style thumbs {
     system: cyclic;
-    symbols: "🔧" "📵" "👨🏼‍🎨" "⚡️" "⌨️" "👨🏻‍💻" "🤓" "🚀" "✍️";
+    symbols: "🔧" "💪" "📵" "👨🏼‍🎨" "⚡️" "⌨️" "👨🏻‍💻" "🤓" "🚀" "✍️";
     suffix: " ";
   }
 
-
   section li {
-    padding: var(--space-s);;
-    background: rgba(255, 255, 255, 0.1);
+    padding: var(--space-s);
+    background: hsl(323.06, 100%, 60%, 50%);
     border-radius: 10px;
-    /* margin: 0 0 0 var(--space-l); */
     list-style-type: thumbs;
     list-style-position: inside;
     margin-bottom: var(--space-s);
-    
   }
-  
+
   @media only screen and (min-width: 992px) {
     section {
       display: flex;
@@ -142,9 +151,8 @@
   }
 
   @media only screen and (min-width: 1600px) {
-
-      section {
-      margin: var(--space-2xl) auto;
-      }
+    section {
+      /* margin: var(--space-2xl) auto; */
+    }
   }
 </style>
