@@ -74,9 +74,9 @@ import { SITE_DESCRIPTION } from "../../consts";
     display: flex;
     flex-wrap: wrap;
     row-gap: var(--space-xs);
-    line-height: 4rem;
+    font-size: var(--step-3);
+    line-height: var(--step-5);
     justify-content: center;
-    /* font-size: var(--step-1); */
     padding: 0 var(--space-m);
     font-weight: 200;
     text-wrap: balance;
@@ -104,7 +104,7 @@ import { SITE_DESCRIPTION } from "../../consts";
 
   @media only screen and (min-width: 800px) {
     section {
-      padding: 0 var(--space-2xl) var(--space-2xl);
+      padding: var(--space-xl) var(--space-2xl) var(--space-2xl);
     }
     section .container {
       column-count: 2;
@@ -115,7 +115,9 @@ import { SITE_DESCRIPTION } from "../../consts";
       font-size: var(--step-1);
     }
     section h2 {
-      line-height: 6rem;
+      /* line-height: 6rem; */
+      font-size: var(--step-4);
+      line-height: calr(var(--step-5) * 2);
     }
   }
 
