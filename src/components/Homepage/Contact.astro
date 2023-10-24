@@ -27,6 +27,11 @@
     justify-content: center;
     flex-wrap: wrap;
     column-gap: var(--space-m);
+
+    & a:link,
+    & a:visited {
+      --link-color: var(--color-light);
+    }
   }
 
   section p,
@@ -57,10 +62,5 @@
     margin: 0;
     padding: 0;
     list-style: none;
-  }
-
-  section a:link,
-  section a:visited {
-    --link-color: var(--color-light);
   }
 </style>
