@@ -1,0 +1,54 @@
+---
+const today = new Date();
+---
+
+<footer>
+  <ul role="list">
+    <li>
+      <a href="/impressum">Impressum</a>
+    </li>
+    <li>
+      <a href="/license">License</a>
+    </li>
+    <li>
+      <a href="/privacy-gdpr">Privacy &amp; GDPR</a>
+    </li>
+    <li>
+      <a aria-current="page" class="" href="/terms">Terms</a>
+    </li>
+    <li class="sr-only">
+      <a href="#top">Back to top</a>
+    </li>
+  </ul>
+  <p>&copy; {today.getFullYear()} Matthew Richards.</p>
+</footer>
+
+<style>
+  footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--step-0);
+    padding: var(--space-xl) 0 0;
+  }
+
+  footer ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-l);
+    margin: 0;
+    list-style: none;
+  }
+
+  footer ul li {
+    padding: 0;
+    margin: 0;
+    font-size: var(--step-0);
+  }
+
+  footer p {
+    font-size: var(--step-0);
+  }
+</style>

@@ -1,0 +1,119 @@
+<section id="experience">
+  <h2>
+    <em
+      >Bringing over 20 years of experience, building web applications, web
+      sites and digital products.</em
+    >
+  </h2>
+  <div class="cols">
+    <div>
+      <p>
+        With experience at every layer of the stack & specialisation in the
+        front-end I'm well placed to bring value to any organisation.
+      </p>
+      <p>
+        I thrive in diverse teams, ambitious contexts & fast-paced environments.
+      </p>
+      <p>
+        I like HTML, CSS, Javascript (Typescript), people & building great
+        things with them.
+      </p>
+      <p>
+        For more in depth information feel free to reach out or connect with me
+        over on <a href="https://www.linkedin.com/in/lucidmoon/">LinkedIn</a>.
+      </p>
+    </div>
+    <div>
+      <p class="leading">Things I'm good at and like doing:</p>
+      <ul>
+        <li>
+          Architechting scalable web applications for the web platform
+          leveraging modern web technologies &amp; tooling.
+        </li>
+        <li>Building &amp; Leading high performing teams</li>
+        <li>Mentoring & Coaching</li>
+        <li>
+          <abbr title="Developer Experience">DevX</abbr> &amp; developer tooling
+          <li>
+            Building web applications with HTML, CSS, Javascript and tools like
+            React, Next.js, Astro and Web Components
+          </li>
+          <li>
+            Design Systems &amp; Component libraries with
+            <a href="https://storybook.js.org/">Storybook</a>
+          </li>
+          <li>Writing documentation</li>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <style>
+    @keyframes experienceHeaderIn {
+      0% {
+        transform: translateY(2000px);
+        opacity: 0;
+      }
+
+      70% {
+        transform: translateY(-750px);
+        opacity: 1;
+      }
+
+      80% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+    #experience {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      scroll-margin-top: calc(-1 * var(--space-2xl));
+      max-width: 75%;
+      font-size: var(--step-1);
+    }
+
+    #experience > * {
+      animation: experienceHeaderIn auto linear;
+      animation-timeline: --page-scroll;
+    }
+
+    #experience h2 {
+      text-align: center;
+      font-size: var(--step-4);
+      padding: var(--space-xl) 0 var(--space-m) 0;
+      font-weight: 900;
+    }
+
+    #experience ul {
+      display: flex;
+      flex-direction: column;
+      row-gap: var(--space-xs);
+      padding: var(--space-s);
+    }
+
+    #experience ul li {
+      padding: 0;
+      margin: 0;
+    }
+
+    @media screen and (min-width: 480px) {
+      #experience .cols {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-xl);
+      }
+    }
+
+    @media screen and (min-width: 1920px) {
+      #experience .cols {
+        max-width: 75%;
+      }
+    }
+  </style>
+</section>

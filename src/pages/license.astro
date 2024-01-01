@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/BlogPost.astro";
+---
+
+<Layout
+  title="Licence"
+  description="Licence information"
+  pubDate={new Date("August 08 2021")}
+  updatedDate={new Date("August 08 2022")}
+>
+  <p>All rights reserved &copy; {new Date().getFullYear()} Matthew Richards</p>
+  <p>
+    Code is licensed under the <a
+      href="https://github.com/tthew/website/blob/master/LICENSE">MIT license</a
+    > and <a href="https://github.com/tthew/website"
+      >shared as open source on Github</a
+    >.
+  </p>
+</Layout>

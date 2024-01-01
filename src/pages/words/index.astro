@@ -1,0 +1,83 @@
+---
+import { getCollection } from "astro:content";
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import Header from "../../components/Header.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+
+const posts = (await getCollection("blog"))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf())
+  .reverse();
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      html {
+        display: flex;
+        height: 100%;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex: 1 0 auto;
+      }
+
+      #main {
+        max-width: 65ch;
+        display: flex;
+        justify-content: center;
+        padding: calc(2 * var(--space-2xl)) 0 0;
+        font-size: var(--step-0);
+        width: 65ch;
+      }
+
+      #main ol {
+        list-style: decimal-leading-zero;
+        list-style-position: inside;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--space-s);
+      }
+      #main ol li {
+        padding: 0;
+      }
+
+      section ol li {
+        display: flex;
+        flex-direction: column;
+        text-wrap: wrap;
+      }
+      section ol li em {
+        opacity: 0.4;
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main id="main">
+      <section>
+        <h1>Words</h1>
+        <ol reversed>
+          {
+            posts.map((post) => (
+              <li>
+                <em>
+                  <FormattedDate date={post.data.pubDate} />
+                </em>
+                <a href={`/words/${post.slug}/`}>{post.data.title}</a>
+              </li>
+            ))
+          }
+        </ol>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>

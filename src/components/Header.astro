@@ -1,0 +1,206 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+---
+
+<header>
+  <HeaderLink href="/" class="title">👨🏼‍🎨 tthew</HeaderLink>
+  <p class="sr-only">
+    <HeaderLink href="#main">Skip to Main Content</HeaderLink>
+  </p>
+
+  <label class="hamb" for="side-menu"
+    ><span class="hamb-line"><span class="sr-only">Toggle Menu</span></span
+    ></label
+  >
+  <input type="checkbox" id="side-menu" />
+
+  <nav>
+    <ul role="list">
+      <li><HeaderLink href="/#about">About</HeaderLink></li>
+      <li><HeaderLink href="/#experience">Experience</HeaderLink></li>
+      <li><HeaderLink href="/words">Words</HeaderLink></li>
+      <li><HeaderLink href="/#contact">Contact</HeaderLink></li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  @keyframes headerBgMorph {
+    0% {
+      background-color: transparent;
+    }
+    3%,
+    100% {
+      color: white;
+      backdrop-filter: blur(3px);
+    }
+  }
+
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    display: flex;
+    line-height: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-s);
+    animation: headerBgMorph auto linear;
+    animation-timeline: --page-scroll;
+  }
+
+  .hamb {
+    width: 32px;
+    height: 24px;
+  }
+
+  .hamb::before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 3px;
+    width: 100%;
+    background: #fff;
+  }
+  .hamb::after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background: #fff;
+  }
+  .hamb-line {
+    position: absolute;
+    top: 11px;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background: #fff;
+  }
+
+  header .title {
+    font-weight: 600;
+  }
+
+  header nav {
+    position: absolute;
+    transform: translateX(100%);
+    right: 0;
+    width: 100dvw;
+    display: flex;
+    flex-direction: column;
+    transition: 0.6s transform ease-out;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background: #fff;
+    padding: var(--space-l);
+    color: black;
+    font-size: var(--step-4);
+    line-height: var(--step-4);
+  }
+
+  @media screen and (min-width: 420px) {
+    header nav {
+      display: flex;
+      position: static;
+      right: auto;
+      left: auto;
+      bottom: auto;
+      width: auto;
+      flex-direction: row;
+      transform: translateX(0);
+      background: none;
+      font-size: 1rem;
+      padding: 0;
+      height: auto;
+    }
+  }
+
+  .hamb,
+  header input {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    z-index: 10;
+  }
+
+  header input {
+    display: none;
+  }
+  @media screen and (min-width: 420px) {
+    header input {
+      display: none;
+    }
+  }
+
+  header:has(input:checked) nav {
+    transform: translateX(0);
+  }
+  .hamb::before,
+  .hamb::after,
+  .hamb-line {
+    transition: 300ms transform ease-out;
+  }
+  body:has(header input:checked) .hamb::before,
+  body:has(header input:checked) .hamb::after,
+  body:has(header input:checked) .hamb-line {
+    background-color: #000;
+  }
+
+  @media screen and (min-width: 420px) {
+    .hamb {
+      display: none;
+    }
+  }
+  body:has(header input:checked) .hamb::before {
+    transform: rotate(45deg) translate(8px, 9px);
+  }
+  body:has(header input:checked) .hamb::after {
+    opacity: 0;
+  }
+  body:has(header input:checked) .hamb-line {
+    transform: rotate(-45deg) translateY(0px);
+  }
+  header ul {
+    display: flex;
+    column-gap: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex-direction: column;
+    row-gap: var(--space-s);
+  }
+
+  @media screen and (min-width: 420px) {
+    header {
+      padding: 0 var(--space-s);
+    }
+    header ul {
+      flex-direction: row;
+      /* row-gap: 0; */
+      color: #fff;
+      row-gap: 0;
+    }
+  }
+
+  header ul li {
+    padding: 0;
+    margin: 0;
+  }
+  header ul li a {
+    margin: 0;
+  }
+
+  header a:link,
+  header a:visited {
+    text-decoration: none;
+  }
+</style>
