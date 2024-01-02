@@ -85,42 +85,5 @@
     }
   } */
 
-  #about {
-    display: flex;
-    justify-content: center;
-    scroll-margin-top: calc(2 * var(--space-l));
-    max-width: 75%;
-    padding-top: var(--space-m);
-    font-size: var(--step-1);
-  }
 
-  #about > * {
-    animation: aboutIn auto ease-out;
-    animation-timeline: --page-scroll;
-  }
-
-  .leading {
-    font-weight: 600;
-  }
-
-  .container p {
-    margin-top: 0;
-  }
-
-  @media screen and (min-width: 420px) {
-    .container {
-      columns: 2;
-      column-gap: var(--space-2xl);
-    }
-  }
-
-  @media screen and (min-width: 1920px) {
-    .container {
-      max-width: 75%;
-    }
-    #about > * {
-      animation: aboutInLarge auto ease-out;
-      animation-timeline: --page-scroll;
-    }
-  }
 </style>

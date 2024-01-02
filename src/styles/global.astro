@@ -180,6 +180,219 @@ const designTokens = `
     color: currentColor;
     /* text-decoration: none; */
   }
+    #about {
+    display: flex;
+    justify-content: center;
+    scroll-margin-top: calc(2 * var(--space-l));
+    max-width: 75%;
+    padding-top: var(--space-m);
+    font-size: var(--step-1);
+  }
 
+  #about > * {
+    animation: aboutIn auto ease-out;
+    animation-timeline: --page-scroll;
+  }
+
+  .leading {
+    font-weight: 600;
+  }
+
+  .container p {
+    margin-top: 0;
+  }
+
+  @media screen and (min-width: 420px) {
+    .container {
+      columns: 2;
+      column-gap: var(--space-2xl);
+    }
+  }
+
+  @media screen and (min-width: 1920px) {
+    .container {
+      max-width: 75%;
+    }
+    #about > * {
+      animation: aboutInLarge auto ease-out;
+      animation-timeline: --page-scroll;
+    }
+  }
+  @keyframes bounce {
+    0%,
+    100% {
+      -webkit-transform: translateY(0);
+    }
+    50% {
+      -webkit-transform: translateY(-10px);
+    }
+  }
+  .hero .pic {
+    flex: 1 0 auto;
+    width: 256px;
+    height: 256px;
+    background: var(--light);
+    position: relative;
+    clip-path: circle(50%);
+    isolation: isolate;
+
+    img {
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  .hero {
+    height: 100dvh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: var(--space-l);
+    padding: 0 var(--space-s) 0;
+    position: relative;
+  }
+
+  .hero::after {
+    position: absolute;
+    bottom: 32px;
+    /* flex: 1 1 10%; */
+    display: flex;
+    align-items: center;
+    justify-self: flex-end;
+    content: "↓";
+    font-size: var(--step-3);
+    animation: bounce 0.5s 3;
+  }
+
+  .hero h1 {
+    display: flex;
+    /* flex: 1 0 auto; */
+    text-align: center;
+    text-wrap: balance;
+    align-items: flex-end;
+  }
+
+  .hero h1 a:link,
+  .hero h1 a:visited {
+    text-decoration: none;
+  }
+
+  .hero-intro {
+    display: flex;
+    align-items: center;
+    column-gap: var(--space-l);
+    /* flex-wrap: Wrap; */
+
+    & blockquote {
+      /* flex: 0 1 auto; */
+      font-size: var(--step-1);
+      padding: var(--space-s);
+      text-align: left;
+      text-wrap: pretty;
+      /* white-space: pre-line; */
+    }
+  }
+
+  @media screen and (min-width: 420px) {
+    .hero {
+      max-width: 75%;
+    }
+  }
+
+  @media screen and (min-width: 1920px) {
+    .hero h1 {
+      font-size: var(--step-6);
+      line-height: var(--step-6);
+    }
+
+   .hero blockquote {
+      max-width: 75%;
+      font-size: var(--step-2);
+    }
+  }
+    
+  #experience {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      scroll-margin-top: calc(-1 * var(--space-2xl));
+      max-width: 75%;
+      font-size: var(--step-1);
+    }
+
+    #experience > * {
+      animation: experienceHeaderIn auto linear;
+      animation-timeline: --page-scroll;
+    }
+
+    #experience h2 {
+      text-align: center;
+      font-size: var(--step-4);
+      padding: var(--space-xl) 0 var(--space-m) 0;
+      font-weight: 900;
+    }
+
+    #experience ul {
+      display: flex;
+      flex-direction: column;
+      row-gap: var(--space-xs);
+      padding: var(--space-s);
+    }
+
+    #experience ul li {
+      padding: 0;
+      margin: 0;
+    }
+
+    @media screen and (min-width: 480px) {
+      #experience .cols {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-xl);
+      }
+    }
+
+    @media screen and (min-width: 1920px) {
+      #experience .cols {
+        max-width: 75%;
+      }
+    }
+  
+    #contact {
+    animation: contactTransitionIn auto linear;
+    animation-timeline: --page-scroll;
+    text-align: center;
+    width: 100%;
+    margin-top: var(--space-l);
+    padding: calc(var(--space-2xl) * 3) 0 var(--space-2xl);
+    scroll-margin-top: calc(-2 * var(--space-2xl));
+    font-size: var(--step-1);
+    background: hsl(163, 60%, 6%);
+  }
+
+  #contact h2 {
+    font-size: var(--step-5);
+    font-weight: 900;
+    margin: 0;
+  }
+
+  #contact ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-m);
+    padding: var(--space-s);
+    list-style: none;
+  }
+
+  #contact ul li {
+    font-size: var(--step-1);
+    padding: var(--space-s) var(--space-l);
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+  }
   /* @link https://utopia.fyi/type/calculator?c=320,18,1.2,1240,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 </style>
