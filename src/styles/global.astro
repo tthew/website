@@ -49,6 +49,7 @@ const designTokens = `
     box-sizing: border-box;
     -webkit-font-smoothing: auto;
     -moz-osx-font-smoothing: auto;
+    scroll-behavior: smooth;
     min-height: 100%;
   }
 
@@ -58,14 +59,10 @@ const designTokens = `
     font-family: var(--font-medium);
     font-size: var(--step-0);
     scrollbar-gutter: stable;
-    scroll-behavior: smooth;
     /* padding: var(--space-s); */
     margin: 0;
     background: var(--bg);
     color: #fff;
-    /* animation: 1s morph linear; */
-    animation-timeline: --page-scroll;
-    overflow-x: hidden;
     background: radial-gradient(circle at 50% 10%, var(--bg), var(--fg));
     min-height: 100%;
   }
