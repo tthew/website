@@ -53,8 +53,39 @@ const heroText = SITE_DESCRIPTION.split(" ");
     width: 256px;
     height: 256px;
     background: var(--light);
-    clip-path: circle(50%);
     position: relative;
+    clip-path: circle(50%);
+    isolation: isolate;
+    /* &:before {
+      content: " ";
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      display: block;
+      width: 256px;
+      height: 256px;
+      opacity: 0.3;
+
+      background: linear-gradient(0deg, rgba(255, 255, 1, 1), rgba(0, 0, 0, 0)),
+        url(/public/noise.svg);
+      filter: contrast(170%) brightness(1000%);
+    }
+
+    &:after {
+      position: absolute;
+      top: 1;
+      content: " ";
+      display: block;
+      width: 256px;
+      height: 256px;
+      background: var(--dark);
+      mix-blend-mode: multiply;
+      /* opacity: 0.5; */
+    } */
+    img {
+      position: absolute;
+      top: 0;
+    }
   }
 
   picture img {
