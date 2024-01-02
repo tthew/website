@@ -66,26 +66,32 @@ const widths = [256];
   }
 
   .hero {
-    min-height: calc(100vh);
+    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    row-gap: var(--space-l);
     padding: 0 var(--space-s) 0;
+    position: relative;
   }
 
-  /* .hero::after {
-    flex: 1;
+  .hero::after {
+    position: absolute;
+    bottom: 32px;
+    /* flex: 1 1 10%; */
     display: flex;
     align-items: center;
+    justify-self: flex-end;
     content: "↓";
     font-size: var(--step-3);
     animation: bounce 0.5s 3;
-  } */
+  }
 
   .hero h1 {
     display: flex;
-    flex: 1 0 auto;
+    /* flex: 1 0 auto; */
     text-align: center;
     text-wrap: balance;
     align-items: flex-end;
