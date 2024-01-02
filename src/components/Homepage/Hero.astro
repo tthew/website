@@ -1,7 +1,11 @@
 ---
+import { Image } from "@astrojs/image/components";
 import { SITE_DESCRIPTION } from "../../consts";
+import me from './me.jpg';
+
 
 const heroText = SITE_DESCRIPTION.split(" ");
+const widths = [256];
 ---
 
 <div class="hero">
@@ -9,14 +13,9 @@ const heroText = SITE_DESCRIPTION.split(" ");
     <a href="#top">Senior+ Software Engineering Lead Berlin</a>
   </h1>
   <div class="hero-intro">
-    <picture>
-      <img
-        src="/public/1564326180592.jpg"
-        alt="A picture of me!"
-        width="256"
-        height="256"
-      />
-    </picture>
+    <div class="pic">
+      <Image src={me} width={256} height={256} alt="A Picture of Me!" />
+    </div>
     <blockquote>
       {SITE_DESCRIPTION}
     </blockquote>
@@ -48,7 +47,7 @@ const heroText = SITE_DESCRIPTION.split(" ");
     }
   } */
 
-  picture {
+  .pic {
     flex: 1 0 auto;
     width: 256px;
     height: 256px;
@@ -56,32 +55,7 @@ const heroText = SITE_DESCRIPTION.split(" ");
     position: relative;
     clip-path: circle(50%);
     isolation: isolate;
-    /* &:before {
-      content: " ";
-      position: absolute;
-      z-index: 1;
-      top: 0;
-      display: block;
-      width: 256px;
-      height: 256px;
-      opacity: 0.3;
 
-      background: linear-gradient(0deg, rgba(255, 255, 1, 1), rgba(0, 0, 0, 0)),
-        url(/public/noise.svg);
-      filter: contrast(170%) brightness(1000%);
-    }
-
-    &:after {
-      position: absolute;
-      top: 1;
-      content: " ";
-      display: block;
-      width: 256px;
-      height: 256px;
-      background: var(--dark);
-      mix-blend-mode: multiply;
-      /* opacity: 0.5; */
-    } */
     img {
       position: absolute;
       top: 0;
@@ -92,14 +66,15 @@ const heroText = SITE_DESCRIPTION.split(" ");
   }
 
   .hero {
-    flex: 1 0 100vh;
+    /* flex: 1 0 10; */
+    min-height: calc(100vh);
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: var(--space-l);
+    /* row-gap: var(--space-l); */
     justify-content: center;
     animation: fadeOut auto linear;
-    padding: 0 var(--space-s);
+    padding: 0 var(--space-s) 0;
     animation-timeline: --page-scroll;
   }
 
@@ -129,15 +104,16 @@ const heroText = SITE_DESCRIPTION.split(" ");
     display: flex;
     align-items: center;
     column-gap: var(--space-l);
-  }
+    /* flex-wrap: Wrap; */
 
-  blockquote {
-    /* flex: 0 1 auto; */
-    font-size: var(--step-1);
-    padding: var(--space-s);
-    text-align: left;
-    text-wrap: pretty;
-    /* white-space: pre-line; */
+    & blockquote {
+      /* flex: 0 1 auto; */
+      font-size: var(--step-1);
+      padding: var(--space-s);
+      text-align: left;
+      text-wrap: pretty;
+      /* white-space: pre-line; */
+    }
   }
 
   @media screen and (min-width: 420px) {
