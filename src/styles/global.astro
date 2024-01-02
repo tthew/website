@@ -50,7 +50,7 @@ const designTokens = `
     -webkit-font-smoothing: auto;
     -moz-osx-font-smoothing: auto;
     scroll-behavior: smooth;
-    /* scrollbar-gutter: stable; */
+    scrollbar-gutter: stable;
     height: 100%;
   }
 
@@ -246,8 +246,7 @@ isolation: isolate;
     }
   } */
   .hero {
-    height: 100dvh;
-    min-height: 100dvh;
+    flex: 1 0 100dvh;
     display: flex;
     flex-direction: column;
     align-items: center;
