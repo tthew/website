@@ -1,10 +1,10 @@
 ---
 import { getCollection } from "astro:content";
 import BaseHead from "../../components/BaseHead.astro";
-import Footer from "../../components/Footer.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
 import Header from "../../components/Header.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+import BlogPost from "../../layouts/BlogPost.astro";
 
 const posts = (await getCollection("blog"))
   .filter((post) => !post.data.draft)
@@ -41,7 +41,7 @@ const posts = (await getCollection("blog"))
         max-width: 65ch;
       }
 
-      #main ol {
+       ol {
         list-style: decimal-leading-zero;
         list-style-position: inside;
         padding: 0;
@@ -49,25 +49,23 @@ const posts = (await getCollection("blog"))
         flex-direction: column;
         row-gap: var(--space-s);
       }
-      #main ol li {
+       ol li {
         padding: 0;
       }
 
-      section ol li {
+      ol li {
         display: flex;
         flex-direction: column;
         text-wrap: wrap;
       }
-      section ol li em {
+      ol li em {
         opacity: 0.4;
       }
     </style>
   </head>
   <body>
     <Header />
-    <main id="main">
-      <section>
-        <h1>Words</h1>
+      <BlogPost title="Words">
         <ol reversed>
           {
             posts.map((post) => (
@@ -80,8 +78,6 @@ const posts = (await getCollection("blog"))
             ))
           }
         </ol>
-      </section>
-    </main>
-    <Footer />
+      </BlogPost>
   </body>
 </html>

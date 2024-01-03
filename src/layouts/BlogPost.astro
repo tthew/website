@@ -20,11 +20,13 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         display: flex;
         min-height: 100vh;
       flex-direction: column;
-      justify-content: space-between;
+      /* justify-content: flex-start; */
+      /* align-items: flex-start; */
       }
       #main {
         flex: 1;
         display: flex;
+        justify-content: flex-start;;
       }
       article {
         width: calc(100% - 2 * var(--space-li));
@@ -57,6 +59,12 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
             font-size: var(--step-1);
           }
         }
+        
+        @media screen and (min-width: 1280px) {
+          article {
+          width: 45ch;
+          }
+        }
       
     
     </style>
@@ -81,7 +89,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
           )
         }
         <h1 class="title">{title}</h1>
-        <FormattedDate date={pubDate} />
+        {pubDate && <FormattedDate date={pubDate} />}
         {
           updatedDate && (
             <div class="last-updated-on">
