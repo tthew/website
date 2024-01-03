@@ -48,7 +48,8 @@ import HeaderLink from "./HeaderLink.astro";
     justify-content: space-between;
     padding: var(--space-s);
     animation: headerBgMorph auto linear;
-    animation-timeline: --page-scroll;
+      backdrop-filter: blur(3px);
+    /* animation-timeline: --page-scroll; */
   }
 
   .hamb {
@@ -128,8 +129,8 @@ import HeaderLink from "./HeaderLink.astro";
   .hamb,
   header input {
     position: absolute;
-    right: 12px;
-    top: 12px;
+    right: 13px;
+    top: 13px;
     z-index: 10;
   }
 
@@ -162,13 +163,13 @@ import HeaderLink from "./HeaderLink.astro";
     }
   }
   body:has(header input:checked) .hamb::before {
-    transform: rotate(45deg) translate(8px, 9px);
+    transform: rotate(45deg) translate(10px, 9px);
   }
   body:has(header input:checked) .hamb::after {
     opacity: 0;
   }
   body:has(header input:checked) .hamb-line {
-    transform: rotate(-45deg) translateY(0px);
+    transform: rotate(-45deg) translateY(3px);
   }
   header ul {
     display: flex;

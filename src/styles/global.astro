@@ -193,28 +193,28 @@ const designTokens = `
     font-size: var(--step-1);
   }
 
-  #about > * {
+  /* #about > * {
     animation: aboutIn auto ease-out;
     animation-timeline: --page-scroll;
-  }
+  } */
 
-  .leading {
+  #about .leading {
     font-weight: 600;
   }
 
-  .container p {
+  #about .container p {
     margin-top: 0;
   }
 
-  @media screen and (min-width: 420px) {
-    .container {
+  @media screen and (min-width: 649px) {
+    #about .container {
       columns: 2;
       column-gap: var(--space-2xl);
     }
   }
 
   @media screen and (min-width: 1920px) {
-    .container {
+    #about .container {
       max-width: 75%;
     }
     #about > * {
@@ -361,6 +361,7 @@ isolation: isolate;
       font-size: var(--step-2);
     }
   }
+}
     
   #experience {
       display: flex;
@@ -416,7 +417,7 @@ isolation: isolate;
     text-align: center;
     width: 100%;
     margin-top: var(--space-l);
-    padding: calc(var(--space-2xl) * 3) 0 var(--space-2xl);
+    padding: var(--space-2xl) 0 var(--space-2xl);
     scroll-margin-top: calc(-2 * var(--space-2xl));
     font-size: var(--step-1);
     background: hsl(163, 60%, 6%);
@@ -426,6 +427,11 @@ isolation: isolate;
     font-size: var(--step-5);
     font-weight: 900;
     margin: 0;
+  }
+
+  #contact p {
+
+    padding: 0 var(--space-l);
   }
 
   #contact ul {
