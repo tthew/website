@@ -17,13 +17,11 @@ const { title, description, pubDate, updatedDate, heroImage, readingTime} = Astr
   <head>
     <BaseHead title={title} description={description} />
     <style is:global>
-      body,html {
-        /* height: 100%; */
+      body,
+      html {
         display: flex;
         min-height: 100vh;
-      flex-direction: column;
-      /* justify-content: flex-start; */
-      /* align-items: flex-start; */
+        flex-direction: column;
       }
       #main {
         flex: 1;
@@ -31,7 +29,7 @@ const { title, description, pubDate, updatedDate, heroImage, readingTime} = Astr
         justify-content: flex-start;;
       }
       article {
-        width: calc(100% - 2 * var(--space-li));
+        width: calc(100% - 2 * var(--space-l));
         padding: var(--space-2xl) var(--space-l);
         flex-direction: column;
         font-size: var(--step-0);
@@ -43,7 +41,6 @@ const { title, description, pubDate, updatedDate, heroImage, readingTime} = Astr
         margin-bottom: var(--space-s);
       }
        hr {
-        width: 100%;
         opacity: 0.2;
        }
 
@@ -61,6 +58,7 @@ const { title, description, pubDate, updatedDate, heroImage, readingTime} = Astr
           display: block;
           font-size: var(--step-0);
         }
+
 
         @media screen and (min-width: 420px) {
           article {
