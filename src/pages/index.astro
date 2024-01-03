@@ -7,8 +7,6 @@ import Contact from "../components/Homepage/Contact.astro";
 import Experience from "../components/Homepage/Experience.astro";
 import Hero from "../components/Homepage/Hero.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
-
-const heroText = SITE_DESCRIPTION.split(" ");
 ---
 
 <!DOCTYPE html>
@@ -31,9 +29,9 @@ const heroText = SITE_DESCRIPTION.split(" ");
           min-width: 128px;
           min-height: 25px;
           background: var(--light);
-      position: relative;
+          position: relative;
           clip-path: circle(50%);
-      isolation: isolate;
+          isolation: isolate;
         }
         
         .hero {
@@ -44,6 +42,7 @@ const heroText = SITE_DESCRIPTION.split(" ");
           justify-content: center;
           row-gap: var(--space-l);
           padding: 0 var(--space-s) 0;
+          
         }
 
         .hero::after {
@@ -54,8 +53,9 @@ const heroText = SITE_DESCRIPTION.split(" ");
           justify-self: flex-end;
           content: "↓";
           font-size: var(--step-3);
-          animation: bounce 0.5s 3;
-        }
+          animation: bounce 0.5s 2s 3;
+        } 
+
 
         .hero h1 {
           display: flex;
@@ -75,6 +75,7 @@ const heroText = SITE_DESCRIPTION.split(" ");
           justify-content: center;
           column-gap: var(--space-l);
           flex-wrap: wrap;
+
 
           & blockquote {
             font-size: var(--step-1);
