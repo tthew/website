@@ -2,7 +2,7 @@
 title: "How to make your own Glitch Art in 5 easy steps"
 description: ""
 pubDate: "Feb 17 2019"
-# heroImage: "/body-glitch-3.webp"
+heroImage: "/body-glitch-3.webp"
 ---
 
 The design of this website was inspired by a recent re-interest and appreciation for [Glitch Art](https://en.wikipedia.org/wiki/Glitch_art). In part no less thanks to this [great post by Github user ucnv, entitled: "The Art of PNG Glitch"](https://en.wikipedia.org/wiki/Glitch_art).

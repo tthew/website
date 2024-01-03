@@ -3,10 +3,15 @@ title: "HTML & CSS First Progressively Enhanced Global Theme Switch"
 description: ""
 pubDate: "Dec 29 2023"
 draft: false
-# heroImage: "/mountain-glitch-4.webp"
+heroImage: "/mountain-glitch-4.webp"
 ---
 
-The web has come along since its humble beginnings and some of its more recent features are particularly interesting.
+## Table of contents
+
+## 📝 HTML Web Components (Custom Elements)
+
+
+The web has come a long way since its humble beginnings and some of its more recent features are particularly impressive.
 
 Instead of needing to reach for frameworks we now have at our fingertips an enormous amount of power through the native web platform web.
 
@@ -344,7 +349,7 @@ function ThemeSwitch({ html, state }) {
 
 If we now jump over to <a href="http://localhost:3333">http://localhost:3333</a> we should see our custom `<theme-switch></theme-switch>` element being rendered in the browser, and interacting with it should change the page's theme.
 
-#### _What magic is this?_
+#### 🧙‍♀️ _What magic is this?_
 
 _At server-render, before returning the HTML to the browser, Enhance parses the HTML for custom elements and then tries to find a corresponding render function file with the a matching filename located in the `elements/` directory, e.g. if it finds `<theme-switch></theme-switch>` it'll look for a file called `elements/theme-switch.mjs`, call the render function, and inject the returned HTML before returning the whole HTML file to the browser to render_.
 

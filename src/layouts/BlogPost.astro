@@ -37,6 +37,16 @@ const { title, description, pubDate, updatedDate, heroImage, readingTime} = Astr
         
       }
 
+      article h2,
+      article h3,
+      article h4 {
+
+        scroll-margin: var(--space-2xl);
+      }
+     
+      article:has(picture + h1) h1 {
+        margin-top: var(--space-s);
+      }
      article:has(h1 + .meta) h1 {
         margin-bottom: var(--space-s);
       }

@@ -2,7 +2,7 @@
 title: "Open for new opportunties beginning March 2019"
 description: "After 12 months with the team at Field, tackling the challenges of Vaccine delivery logistics across Africa, it's time to move on and I'll be leaving in a few weeks to explore new pastures."
 pubDate: "Feb 17 2019"
-# heroImage: "/mountain-glitch-4.webp"
+heroImage: "/mountain-glitch-4.webp"
 ---
 
 After 12 months with the team at [Field](https://www.fieldintelligence.org/) tackling the challenges of Vaccine delivery logistics across Africa, it's time to move on and I'll be leaving in a few weeks to explore new pastures.
