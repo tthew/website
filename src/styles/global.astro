@@ -51,16 +51,17 @@ const designTokens = `
     -moz-osx-font-smoothing: auto;
     scroll-behavior: smooth;
     scrollbar-gutter: stable;
-    height: 100%;
+    /* height: 100%; */
   }
 
   body {
     font-family: var(--font-medium);
+    /* font-feature-settings:    ; */
     font-size: var(--step-0);
     margin: 0;
     color: #fff;
     background: radial-gradient(circle at 50% 10%, var(--bg), var(--fg));
-    height: 100%;
+    /* height: 100%; */
   }
 
   html:has(header input:checked) html,
@@ -123,7 +124,8 @@ const designTokens = `
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    flex: 1;
+    /* min-height: 100%; */
   }
 
   h1 {
@@ -299,12 +301,39 @@ isolation: isolate;
     .hero {
       max-width: 75%;
     }
-       .hero-intro .pic {
-        max-width: 256px;
-        max-height: 256px;
+    .hero-intro .pic {
+        width: 128px;
+        height: 128px;
+        min-width: 128px;
+        min-height: 128px;
+
+    }
+       .hero-intro .pic img {
+      
+        max-width: 128px;
+        max-height: 128px;
        }
 
   }
+  @media screen and (min-width: 649px) {
+    .hero-intro {
+      flex-wrap: unset;
+    }
+        .hero-intro .pic {
+        width: 256px;
+        height: 256px;
+        min-width: 256px;
+        min-height: 256px;
+
+    }
+       .hero-intro .pic img {
+      
+        max-width: 256px;
+        max-height: 256px;
+       }
+       .hero blockquote {
+        text-align: left;
+       }
 
   @media screen and (min-width: 980px) {
 

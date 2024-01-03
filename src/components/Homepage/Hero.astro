@@ -1,7 +1,8 @@
 ---
-import { Picture } from "@astrojs/image/components";
+
+import { Image } from "@astrojs/image/components";
 import { SITE_DESCRIPTION } from "../../consts";
-import me from './me.jpg';
+import mePic from './me.jpg';
 
 
 const heroText = SITE_DESCRIPTION.split(" ");
@@ -14,7 +15,9 @@ const widths = [256];
   </h1>
   <div class="hero-intro">
     <div class="pic">
-      <Picture src={me} widths={[256]} height={256}  alt="A Picture of Me!" />
+      <Image src={mePic}  widths={[mePic.width]}
+  sizes={`(max-width: 360px) 128w, (max-width: 720px) 256w, (max-width: 1600px) 512w, ${mePic.width}w`}
+ alt="A Picture of 256!" />
     </div>
     <blockquote>
       {SITE_DESCRIPTION}
