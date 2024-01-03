@@ -23,18 +23,42 @@
 </section>
 
 <style>
-  /* @keyframes contactTransitionIn {
-    0% {
-      transform: translateY(1000px);
-      opacity: 1;
-    }
-    30% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    70% {
-      opacity: 1;
-    }
-  } */
+  section {
+    animation: contactTransitionIn auto linear;
+    animation-timeline: --page-scroll;
+    text-align: center;
+    width: 100%;
+    margin-top: var(--space-l);
+    padding: var(--space-2xl) 0 var(--space-2xl);
+    scroll-margin-top: calc(-2 * var(--space-2xl));
+    font-size: var(--step-1);
+    background: hsl(163, 60%, 6%);
+  }
 
+   h2 {
+    font-size: var(--step-5);
+    font-weight: 900;
+    margin: 0;
+  }
+
+   p {
+
+    padding: 0 var(--space-l);
+  }
+
+   ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-m);
+    padding: var(--space-s);
+    list-style: none;
+  }
+
+   ul li {
+    font-size: var(--step-1);
+    padding: var(--space-s) var(--space-l);
+    background: var(--light);
+    border-radius: 50px;
+  }
 </style>

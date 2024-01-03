@@ -39,51 +39,37 @@
 </section>
 
 <style>
-  /* @keyframes aboutIn {
-    0% {
-      transform: translateY(500px);
-      opacity: 0;
-    }
+  section {
+    display: flex;
+    justify-content: center;
+    scroll-margin-top: calc(2 * var(--space-l));
+    max-width: 75%;
+    padding-top: var(--space-m);
+    font-size: var(--step-1);
+  }
 
-    30% {
-      opacity: 1;
-    }
-    40% {
-      transform: translateY(0);
-      opacity: 0;
-    }
+  .leading {
+    font-weight: 600;
+  }
 
-    100% {
-      opacity: 0;
+  .container p {
+    margin-top: 0;
+  }
+
+  @media screen and (min-width: 649px) {
+    .container {
+      columns: 2;
+      column-gap: var(--space-2xl);
     }
   }
 
-  @keyframes aboutInLarge {
-    0% {
-      transform: translateY(500px);
-      opacity: 0;
+  @media screen and (min-width: 1920px) {
+     .container {
+      max-width: 75%;
     }
-
-    30% {
-      opacity: 1;
+    section > * {
+      animation: aboutInLarge auto ease-out;
+      animation-timeline: --page-scroll;
     }
-
-    40% {
-      transform: translateY(0);
-    }
-
-    40% {
-      opacity: 1;
-    }
-
-    55% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 0;
-    }
-  } */
-
-
+  }
 </style>

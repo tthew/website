@@ -23,65 +23,36 @@ const designTokens = `
 <style type="text/css" is:inline set:text={designTokens}></style>
 
 <style is:global>
-  /*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
-
   :root {
     --dark: hsl(163, 60%, 6%);
     --light: hsl(251, 93%, 78%);
-    /* color-scheme: light dark; */
-    --bg: var(--light);
-    --fg: var(--dark);
-    /* animation: morph auto linear; */
-  }
-  /* @media (prefers-color-scheme: dark) { */
-  :root {
+
     --bg: var(--dark);
     --fg: var(--light);
   }
-  /* } */
+
   html {
     padding: 0;
     margin: 0;
-    /* box-sizing: border-box; */
     -webkit-font-smoothing: auto;
     -moz-osx-font-smoothing: auto;
     scroll-behavior: smooth;
     scrollbar-gutter: stable;
-    /* height: 100%; */
   }
-
-  body {
-    font-family: var(--font-medium);
-    /* font-feature-settings:    ; */
-    font-size: var(--step-0);
-    margin: 0;
-    color: #fff;
-    background: radial-gradient(circle at 50% 10%, var(--bg), var(--fg));
-    /* height: 100%; */
-  }
-
   html:has(header input:checked) html,
   html:has(header input:checked) body {
     overflow: hidden;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  strong,
-  b {
-    /* color: #222; */
+
+  body {
+    font-family: var(--font-medium);
+    font-size: var(--step-0);
+    margin: 0;
+    color: #fff;
+    background: radial-gradient(circle at 50% 10%, var(--bg), var(--fg));
   }
-  a {
-    /* color: #3273dc; */
-  }
+
   nav a {
     margin-right: 10px;
   }
@@ -113,9 +84,7 @@ const designTokens = `
     all: unset;
   }
   blockquote {
-    /* color: #222; */
     margin: 0px;
-    /* font-style: italic; */
     font-weight: 200;
   }
 
@@ -125,7 +94,6 @@ const designTokens = `
     align-items: center;
     justify-content: center;
     flex: 1;
-    /* min-height: 100%; */
   }
 
   h1 {
@@ -136,7 +104,6 @@ const designTokens = `
   }
 
   p {
-    /* font-size: var(--step-1); */
     margin-bottom: var(--space-s);
   }
 
@@ -144,26 +111,7 @@ const designTokens = `
     column-gap: var(--space-l);
     row-gap: var(--space-l);
   }
-  /* 
 
-  h2 {
-    font-size: var(--step-4);
-  }
-
-  h3 {
-    font-size: var(--step-3);
-  }
-
-  h5 {
-    font-size: var(--step-2);
-  }
-
-  h6 {
-    font-size: var(--step-1);
-  }
-
-
-  */
   .sr-only:not(:focus):not(:active) {
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
@@ -182,273 +130,5 @@ const designTokens = `
   a:link,
   a:visited {
     color: currentColor;
-    /* text-decoration: none; */
   }
-    #about {
-    display: flex;
-    justify-content: center;
-    scroll-margin-top: calc(2 * var(--space-l));
-    max-width: 75%;
-    padding-top: var(--space-m);
-    font-size: var(--step-1);
-  }
-
-  /* #about > * {
-    animation: aboutIn auto ease-out;
-    animation-timeline: --page-scroll;
-  } */
-
-  #about .leading {
-    font-weight: 600;
-  }
-
-  #about .container p {
-    margin-top: 0;
-  }
-
-  @media screen and (min-width: 649px) {
-    #about .container {
-      columns: 2;
-      column-gap: var(--space-2xl);
-    }
-  }
-
-  @media screen and (min-width: 1920px) {
-    #about .container {
-      max-width: 75%;
-    }
-    #about > * {
-      animation: aboutInLarge auto ease-out;
-      animation-timeline: --page-scroll;
-    }
-  }
-  @keyframes bounce {
-    0%,
-    100% {
-      -webkit-transform: translateY(0);
-    }
-    50% {
-      -webkit-transform: translateY(-10px);
-    }
-  }
-  .hero .pic {
-    /* justify-content: center; */
-    width: 128px;
-    height: 128px;
-    min-width: 128px;
-    min-height: 25px;
-    background: var(--light);
-position: relative;
-    clip-path: circle(50%);
-isolation: isolate;
-  }
-/* img {
-      position: absolute;
-      top: 0;
-    }
-  } */
-  .hero {
-    flex: 1 0 100dvh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    row-gap: var(--space-l);
-    padding: 0 var(--space-s) 0;
-  }
-
-  .hero::after {
-    position: absolute;
-    bottom: 32px;
-    /* flex: 1 1 10%; */
-    display: flex;
-    align-items: center;
-    justify-self: flex-end;
-    content: "↓";
-    font-size: var(--step-3);
-    animation: bounce 0.5s 3;
-  }
-
-  .hero h1 {
-    display: flex;
-    /* flex: 1 0 auto; */
-    text-align: center;
-    text-wrap: balance;
-    align-items: flex-end;
-  }
-
-  .hero h1 a:link,
-  .hero h1 a:visited {
-    text-decoration: none;
-  }
-
-  .hero-intro {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    column-gap: var(--space-l);
-    flex-wrap: wrap;
-
-    & blockquote {
-      font-size: var(--step-1);
-      padding: var(--space-s);
-      text-align: center;
-      text-wrap: pretty;
-    }
-  }
-
-  @media screen and (min-width: 420px) {
-    .hero {
-      max-width: 75%;
-    }
-    .hero-intro .pic {
-        width: 128px;
-        height: 128px;
-        min-width: 128px;
-        min-height: 128px;
-
-    }
-       .hero-intro .pic img {
-      
-        max-width: 128px;
-        max-height: 128px;
-       }
-
-  }
-  @media screen and (min-width: 649px) {
-    .hero-intro {
-      flex-wrap: unset;
-    }
-        .hero-intro .pic {
-        width: 256px;
-        height: 256px;
-        min-width: 256px;
-        min-height: 256px;
-
-    }
-       .hero-intro .pic img {
-      
-        max-width: 256px;
-        max-height: 256px;
-       }
-       .hero blockquote {
-        text-align: left;
-       }
-
-  @media screen and (min-width: 980px) {
-
-    .hero-intro {
-      flex-wrap: unset;
-    }
-    
-    .hero-intro .pic {
-      flex: 1 0 auto;
-    }
-    
-    .hero blockquote {
-      text-align: left;
-    }
-  }
-
-  @media screen and (min-width: 1920px) {
-    .hero h1 {
-      font-size: var(--step-6);
-      line-height: var(--step-6);
-    }
-
-   .hero blockquote {
-      max-width: 75%;
-      font-size: var(--step-2);
-    }
-  }
-}
-    
-  #experience {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      scroll-margin-top: calc(-1 * var(--space-2xl));
-      max-width: 75%;
-      font-size: var(--step-1);
-    }
-
-    #experience > * {
-      animation: experienceHeaderIn auto linear;
-      animation-timeline: --page-scroll;
-    }
-
-    #experience h2 {
-      text-align: center;
-      font-size: var(--step-4);
-      padding: var(--space-xl) 0 var(--space-m) 0;
-      font-weight: 900;
-    }
-
-    #experience ul {
-      display: flex;
-      flex-direction: column;
-      row-gap: var(--space-xs);
-      padding: var(--space-s);
-    }
-
-    #experience ul li {
-      padding: 0;
-      margin: 0;
-    }
-
-    @media screen and (min-width: 480px) {
-      #experience .cols {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--space-xl);
-      }
-    }
-
-    @media screen and (min-width: 1920px) {
-      #experience .cols {
-        max-width: 75%;
-      }
-    }
-  
-    #contact {
-    animation: contactTransitionIn auto linear;
-    animation-timeline: --page-scroll;
-    text-align: center;
-    width: 100%;
-    margin-top: var(--space-l);
-    padding: var(--space-2xl) 0 var(--space-2xl);
-    scroll-margin-top: calc(-2 * var(--space-2xl));
-    font-size: var(--step-1);
-    background: hsl(163, 60%, 6%);
-  }
-
-  #contact h2 {
-    font-size: var(--step-5);
-    font-weight: 900;
-    margin: 0;
-  }
-
-  #contact p {
-
-    padding: 0 var(--space-l);
-  }
-
-  #contact ul {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: var(--space-m);
-    padding: var(--space-s);
-    list-style: none;
-  }
-
-  #contact ul li {
-    font-size: var(--step-1);
-    padding: var(--space-s) var(--space-l);
-    background: var(--light);
-    border-radius: 50px;
-  }
-  
-  /* @link https://utopia.fyi/type/calculator?c=320,18,1.2,1240,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 </style>

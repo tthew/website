@@ -6,7 +6,7 @@ import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://ma.tthew.berlin",
+  site: "https://tthew.berlin",
   integrations: [
     mdx(),
     sitemap(),

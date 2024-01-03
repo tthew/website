@@ -15,6 +15,144 @@ const heroText = SITE_DESCRIPTION.split(" ");
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+      <style is:inline>
+        @keyframes bounce {
+          0%,
+          100% {
+            -webkit-transform: translateY(0);
+          }
+          50% {
+            -webkit-transform: translateY(-10px);
+          }
+        }
+        .hero .pic {
+          width: 128px;
+          height: 128px;
+          min-width: 128px;
+          min-height: 25px;
+          background: var(--light);
+      position: relative;
+          clip-path: circle(50%);
+      isolation: isolate;
+        }
+        
+        .hero {
+          flex: 1 0 100dvh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          row-gap: var(--space-l);
+          padding: 0 var(--space-s) 0;
+        }
+
+        .hero::after {
+          position: absolute;
+          bottom: 32px;
+          display: flex;
+          align-items: center;
+          justify-self: flex-end;
+          content: "↓";
+          font-size: var(--step-3);
+          animation: bounce 0.5s 3;
+        }
+
+        .hero h1 {
+          display: flex;
+          text-align: center;
+          text-wrap: balance;
+          align-items: flex-end;
+        }
+
+        .hero h1 a:link,
+        .hero h1 a:visited {
+          text-decoration: none;
+        }
+
+        .hero-intro {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          column-gap: var(--space-l);
+          flex-wrap: wrap;
+
+          & blockquote {
+            font-size: var(--step-1);
+            padding: var(--space-s);
+            text-align: center;
+            text-wrap: pretty;
+          }
+        }
+
+        @media screen and (min-width: 420px) {
+          .hero {
+            max-width: 75%;
+          }
+          .hero-intro .pic {
+              width: 128px;
+              height: 128px;
+              min-width: 128px;
+              min-height: 128px;
+
+          }
+            .hero-intro .pic img {
+            
+              max-width: 128px;
+              max-height: 128px;
+            }
+
+        }
+        @media screen and (min-width: 649px) {
+          .hero-intro {
+            flex-wrap: unset;
+          }
+          .hero-intro .pic {
+          width: 256px;
+          height: 256px;
+          min-width: 256px;
+          min-height: 256px;
+        } 
+        .hero-intro .pic img {
+
+        max-width: 256px;
+        max-height: 256px;
+        }
+        .hero blockquote {
+        text-align: left;
+        }
+          
+
+        @media screen and (min-width: 980px) {
+
+          .hero-intro {
+            flex-wrap: unset;
+          }
+          
+          .hero-intro .pic {
+            flex: 1 0 auto;
+          }
+          
+          .hero blockquote {
+            text-align: left;
+          }
+        }
+
+        @media screen and (min-width: 1900px) {
+          .hero h1 {
+            font-size: var(--step-6);
+            line-height: var(--step-6);
+          }
+
+        .hero blockquote {
+            max-width: 75%;
+            font-size: var(--step-2);
+          }
+        }
+        footer {
+          background: var(--dark);
+        }
+      }
+    </style>
   </head>
   <body>
     <Header title={SITE_TITLE} />
@@ -25,10 +163,6 @@ const heroText = SITE_DESCRIPTION.split(" ");
       <Contact />
     </main>
     <Footer />
-    <style is:global>
-      footer {
-        background: var(--dark);
-      }
-    </style>
+
   </body>
 </html>
