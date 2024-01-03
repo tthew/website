@@ -6,9 +6,11 @@ import Footer from "../components/Footer.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import Header from "../components/Header.astro";
 
-type Props = CollectionEntry<"blog">["data"];
+type Props = CollectionEntry<"blog">["data"] & {readingTime: number};
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, readingTime} = Astro.props;
+
+
 ---
 
 <html lang="en">
@@ -37,19 +39,26 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         
       }
 
+     article:has(h1 + .meta) h1 {
+        margin-bottom: var(--space-s);
+      }
+       hr {
+        width: 100%;
+        opacity: 0.2;
+       }
+
       article h1 {
         font-size: var(--step-3);
-        line-height: 1.3em;
+        line-height: 1em;
       }
 
         article pre.astro-code {
-        white-space: pre-break;
+        white-space: break-spaces;
         /* width: 100px; */
         }
 
         article pre.astro-code code {
           display: block;
-          width: 100px;
           font-size: var(--step-0);
         }
 
@@ -89,6 +98,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
           )
         }
         <h1 class="title">{title}</h1>
+        <div class="meta">
         {pubDate && <FormattedDate date={pubDate} />}
         {
           updatedDate && (
@@ -97,6 +107,8 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
             </div>
           )
         }
+        {readingTime &&  <> · <em>{readingTime}mins</em></>}
+        </div>
         <hr />
         <slot />
       </article>

@@ -15,8 +15,30 @@ type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
 const { Content } = await post.render();
+
+const WORDS_PER_MINUTE = 175;
+
+ function getReadingTime(content) {
+  if (!content) return;
+  const clean = content.replace(/<\/?[^>]+(>|$)/g, '');
+  const numberOfWords = clean.split(/\s/g).length;
+  return Math.ceil(numberOfWords / WORDS_PER_MINUTE);
+}
+
+const readingTime = getReadingTime(post.body)
 ---
 
-<BlogPost {...post.data}>
-  <Content />
+<BlogPost {...post.data} readingTime={readingTime}>
+  <Content  />
+    <hr />
+    <em class="comments">I don't have comments on my blog, but do feel free to <a href="/#contact">reach out</a>.</em>
+    <hr />
+  <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 </BlogPost>
+<style> 
+      .comments {
+        padding: var(--space-l) var(--space-2xl) var(--space-s);
+        display: block;
+        text-align: center;
+      }
+    </style>
