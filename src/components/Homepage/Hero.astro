@@ -1,9 +1,7 @@
 ---
-
 import { Image } from "@astrojs/image/components";
 import { SITE_DESCRIPTION } from "../../consts";
-import mePic from './me.jpg';
-
+import mePic from "./me.jpg";
 
 const heroText = SITE_DESCRIPTION.split(" ");
 const widths = [256];
@@ -11,13 +9,17 @@ const widths = [256];
 
 <div class="hero">
   <h1>
-    <a href="#top"><em>Senior+</em> Software Engineering Lead Berlin</a>
+    <a href="#top">Senior+ Software Engineering Lead Berlin</a>
   </h1>
   <div class="hero-intro">
     <div class="pic">
-      <Image src={mePic} format="webp"  widths={[mePic.width]}
-  sizes={`(max-width: 360px) 128w, (max-width: 720px) 256w, (max-width: 1600px) 512w, ${mePic.width}w`}
- alt="A Picture of 256!" />
+      <Image
+        src={mePic}
+        format="webp"
+        widths={[mePic.width]}
+        sizes={`(max-width: 360px) 128w, (max-width: 720px) 256w, (max-width: 1600px) 512w, ${mePic.width}w`}
+        alt="A Picture of me!"
+      />
     </div>
     <blockquote>
       {SITE_DESCRIPTION}
@@ -40,6 +42,4 @@ const widths = [256];
       opacity: 0;
     }
   } */
-
-
 </style>

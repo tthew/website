@@ -1,7 +1,7 @@
 ---
 title: "HTML & CSS First Progressively Enhanced Global Theme Switch"
 description: ""
-pubDate: "Dec 29 2023"
+pubDate: "Jan 2024"
 draft: false
 heroImage: "/mountain-glitch-4.webp"
 ---

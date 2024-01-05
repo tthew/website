@@ -40,12 +40,40 @@
 
 <style>
   section {
+    --translate: 500px;
     display: flex;
     justify-content: center;
     scroll-margin-top: calc(2 * var(--space-l));
     max-width: 75%;
     padding-top: var(--space-m);
     font-size: var(--step-1);
+  }
+  /* @keyframes about-parallax {
+    0% {
+      transform: translateY(var(--translate));
+      opacity: 0;
+    }
+    5% {
+      opacity: 0;
+      transform: translateY(var(--translate));
+    }
+    20% {
+      transform: translateY(-500px);
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  } */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: scroll()) {
+      section {
+        height: calc(100% + var(--translate));
+        animation: about-parallax 1s linear;
+        animation-timeline: scroll();
+      }
+    }
   }
 
   .leading {
@@ -64,7 +92,7 @@
   }
 
   @media screen and (min-width: 1920px) {
-     .container {
+    .container {
       max-width: 75%;
     }
     section > * {
