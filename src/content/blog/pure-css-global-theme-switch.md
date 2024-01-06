@@ -10,7 +10,6 @@ heroImage: "/mountain-glitch-4.webp"
 
 ## 📝 HTML Web Components (Custom Elements)
 
-
 The web has come a long way since its humble beginnings and some of its more recent features are particularly impressive.
 
 Instead of needing to reach for frameworks we now have at our fingertips an enormous amount of power through the native web platform web.
@@ -29,7 +28,7 @@ Let's take a look at that more closely, first up we defined a custom element `<t
 <theme-switch>
   <label>
     <span>Toggle dark mode</span>
-    <input type="checkbox" name="checkbox" />
+    <input type="checkbox" data-theme-switch-input />
   </label>
 </theme-switch>
 ```
@@ -49,7 +48,7 @@ body {
   color: var(--fg);
 }
 
-body:has(theme-switch input:checked) {
+body:has(theme-switch input[data-theme-switch-input]:checked) {
   --fg: var(--light);
   --bg: var(--dark);
 }
@@ -78,10 +77,8 @@ This is what we're going to be building:
 Building upon the same HTML & CSS we used in the previous `<theme-switch>` example, we can acheive the desired look and feel with an additional sprinkling of CSS:
 
 ```css
-/**
- * 1. Make the input look like the switch container
- */
-theme-switch input {
+/* 1 */
+theme-switch input[data-theme-switch-input] {
   appearance: none;
   position: relative;
   display: inline-block;
@@ -95,11 +92,8 @@ theme-switch input {
   font-size: 1.5rem;
 }
 
-/**
- * 1. Style the ::before psudeo selector to look 
- * like the toggle button
- */
-theme-switch input::before {
+/* 2 */
+theme-switch input[data-theme-switch-input] {
   content: "";
   display: block;
   width: 0.9lh;
@@ -112,36 +106,44 @@ theme-switch input::before {
   box-shadow: 0px 1px 3px #003;
   opacity: 1;
   outline: none;
-  transition: 0.25s linear transform, 0.25s linear outline,
-    0.25s ease-out background-color;
   transform: translateX(0rem);
 }
 
-/**
- * 3. Apply some focus styles
- */
-theme-switch input::focus {
+/* 3 */
+@media (prefers-reduced-motion: no-preference) {
+  theme-switch input[data-theme-switch-input]::before {
+    transition: 0.25s linear transform, 0.25s linear outline,
+      0.25s ease-out background-color;
+  }
+}
+
+/* 4 */
+theme-switch input[data-theme-switch-input]:focus {
   outline-color: transparent;
 }
 
-theme-switch input::focus-visible {
+theme-switch input[data-theme-switch-input]:focus-visible {
   outline: 2px solid blue;
   outline-offset: 2px;
 }
 
-/**
- * 4. Finally we style the :checked state
- */
-theme-switch input:checked {
+/* 5 */
+theme-switch input[data-theme-switch-input]:checked {
   background: none;
   outline: 1px solid #fff;
 }
 
-theme-switch input:checked::before {
+theme-switch input[data-theme-switch-input]:checked::before {
   transform: translateX(0.8lh);
   background: #fff;
 }
 ```
+
+1. Make the `input` look like the switch container
+2. Style the `::before` psudeo selector to look like the toggle button
+3.
+4. Apply some focus styles
+5. Finally we style the `input:checked` state
 
 And there we have it. A custom global theme select switch, that actually looks like a switch that allows us to control global state with HTML and CSS and no drop of Javascript. Not too shabby.
 
@@ -213,7 +215,6 @@ app
 
 Then inside `app/elements/theme-switch.mjs` we write the following render function code:
 
-
 ```typescript
 function ThemeSwitch({ html }) {
   return html`
@@ -235,13 +236,13 @@ Now let's head over to `app/pages/index.html` and replace the entire contents of
   }
 
   body:not(body:has(theme-switch[theme="dark"])),
-  body:not(body:has(theme-switch input:checked)) {
+  body:not(body:has(theme-switch input[data-theme-switch-input]:checked)) {
     --fore: var(--dark);
     --back: var(--light);
   }
 
   body:has(theme-switch[theme="dark"]),
-  body:has(theme-switch input:checked) {
+  body:has(theme-switch input[data-theme-switch-input]:checked) {
     --fore: var(--light);
     --back: var(--dark);
   }
@@ -260,21 +261,12 @@ Now let's head over to `app/pages/index.html` and replace the entire contents of
     white-space: nowrap;
     width: 1px;
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    * {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
-  }
 </style>
 
 <theme-switch></theme-switch>
 ```
 
-Taking a quick look at the CSS, we can see that we have a similar setup to our previous examples, with the addition of an `.sr-only` utility class which we can use to hide visual content outside of a screen reader context, and a media query targetting `prefers-reduced-motion: reduce` which in turn clobbers all animations and transitions with brute force (it's worth noting here that "prefers reduced motion", doesn't necesserily imply that the user doesn't want any motion, simply that they prefer it'd be reduced, but nevertheless for simplicity that's the route were taking here). Anyway, that's one of our goals solved already ✅.
+Taking a quick look at the CSS, we can see that we have a similar setup to our previous examples, with the addition of an `.sr-only` utility class which we can use to hide visual content outside of a screen reader context. That's one of our goals solved already ✅.
 
 Before moving on, let's add the styling to the custom element too:
 
@@ -283,7 +275,7 @@ function ThemeSwitch({ html, state }) {
   return html`
     <label>
       <span class="sr-only">Toggle dark mode</span>
-      <input type="checkbox" name="checkbox" />
+      <input type="checkbox" data-theme-switch-input />
     </label>
 
     <style>
@@ -291,7 +283,7 @@ function ThemeSwitch({ html, state }) {
         display: flex;
       }
 
-      :host input[type="checkbox"] {
+      :host input[data-theme-switch-input] {
         appearance: none;
         position: relative;
         display: inline-block;
@@ -304,10 +296,10 @@ function ThemeSwitch({ html, state }) {
         transition: 0.25s linear;
       }
 
-      :host input[type="checkbox"]:checked::before {
+      :host input[data-theme-switch-input]:checked::before {
         transform: translateX(0.6lh);
 
-      :host input[type="checkbox"]::before {
+      :host input[data-theme-switch-input]::before {
         content: "";
         display: block;
         width: calc(1lh * 0.8);
@@ -320,26 +312,31 @@ function ThemeSwitch({ html, state }) {
         box-shadow: 0px 1px 3px #0003;
         opacity: 1;
         outline: none;
-        transition: 0.25s linear transform, 0.25s linear outline,
-          0.25s ease-out background-color;
         transform: translateX(0rem);
       }
 
-      :host input[type="checkbox"]::focus {
+      @media (prefers-reduced-motion: no-preference) {
+        :host input[data-theme-switch-input]::before {
+          transition: 0.25s linear transform, 0.25s linear outline,
+            0.25s ease-out background-color;
+        }
+      }
+
+      :host input[data-theme-switch-input]:focus {
         outline-color: transparent;
       }
 
-      :host label input::focus-visible {
+      :host label input:focus-visible {
         outline: 2px solid hsl(--accent-h, --accent-s, --accent-l);
         outline-offset: 2px;
       }
 
-      :host input[type="checkbox"]:checked {
+      :host input[data-theme-switch-input]:checked {
         background: transparent;
         outline: 1px solid hsl(var(--accent-h), var(--accent-s), var(--accent-l));
       }
 
-      :host input[type="checkbox"]:checked::before {
+      :host input[data-theme-switch-input]:checked::before {
         background: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
       }
     </style>
@@ -370,6 +367,7 @@ Let's create an `app/api/` directory in our project, and then add an `index.mjs`
 
 ```typescript
 /** @type {import('@enhance/types').EnhanceApiFn} */
+
 export async function get(req) {
   const cookies = parseCookies(req.cookies);
   const theme = cookies.get("theme") || "light";
@@ -401,7 +399,6 @@ app
     └── index.html
 ```
 
-
 Similar to how Enhance matches custom elements with filenames in the `app/elements/` directory, Enhance also tries to match page routes with api routes, and if it finds a matching one exporting a `get()` function, then it'll call that function and returned `json` data available to our custom element render functions through the `state.store` value via the `state` argument that the render function accepts as it's second argument.
 
 Let's create a new `AppNav` render function in `app/elements/app-nav.mjs` which will serve as a wrapper to our `<theme-switch>` in order for us to grab the `theme` value from `state.store` and apply it as a `theme` attribute on the scheme switch:
@@ -416,7 +413,7 @@ function AppNav({ html, state }) {
 }
 ```
 
-Now everytime the index route is rendered, the `get` API call will check the headers the browser sends for the theme cookie, and if it finds one, it'll return the value to our server-side render functions, or fall back to `light` if it doesn't find one. 
+Now everytime the index route is rendered, the `get` API call will check the headers the browser sends for the theme cookie, and if it finds one, it'll return the value to our server-side render functions, or fall back to `light` if it doesn't find one.
 
 Then in our `AppNav` custom element render function, we try to grab the theme from the `state.store` and set that as the `theme` attribute on our `<theme-switch>` element.
 
@@ -452,7 +449,9 @@ enhance("theme-switch", {
     );
 
     this.setTheme = setTheme.bind(el);
-    el.switchEl = el.querySelector("theme-switch input");
+    el.switchEl = el.querySelector(
+      "theme-switch input[data-theme-switch-input]"
+    );
     el.switchEl.addEventListener("change", this.setTheme);
 
     const theme = await window.cookieStore.get("theme");
@@ -514,7 +513,7 @@ app
     └── index.html
 ```
 
-Now if we head back over to the dev server in our web browser, when we change our preference by toggling the checkbox/switch in the UI, our web compoennt will take care of setting the cookie value, then if we refresh the page, our preference is persisted and we're presented with the last theme preference we set. 
+Now if we head back over to the dev server in our web browser, when we change our preference by toggling the checkbox/switch in the UI, our web compoennt will take care of setting the cookie value, then if we refresh the page, our preference is persisted and we're presented with the last theme preference we set.
 
 ## 🚀 Demo
 

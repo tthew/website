@@ -6,11 +6,10 @@ import Footer from "../components/Footer.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import Header from "../components/Header.astro";
 
-type Props = CollectionEntry<"blog">["data"] & {readingTime: number};
+type Props = CollectionEntry<"blog">["data"] & { readingTime: number };
 
-const { title, description, pubDate, updatedDate, heroImage, readingTime} = Astro.props;
-
-
+const { title, description, pubDate, updatedDate, heroImage, readingTime } =
+  Astro.props;
 ---
 
 <html lang="en">
@@ -26,7 +25,7 @@ const { title, description, pubDate, updatedDate, heroImage, readingTime} = Astr
       #main {
         flex: 1;
         display: flex;
-        justify-content: flex-start;;
+        justify-content: flex-start;
       }
       article {
         width: calc(100% - 2 * var(--space-l));
@@ -34,56 +33,50 @@ const { title, description, pubDate, updatedDate, heroImage, readingTime} = Astr
         flex-direction: column;
         font-size: var(--step-0);
         max-width: 65ch;
-        
       }
 
       article h2,
       article h3,
       article h4 {
-
         scroll-margin: var(--space-2xl);
       }
-     
+
       article:has(picture + h1) h1 {
         margin-top: var(--space-s);
       }
-     article:has(h1 + .meta) h1 {
+      article:has(h1 + .meta) h1 {
         margin-bottom: var(--space-s);
       }
-       hr {
+      hr {
         opacity: 0.2;
-       }
+      }
 
       article h1 {
         font-size: var(--step-3);
         line-height: 1em;
       }
 
-        article pre.astro-code {
+      article pre.astro-code {
         white-space: break-spaces;
-        /* width: 100px; */
-        }
+      }
 
-        article pre.astro-code code {
-          display: block;
-          font-size: var(--step-0);
-        }
+      article pre.astro-code code {
+        display: block;
+        font-size: var(--step-0);
+      }
 
-
-        @media screen and (min-width: 420px) {
-          article {
-            padding-top: calc(2 * var(--space-2xl));
-            font-size: var(--step-1);
-          }
+      @media screen and (min-width: 420px) {
+        article {
+          padding-top: calc(2 * var(--space-2xl));
+          font-size: var(--step-1);
         }
-        
-        @media screen and (min-width: 1280px) {
-          article {
+      }
+
+      @media screen and (min-width: 900px) {
+        article {
           width: 45ch;
-          }
         }
-      
-    
+      }
     </style>
   </head>
 
@@ -107,15 +100,22 @@ const { title, description, pubDate, updatedDate, heroImage, readingTime} = Astr
         }
         <h1 class="title">{title}</h1>
         <div class="meta">
-        {pubDate && <FormattedDate date={pubDate} />}
-        {
-          updatedDate && (
-            <div class="last-updated-on">
-              Last updated on <FormattedDate date={updatedDate} />
-            </div>
-          )
-        }
-        {readingTime &&  <> · <em>{readingTime}mins</em></>}
+          {pubDate && <FormattedDate date={pubDate} />}
+          {
+            updatedDate && (
+              <div class="last-updated-on">
+                Last updated on <FormattedDate date={updatedDate} />
+              </div>
+            )
+          }
+          {
+            readingTime && (
+              <>
+                {" "}
+                · <em>{readingTime}mins</em>
+              </>
+            )
+          }
         </div>
         <hr />
         <slot />
