@@ -1,7 +1,32 @@
 import { DateTime } from "luxon";
 import markdownParser from "markdown-it";
+import Prism from 'prismjs';
+import loadLanguages from 'prismjs/components/index.js'
 
-const markdown = markdownParser();
+loadLanguages(['css', 'html', 'typescript', 'jsx', 'tsx'])
+
+const getLanguage = (lang) => {
+	if (lang === 'typescript') {
+		return Prism.languages.tsx;
+	}
+	return Prism.languages[lang] || Prism.languages.javascript;
+
+}
+
+const markdown = markdownParser({
+ 	html: true,
+  linkify: true,
+  typographer: true,
+  highlight: function (str, lang) {
+      if (lang) {
+        try {
+          return Prism.highlight(str, getLanguage(lang), lang);
+        } catch (__) {}
+      }
+
+      return ''; // use external default escaping
+    },
+});
 
 export default function (eleventyConfig) {
 	eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
