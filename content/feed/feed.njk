@@ -1,0 +1,37 @@
+---
+# Metadata comes from _data/metadata.js
+permalink: /feed/feed.xml
+pagination:
+  data: words
+  size: 10
+---
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="pretty-atom-feed.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:base="{{ metadata.language }}">
+  <title>{{ metadata.title }}</title>
+  <subtitle>{{ metadata.description }}</subtitle>
+  <link href="{{ permalink | htmlBaseUrl(metadata.url) }}" rel="self" />
+  <link href="{{ metadata.url | addPathPrefixToFullUrl }}" />
+  <updated>{{
+    words | getNewestWordsDate | toDate | dateToRfc3339
+  }}</updated>
+  <id>{{ metadata.url }}</id>
+  <author>
+    <name>{{ metadata.author.name }}</name>
+    <email>{{ metadata.author.email }}</email>
+  </author>
+  {%- for post in words | reverse %}
+{% set absolutePostUrl %}{% if post.rssOnly !== true %}{{ metadata.url }}/words/{{ post.slug }}{% endif %}{% endset %}
+  <entry>
+    <title>{{ post.title }}</title>
+    {% if absolutePostUrl %}<link href="{{ absolutePostUrl }}" />{% endif %}
+    <wat>{{ post.date }}</wat>
+		<updated>{{ post.date | toDate | dateToRfc3339 }}</updated>
+    <id>{{ absolutePostUrl }}</id>
+    <content
+      type="html"
+      >{{ post.body | transformWithHtmlBase(absolutePostUrl, post.url) }}</content
+    >
+  </entry>
+  {%- endfor %}
+</feed>

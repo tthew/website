@@ -8,24 +8,8 @@ layout: layouts/post.njk
 ---
 
 {% block content %}
-<main id="main">
-  <div class="center">
     <article>
-      <div class="feature">
-        <h1>{{ post.title }}</h1>
-        <div class="post__meta">
-          <time datetime="date">{{ post.date | readableDate }}</time>
-          <div class="reading-time">
-
-          </div>
-        </div>
-      </div>
-      <div class="content full-width">{{ post.body | safe }}</div>
-
+      {{ post.body | markdown | safe }}
     </article>
   </div>
-</main>
-
-<tthew-footer></tthew-footer>
-
 {% endblock %}

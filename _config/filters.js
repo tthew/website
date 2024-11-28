@@ -1,4 +1,7 @@
 import { DateTime } from "luxon";
+import markdownParser from "markdown-it";
+
+const markdown = markdownParser();
 
 export default function (eleventyConfig) {
 	eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
@@ -38,4 +41,20 @@ export default function (eleventyConfig) {
 	eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {
 		return (tags || []).filter((tag) => ["all", "posts"].indexOf(tag) === -1);
 	});
+
+	eleventyConfig.addFilter("getNewestWordsDate", (words) => {
+		return words.at(words.length - 1).date;
+	});
+
+	eleventyConfig.addFilter("toDate", (str) => {
+		return new Date(str);
+	});
+
+	eleventyConfig.addFilter("webWords", (words) => {
+		return words.filter(({rssOnly}) => rssOnly !== true)
+	})
+
+	eleventyConfig.addFilter("markdown", (content) => {
+		return markdown.render(content);
+	})
 }
