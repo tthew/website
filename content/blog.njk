@@ -1,9 +1,10 @@
 ---
+layout: "layouts/home.njk"
 pagination:
   data: words
   size: 10
 ---
 <h1>Archive</h1>
 
-{% set postslist = words %}
+{% set postslist = words | webWords  %}
 {% include "postslist.njk" %}

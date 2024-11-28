@@ -92,6 +92,7 @@ export default async function getAllBlogposts() {
 			// image: item.image.url,
 			// imageAlt: item.image.alt,
 			body: item.body,
+			rssOnly: item.rssOnly,
 		};
 	});
 
