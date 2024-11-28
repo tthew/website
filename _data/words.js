@@ -1,16 +1,10 @@
-// required packages
 import dotenv from "dotenv";
 import fetch from "node-fetch";
 
 dotenv.config();
-
-console.log("API", process.env.API_URL);
-// DatoCMS token
 const token = process.env.API_TOKEN;
-// Authorization: Bearer 99vhAP-gMTebMr37PklK4IZTiZEWLM2T
 
-// get blogposts
-// see https://www.datocms.com/docs/content-delivery-api/first-request#vanilla-js-example
+// get words
 export default async function getAllBlogposts() {
 	// max number of records to fetch per query
 	const recordsPerQuery = 100;
@@ -28,7 +22,7 @@ export default async function getAllBlogposts() {
 	while (makeNewQuery) {
 		try {
 			// initiate fetch
-			const dato = await fetch(process.env.API_URL, {
+			const craft = await fetch(process.env.API_URL, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -37,38 +31,41 @@ export default async function getAllBlogposts() {
 				},
 				body: JSON.stringify({
 					query: `
-          query{
-            wordsEntries {
-              ... on article_Entry {
-                dateCreated
-                title
-                body
-                slug
-                status
-                rssOnly
-              }
-            }
+	          query {
+	            wordsEntries {
+	              ... on article_Entry {
+	                dateCreated
+	                title
+	                body
+	                slug
+	                status
+	                rssOnly
+	              }
+	            }
             }
           `,
 				}),
 			});
 
-			// store the JSON response when promise resolves
-			const response = await dato.json();
 
-			// handle DatoCMS errors
+			console.info("⏬ Fetching remote data...")
+
+			// store the JSON response when promise resolves
+			const response = await craft.json();
+
+			console.info("✅ Success")
+
+			// handle CraftCMS errors
 			if (response.errors) {
 				let errors = response.errors;
 				errors.map((error) => {
 					console.log(error.message);
 				});
-				throw new Error("Aborting: DatoCMS errors");
+				throw new Error("Aborting: CraftCMS errors");
 			}
 
-			console.log({ response });
 			// update blogpost array with the data from the JSON response
 			blogposts = blogposts.concat(response.data.wordsEntries);
-			console.log(blogposts);
 
 			// prepare for next query
 			recordsToSkip += recordsPerQuery;
@@ -78,6 +75,7 @@ export default async function getAllBlogposts() {
 				makeNewQuery = false;
 			}
 		} catch (error) {
+			console.error("⛔️ Error");
 			throw new Error(error);
 		}
 	}
@@ -89,15 +87,10 @@ export default async function getAllBlogposts() {
 			date: item.dateCreated,
 			title: item.title,
 			slug: item.slug,
-			// image: item.image.url,
-			// imageAlt: item.image.alt,
 			body: item.body,
 			rssOnly: item.rssOnly,
 		};
 	});
 
-	// return formatted blogposts
 	return blogpostsFormatted;
 }
-
-// export for 11ty
