@@ -1,4 +1,8 @@
 ---js
+pagination:
+  data: words
+  size: 10
+
 const eleventyNavigation = {
 	key: "Home",
 	order: 1
@@ -6,11 +10,11 @@ const eleventyNavigation = {
 
 const numberOfLatestPostsToShow = 3;
 ---
-{% set postsCount = collections.posts | length %}
+{% set postsCount = words | length %}
 {% set latestPostsCount = postsCount | min(numberOfLatestPostsToShow) %}
 <h1>Latest {{ latestPostsCount }} Post{% if latestPostsCount != 1 %}s{% endif %}</h1>
 
-{% set postslist = collections.posts | head(-1 * numberOfLatestPostsToShow) %}
+{% set postslist = words | head(-1 * numberOfLatestPostsToShow) %}
 {% set postslistCounter = postsCount %}
 {% include "postslist.njk" %}
 
