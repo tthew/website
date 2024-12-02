@@ -1,0 +1,183 @@
+---js
+const layout = 'layouts/home';
+const eleventyNavigation = {
+	key: "About",
+	order: 3
+};
+---
+{% css %}
+
+main {
+padding-top: var(--space-l);
+display: flex;
+flex-direction: column;
+align-items: center;
+flex: 1 0 100%;
+}
+
+main > * {
+max-width: 80ch;
+}
+
+img {
+	border-radius: 50%;
+}
+
+.image {
+padding: 0 var(--space-s);
+}
+
+.grid {
+display: flex;
+align-items: flex-start;
+column-gap: var(--space-l);
+ /*background: hsl(230, 1%, 98%);*/
+
+/*border: 4px solid #eee;*/
+
+border-radius: var(--space-m);
+/*box-shadow: 0px 3px 10px #eee;
+border: 1px solid #ddd;*/
+}
+
+.grid > * {
+ flex-basis: 50%;
+}
+
+.flow > * + * {
+	margin-top: var(--space-xs);
+}
+
+hr {
+	border: 0;
+  height: 1px
+}
+
+figure {
+display: flex;
+flex-direction: column;
+row-gap: var(--space-s);
+align-items: center;
+}
+
+figure figcaption {
+	font-style: italic;
+}
+
+.main-flow {
+display: flex;
+flex-direction: column;
+row-gap: var(--space-l);
+padding-bottom: var(--space-2xl);
+}
+
+.callout {
+text-align: center;
+font-weight: bold;
+background: hsl(230, 1%, 98%);
+padding: var(--space-s);
+}
+
+.skills ul {
+	list-style: none;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-s);
+}
+
+.skills ul li {
+	display: flex;
+	background:  hsl(230, 1%, 98%);
+	max-width: 150px;
+	padding: var(--space-2xs);
+	border-radius: var(--space-2xs);
+}
+
+{% endcss %}
+
+<div class="main-flow">
+	<div class="grid">
+  <div class="image">
+  <figure>
+  	<img src="../public/img/1564326180592.jpeg" alt="A photograph of me, wearing shades 😎" />
+   	<figcaption>Fig 1. It's me!</figcaption>
+  </figure>
+  </div>
+		<div class="content flow">
+			<h1>Tthew who?!</h1>
+			<p>Hi. I'm Matt. A Senior Staff / Principal Software Developer based in Berlin, Germany.</p>
+			<p>I do software engineering, engineering management &amp; leadership. I build for, and lead teams that build for the web.</p>
+			<p>I like HTML, CSS, Javascript/Typescript, people and achieving great things with them. I thrive in divese teams, ambitious contexts and fast paced environments.</p>
+			<p>I also enjoy writing about web development &amp; software engineering over in my <a href="/words">blog</a>.</p>
+			<!--<p>With over 20 years of experience right across the stack, and with a specialism in the front-end as well as a track record of delivering high quality outcomes, position's me well to offer a wealth of insight to any team.</p>-->
+		</div>
+	</div>
+
+<div class="callout">
+	Currently open to exploring new opportunities for 2025. Get in touch!
+</div>
+
+<div class="flow">
+		<h2>Profile</h2>
+		<p>I'm a seasoned software developer who's been building, designing and leading teams that build for the web for over twenty years.</p>
+		<p>I have a broad and varied experienced right across the stack, with an emphasis on the front end. I come from a self-taught web development background, and have worked extensively with PHP in the past, with a focus on client-side web application development startups &amp; NGOs for the latter half of my career.</p>
+		<p>I have an adaptable pesonality who's just as comfortable with rolling up my sleeves and gettting my hands dirty as I am operating at the strategic and people managment levels or liasing with and facilitating stakeholders and clients.</p>
+		<p>It's important to me that my work has real purpose beyond pure capatalistic gain and ideally produces a net benefit for humankind. I'm particularly interested in and have been privileged to have the opportunity to work on a number of projects in the public, global and private health sectors.</p>
+
+</div>
+
+<div class="grid skills">
+	<div class="flow">
+		<h2>Primary Skillset:</h2>
+		<ul>
+			<li>Web Platform (HTML, CSS, Javascript, DOM & Web APIs)</li>
+			<li>React (+ Ecosystem)</li>
+			<li>Typescript</li>
+			<li>Engineering Management</li>
+			<li>System & Software Design</li>
+			<li>Technical Leadership</li>
+			<li>Code Review & Stewardship</li>
+			<li>Design Handoff, Design Systems &amp; Documentation</li>
+			<li>Mentoring</li>
+			<li><abbr>A11y</abbr>&nbsp;&amp;&nbsp;<abbr>Ux</abbr></li>
+		</ul>
+		<h2>Other Skills:</h2>
+		<ul>
+			<li>Offline-first & Distibuted Systems</li>
+			<li>DJing &amp; Music Production</li>
+			<li>Visual &amp; Web Design</li>
+			<li>Leading in company culture</li>
+			<li>Baking Sourdough</li>
+
+		</ul>
+	</div>
+	<div class="flow">
+		<h2>Things I'm good at (and like doing):</h2>
+		<ul>
+			<li>Building scalable Frontend Codebases</li>
+			<li>Building & Leading Cross Functional Engineering Teams</li>
+			<li>Building products that have a net positive benefit for humankind</li>
+			<li>Mentoring, Feedback &amp; Career Development</li>
+			<li>Systems Design</li>
+			<li>Developer tooling and experience</li>
+			<li>Project bootstrapping</li>
+			<li>Building things from scratch</li>
+			<li>Maintaining & improving legacy systems</li>
+			<li>Managing tech debt</li>
+			<li>Testing strategy</li>
+			<li>Design Systems &amp; Component Libraries</li>
+			<li>Scaling codebases</li>
+			<li>Technical Writing</li>
+		</ul>
+	</div>
+</div>
+<div class="flow">
+		<h2>My developer story</h2>
+		<p>Starting out building table based layouts and CGI backends as a teenager in the mid nineties, the journey ever since has been of continual self-learning, re-learning and iteration.</p>
+		<p>Fast forward over two decades later and you can find me building and leading teams that build high quality, highly performant, accessible and engaging, web applications and web sites with the web platform first, along with the help of other technologies such as React, Zustand, Next.js, Remix, RPC, GrapQL, REST, React Query, Astro, Eleventy, Storybook etc.</p>
+		<p>I've had a wide exposure to an array of technologies and methodologies over the years, having worked for Software Houses, Creative &amp; Digital Agencies, Startups &amp; NGOs as well as running my own small businesses.</p>
+		<p>I have an eye for detail and an appreciation for aesthetics & try my best to apply design thinking to all areas of my work.</p>
+		<p>You can find out more <a href="https://linkedin.com/in/tthew">over on LinkedIn</a>.
+	</div>
+</div>

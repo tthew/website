@@ -8,7 +8,7 @@ pagination:
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="pretty-atom-feed.xsl" type="text/xsl"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:base="{{ metadata.language }}">
-  <title>{{ metadata.title }}</title>
+  <title>@tthew words</title>
   <subtitle>{{ metadata.description }}</subtitle>
   <link href="{{ permalink | htmlBaseUrl(metadata.url) }}" rel="self" />
   <link href="{{ metadata.url | addPathPrefixToFullUrl }}" />
@@ -20,7 +20,7 @@ pagination:
     <name>{{ metadata.author.name }}</name>
     <email>{{ metadata.author.email }}</email>
   </author>
-  {%- for post in words | reverse %}
+  {%- for post in words  %}
 {% set absolutePostUrl %}{% if post.rssOnly !== true %}{{ metadata.url }}/words/{{ post.slug }}{% endif %}{% endset %}
   <entry>
     <title>{{ post.title }}</title>

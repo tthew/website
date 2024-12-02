@@ -1,31 +1,31 @@
 import { DateTime } from "luxon";
 import markdownParser from "markdown-it";
-import Prism from 'prismjs';
-import loadLanguages from 'prismjs/components/index.js'
+import Prism from "prismjs";
+import loadLanguages from "prismjs/components/index.js";
+import jsdom from "jsdom";
 
-loadLanguages(['css', 'html', 'typescript', 'jsx', 'tsx'])
+loadLanguages(["css", "html", "typescript", "jsx", "tsx"]);
 
 const getLanguage = (lang) => {
-	if (lang === 'typescript') {
+	if (lang === "typescript") {
 		return Prism.languages.tsx;
 	}
 	return Prism.languages[lang] || Prism.languages.javascript;
-
-}
+};
 
 const markdown = markdownParser({
- 	html: true,
-  linkify: true,
-  typographer: true,
-  highlight: function (str, lang) {
-      if (lang) {
-        try {
-          return Prism.highlight(str, getLanguage(lang), lang);
-        } catch (__) {}
-      }
+	html: true,
+	linkify: true,
+	typographer: true,
+	highlight: function (str, lang) {
+		if (lang) {
+			try {
+				return Prism.highlight(str, getLanguage(lang), lang);
+			} catch (__) {}
+		}
 
-      return ''; // use external default escaping
-    },
+		return ""; // use external default escaping
+	},
 });
 
 export default function (eleventyConfig) {
@@ -76,10 +76,22 @@ export default function (eleventyConfig) {
 	});
 
 	eleventyConfig.addFilter("webWords", (words) => {
-		return words.filter(({rssOnly}) => rssOnly !== true)
-	})
+		return words.filter(({ rssOnly }) => rssOnly !== true);
+	});
 
 	eleventyConfig.addFilter("markdown", (content) => {
 		return markdown.render(content);
-	})
+	});
+
+	eleventyConfig.addFilter("blurb", (htmlString) => {
+		const dom = new jsdom.JSDOM(htmlString);
+		const p = dom.window.document.querySelector("p");
+		const textContent = p.textContent;
+
+		if (textContent.length > 200) {
+			return textContent.split(0, 200) + "…";
+		}
+
+		return textContent;
+	});
 }

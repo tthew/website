@@ -1,9 +1,74 @@
 ---
 layout: layouts/base.njk
+pagination:
+  data: words
+  size: 1
 ---
 {# Only include the syntax highlighter CSS on blog posts, included with the CSS per-page bundle #}
-{%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %}
+{%- css %}{% include "public/css/prism-one-light.css" %}{% endcss %}
 {%- css %}{% include "public/css/prism-diff.css" %}{%- endcss %}
+
+{% css %}
+
+	article {
+		padding-top: var(--space-xl);
+	}
+
+  article > * + * {
+    margin-top: var(--space-xs);
+  }
+
+  article > * + h2 {
+    margin-top: var(--space-l);
+  }
+
+  article > * + h3 {
+    margin-top: var(--space-m);
+  }
+
+  article > * + h4 {
+    margin-top: var(--space-s);
+  }
+
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   h6 {
+    line-height: calc(1rem + .66em);
+  }
+
+  h1 {
+	font-size: calc(var(--step-4) * 2);
+	font-weight: 900;
+	text-transform: uppercase;
+	padding-top: var(--space-xs);
+	{# font-variant: small-caps; #}
+  }
+
+  article {
+	font-size: var(--step-0);
+	padding-bottom: var(--space-2xl);
+  }
+
+  article p:first-child {
+  	font-size: var(--step-1);
+   	padding-bottom: var(--space-s);
+   	color: #333;
+  }
+
+
+  main:has(.post) {
+  	display: flex;
+   	justify-content: center;
+  }
+
+ .post {
+    max-width: 75ch;
+  }
+{% endcss %}
+<div class="post">
 <h1>{{ post.title }}</h1>
 
 <ul class="post-metadata">
@@ -15,14 +80,4 @@ layout: layouts/base.njk
 </ul>
 
 {{ content | safe }}
-
-{%- if collections.posts %}
-{%- set previousPost = collections.posts | getPreviousCollectionItem %}
-{%- set nextPost = collections.posts | getNextCollectionItem %}
-{%- if nextPost or previousPost %}
-<ul class="links-nextprev">
-	{%- if previousPost %}<li class="links-nextprev-prev">← Previous<br> <a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a></li>{% endif %}
-	{%- if nextPost %}<li class="links-nextprev-next">Next →<br><a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a></li>{% endif %}
-</ul>
-{%- endif %}
-{%- endif %}
+</div>

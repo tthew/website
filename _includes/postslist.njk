@@ -1,9 +1,10 @@
 {%- css %}.postlist { counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }} }{% endcss %}
-<ol reversed class="postlist">
+<ol>
 {%- for post in postslist | reverse %}
 	<li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
-		<a href="/blog/{{ post.slug }}" class="postlist-link">{% if post.title %}{{ post.title }}{% else %}<code>/blog/{{ post.slug }}</code>{% endif %}</a>
+		<a href="/words/{{ post.slug }}" class="postlist-link">{% if post.title %}{{ post.title }}{% else %}<code>/blog/{{ post.slug }}</code>{% endif %}</a>
 		<time class="postlist-date" datetime="{{ post.date  }}">{{ post.date | readableDate("DD") }}</time>
+		<p>{{ post.body | markdown | blurb }}</p>
 	</li>
 {%- endfor %}
 </ol>

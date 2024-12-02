@@ -34,7 +34,7 @@ export default async function getAllBlogposts() {
 	          query {
 	            wordsEntries {
 	              ... on article_Entry {
-	                dateCreated
+	                postDate
 	                title
 	                body
 	                slug
@@ -47,13 +47,12 @@ export default async function getAllBlogposts() {
 				}),
 			});
 
-
-			console.info("⏬ Fetching remote data...")
+			console.info("⏬ Fetching remote data...");
 
 			// store the JSON response when promise resolves
 			const response = await craft.json();
 
-			console.info("✅ Success")
+			console.info("✅ Success");
 
 			// handle CraftCMS errors
 			if (response.errors) {
@@ -84,7 +83,7 @@ export default async function getAllBlogposts() {
 	const blogpostsFormatted = blogposts.map((item) => {
 		return {
 			id: item.id,
-			date: item.dateCreated,
+			date: item.postDate,
 			title: item.title,
 			slug: item.slug,
 			body: item.body,
