@@ -15,6 +15,10 @@ font-size: calc(2 * var(--step-4));
 line-height: calc(2 * var(--step-4) - 0.2em);
 }
 
+h1 span {
+	display: block;
+}
+
 @media screen and (min-width: 900px) {
 h1 {
 font-size: calc(2 * var(--step-5));
@@ -23,9 +27,10 @@ line-height: calc(2 * var(--step-5) - 0.2em);
 }
 
 .hello {
-max-width: 45ch;
+width: 50ch;
 max-width: 100%;
 font-size: var(--step-0);
+padding: 0 var(--space-l);
 
 }
 
@@ -43,6 +48,7 @@ color: #222;
 	flex-wrap: wrap;
 	gap: var(--space-l);
 	min-height: calc(100dvh - 63px);
+	flex: 1;
   }
   
   .hero > :last-child {
@@ -67,7 +73,7 @@ color: #222;
 	justify-content: center;
 	row-gap: var(--space-l);
 
-	padding: var(--space-s) var(--space-s);
+	padding: var(--space-s) 0;
 
  text-align: center;
  min-height: calc(66dvh - 63px);
@@ -99,7 +105,7 @@ content:' →';
 
 <div class="hero">
 	<div class="wrapper">
-		<h1>Senior Staff Software Developer<br> Berlin</h1>
+		<h1><span>Senior Staff</span><span class="visually-hidden">&nbsp;</span><span>Software</span><span class="visually-hidden">&nbsp;</span><span>Developer</span><span class="visually-hidden">&nbsp;</span><span>Berlin</span></h1>
 		<p class="hello">Hi, I'm Matt, a senior software engineering lead with an emphasis on the front-end. I like
 			HTML, CSS, Javascript / Typescript, people and building amazing things with them.
 		<p class="learn-more"><a href="/about">Find out more</a></p>

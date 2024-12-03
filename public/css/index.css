@@ -157,6 +157,7 @@
 		display: flex;
 		flex-direction: column;
 height: 100dvh;
+font-size: var(--step-0);
 		/* justify-content: center; */
 	}
 
@@ -316,11 +317,13 @@ height: 100dvh;
 		padding: 0;
 		margin: 0;
 		list-style: none;
+		column-gap: var(--space-s);
 	}
 
 	.nav-item {
 		display: inline-block;
-		margin-right: 1em;
+		
+		text-align: right;
 	}
 
 	.nav-item a[href]:not(:hover) {
