@@ -10,6 +10,10 @@ const numberOfLatestPostsToShow = 3;
 ---
 {% css %}
 
+main {
+	display: flex;
+
+}
 h1 {
 font-size: calc(2 * var(--step-4));
 line-height: calc(2 * var(--step-4) - 0.2em);
@@ -27,7 +31,7 @@ line-height: calc(2 * var(--step-5) - 0.2em);
 }
 
 .hello {
-width: 50ch;
+{# width: 50ch; #}
 max-width: 100%;
 font-size: var(--step-0);
 padding: 0 var(--space-l);
@@ -35,12 +39,8 @@ padding: 0 var(--space-l);
 }
 
 .hero {
-
-
 color: #222;
 }
-
-
 
 
 .hero {
@@ -48,7 +48,7 @@ color: #222;
 	flex-wrap: wrap;
 	gap: var(--space-l);
 	min-height: calc(100dvh - 63px);
-	flex: 1;
+	{# flex: 1 1 100%; #}
   }
   
   .hero > :last-child {

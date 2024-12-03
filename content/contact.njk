@@ -71,6 +71,7 @@ form button {
         message using the contact form or alternatively   <a href="mailto:hallo@tthew.berlin">drop me an email</a>.
     </p>
     <form netlify data-netlify-honeypot="username" method="post" name="contact">
+        <input type="hidden" name="subject" value="[tthew.berlin] You Have A New Message!" />
         <input name="username" class="visually-hidden" />
         <div class="field">
             <label for="contact-form-field__name">
