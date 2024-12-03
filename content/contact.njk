@@ -32,13 +32,32 @@ form {
     padding-bottom: var(--space-2xl);
 }
 
+form button {
+    border: none;
+    background: #000;
+    color: #eee;
+    font-family: var(--feature-font);
+    padding: var(--space-3xs) var(--space-l);
+    border-radius: var(--space-m);
+    font-size: var(--step-1);
+}
+
 .field {
     display: flex;
     flex-direction: column;
 }
 
-.field input {
+.field input,
+.field textarea {
     padding: var(--space-2xs);
+    border: 1px solid #000;
+    border-radius: var(--space-3xs);
+}
+
+.controls {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
 }
 
 {% endcss %}
@@ -51,7 +70,7 @@ form {
         You can catch me in all the usual places. Feel free to send me a
         message using the contact form or alternatively   <a href="mailto:hallo@tthew.berlin">drop me an email</a>.
     </p>
-    <form data-netlify="true" data-netlify-honeypot="username" method="post" name="contact">
+    <form netlify data-netlify-honeypot="username" method="post" name="contact">
         <input name="username" class="visually-hidden" />
         <div class="field">
             <label for="contact-form-field__name">
@@ -70,12 +89,14 @@ form {
             <label for="contact-form-field__message">
                 Message
             </label>
-            <textarea id="contact-form-field__message" name="message" placeholder="How can I help?" rows="10" />
+            <textarea id="contact-form-field__message" name="message" placeholder="How can I help?" rows="10"></textarea>
         </div>
 
         <input type="hidden" name="form-name" value="contact" />
-        <button type="submit">
-            Hit me up!
-        </button>
+        <div class="controls">
+            <button type="submit">
+                Hit me up!
+            </button>
+        </div>
     </form>
 </div>

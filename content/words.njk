@@ -13,6 +13,7 @@ const pagination = {
 main {
 	display: flex;
 	justify-content: center;
+  
   flex: 1;
 
 
@@ -22,6 +23,13 @@ main > * {
 	width: 80ch;
 
 }
+
+.words {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space-l);
+}
+
 .pagination {
   list-style: none;
   margin: none;
@@ -36,7 +44,7 @@ main > * {
 {% set postslist = pagination.items | webWords | reverse  %}
 {% include "postslist.njk" %}
 <ol class="pagination">
-  <li>{% if pagination.href.previous %}<a href="{{ pagination.href.previous }}">Previous Page</a>{% else %}Previous{% endif %}</li>
-  <li>{% if pagination.href.next %}<a href="{{ pagination.href.next }}">Next</a>{% else %}Next Page{% endif %}</li>
+  {% if pagination.href.previous %}<li><a href="{{ pagination.href.previous }}">Previous Page</a></li>{% endif %}
+  {% if pagination.href.next %}<li><a href="{{ pagination.href.next }}">Next Page</a></li>{% endif %}
 </ol>
 </div>
