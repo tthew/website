@@ -1,8 +1,8 @@
 ---js
 const layout = 'layouts/home';
 const eleventyNavigation = {
-	key: "About",
-	order: 3
+key: "About",
+order: 3
 };
 ---
 {% css %}
@@ -20,28 +20,19 @@ max-width: 80ch;
 }
 
 img {
-	border-radius: 50%;
+border-radius: 50%;
+max-width: 400px;
 }
 
-.image {
-{# padding: 0 var(--space-s); #}
-}
-
-.grid {
+.columns {
 display: flex;
 align-items: flex-start;
 gap: var(--space-l);
 }
 
-{# @media screen and (min-width: 800px;) { #}
-.grid > * {
- {# flex-basis: 50%; #}
-}
-{# } #}
-
 hr {
-	border: 0;
-  height: 1px
+border: 0;
+height: 1px
 }
 
 figure {
@@ -52,7 +43,7 @@ align-items: center;
 }
 
 figure figcaption {
-	font-style: italic;
+font-style: italic;
 }
 
 .main-flow {
@@ -65,67 +56,71 @@ padding-bottom: var(--space-2xl);
 
 .callout {
 text-align: center;
-font-weight: bold;
 background: hsl(230, 1%, 98%);
 padding: var(--space-s);
+font-weight: 400;
+color: #555;
+--deg: 532;
+
+{# border: 1px solid hsl(var(--deg) 41.41% 85.67%);
+text-align: center;
+
+background: hsl(var(--deg) 39.11% 92.85%);
+padding: var(--space-s);
+color: hsl(var(--deg) 40.31% 54.92%); #}
 }
 
 .skills {
-	flex-wrap: wrap;
+flex-wrap: wrap;
 }
 
 @media screen and (min-width: 800px) {
-	.skills {
-		flex-wrap: nowrap;
-	}
-
-	.skills > * {
-		flex-basis: 50%;
-	}
+.skills {
+flex-wrap: nowrap;
 }
 
-
+.skills > * {
+flex-basis: 50%;
+}
+}
 
 .skills ul {
-	list-style: none;
-	padding: 0;
-	display: flex;
-	flex-wrap: wrap;
-	gap: var(--space-s);
+list-style: none;
+padding: 0;
+display: flex;
+flex-wrap: wrap;
+gap: var(--space-s);
 }
 
 .skills ul li {
-	display: flex;
-	background:  hsl(230, 1%, 98%);
-	max-width: 150px;
-	padding: var(--space-2xs);
-	border-radius: var(--space-2xs);
+display: flex;
+background: hsl(230, 1%, 98%);
+max-width: 150px;
+padding: var(--space-2xs);
+border-radius: var(--space-2xs);
 }
 
 .with-sidebar {
-	display: flex;
-	flex-wrap: wrap;
-	gap: var(--space-l);
-	
-  }
-  
-  .with-sidebar > :first-child {
-	{# flex-basis: 50%; #}
-	flex-grow: 1;
-  }
-  
-  .with-sidebar > :last-child {
-	flex-basis: 0;
-	flex-grow: 999;
-	min-inline-size: 40%;
-	{# display: flex; #}
-  }
-  
+display: flex;
+flex-wrap: wrap;
+gap: var(--space-l);
+
+}
+
+.with-sidebar > :first-child {
+flex-grow: 1;
+}
+
+.with-sidebar > :last-child {
+flex-basis: 0;
+flex-grow: 999;
+min-inline-size: 40%;
+}
 
 {% endcss %}
 
 <div class="main-flow">
-  	<div class="with-sidebar">
+	<div class="with-sidebar">
 		<div class="image">
 			<figure>
 				<img src="../public/img/1564326180592.jpeg" alt="A photograph of me, wearing shades 😎" />
@@ -135,9 +130,12 @@ padding: var(--space-s);
 		<div class="content flow">
 			<h1>Tthew who?!</h1>
 			<p>Hi. I'm Matt. A Senior Staff / Principal Software Developer based in Berlin, Germany.</p>
-			<p>I do software engineering, engineering management &amp; leadership. I build for, and lead teams that build for the web.</p>
-			<p>I like HTML, CSS, Javascript/Typescript, people and achieving great things with them. I thrive in divese teams, ambitious contexts and fast paced environments.</p>
-			<p>I also enjoy writing about web development &amp; software engineering over in my <a href="/words">blog</a>.</p>
+			<p>I do software engineering, engineering management &amp; leadership. I build for, and lead teams that
+				build for the web.</p>
+			<p>I like HTML, CSS, Javascript/Typescript, people and achieving great things with them. I thrive in divese
+				teams, ambitious contexts and fast paced environments.</p>
+			<p>I also enjoy writing about web development &amp; software engineering over in my <a
+					href="/words">blog</a>.</p>
 		</div>
 	</div>
 
@@ -147,13 +145,23 @@ padding: var(--space-s);
 
 	<div class="flow">
 		<h2>Profile</h2>
-		<p>I'm a seasoned software developer who's been building, designing and leading teams that build for the web for over twenty years.</p>
-		<p>I have a broad and varied experienced right across the stack, with an emphasis on the front end. Over the years I've been exposed to a wide array of patterns, technologies and architechtures, with a heavy focus on client-side web application development for startups &amp; NGOs working with componenent based front-end libraries &amp; frameworks and paradigms like React &amp; Next.js for a large proportion of the latter part of my career.</p>
-		<p>I have an adaptable pesonality who's just as comfortable with rolling up my sleeves and gettting my hands dirty as I am operating at the strategic and people managment levels or liasing with and facilitating stakeholders and clients.</p>
-		<p>It's important to me that my work has real purpose beyond pure capatalistic gain and ideally produces a net benefit for humankind. I'm particularly interested in and have been privileged enough to have had the opportunity to work on a number of projects in the public, global and private health sectors, which is something I would love to continue doing.</p>
+		<p>I'm a seasoned software developer who's been building, designing and leading teams that build for the web for
+			over twenty years.</p>
+		<p>I have a broad and varied experienced right across the stack, with an emphasis on the front end. Over the
+			years I've been exposed to a wide array of patterns, technologies and architechtures, with a heavy focus on
+			client-side web application development for startups &amp; NGOs working with componenent based front-end
+			libraries &amp; frameworks and paradigms like React &amp; Next.js for a large proportion of the latter part
+			of my career.</p>
+		<p>I have an adaptable pesonality who's just as comfortable with rolling up my sleeves and gettting my hands
+			dirty as I am operating at the strategic and people managment levels or liasing with and facilitating
+			stakeholders and clients.</p>
+		<p>It's important to me that my work has real purpose beyond pure capatalistic gain and ideally produces a net
+			benefit for humankind. I'm particularly interested in and have been privileged enough to have had the
+			opportunity to work on a number of projects in the public, global and private health sectors, which is
+			something I would love to continue doing.</p>
 	</div>
 
-	<div class="grid skills">
+	<div class="columns skills">
 		<div class="flow">
 			<h2>Primary Skillset:</h2>
 			<ul>
@@ -200,17 +208,28 @@ padding: var(--space-s);
 	</div>
 	<div class="flow">
 		<h2>My developer story</h2>
-		<p>Starting out building table based layouts and CGI backends as a teenager in the mid nineties, the journey ever since has been of continual self-learning, re-learning and iteration.</p>
-		<p>Fast forward over two decades later and you can find me building and leading teams that build high quality, highly performant, accessible and engaging, web applications and web sites with the web platform first, along with the help of other technologies such as React, Zustand, Next.js, Remix, RPC, GrapQL, REST, React Query, Astro, Eleventy, Storybook etc.</p>
-		<p>I've had a wide exposure to an array of technologies and methodologies over the years, having worked for Software Houses, Creative &amp; Digital Agencies, Startups &amp; NGOs as well as running my own small businesses.</p>
-		<p>I have an eye for detail and an appreciation for aesthetics & try my best to apply design thinking to all areas of my work.</p>
+		<p>Starting out building table based layouts and CGI backends as a teenager in the mid nineties, the journey
+			ever since has been of continual self-learning, re-learning and iteration.</p>
+		<p>Fast forward over two decades later and you can find me building and leading teams that build high quality,
+			highly performant, accessible and engaging, web applications and web sites with the web platform first,
+			along with the help of other technologies such as React, Zustand, Next.js, Remix, RPC, GrapQL, REST, React
+			Query, Astro, Eleventy, Storybook etc.</p>
+		<p>I've had a wide exposure to an array of technologies and methodologies over the years, having worked for
+			Software Houses, Creative &amp; Digital Agencies, Startups &amp; NGOs as well as running my own small
+			businesses.</p>
+		<p>I have an eye for detail and an appreciation for aesthetics & try my best to apply design thinking to all
+			areas of my work.</p>
 		<p>You can find out more <a href="https://linkedin.com/in/tthew">over on LinkedIn</a>.
 	</div>
 
 	<div class="flow">
 		<h2>About this Website</h2>
-		<p>This website was hand made by a human (me!). The front-end is a static build, built with <a href="https://11ty.dev">11ty</a> which is in turn hooked up to a <a href="https://craftcms.com/">Craft CMS</a> backend that exposes a GraphQL endpoint that I self host on a Raspberry Pi in my apartment and a webhook to trigger re-build & deployment when the data changes.</p>
-		<p>You'll be able to read about all the details soon in an upcoming blog post on how I built and architechted this site.</p>
+		<p>This website was hand made by a human (me!). The front-end is a static build, built with <a
+				href="https://11ty.dev">11ty</a> which is in turn hooked up to a <a href="https://craftcms.com/">Craft
+				CMS</a> backend that exposes a GraphQL endpoint that I self host on a Raspberry Pi in my apartment and a
+			webhook to trigger re-build & deployment when the data changes.</p>
+		<p>You'll be able to read about all the details soon in an upcoming blog post on how I built and architechted
+			this site.</p>
 		<p><strong>This website does not track you.</strong></p>
 	</div>
 </div>
