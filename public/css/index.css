@@ -36,7 +36,10 @@
 
 		/* Custom pairs */
 		--space-s-l: clamp(1.125rem, 0.6467rem + 2.3913vw, 2.5rem);
+	
+		--feature-font: "Staatliches", sans-serif;
 	}
+
 }
 
 @layer reset {
@@ -100,7 +103,10 @@
 	h5,
 	h6 {
 		text-wrap: balance;
-		font-family: Staatliches, sans-serif;
+		font-family: var(--feature-font);
+		font-optical-sizing: auto;
+		font-weight: 900;
+		font-style: normal;
 		text-transform: uppercase;
 		font-display: block;
 		margin: 0;
@@ -370,7 +376,7 @@ height: 100dvh;
 		text-underline-position: from-font;
 		text-underline-offset: 0;
 		text-decoration-thickness: 1px;
-		font-family: staatliches;
+		font-family: var(--feature-font);
 	}
 
 	.postlist-item-active .postlist-link {
@@ -405,7 +411,7 @@ height: 100dvh;
 	}
 
 	header {
-		font-family: Staatliches, sans-serif;
+		font-family: var(--feature-font);
 		text-transform: uppercase;
 		font-display: swap;
 	}
@@ -436,7 +442,7 @@ footer {
 }
 
 footer .human {
-	font-family: Staatliches;
+	font-family: var(--feature-font);
 }
 
 footer .socials ul {
