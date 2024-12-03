@@ -1,0 +1,80 @@
+---js
+const layout = "layouts/home.njk";
+const pagination = {
+data: "words",
+size: 10,
+before: function(data) { return data.filter(x => !x.rssOnly) }
+};
+
+
+---
+
+{% css %}
+main {
+display: flex;
+align-items: center;
+flex-direction: column;
+flex: 1;
+}
+
+main > .contact {
+    {# display: flex; #}
+    flex-direction: column;
+width: 80ch;
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--space-s);
+    padding-bottom: var(--space-2xl);
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+}
+
+.field input {
+    padding: var(--space-2xs);
+}
+
+{% endcss %}
+
+<div class="contact flow">
+    <h1>Get in touch</h1>
+    <p>I'm currently open for new opportunties.</p>
+    <p>If you'd like to reach out, I'd love to hear from you.</p>
+    <p>
+        You can catch me in all the usual places. Feel free to send me a
+        message using the contact form or alternatively   <a href="mailto:hallo@tthew.berlin">drop me an email</a>.
+    </p>
+    <form data-netlify="true" data-netlify-honeypot="username" method="post" name="contact">
+        <input name="username" class="visually-hidden" />
+        <div class="field">
+            <label for="contact-form-field__name">
+                Name
+            </label>
+
+            <input id="contact-form-field__name" placeholder="Name" name="name" type="text" required />
+        </div>
+        <div class="field">
+            <label for="contact-form-field__email">
+                Email
+            </label>
+            <input id="contact-form-field__email" placeholder="Email" name="email" type="email" required />
+        </div>
+        <div class="field">
+            <label for="contact-form-field__message">
+                Message
+            </label>
+            <textarea id="contact-form-field__message" name="message" placeholder="How can I help?" rows="10" />
+        </div>
+
+        <input type="hidden" name="form-name" value="contact" />
+        <button type="submit">
+            Hit me up!
+        </button>
+    </form>
+</div>
