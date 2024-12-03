@@ -24,27 +24,20 @@ img {
 }
 
 .image {
-padding: 0 var(--space-s);
+{# padding: 0 var(--space-s); #}
 }
 
 .grid {
 display: flex;
 align-items: flex-start;
-column-gap: var(--space-l);
- /*background: hsl(230, 1%, 98%);*/
-
-/*border: 4px solid #eee;*/
-
-border-radius: var(--space-m);
-/*box-shadow: 0px 3px 10px #eee;
-border: 1px solid #ddd;*/
+gap: var(--space-l);
 }
 
+{# @media screen and (min-width: 800px;) { #}
 .grid > * {
- flex-basis: 50%;
+ {# flex-basis: 50%; #}
 }
-
-
+{# } #}
 
 hr {
 	border: 0;
@@ -66,6 +59,7 @@ figure figcaption {
 display: flex;
 flex-direction: column;
 row-gap: var(--space-l);
+padding: 0 var(--space-s);
 padding-bottom: var(--space-2xl);
 }
 
@@ -75,6 +69,22 @@ font-weight: bold;
 background: hsl(230, 1%, 98%);
 padding: var(--space-s);
 }
+
+.skills {
+	flex-wrap: wrap;
+}
+
+@media screen and (min-width: 800px) {
+	.skills {
+		flex-wrap: nowrap;
+	}
+
+	.skills > * {
+		flex-basis: 50%;
+	}
+}
+
+
 
 .skills ul {
 	list-style: none;
@@ -92,16 +102,36 @@ padding: var(--space-s);
 	border-radius: var(--space-2xs);
 }
 
+.with-sidebar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-l);
+	
+  }
+  
+  .with-sidebar > :first-child {
+	{# flex-basis: 50%; #}
+	flex-grow: 1;
+  }
+  
+  .with-sidebar > :last-child {
+	flex-basis: 0;
+	flex-grow: 999;
+	min-inline-size: 40%;
+	{# display: flex; #}
+  }
+  
+
 {% endcss %}
 
 <div class="main-flow">
-	<div class="grid">
-  <div class="image">
-  <figure>
-  	<img src="../public/img/1564326180592.jpeg" alt="A photograph of me, wearing shades 😎" />
-   	<figcaption>Fig 1. It's me!</figcaption>
-  </figure>
-  </div>
+  	<div class="with-sidebar">
+		<div class="image">
+			<figure>
+				<img src="../public/img/1564326180592.jpeg" alt="A photograph of me, wearing shades 😎" />
+				<figcaption>Fig 1. It's me!</figcaption>
+			</figure>
+		</div>
 		<div class="content flow">
 			<h1>Tthew who?!</h1>
 			<p>Hi. I'm Matt. A Senior Staff / Principal Software Developer based in Berlin, Germany.</p>
@@ -111,64 +141,64 @@ padding: var(--space-s);
 		</div>
 	</div>
 
-<div class="callout">
-	Currently open to exploring new opportunities for 2025. Get in touch!
-</div>
+	<div class="callout">
+		Currently open to exploring new opportunities for 2025. <a href="/contact">Get in touch!</a>
+	</div>
 
-<div class="flow">
+	<div class="flow">
 		<h2>Profile</h2>
 		<p>I'm a seasoned software developer who's been building, designing and leading teams that build for the web for over twenty years.</p>
 		<p>I have a broad and varied experienced right across the stack, with an emphasis on the front end. Over the years I've been exposed to a wide array of patterns, technologies and architechtures, with a heavy focus on client-side web application development for startups &amp; NGOs working with componenent based front-end libraries &amp; frameworks and paradigms like React &amp; Next.js for a large proportion of the latter part of my career.</p>
 		<p>I have an adaptable pesonality who's just as comfortable with rolling up my sleeves and gettting my hands dirty as I am operating at the strategic and people managment levels or liasing with and facilitating stakeholders and clients.</p>
 		<p>It's important to me that my work has real purpose beyond pure capatalistic gain and ideally produces a net benefit for humankind. I'm particularly interested in and have been privileged enough to have had the opportunity to work on a number of projects in the public, global and private health sectors, which is something I would love to continue doing.</p>
-</div>
+	</div>
 
-<div class="grid skills">
-	<div class="flow">
-		<h2>Primary Skillset:</h2>
-		<ul>
-			<li>Web Platform (HTML, CSS, Javascript, DOM & Web APIs)</li>
-			<li>React (+ Ecosystem)</li>
-			<li>Typescript</li>
-			<li>Engineering Management</li>
-			<li>System & Software Design</li>
-			<li>Technical Leadership</li>
-			<li>Code Review & Stewardship</li>
-			<li>Design Handoff, Design Systems &amp; Documentation</li>
-			<li>Mentoring</li>
-			<li><abbr>A11y</abbr>&nbsp;&amp;&nbsp;<abbr>Ux</abbr></li>
-		</ul>
-		<h2>Other Skills:</h2>
-		<ul>
-			<li>Offline-first & Distibuted Systems</li>
-			<li>DJing &amp; Music Production</li>
-			<li>Visual &amp; Web Design</li>
-			<li>Leading in company culture</li>
-			<li>Baking Sourdough</li>
+	<div class="grid skills">
+		<div class="flow">
+			<h2>Primary Skillset:</h2>
+			<ul>
+				<li>Web Platform (HTML, CSS, Javascript, DOM & Web APIs)</li>
+				<li>React (+ Ecosystem)</li>
+				<li>Typescript</li>
+				<li>Engineering Management</li>
+				<li>System & Software Design</li>
+				<li>Technical Leadership</li>
+				<li>Code Review & Stewardship</li>
+				<li>Design Handoff, Design Systems &amp; Documentation</li>
+				<li>Mentoring</li>
+				<li><abbr>A11y</abbr>&nbsp;&amp;&nbsp;<abbr>Ux</abbr></li>
+			</ul>
+			<h2>Other Skills:</h2>
+			<ul>
+				<li>Offline-first & Distibuted Systems</li>
+				<li>DJing &amp; Music Production</li>
+				<li>Visual &amp; Web Design</li>
+				<li>Leading in company culture</li>
+				<li>Baking Sourdough</li>
 
-		</ul>
+			</ul>
+		</div>
+		<div class="flow">
+			<h2>Things I'm good at (and like doing):</h2>
+			<ul>
+				<li>Building scalable Frontend Codebases</li>
+				<li>Building & Leading Cross Functional Engineering Teams</li>
+				<li>Technical Strategy</li>
+				<li>Mentoring &amp; Supporting Career Development</li>
+				<li>Systems Design</li>
+				<li>Developer experience &amp; tooling</li>
+				<li>Project bootstrapping</li>
+				<li>Building things from scratch</li>
+				<li>Maintaining & improving legacy systems</li>
+				<li>Managing tech debt</li>
+				<li>Testing strategy</li>
+				<li>Design Systems &amp; Component Libraries</li>
+				<li>Scaling codebases</li>
+				<li>Technical Writing</li>
+			</ul>
+		</div>
 	</div>
 	<div class="flow">
-		<h2>Things I'm good at (and like doing):</h2>
-		<ul>
-			<li>Building scalable Frontend Codebases</li>
-			<li>Building & Leading Cross Functional Engineering Teams</li>
-			<li>Technical Strategy</li>
-			<li>Mentoring &amp; Supporting Career Development</li>
-			<li>Systems Design</li>
-			<li>Developer experience &amp; tooling</li>
-			<li>Project bootstrapping</li>
-			<li>Building things from scratch</li>
-			<li>Maintaining & improving legacy systems</li>
-			<li>Managing tech debt</li>
-			<li>Testing strategy</li>
-			<li>Design Systems &amp; Component Libraries</li>
-			<li>Scaling codebases</li>
-			<li>Technical Writing</li>
-		</ul>
-	</div>
-</div>
-<div class="flow">
 		<h2>My developer story</h2>
 		<p>Starting out building table based layouts and CGI backends as a teenager in the mid nineties, the journey ever since has been of continual self-learning, re-learning and iteration.</p>
 		<p>Fast forward over two decades later and you can find me building and leading teams that build high quality, highly performant, accessible and engaging, web applications and web sites with the web platform first, along with the help of other technologies such as React, Zustand, Next.js, Remix, RPC, GrapQL, REST, React Query, Astro, Eleventy, Storybook etc.</p>
@@ -177,10 +207,10 @@ padding: var(--space-s);
 		<p>You can find out more <a href="https://linkedin.com/in/tthew">over on LinkedIn</a>.
 	</div>
 
-<div class="flow">
-	<h2>About this Website</h2>
-	<p>This website was hand made by a human (me!). The front-end is a static build, built with <a href="https://11ty.dev">11ty</a> which is in turn hooked up to a <a href="https://craftcms.com/">Craft CMS</a> backend that exposes a GraphQL endpoint that I self host on a Raspberry Pi in my apartment and a webhook to trigger re-build & deployment when the data changes.</p>
-	<p>You'll be able to read about all the details soon in an upcoming blog post on how I built and architechted this site.</p>
-	<p><strong>This website does not track you.</strong></p>
-</div>
+	<div class="flow">
+		<h2>About this Website</h2>
+		<p>This website was hand made by a human (me!). The front-end is a static build, built with <a href="https://11ty.dev">11ty</a> which is in turn hooked up to a <a href="https://craftcms.com/">Craft CMS</a> backend that exposes a GraphQL endpoint that I self host on a Raspberry Pi in my apartment and a webhook to trigger re-build & deployment when the data changes.</p>
+		<p>You'll be able to read about all the details soon in an upcoming blog post on how I built and architechted this site.</p>
+		<p><strong>This website does not track you.</strong></p>
+	</div>
 </div>
