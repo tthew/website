@@ -1,0 +1,37 @@
+---js
+const layout = "layouts/home.njk";
+const pagination = {
+data: "words",
+size: 10,
+before: function(data) { return data.filter(x => !x.rssOnly) }
+};
+
+
+---
+
+{% css %}
+main {
+display: flex;
+align-items: center;
+flex-direction: column;
+flex: 1;
+}
+
+main > .contact {
+    flex-direction: column;
+    width: 80ch;
+    max-width: 100%;
+    padding: 0 var(--space-xs);
+}
+
+
+
+{% endcss %}
+
+<div class="contact flow">
+    <h1>Message Sent!</h1>
+    <p>Thanks for reaching out, your message has been successfully sent.</p>
+    <p>I'll do my best to get back to you at my earliest convienience.</p>
+    <p><a href="/contact">Send another message</a></p>
+    </form>
+</div>
