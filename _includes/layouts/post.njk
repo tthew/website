@@ -1,8 +1,8 @@
 ---
 layout: layouts/base.njk
 pagination:
-  data: words
-  size: 1
+data: words
+size: 1
 ---
 {# Only include the syntax highlighter CSS on blog posts, included with the CSS per-page bundle #}
 {%- css %}{% include "public/css/prism-one-light.css" %}{% endcss %}
@@ -10,74 +10,75 @@ pagination:
 
 {% css %}
 
-	article {
-		padding-top: var(--space-xl);
-	}
+article {
+padding-top: var(--space-xl);
+}
 
-  article > * + * {
-    margin-top: var(--space-xs);
-  }
+article > * + * {
+margin-top: var(--space-xs);
+}
 
-  article > * + h2 {
-    margin-top: var(--space-l);
-  }
+article > * + h2 {
+margin-top: var(--space-l);
+}
 
-  article > * + h3 {
-    margin-top: var(--space-m);
-  }
+article > * + h3 {
+margin-top: var(--space-m);
+}
 
-  article > * + h4 {
-    margin-top: var(--space-s);
-  }
+article > * + h4 {
+margin-top: var(--space-s);
+}
 
-   h1,
-   h2,
-   h3,
-   h4,
-   h5,
-   h6 {
-    line-height: calc(1rem + .66em);
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+line-height: calc(1rem + .66em);
+}
 
-  h1 {
-	font-size: calc(var(--step-4) * 2);
-	font-weight: 900;
-	text-transform: uppercase;
-	padding-top: var(--space-xs);
-	{# font-variant: small-caps; #}
-  }
+h1 {
+font-size: calc(var(--step-4) * 2);
+font-weight: 900;
+text-transform: uppercase;
+padding-top: var(--space-xs);
+{# font-variant: small-caps; #}
+}
 
-  article {
-	font-size: var(--step-0);
-	padding-bottom: var(--space-2xl);
-  }
+article {
+font-size: var(--step-0);
+padding-bottom: var(--space-2xl);
+}
 
-  article p:first-child {
-  	font-size: var(--step-1);
-   	padding-bottom: var(--space-s);
-   	color: #333;
-  }
+article p:first-child {
+font-size: var(--step-1);
+padding-bottom: var(--space-s);
+color: #333;
+}
 
 
-  main:has(.post) {
-  	display: flex;
-   	justify-content: center;
-  }
+main:has(.post) {
+display: flex;
+justify-content: center;
+}
 
- .post {
-    max-width: 75ch;
-  }
+.post {
+max-width: 75ch;
+}
 {% endcss %}
+
 <div class="post">
-<h1>{{ post.title }}</h1>
+  <h1>{{ post.title }}</h1>
 
-<ul class="post-metadata">
-	<li><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></li>
-	{%- for tag in tags | filterTagList %}
-	{%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-	<li><a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a>{%- if not loop.last %}, {% endif %}</li>
-	{%- endfor %}
-</ul>
+  <ul class="post-metadata">
+    <li><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></li>
+    {%- for tag in tags | filterTagList %}
+    {%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+    <li><a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a>{%- if not loop.last %}, {% endif %}</li>
+    {%- endfor %}
+  </ul>
 
-{{ content | safe }}
+  {{ content | safe }}
 </div>

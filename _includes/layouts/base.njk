@@ -46,20 +46,18 @@
 
 		<header>
 			<a href="/" class="home-link">@{{ metadata.title }}</a>
-
-			{#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
 			<nav>
 				<h2 class="visually-hidden">Top level navigation menu</h2>
 				<ul class="nav">
-				{%- for entry in collections.all | eleventyNavigation %}
-					<li class="nav-item"><a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a></li>
-				{%- endfor %}
+					<li class="nav-item"><a href="/"{% if "/" == page.url %} aria-current="page"{% endif %}>Home</a></li>	
+					<li class="nav-item"><a href="/about"{% if "/about/" == page.url %} aria-current="page"{% endif %}>About</a></li>
 					<li class="nav-item"><a href="/words"{% if "/words/" == page.url %} aria-current="page"{% endif %}>Words</a></li>
-					<li class="nav-item"><a href="/feed/feed.xml">Feed</a></li>
+					<li class="nav-item"><a href="/contact"{% if "/contact/" == page.url %} aria-current="page"{% endif %}>Contact</a></li>
+					{# <li class="nav-item"><a href="/feed/feed.xml">Feed</a></li> #}
 				</ul>
 			</nav>
 		</header>
-	<div class="container">
+	{# <div class="container"> #}
 
 
 		<main id="skip">
@@ -69,8 +67,9 @@
 		<footer>
 			<div class="impressum">
 				<p class="human">Made by a human, with love, in berlin.</p>
-				<p class="copyright">Copyright &copy; Matthew Richards 2024.</p>
 				<p>All Rights Reserved.</p>
+				<p class="copyright">Copyright &copy; Matthew Richards {% year %}.</p>
+				<p>This website does not track you.</p>
 			</div>
 			<div class="socials">
 				<ul>
@@ -101,7 +100,7 @@
 				</ul>
 			</div>
 		</footer>
-		</div>
+		{# </div> #}
 
 		<!-- This page `{{ page.url }}` was built on {% currentBuildDate %} -->
 		<script type="module" src="{% getBundleFileUrl "js" %}"></script>

@@ -94,4 +94,6 @@ export default function (eleventyConfig) {
 
 		return textContent;
 	});
+
+	eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 }
