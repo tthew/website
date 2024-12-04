@@ -1,10 +1,42 @@
-{%- css %}.postlist { counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }} }{% endcss %}
-<ol>
+{%- css %}
+.postlist { counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }} }
+
+ol.postlist > * + * {
+	margin-top: var(--space-l);
+}
+.postlist-item {
+	display: flex;
+	flex-direction: column;
+	row-gap: var(--space-2xs);
+}
+
+.postlist-item .meta {
+	display: flex;
+	font-size: var(--step--1);
+	color: light-dark(#333, #bbb);
+}
+.postlist-item .meta time {
+	font-size: var(--step--1);
+}
+
+.postlist-item .blurb {
+	font-size: var(--step-0);	
+	text-wrap: balance;
+}
+.postlist-link {
+	font-size: var(--step-1);
+}
+{% endcss %}
+<ol class="postlist">
 {%- for post in postslist | reverse %}
-	<li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
-		<a href="/words/{{ post.slug }}" class="postlist-link">{% if post.title %}{{ post.title }}{% else %}<code>/blog/{{ post.slug }}</code>{% endif %}</a>
-		<time class="postlist-date" datetime="{{ post.date  }}">{{ post.date | readableDate("DD") }}</time>
-		<p>{{ post.body | markdown | blurb }}</p>
+	<li class="postlist-item">
+		<div>
+			<a href="/words/{{ post.slug }}" class="postlist-link">{% if post.title %}{{ post.title }}{% else %}<code>/blog/{{ post.slug }}</code>{% endif %}</a>
+			<div class="meta">
+				<time class="postlist-date" datetime="{{ post.date  }}">{{ post.date | readableDate("DD") }}</time>&nbsp;· {{ post.body | markdown | wordCount }} · {{ post.body | markdown |readingTime }}
+			</div>
+		</div>
+		<p class="blurb">{{ post.body | markdown | blurb }}</p>
 	</li>
 {%- endfor %}
 </ol>

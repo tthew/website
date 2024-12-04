@@ -95,5 +95,33 @@ export default function (eleventyConfig) {
 		return textContent;
 	});
 
+	eleventyConfig.addFilter("readingTime", (content) => {
+		const dom = new jsdom.JSDOM(content);
+		const textContent = dom.window.document.body.textContent;
+		const WORDS_PER_MINUTE = 200;
+		const words = textContent.split(" ").length;
+		const minutesToRead = Math.ceil(words / WORDS_PER_MINUTE);
+	
+		return `about ${minutesToRead} minute${minutesToRead > 1 ? "s" : ""}`;
+	  });
+
+	  const segmenter = new Intl.Segmenter('en-GB', {
+		granularity: 'word'
+	  });
+	
+	  eleventyConfig.addFilter("wordCount", (content) => {
+		
+
+		const dom = new jsdom.JSDOM(content);
+		const textContent = dom.window.document.body.textContent;		
+		const formatter = new Intl.NumberFormat();
+		const words = Array.from(segmenter.segment(textContent))
+		.reduce((total,v) => {
+			if(v.isWordLike) total++;
+			return total;
+		},0);
+		return `${formatter.format(words)} words`;
+	  });
+
 	eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 }

@@ -2,6 +2,7 @@
 permalink: /sitemap.xml
 layout: false
 eleventyExcludeFromCollections: true
+data:  words
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
@@ -10,6 +11,14 @@ eleventyExcludeFromCollections: true
 	<url>
 		<loc>{{ absoluteUrl }}</loc>
 		<lastmod>{{ page.date | htmlDateString }}</lastmod>
+	</url>
+{%- endfor %}
+{%- for page in words | webWords %}
+	{% set url %}{{ metadata.url }}words/{{ page.slug }}{% endset %}
+	{% set absoluteUrl %}{{ url | htmlBaseUrl(url) }}{% endset %}
+	<url>
+		<loc>{{ absoluteUrl }}</loc>
+		<lastmod>{{ page.date | toDate | htmlDateString }}</lastmod>
 	</url>
 {%- endfor %}
 </urlset>

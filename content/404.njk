@@ -1,0 +1,57 @@
+---
+layout: layouts/home.njk
+permalink: 404.html
+eleventyExcludeFromCollections: true
+---
+
+{% css %}
+  main {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    flex: 1 0 100%;
+    max-width: 100%;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .with-sidebar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xl);
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+    }
+    
+    .with-sidebar > :last-child {
+      display: block;
+      flex-grow: 1;
+    }
+    
+    .with-sidebar > :first-child {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-basis: 0;
+      flex-grow: 999;
+      min-inline-size: 40%;
+    }
+{% endcss %}
+
+
+
+<div class="with-sidebar">
+  <div>
+    <img src="../public/img/88.404.png" alt="404 Not Found" width="300" alt="An illustration of a person looking confused with a speach bubble saying '404' above their head, along with two large question marks" class="illustration"/>
+  </div>
+    <div class="flow">
+        <h1>Uh oh!</h1>
+        <p>What ever you're looking for can't be found :(</p>
+        <p>Perhaps it moved, or was deleted, or maybe you typed something wrong.</p>
+        <p>Sorry about that.</p>
+        <p>Go <a href="index.njk">home?</a></p>
+    </div>    
+</div>

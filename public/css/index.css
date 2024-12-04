@@ -1,5 +1,3 @@
-@layer reset, variables, main;
-
 @layer variables {
 	:root {
 		--step--2: clamp(0.7813rem, 0.7747rem + 0.0326vw, 0.8rem);
@@ -36,13 +34,25 @@
 
 		/* Custom pairs */
 		--space-s-l: clamp(1.125rem, 0.6467rem + 2.3913vw, 2.5rem);
-	
+
 		--feature-font: "Staatliches", sans-serif;
+
+		--dark: #111;
+		--light: oklch(100% 0 0);
+		
+		color-scheme: light dark;
+		
+		--background: light-dark(var(--light), var(--dark));
+		--text: light-dark(var(--dark), var(--light));
+
+		--callout-bg: light-dark(hsl(230, 1%, 98%), #313131);
+		--callout-fg: light-dark(#555, hsl(230, 1%, 98%));
 	}
 
 }
 
 @layer reset {
+
 	/* 1. Use a more-intuitive box-sizing model */
 	*,
 	*::before,
@@ -122,6 +132,7 @@
 }
 
 @layer main {
+
 	/* Defaults */
 	:root {
 		--font-family: -apple-system, system-ui, sans-serif;
@@ -142,32 +153,32 @@
 
 	@keyframes move-out {
 		from {
-		opacity: 1;
+			opacity: 1;
 		}
-	
+
 		to {
-		opacity: 0;
+			opacity: 0;
 		}
 	}
-  
-  @keyframes move-in {
-	from {
-	  opacity: 0;
+
+	@keyframes move-in {
+		from {
+			opacity: 0;
+		}
+
+		to {
+			opacity: 1;
+		}
 	}
-  
-	to {
-	  opacity: 1;
+
+	::view-transition-old(root) {
+		animation: 0.4s ease-in both move-out;
 	}
-  }
-  
-  /* Apply the custom animation to the old and new page states */
-  ::view-transition-old(root) {
-	animation: 0.4s ease-in both move-out;
-  }
-  
-  ::view-transition-new(root) {
-	animation: 0.4s ease-in both move-in;
-  }
+
+	::view-transition-new(root) {
+		animation: 0.4s ease-in both move-in;
+	}
+
 	html,
 	body {
 		padding: 0;
@@ -181,12 +192,12 @@
 	}
 
 	body {
-		/* max-width: 75ch; */
 		display: flex;
 		flex-direction: column;
-height: 100dvh;
-font-size: var(--step-0);
-		/* justify-content: center; */
+		min-height: 100vh;
+		font-size: var(--step-0);
+		background-color: var(--background);
+		color: var(--text);
 	}
 
 	/* https://www.a11yproject.com/posts/how-to-hide-content/ */
@@ -232,18 +243,7 @@ font-size: var(--step-0);
 		color: var(--text-color-link-active);
 	}
 
-	main,
-	footer {
-		/* padding: var(--space-xs); */
-	}
-
-	main {
-		/* display: flex;
-		flex-direction: column;
-		justify-content: center; */
-	}
-
-	main > * {
+	main>* {
 		padding: 0 var(--space-s);
 	}
 
@@ -253,25 +253,7 @@ font-size: var(--step-0);
 
 	header {
 		display: flex;
-
 		border-bottom: 1px dashed var(--color-gray-20);
-	}
-
-	.links-nextprev {
-		display: flex;
-		justify-content: space-between;
-		gap: 0.5em 1em;
-		list-style: "";
-		border-top: 1px dashed var(--color-gray-20);
-		padding: 1em 0;
-	}
-
-	.links-nextprev > * {
-		flex-grow: 1;
-	}
-
-	.links-nextprev-next {
-		text-align: right;
 	}
 
 	table {
@@ -285,14 +267,13 @@ font-size: var(--step-0);
 
 	pre,
 	code {
-		font-family: var(--font-family-monospace);
 		background: hsl(230, 1%, 98%);
 		color: #555;
-		padding: 1px 6px;
+
 	}
 
 	pre:not([class*="language-"]) {
-		margin: 0.5em 0;
+		/* margin: 0.5em 0; */
 		line-height: 1.375;
 		/* 22px /16 */
 		-moz-tab-size: var(--syntax-tab-size);
@@ -325,12 +306,10 @@ font-size: var(--step-0);
 		align-items: center;
 		justify-content: space-between;
 		padding: var(--space-s);
-		color: #333;
+		color: light-dark(#333, #fff);
 	}
 
 	.home-link {
-		font-size: 1em;
-		/* 16px /16 */
 		font-weight: 700;
 		margin-right: 2em;
 	}
@@ -350,7 +329,6 @@ font-size: var(--step-0);
 
 	.nav-item {
 		display: inline-block;
-		
 		text-align: right;
 	}
 
@@ -367,78 +345,20 @@ font-size: var(--step-0);
 		list-style: none;
 		padding: 0;
 		margin: 0;
-		/* padding-left: 1.5rem; */
 	}
 
 	.postlist-item {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: baseline;
-		/* counter-increment: start-from -1; */
-		margin-bottom: 1em;
 		flex-direction: column;
 	}
 
-	/* .postlist-item:before {
-		display: inline-block;
-		pointer-events: none;
-		content: "" counter(start-from, decimal-leading-zero) ". ";
-		line-height: 100%;
-		text-align: right;
-		margin-left: -1.5rem;
-	} */
-
-	.postlist-date,
-	.postlist-item:before {
-		font-size: 0.8125em;
-		/* 13px /16 */
-		color: var(--color-gray-90);
-	}
-
-	.postlist-date {
-		word-spacing: -0.5px;
-	}
-
 	.postlist-link {
-		font-size: 1.1875em;
-		/* 19px /16 */
-		font-weight: 700;
-		flex-basis: calc(100% - 1.5rem);
 		text-underline-position: from-font;
 		text-underline-offset: 0;
 		text-decoration-thickness: 1px;
 		font-family: var(--feature-font);
-	}
-
-	.postlist-item-active .postlist-link {
-		font-weight: bold;
-	}
-
-	/* Tags */
-	.post-tag {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		text-transform: capitalize;
-		font-style: italic;
-	}
-
-	.postlist-item > .post-tag {
-		align-self: center;
-	}
-
-	/* Tags list */
-	.post-metadata {
-		display: inline-flex;
-		flex-wrap: wrap;
-		gap: 0.5em;
-		list-style: none;
-		padding: 0;
-		margin: 0;
-	}
-
-	.post-metadata time {
-		margin-right: 1em;
 	}
 
 	header {
@@ -447,54 +367,99 @@ font-size: var(--step-0);
 		font-display: swap;
 	}
 
-	.flow > * + * {
+	.flow>*+* {
 		margin-top: var(--space-xs);
 	}
 
 
-footer {
-	display: flex;
-	/* justify-content: space-between; */
-	/* align-items: flex-end; */
-	row-gap: var(--space-s);
-	flex-direction: column;
-	background: #000;
-	padding: var(--space-l) var(--space-s);
-	color: #fff;
-	fill: #fff;
-}
-
-@media screen and (min-width: 600px) {
 	footer {
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: flex-end;	
+		display: flex;
+		row-gap: var(--space-s);
+		flex-direction: column;
+		background: light-dark(var(--dark), var(--callout-bg));
+		padding: var(--space-l) var(--space-s);
+		color: var(--light);
+
+	}
+
+	footer .small {
+		font-size: var(--step--2);
+		color: #999;
+
+	}
+
+	@media screen and (min-width: 600px) {
+		footer {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-end;
+		}
+	}
+
+	footer .human {
+		font-family: var(--feature-font);
+	}
+
+	footer .socials ul {
+		display: flex;
+		column-gap: var(--space-2xs);
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+
+	footer .socials ul li a {
+		fill: var(--light);
+	}
+
+	main {
+		display: flex;
+	}
+
+	.container {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.callout {
+		text-align: center;
+		border-radius: 4px;
+		background: var(--callout-bg);
+		padding: var(--space-s);
+		font-weight: 400;
+		color: var(--callout-fg);
+		padding: var(--space-s) var(--space-l);
+	}
+	
+	.callout:has(picture) {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		
+		gap: var(--space-s);
+	}
+
+	.callout:has(picture) img {
+		min-width: 64px;
+		min-height: 64px;
+		} 
+
+	.callout:has(picture) > * {
+
+		 text-align: left;
+	}
+
+	.callout .icon {
+		width: 64px;
+		height: 64px;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		.illustration {
+			filter: brightness(5) hue-rotate(250deg);
+		
 	}
 }
 
-footer .human {
-	font-family: var(--feature-font);
-}
 
-footer .socials ul {
-	display: flex;
-	column-gap: var(--space-2xs);
-	padding: 0;
-	margin: 0;
-	list-style: none;
-}
-
-footer .socials ul li a {
-	fill: #fff;
-}
-
-main {
-	display: flex;
-}
-
-.container {
-	display: flex;
-	flex-direction: column;
-	/* flex: 1 0 100%; */
-}
-}
+@layer reset, variables, main;

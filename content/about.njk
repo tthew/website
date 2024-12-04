@@ -19,14 +19,7 @@ main > * {
 max-width: 80ch;
 }
 
-img {
-	border-radius: 50%;
-	max-width: 300px;
-}
 
-@media screen and (min-width: 400px) {
-	max-width: 400px;
-}
 
 .columns {
 display: flex;
@@ -58,22 +51,6 @@ padding: 0 var(--space-s);
 padding-bottom: var(--space-2xl);
 }
 
-.callout {
-text-align: center;
-background: hsl(230, 1%, 98%);
-padding: var(--space-s);
-font-weight: 400;
-color: #555;
---deg: 532;
-
-{# border: 1px solid hsl(var(--deg) 41.41% 85.67%);
-text-align: center;
-
-background: hsl(var(--deg) 39.11% 92.85%);
-padding: var(--space-s);
-color: hsl(var(--deg) 40.31% 54.92%); #}
-}
-
 .skills {
 flex-wrap: wrap;
 }
@@ -98,7 +75,8 @@ gap: var(--space-s);
 
 .skills ul li {
 display: flex;
-background: hsl(230, 1%, 98%);
+background: var(--callout-bg);
+color: var(--callout-fg);
 max-width: 150px;
 padding: var(--space-2xs);
 border-radius: var(--space-2xs);
@@ -120,6 +98,48 @@ flex-basis: 0;
 flex-grow: 999;
 min-inline-size: 40%;
 }
+
+.with-sidebar img {
+	border-radius: 50%;
+	max-width: 300px;
+}
+
+{# @media screen and (min-width: 400px) {
+	
+	max-width: 400px;
+} #}
+.icon {
+	width: 64px;
+	height: 64px;
+}
+
+.switcher {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-l);
+  }
+  
+  .switcher > * {
+	flex-grow: 1;
+	flex-basis: calc(( 50rem - 100%) * 999);
+  }
+  
+  .switcher > :nth-last-child(n+ 3),
+  .switcher > :nth-last-child(n+ 3) ~ * {
+	flex-basis: 100%;
+	order:0
+  }
+	
+
+  @media screen and (max-width: 50rem) {
+	.flip :first-child {
+	order: 1;
+	}
+
+	.flip :last-child {
+		order: 0;
+	}
+  }
 
 {% endcss %}
 
@@ -144,26 +164,42 @@ min-inline-size: 40%;
 	</div>
 
 	<div class="callout">
-		Currently open to exploring new opportunities for 2025. <a href="/contact">Get in touch!</a>
+		<img src="../public/img/119.Advertise.png"  width="64" height="64" class="icon illustration" alt="An illustration of a man making an announcement with a megaphone."/>
+		<p>I'm currently open to exploring new opportunities for 2025. <a href="/contact">Get in touch!</a></p>
 	</div>
+	<div class="switcher flip">
 
-	<div class="flow">
-		<h2>Profile</h2>
-		<p>I'm a seasoned software developer who's been building, designing and leading teams that build for the web for
-			over twenty years.</p>
-		<p>I have a broad and varied experienced right across the stack, with an emphasis on the front end. Over the
-			years I've been exposed to a wide array of patterns, technologies and architechtures, with a heavy focus on
-			client-side web application development for startups &amp; NGOs working with componenent based front-end
-			libraries &amp; frameworks and paradigms like React &amp; Next.js for a large proportion of the latter part
-			of my career.</p>
-		<p>I have an adaptable pesonality who's just as comfortable with rolling up my sleeves and gettting my hands
-			dirty as I am operating at the strategic and people managment levels or liasing with and facilitating
-			stakeholders and clients.</p>
-		<p>It's important to me that my work has real purpose beyond pure capatalistic gain and ideally produces a net
-			benefit for humankind. I'm particularly interested in and have been privileged enough to have had the
-			opportunity to work on a number of projects in the public, global and private health sectors, which is
-			something I would love to continue doing.</p>
+		<div class="flow">
+			<h2>Profile</h2>
+			<p>I'm a seasoned software developer who's been building, designing and leading teams that build for the web for
+				over twenty years.</p>
+			<p>I have a broad and varied experienced right across the stack, with an emphasis on the front end. Over the
+				years I've been exposed to a wide array of patterns, technologies and architechtures, with a heavy focus on
+				client-side web application development for startups &amp; NGOs working with componenent based front-end
+				libraries &amp; frameworks and paradigms like React &amp; Next.js for a large proportion of the latter part
+				of my career.</p>
+			
+		</div>
+		<div>
+			<img src="../public/img/360.Carpenter.png"  alt="An illustration of a man making an announcement with a megaphone." class="illustration" />
+			</div>
 	</div>
+	<div class="switcher">
+		<div>
+			<img src="../public/img/354.Pros-And-Cons.png"  alt="An illustration of a man making an announcement with a megaphone."  class="illustration" />
+			</div>
+		<div class="flow">
+			<p>I have an adaptable pesonality who's just as comfortable with rolling up my sleeves and gettting my hands
+				dirty as I am operating at the strategic and people managment levels or liasing with and facilitating
+				stakeholders and clients.</p>
+			<p>It's important to me that my work has real purpose beyond pure capatalistic gain and ideally produces a net
+				benefit for humankind. I'm particularly interested in and have been privileged enough to have had the
+				opportunity to work on a number of projects in the public, global and private health sectors, which is
+				something I would love to continue doing.</p>
+		</div>
+
+	</div>
+	
 
 	<div class="columns skills">
 		<div class="flow">
@@ -210,6 +246,8 @@ min-inline-size: 40%;
 			</ul>
 		</div>
 	</div>
+	<div class="switcher">
+
 	<div class="flow">
 		<h2>My developer story</h2>
 		<p>Starting out building table based layouts and CGI backends as a teenager in the mid nineties, the journey
@@ -218,6 +256,16 @@ min-inline-size: 40%;
 			highly performant, accessible and engaging, web applications and web sites with the web platform first,
 			along with the help of other technologies such as React, Zustand, Next.js, Remix, RPC, GrapQL, REST, React
 			Query, Astro, Eleventy, Storybook etc.</p>
+	</div>
+	<div>
+		<img src="../public/img/310.Fast-Internet.png" alt="An illustration of a man making an announcement with a megaphone." class="illustration" />
+		</div>
+	</div>
+	<div class="switcher flip">
+		<div>
+			<img src="../public/img/428.Route.png" alt="An illustration of a man making an announcement with a megaphone." class="illustration" />
+			</div>
+	<div class="flow">
 		<p>I've had a wide exposure to an array of technologies and methodologies over the years, having worked for
 			Software Houses, Creative &amp; Digital Agencies, Startups &amp; NGOs as well as running my own small
 			businesses.</p>
@@ -226,14 +274,22 @@ min-inline-size: 40%;
 		<p>You can find out more <a href="https://linkedin.com/in/tthew">over on LinkedIn</a>.
 	</div>
 
-	<div class="flow">
-		<h2>About this Website</h2>
-		<p>This website was hand made by a human (me!). The front-end is a static build, built with <a
-				href="https://11ty.dev">11ty</a> which is in turn hooked up to a <a href="https://craftcms.com/">Craft
-				CMS</a> backend that exposes a GraphQL endpoint that I self host on a Raspberry Pi in my apartment and a
-			webhook to trigger re-build & deployment when the data changes.</p>
-		<p>You'll be able to read about all the details soon in an upcoming blog post on how I built and architechted
-			this site.</p>
-		<p><strong>This website does not track you.</strong></p>
+	</div>
+	<div class="switcher">
+
+		<div class="flow">
+			<h2>About this Website</h2>
+			<p>This website was hand made by a human (me!). The front-end is a static build, built with <a
+					href="https://11ty.dev">11ty</a> which is in turn hooked up to a <a href="https://craftcms.com/">Craft
+					CMS</a> backend that exposes a GraphQL endpoint that I self host on a Raspberry Pi in my apartment and a
+				webhook to trigger re-build & deployment when the data changes.</p>
+			<p>You'll be able to read about all the details soon in an upcoming blog post on how I designed and built
+				this site.</p>
+			<p>Illustrations from the <a href="https://notioly.com/">Notioly</a> pack by the talented <a href="https://bio.link/maryamato">Mary Mato</a>.</p>
+			<p><strong>This website does not track you.</strong></p>
+		</div>
+		<div>
+			<img src="../public/img/315.Knowledge-Base.png" alt="An illustration of a person making an announcement with a megaphone." class="illustration" />
+		</div>
 	</div>
 </div>
