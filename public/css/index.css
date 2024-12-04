@@ -55,7 +55,7 @@
 		--background: light-dark(var(--light), var(--dark));
 		--text: light-dark(var(--dark),  hwb(213 78% 16% / 1));
 
-		--callout-bg: light-dark(hsl(230, 1%, 98%),hwb(195.13deg 16.7% 80.28%));
+		--callout-bg: light-dark(rgba(0,0,0,0.02),rgba(255,255,255, 0.03));
 		--callout-fg: light-dark(#555, hsl(230, 1%, 98%));
 	}
 
