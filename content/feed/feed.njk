@@ -32,7 +32,7 @@ eleventyExcludeFromCollections: true
     <id>{{ absolutePostUrl }}</id>
     <content
       type="html"
-      >{{ post.body | transformWithHtmlBase(absolutePostUrl, post.url) }}</content
+      >{{ post.body | markdown | transformWithHtmlBase(absolutePostUrl, post.url) }}</content
     >
   </entry>
   {%- endfor %}
