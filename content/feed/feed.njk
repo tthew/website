@@ -24,15 +24,34 @@ eleventyExcludeFromCollections: true
   </author>
   {%- for post in words  %}
 {% set absolutePostUrl %}{% if post.rssOnly !== true %}{{ metadata.url }}/words/{{ post.slug }}{% endif %}{% endset %}
+{% set id %}{% if post.rssOnly === true %}{{ post.slug }}{% else %}{{ absolutePostUrl}}{% endif %}{% endset %}
   <entry>
     <title>{{ post.title }}</title>
     {% if absolutePostUrl %}<link href="{{ absolutePostUrl }}" />{% endif %}
-    <wat>{{ post.date }}</wat>
 		<updated>{{ post.date | toDate | dateToRfc3339 }}</updated>
-    <id>{{ absolutePostUrl }}</id>
+    <id>{{ id }}</id>
     <content
       type="html"
-      >{{ post.body | markdown | transformWithHtmlBase(absolutePostUrl, post.url) }}</content
+      >
+      {{ post.body | markdown | transformWithHtmlBase(absolutePostUrl, post.url) }}
+
+      &lt;hr /&gt;
+  
+
+      &lt;p&gt;
+        Reply via:
+        
+
+        &lt;a
+          href=&quot;mailto:hallo@tthew.berlin?subject=Re:%20{{ absolutePostUrl }}&quot;
+          &gt;Email&lt;/a
+        &gt;
+        :: &lt;a href=&quot;https://techhub.social/@tthew&quot;&gt;Mastodon&lt;/a&gt; ::
+
+        &lt;a href=&quot;https://ma.tthew.berlin/contact&quot;&gt;Website&lt;/a&gt;
+      &lt;/p&gt;
+
+      </content
     >
   </entry>
   {%- endfor %}
