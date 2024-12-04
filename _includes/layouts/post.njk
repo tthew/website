@@ -7,7 +7,8 @@ size: 1
 {# Only include the syntax highlighter CSS on blog posts, included with the CSS per-page bundle #}
 {%- css %}{% include "public/css/prism-one-light.css" %}{% endcss %}
 {%- css %}{% include "public/css/prism-diff.css" %}{%- endcss %}
-
+	{#- Add the heading-anchors web component to the JavaScript bundle #}
+	
 {% css %}
 
 main {
@@ -98,3 +99,5 @@ max-width: 100%;
 
   {{ content | safe }}
 </div>
+
+{%- js %}{% include "node_modules/@zachleat/heading-anchors/heading-anchors.js" %}{% endjs %}
