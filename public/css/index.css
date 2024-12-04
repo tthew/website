@@ -38,12 +38,12 @@
 		--feature-font: "Staatliches", sans-serif;
 
 		--dark: #111;
-		--light: oklch(100% 0 0);
+		--light: #fff;
 		
 		color-scheme: light dark;
 		
 		--background: light-dark(var(--light), var(--dark));
-		--text: light-dark(var(--dark), var(--light));
+		--text: light-dark(var(--dark),  hwb(213 78% 16% / 1));
 
 		--callout-bg: light-dark(hsl(230, 1%, 98%), #313131);
 		--callout-fg: light-dark(#555, hsl(230, 1%, 98%));
@@ -376,7 +376,7 @@
 		display: flex;
 		row-gap: var(--space-s);
 		flex-direction: column;
-		background: light-dark(var(--dark), var(--callout-bg));
+		background: light-dark(var(--dark), #000);
 		padding: var(--space-l) var(--space-s);
 		color: var(--light);
 
@@ -457,7 +457,21 @@
 	@media (prefers-color-scheme: dark) {
 		.illustration {
 			filter: brightness(5) hue-rotate(250deg);
-		
+		}
+
+		body {
+			--hdr-gradient: radial-gradient(
+				farthest-corner circle at 50% 0% in oklab,
+				rgb(0% 0% 0%) 0%, rgb(17% 17% 17%) 100%
+			  );
+			  --sdr-gradient: radial-gradient(
+				farthest-corner circle at 50% 0%,
+				#000 0%, #2b2b2b 100%
+			  );
+			  background: var(--hdr-gradient);
+			  background-repeat: no-repeat;
+			  background-attachment: fixed;
+		}
 	}
 }
 
