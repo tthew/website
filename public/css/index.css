@@ -1,3 +1,13 @@
+
+@font-face {
+	font-family: fallback-font;
+	src: local(Impact); /* required! */
+	/* advance-override: 1017;
+	ascent-override: 0;
+	descent-override: 0;
+	line-gap-override: normal; */
+  }
+
 @layer variables {
 	:root {
 		--step--2: clamp(0.7813rem, 0.7747rem + 0.0326vw, 0.8rem);
@@ -35,7 +45,7 @@
 		/* Custom pairs */
 		--space-s-l: clamp(1.125rem, 0.6467rem + 2.3913vw, 2.5rem);
 
-		--feature-font: "Staatliches", sans-serif;
+		--feature-font: "Staatliches", fallback-font;
 
 		--dark: #111;
 		--light: #fff;
@@ -106,6 +116,8 @@
 		text-wrap: pretty;
 	}
 
+
+
 	h1,
 	h2,
 	h3,
@@ -120,6 +132,8 @@
 		text-transform: uppercase;
 		font-display: block;
 		margin: 0;
+		font-display: optional;
+
 	}
 
 	/*
@@ -184,6 +198,7 @@
 		padding: 0;
 		margin: 0 auto;
 		font-family: var(--font-family);
+		font-display: swap;
 	}
 
 	html {
