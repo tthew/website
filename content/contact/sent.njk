@@ -1,37 +1,58 @@
----js
-const layout = "layouts/home.njk";
-const pagination = {
-data: "words",
-size: 10,
-before: function(data) { return data.filter(x => !x.rssOnly) }
-};
-
+---
+eleventyExcludeFromCollections: true
+layout: "layouts/home.njk"
 
 ---
 
 {% css %}
-main {
-display: flex;
-align-items: center;
-flex-direction: column;
-flex: 1;
-}
-
-main > .contact {
+  main {
+    
+    display: flex;
     flex-direction: column;
-    width: 80ch;
+    align-items: center;
+    min-height: 100vh;
+    flex: 1 0 100%;
     max-width: 100%;
-    padding: 0 var(--space-xs);
-}
+    
+    padding: 0;
+  }
 
-
-
+  .with-sidebar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xl);
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      
+    }
+    
+    .with-sidebar > :last-child {
+        flex-basis: 50%;
+      flex-grow: 1;
+    }
+    
+    .with-sidebar > :first-child {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-basis: 0;
+      flex-grow: 999;
+      min-inline-size: 45%;
+    }
 {% endcss %}
 
-<div class="contact flow">
-    <h1>Message Sent!</h1>
-    <p>Thanks for reaching out, your message has been successfully sent.</p>
-    <p>I'll do my best to get back to you at my earliest convienience.</p>
-    <p><a href="/contact">Send another message</a></p>
-    </form>
+
+
+<div class="with-sidebar">
+  <div>
+    <img src="../../public/img/186.Email-Delivery.png" alt="404 Not Found"  alt="An illustration of a person looking confused with a speach bubble saying '404' above their head, along with two large question marks" class="illustration" />
+    {# <img src="../../public/img/88.404.png" alt="404 Not Found" width="300" alt="An illustration of a person looking confused with a speach bubble saying '404' above their head, along with two large question marks" class="illustration"/> #}
+  </div>
+    <div class="flow">
+        <h1>Message Sent!</h1>
+        <p>Thanks for reaching out, your message has been successfully sent.</p>
+        <p>I'll do my best to get back to you at my earliest convienience.</p>
+        <p><a href="/contact">Send another message</a></p>
+    </div>    
 </div>

@@ -2,10 +2,10 @@ export default {
 	title: "tthew",
 	url: "https://ma.tthew.berlin/",
 	language: "en",
-	description: "I am writing about my experiences as a naval navel-gazer.",
+	description: "Hi, I'm Matt. A Senior Staff / Principal Software Engineer based in Berlin, Germany. I like HTML, CSS, Javascript (Typescript) and building great things with them!",
 	author: {
-		name: "Matthew Richards",
-		email: "m@tthew.berlin",
+		name: "Matt Richards",
+		email: "hallo@tthew.berlin",
 		url: "https://ma.tthew.berlin"
 	}
 }

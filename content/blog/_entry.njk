@@ -5,16 +5,27 @@ pagination:
   alias: post
 permalink: words/{{ post.slug }}/index.html
 layout: layouts/post.njk
+eleventyExcludeFromCollections: true
 ---
 
+{% css %}
+main {
+	padding-bottom: var(--space-3xl);
+}
 
+article heading-anchors > * {
+	max-width: 65ch;
+}
+{% endcss %}
 
 {% block content %}
+	<article>
 		<heading-anchors>
-    	<article>
-
     	  {{ post.body | markdown | safe }}
-
-    	</article>
 		</heading-anchors>
+	</article>
 {% endblock %}
+
+<div class="callout">
+	<p><strong>This post doesn't support comments</strong> <br>(if you'd like to reach out, <a href="/contact">I'd love to hear from you!</a>)</p>
+</div>
