@@ -42,27 +42,25 @@ padding: 0 var(--space-l);
 }
 
 .hero {
-	display: flex;
+	{# display: flex;
 	flex-wrap: wrap;
-	gap: var(--space-l);
+	gap: var(--space-l); #}
 	min-height: calc(100vh - 63px);
 }
 
-.hero > :last-child {
+ .hero > :last-child {
 display: flex;
 flex-direction: column;
 justify-content: center;
 gap: var(--space-xl);
 align-items: center;
-flex-basis: 50%; 
-flex-grow: 1;
 padding-bottom: var(--space-l);
 }
 
-.hero > :first-child {
+{# .hero > :first-child {
 flex-basis: 0;
 flex-grow: 999;
-}
+}  #}
 
 .hero .wrapper {
 	display: flex;
@@ -98,9 +96,26 @@ font-size: var(--step--1);
 content:' →';
 }
 
+.switcher {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-l);
+  }
+  
+  .switcher > * {
+	flex-grow: 1;
+	flex-basis: calc(( 50rem - 100%) * 999);
+  }
+  
+  .switcher > :nth-last-child(n+ 3),
+  .switcher > :nth-last-child(n+ 3) ~ * {
+	flex-basis: 100%;
+	order:0
+  }
+
 {% endcss %}
 
-<div class="hero">
+<div class="hero switcher">
 	<div class="wrapper">
 		<h1><span>Senior Staff</span><span class="visually-hidden">&nbsp;</span><span>Software</span><span class="visually-hidden">&nbsp;</span><span>Engineer</span><span class="visually-hidden">&nbsp;</span><span>Berlin</span></h1>
 		<p class="hello">Hi, I'm Matt, a senior software engineering lead with an emphasis on the front-end. I like
@@ -109,7 +124,7 @@ content:' →';
 	</div>
 	<div>
 		
-		<img src="../public/img/195.Collaboration.png" class="illustration" alt="An illustration of 3 people collaborating on a design around a piece of paper." />
+		<img src="../public/img/195.Collaboration.png" class="illustration" alt="An illustration of 3 people collaborating on a design around a piece of paper." width="700" />
 		<div class="callout">
 			<img src="../public/img/119.Advertise.png" alt="404 Not Found" width="32" height="32" class="icon illustration" alt="An illustration of a man making an announcement with a megaphone."/>
 			<p><a href="/contact"><strong>Currently exploring new opportunities for 2025</strong></a></p>
