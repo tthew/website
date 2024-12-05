@@ -17,6 +17,7 @@ export default async function getAllBlogposts() {
 
 	// Blogposts array
 	let blogposts = [];
+	let assets = [];
 
 	// make queries until makeNewQuery is set to false
 	while (makeNewQuery) {
@@ -30,19 +31,27 @@ export default async function getAllBlogposts() {
 					Authorization: `Bearer ${token}`,
 				},
 				body: JSON.stringify({
-					query: `
-	          query {
-	            wordsEntries {
-	              ... on article_Entry {
-	                postDate
-	                title
-	                body
-	                slug
-	                status
-	                rssOnly
-	              }
-	            }
-            }
+					query: `query {
+	wordsEntries {
+		... on article_Entry {
+		postDate
+		title
+		body
+		slug
+		status
+		rssOnly
+		}
+	}
+	assets {
+		... on images_Asset {
+			id
+			width
+			height
+			url @transform(width: 800, mode: "fit")
+			alt
+		}
+	}
+}
           `,
 				}),
 			});
@@ -65,6 +74,7 @@ export default async function getAllBlogposts() {
 
 			// update blogpost array with the data from the JSON response
 			blogposts = blogposts.concat(response.data.wordsEntries);
+			assets = response.data.assets
 
 			// prepare for next query
 			recordsToSkip += recordsPerQuery;
@@ -81,12 +91,22 @@ export default async function getAllBlogposts() {
 
 	// format blogposts objects
 	const blogpostsFormatted = blogposts.map((item) => {
+		const assetTags = item.body.match((/\{asset\:(\d.*)\}/gm));
+		let body = item.body;
+
+		if (assetTags) {
+			for (const assetMatch of assetTags) {
+				const [id] = assetMatch.match(/(\d.)/);
+				const asset = assets.find((asset) => `${asset.id}` === id);
+				body = body.replaceAll(`{asset:${id}}`, `![${asset.alt || ''}](${asset.url})`);
+			}
+		}
 		return {
 			id: item.id,
 			date: item.postDate,
 			title: item.title,
 			slug: item.slug,
-			body: item.body,
+			body,
 			rssOnly: item.rssOnly,
 		};
 	});
