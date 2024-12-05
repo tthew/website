@@ -23,7 +23,7 @@ eleventyExcludeFromCollections: true
     <email>{{ metadata.author.email }}</email>
   </author>
   {%- for post in words  %}
-{% set absolutePostUrl %}{% if post.rssOnly !== true %}{{ metadata.url }}/words/{{ post.slug }}{% endif %}{% endset %}
+{% set absolutePostUrl %}{% if post.rssOnly !== true %}{{ metadata.url }}words/{{ post.slug }}{% endif %}{% endset %}
 {% set id %}{% if post.rssOnly === true %}{{ post.slug }}{% else %}{{ absolutePostUrl}}{% endif %}{% endset %}
   <entry>
     <title>{{ post.title }}</title>
@@ -43,7 +43,7 @@ eleventyExcludeFromCollections: true
         
 
         &lt;a
-          href=&quot;mailto:hallo@tthew.berlin?subject=Re:%20{{ absolutePostUrl }}&quot;
+          href=&quot;mailto:hallo@tthew.berlin?subject=Re:%20{% if absolutePostUrl %}{{ absolutePostUrl }}{% else %}{{ id }}{% endif %}&quot;
           &gt;Email&lt;/a
         &gt;
         :: &lt;a href=&quot;https://techhub.social/@tthew&quot;&gt;Mastodon&lt;/a&gt; ::
