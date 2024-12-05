@@ -409,7 +409,7 @@
 		display: flex;
 		row-gap: var(--space-s);
 		flex-direction: column;
-		background: light-dark(var(--dark), #000);
+		background: light-dark(var(--dark),transparent);
 		padding: var(--space-l) var(--space-s);
 		color: var(--light);
 
