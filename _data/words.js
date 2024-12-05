@@ -42,14 +42,12 @@ export default async function getAllBlogposts() {
 		rssOnly
 		}
 	}
-	assets {
-		... on images_Asset {
-			id
-			width
-			height
-			url @transform(width: 800, mode: "fit")
-			alt
-		}
+
+	assets(volume: "images")  {
+		id
+		url @transform(width: 1544 mode:"fit")
+		alt
+		
 	}
 }
           `,
