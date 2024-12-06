@@ -9,135 +9,119 @@ order: 1
 const numberOfLatestPostsToShow = 3;
 ---
 {% css %}
-main {
-	display: flex;
-	justify-content: center;
-
-}
-h1 {
-font-size: calc(2 * var(--step-4));
-line-height: calc(2 * var(--step-4) - 0.2em);
-}
-
-h1 span {
-	display: block;
-}
-
-@media screen and (min-width: 900px) {
-h1 {
-font-size: calc(2 * var(--step-5));
-line-height: calc(2 * var(--step-5) - 0.2em);
-}
-}
-
-.hello {
-max-width: 50ch;
-font-size: var(--step-0);
-padding: 0 var(--space-l);
-
-}
-
-.hero {
-	{# color: light-dark(#222, var(--)); #}
-}
-
-.hero {
-	{# display: flex;
-	flex-wrap: wrap;
-	gap: var(--space-l); #}
-	min-height: calc(100% - 63px);
-}
-
- .hero > :last-child {
-display: flex;
-flex-direction: column;
-justify-content: center;
-gap: var(--space-xl);
-align-items: center;
-padding-bottom: var(--space-l);
-}
-
-{# .hero > :first-child {
-flex-basis: 0;
-flex-grow: 999;
-}  #}
-
-.hero .wrapper {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	row-gap: var(--space-l);
-	padding:  var(--space-2xl) 0 0 0;
- 	text-align: center;
- 	min-height: 90vh;
-}
-
-@keyframes illustration-in {
-	0% {
-		transform: translateY(200px);
+@layer page {
+	main {
+		display: flex;
+		justify-content: center;
 	}
-	100% {
-		transform: translateY(0);
-		
-	}
-}
 
-@keyframes illustration-fade {
-	0% {
-		opacity: 0;
+	h1 {
+		font-size: calc(2 * var(--step-4));
+		line-height: calc(2 * var(--step-4) - 0.2em);
 	}
-	100% {
-		
-		opacity: 1;
+
+	h1 span {
+		display: block;
 	}
-}
 
-.hero > div > svg {
-	z-index: -1;
-	animation: 700ms illustration-in cubic-bezier(0.18, 0.89, 0.32, 1.28), 1200ms illustration-fade ease-out;
-}
+	@media screen and (min-width: 900px) {
+		h1 {
+			font-size: calc(2 * var(--step-5));
+			line-height: calc(2 * var(--step-5) - 0.2em);
+		}
+	}
 
-@media screen and (min-width: 600px) {
+	.hero {
+		min-height: calc(100% - var(--header-height));
+	}
+
+	.hero > :last-child {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: var(--space-xl);
+		align-items: center;
+		padding-bottom: var(--space-l);
+	}
+
 	.hero .wrapper {
-		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		row-gap: var(--space-l);
+		padding:  var(--space-2xl) 0 0 0;
+		text-align: center;
+		min-height: 90vh;
+	}
+
+	@keyframes illustration-in {
+		0% {
+			transform: translateY(200px);
+		}
+		100% {
+			transform: translateY(0);
+			
+		}
+	}
+
+	@keyframes illustration-fade {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			
+			opacity: 1;
+		}
+	}
+
+	.hero > div > svg {
+		z-index: -1;
+		animation: 700ms illustration-in cubic-bezier(0.18, 0.89, 0.32, 1.28), 1200ms illustration-fade ease-out;
+	}
+
+	.hello {
+		max-width: 50ch;
+		font-size: var(--step-0);
+		padding: 0 var(--space-l);
+	}
+
+	@media screen and (min-width: 600px) {
+		.hero .wrapper {
+			min-height: 100vh;
+		}
+	}
+
+	header {
+		position: absolute;
+		width: 100%;
+	}
+
+	.learn-more {
+		font-size: var(--step--1);
+	}
+
+	.learn-more::after {
+		content:' →';
+	}
+
+	.switcher {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-l);
+	}
+
+	.switcher > * {
+		flex-grow: 1;
+		flex-basis: calc(( 50rem - 100%) * 999);
+	}
+
+	.switcher > :nth-last-child(n+ 3),
+	.switcher > :nth-last-child(n+ 3) ~ * {
+		flex-basis: 100%;
+		order:0
 	}
 }
-
-header {
-	position: absolute;
-	width: 100%;
-}
-
-.learn-more {
-font-size: var(--step--1);
-}
-
-.learn-more a:link {
-
-}
-
-.learn-more::after {
-content:' →';
-}
-
-.switcher {
-	display: flex;
-	flex-wrap: wrap;
-	gap: var(--space-l);
-  }
-  
-  .switcher > * {
-	flex-grow: 1;
-	flex-basis: calc(( 50rem - 100%) * 999);
-  }
-  
-  .switcher > :nth-last-child(n+ 3),
-  .switcher > :nth-last-child(n+ 3) ~ * {
-	flex-basis: 100%;
-	order:0
-  }
-
 {% endcss %}
 
 <div class="hero switcher">

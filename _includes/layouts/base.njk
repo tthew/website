@@ -6,8 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>{{ title or metadata.title }}</title>
 	<meta name="description" content="{{ description or metadata.description }}">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<meta name="fediverse:creator" content="@tthew@techhub.social">
+    <link rel="icon" type="image/svg+xml" href="/img/1564326180592.jpeg" />
 	<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="@tthew words: Feed">
+	
 	{#- Uncomment this if you’d like folks to know that you used Eleventy to build your site! #}
 	{#-
 	<meta name="generator" content="{{ eleventy.generator }}"> #}
@@ -22,6 +24,9 @@
 	* Retrieve via `{% getBundle "js" %}` or `{% getBundleFileUrl "js" %}`
 	3. Learn more: https://github.com/11ty/eleventy-plugin-bundle
 	#}
+	<style>
+		@layer reset, variables, main, page;
+	</style>
 
 	{%- css %}{% include "public/css/index.css" %}{% endcss %}
 	{#- Or you can add from node_modules #}
@@ -56,6 +61,7 @@
 			</ul>
 		</nav>
 	</header>
+
 	<main id="skip">
 		{{ content | safe }}
 	</main>
@@ -70,10 +76,11 @@
 			<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1">Licence: CC BY-NC-SA 4.0</a></p>
 			</div>
 		</div>
+
 		<div class="socials">
 			<ul>
 				<li>
-					<a href="https://techhub.social/@tthew">
+					<a rel="me" href="https://techhub.social/@tthew">
 						<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"
 							aria-labelledby="mastodon-profile" role="img">
 							<path
@@ -124,21 +131,22 @@
 	</footer>
 
 	<script>
-	console.group('Oh hai! 🐿️')
-	console.log(` ░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░▒▓█▓▒░▒▓█▓▒░ 
+		console.group('Oh hai! 🐿️')
+		console.log(` ░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░▒▓█▓▒░▒▓█▓▒░ 
 ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░ 
 ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░ 
 ░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░      ░▒▓████████▓▒░▒▓████████▓▒░▒▓█▓▒░▒▓█▓▒░ 
 ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░ 
 ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░       
  ░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░`)
- console.log('Nice to see you here 👋')
- console.log('This website\'s source code is available over on github:')
- console.log('https://github.com/tthew/website')
- console.log('Like what you see? I\'d love to hear from you :)')
- console.log('https://ma.tthew.berlin/contact') 
- console.groupEnd()
+		console.log('Nice to see you here 👋')
+		console.log('This website\'s source code is available over on github:')
+		console.log('https://github.com/tthew/website')
+		console.log('Like what you see? I\'d love to hear from you :)')
+		console.log('https://ma.tthew.berlin/contact') 
+		console.groupEnd()
 	</script>
+
 	<!-- This page `{{ page.url }}` was built on {% currentBuildDate %} -->
 	<script type="module" src="{% getBundleFileUrl "js" %}"></script>
 </body>

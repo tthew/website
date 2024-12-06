@@ -9,12 +9,14 @@ eleventyExcludeFromCollections: true
 ---
 
 {% css %}
-main {
-	padding-bottom: var(--space-3xl);
-}
+@layer page {
+	main {
+		padding-bottom: var(--space-3xl);
+	}
 
-article heading-anchors > * {
-	max-width: 65ch;
+	article heading-anchors > * {
+		max-width: 65ch;
+	}
 }
 {% endcss %}
 

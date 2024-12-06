@@ -10,81 +10,80 @@ size: 1
 	{#- Add the heading-anchors web component to the JavaScript bundle #}
 	
 {% css %}
+@layer page {
+	main {
+		flex: 1;
+	}
 
-main {
-  flex: 1;
-}
+	article {
+		padding-top: var(--space-xl);
+	}
 
-article {
-padding-top: var(--space-xl);
-}
+	article heading-anchors > * + * {
+		margin-top: var(--space-xs);
+	}
 
-article heading-anchors > * + * {
-margin-top: var(--space-xs);
-}
+	article heading-anchors  > * + h2 {
+		margin-top: var(--space-l);
+	}
 
-article heading-anchors  > * + h2 {
-margin-top: var(--space-l);
-}
+	article heading-anchors  > * + h3 {
+		margin-top: var(--space-m);
+	}
 
-article heading-anchors  > * + h3 {
-margin-top: var(--space-m);
-}
+	article heading-anchors  > * + h4 {
+		margin-top: var(--space-s);
+	}
 
-article heading-anchors  > * + h4 {
-margin-top: var(--space-s);
-}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		line-height: calc(1rem + .66em);
+	}
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-line-height: calc(1rem + .66em);
-}
+	h1 {
+		font-size: calc(var(--step-4) * 2);
+		font-weight: 900;
+		text-transform: uppercase;
+		padding-top: var(--space-xs);
+		max-width: 15ch;
+	}
 
-h1 {
-font-size: calc(var(--step-4) * 2);
-font-weight: 900;
-text-transform: uppercase;
-padding-top: var(--space-xs);
-  max-width: 15ch;
-{# font-variant: small-caps; #}
-}
+	article {
+		font-size: var(--step-0);
+		padding-bottom: var(--space-2xl);
+		text-wrap: balance;
+	}
 
-article {
-font-size: var(--step-0);
-padding-bottom: var(--space-2xl);
-text-wrap: balance;
-}
-
-article p:first-child {
-font-size: var(--step-1);
-padding-bottom: var(--space-s);
-	color: light-dark(#333, #bbb);
-text-wrap: balance;
-
-}
+	article p:first-child {
+		font-size: var(--step-1);
+		padding-bottom: var(--space-s);
+		color: light-dark(#333, #bbb);
+		text-wrap: balance;
+	}
 
 
-main:has(.post) {
-display: flex;
-justify-content: center;
-}
+	main:has(.post) {
+		display: flex;
+		justify-content: center;
+	}
 
-.post {
-width: 65ch;
-max-width: 100%;
-}
+	.post {
+		width: 65ch;
+		max-width: 100%;
+	}
 
-.meta {
-	display: flex;
-	font-size: var(--step--1);
-	color: light-dark(#333, #bbb);
-}
-.meta time {
-	font-size: var(--step--1);
+	.meta {
+		display: flex;
+		font-size: var(--step--1);
+		color: light-dark(#333, #bbb);
+	}
+	.meta time {
+		font-size: var(--step--1);
+	}
 }
 {% endcss %}
 

@@ -5,40 +5,35 @@ const pagination = {
   size: 10,
   before: function(data) { return data.filter(x => !x.rssOnly) }
 };
-
-
 ---
 
 {% css %}
-main {
-	display: flex;
-	justify-content: center;
-  
-    min-height: 100vh;
-  flex: 1;
-  padding-bottom: var(--space-xl);
+@layer page {
+	main {
+		display: flex;
+		justify-content: center;
+		min-height: 100vh;
+		flex: 1;
+		padding-bottom: var(--space-xl);
+	}
 
-}
+	main > * {
+		width: 80ch;
+		max-width: 100%;
+	}
 
-main > * {
-	width: 80ch;
-  max-width: 100%;
+	.words {
+		display: flex;
+		flex-direction: column;
+		row-gap: var(--space-l);
+	}
 
-}
-
-
-
-.words {
-  display: flex;
-  flex-direction: column;
-  row-gap: var(--space-l);
-}
-
-.pagination {
-  list-style: none;
-  margin: none;
-  display: flex;
-  justify-content: space-between;
+	.pagination {
+		list-style: none;
+		margin: none;
+		display: flex;
+		justify-content: space-between;
+	}
 }
 {% endcss %}
 
