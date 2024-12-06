@@ -14,18 +14,24 @@ eleventyExcludeFromCollections: true
 		padding-bottom: var(--space-3xl);
 	}
 
-	article heading-anchors > * {
+	article > * {
 		max-width: 65ch;
+	}
+
+	heading-anchors:not(:defined) :is(h2,h3,h4,h5,h6):after {
+		content: "#";
+		padding: 0 .25em;
+		opacity: 0;
 	}
 }
 {% endcss %}
 
 {% block content %}
-	<article>
-		<heading-anchors>
+	<heading-anchors>
+		<article>
     	  {{ post.body | markdown | safe }}
-		</heading-anchors>
-	</article>
+		</article>
+	</heading-anchors>
 {% endblock %}
 
 <div class="callout">
