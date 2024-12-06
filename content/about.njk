@@ -6,140 +6,133 @@ order: 3
 };
 ---
 {% css %}
-
-main {
-padding-top: var(--space-l);
-display: flex;
-flex-direction: column;
-align-items: center;
-flex: 1 0 100%;
-}
-
-main > * {
-max-width: 80ch;
-}
-
-
-
-.columns {
-display: flex;
-align-items: flex-start;
-gap: var(--space-l);
-}
-
-hr {
-border: 0;
-height: 1px
-}
-
-figure {
-display: flex;
-flex-direction: column;
-row-gap: var(--space-s);
-align-items: center;
-}
-
-figure figcaption {
-font-style: italic;
-}
-
-.main-flow {
-display: flex;
-flex-direction: column;
-row-gap: var(--space-l);
-padding: 0 var(--space-s);
-padding-bottom: var(--space-2xl);
-}
-
-.skills {
-flex-wrap: wrap;
-}
-
-@media screen and (min-width: 800px) {
-.skills {
-flex-wrap: nowrap;
-}
-
-.skills > * {
-flex-basis: 50%;
-}
-}
-
-.skills ul {
-list-style: none;
-padding: 0;
-display: flex;
-flex-wrap: wrap;
-gap: var(--space-s);
-}
-
-.skills ul li {
-display: flex;
-background: var(--callout-bg);
-color: var(--callout-fg);
-max-width: 150px;
-padding: var(--space-2xs);
-border-radius: var(--space-2xs);
-}
-
-.with-sidebar {
-display: flex;
-flex-wrap: wrap;
-gap: var(--space-l);
-
-}
-
-.with-sidebar > :first-child {
-flex-grow: 1;
-}
-
-.with-sidebar > :last-child {
-flex-basis: 0;
-flex-grow: 999;
-min-inline-size: 40%;
-}
-
-.with-sidebar img {
-	border-radius: 50%;
-	max-width: 300px;
-}
-
-{# @media screen and (min-width: 400px) {
-	
-	max-width: 400px;
-} #}
-.icon {
-	width: 64px;
-	height: 64px;
-}
-
-.switcher {
-	display: flex;
-	flex-wrap: wrap;
-	gap: var(--space-l);
-  }
-  
-  .switcher > * {
-	flex-grow: 1;
-	flex-basis: calc(( 50rem - 100%) * 999);
-  }
-  
-  .switcher > :nth-last-child(n+ 3),
-  .switcher > :nth-last-child(n+ 3) ~ * {
-	flex-basis: 100%;
-	order:0
-  }
-	
-
-  @media screen and (max-width: 50rem) {
-	.flip :first-child {
-	order: 1;
+@layer page {
+	main {
+		padding-top: var(--space-l);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		flex: 1 0 100%;
 	}
 
-	.flip :last-child {
-		order: 0;
+	main > * {
+		max-width: 80ch;
 	}
-  }
+
+	.columns {
+		display: flex;
+		align-items: flex-start;
+		gap: var(--space-l);
+	}
+
+	hr {
+		border: 0;
+		height: 1px
+	}
+
+	figure {
+		display: flex;
+		flex-direction: column;
+		row-gap: var(--space-s);
+		align-items: center;
+	}
+
+	figure figcaption {
+		font-style: italic;
+	}
+
+	.main-flow {
+		display: flex;
+		flex-direction: column;
+		row-gap: var(--space-l);
+		padding: 0 var(--space-s);
+		padding-bottom: var(--space-2xl);
+	}
+
+	.skills {
+		flex-wrap: wrap;
+	}
+
+	@media screen and (min-width: 800px) {
+		.skills {
+			flex-wrap: nowrap;
+		}
+
+		.skills > * {
+			flex-basis: 50%;
+		}
+	}
+
+	.skills ul {
+		list-style: none;
+		padding: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-s);
+	}
+
+	.skills ul li {
+		display: flex;
+		background: var(--callout-bg);
+		color: var(--callout-fg);
+		max-width: 150px;
+		padding: var(--space-2xs);
+		border-radius: var(--space-2xs);
+	}
+
+	.with-sidebar {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-l);
+	}
+
+	.with-sidebar > :first-child {
+		flex-grow: 1;
+	}
+
+	.with-sidebar > :last-child {
+		flex-basis: 0;
+		flex-grow: 999;
+		min-inline-size: 40%;
+	}
+
+	.with-sidebar img.me	 {
+		border-radius: 50%;
+		max-width: 300px;
+	}
+
+	.icon {
+		width: 64px;
+		height: 64px;
+	}
+
+	.switcher {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-l);
+	}
+	
+	.switcher > * {
+		flex-grow: 1;
+		flex-basis: calc(( 50rem - 100%) * 999);
+	}
+	
+	.switcher > :nth-last-child(n+ 3),
+	.switcher > :nth-last-child(n+ 3) ~ * {
+		flex-basis: 100%;
+		order:0
+	}
+		
+	@media screen and (max-width: 50rem) {
+		.flip :first-child {
+			order: 1;
+		}
+
+		.flip :last-child {
+			order: 0;
+		}
+	}
+}
 
 {% endcss %}
 
@@ -147,7 +140,7 @@ min-inline-size: 40%;
 	<div class="with-sidebar">
 		<div class="image">
 			<figure>
-				<img src="../public/img/1564326180592.jpeg" alt="A photograph of me, wearing shades 😎" />
+				<img class="me" src="../public/img/1564326180592.jpeg" alt="A photograph of me, wearing shades 😎" />
 				<figcaption>Fig 1. It's me!</figcaption>
 			</figure>
 		</div>

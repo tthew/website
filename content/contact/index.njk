@@ -10,59 +10,60 @@ before: function(data) { return data.filter(x => !x.rssOnly) }
 ---
 
 {% css %}
-main {
-display: flex;
-align-items: center;
-flex-direction: column;
-flex: 1;
-}
+@layer page {
+    main {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        flex: 1;
+    }
 
-main > .contact {
-    display: flex;
-    flex-direction: column;
-    row-gap: var(--space-xl);
-    width: 80ch;
-    max-width: 100%;
-    padding: 0 var(--space-xs);
-}
+    main > .contact {
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--space-xl);
+        width: 80ch;
+        max-width: 100%;
+        padding: 0 var(--space-xs);
+    }
 
-form {
-    display: flex;
-    flex-direction: column;
-    row-gap: var(--space-s);
-    padding-bottom: var(--space-2xl);
-}
+    form {
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--space-s);
+        padding-bottom: var(--space-2xl);
+    }
 
-form button {
-    border: none;
-    background: light-dark(#000, #fff) ;
-    color: light-dark(#eee, #111);
-    font-family: var(--feature-font);
-    padding: var(--space-3xs) var(--space-l);
-    border-radius: var(--space-m);
-    font-size: var(--step-1);
-}
+    form button {
+        border: none;
+        background: light-dark(#000, #fff) ;
+        color: light-dark(#eee, #111);
+        font-family: var(--feature-font);
+        padding: var(--space-3xs) var(--space-l);
+        border-radius: var(--space-m);
+        font-size: var(--step-1);
+    }
 
-.field {
-    display: flex;
-    flex-direction: column;
-}
+    .field {
+        display: flex;
+        flex-direction: column;
+    }
 
-.field input,
-.field textarea {
-    padding: var(--space-2xs);
-    border: 1px solid light-dark(#000, transparent);
-    border-radius: var(--space-3xs);
-    background: light-dark(#fff, #000) ;
-    color: light-dark(#000, #fff);
-}
+    .field input,
+    .field textarea {
+        padding: var(--space-2xs);
+        border: 1px solid light-dark(#000, transparent);
+        border-radius: var(--space-3xs);
+        background: light-dark(#fff, #000) ;
+        color: light-dark(#000, #fff);
+    }
 
-.controls {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
+    .controls {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+    }
 }
-
 {% endcss %}
 
 <div class="contact ">
