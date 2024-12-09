@@ -34,12 +34,15 @@ export default async function getAllBlogposts() {
 					query: `query {
 	wordsEntries {
 		... on article_Entry {
-		postDate
-		title
-		body
-		slug
-		status
-		rssOnly
+			postDate
+			title
+			body
+			slug
+			status
+			rssOnly
+			postType {
+				title
+			}
 		}
 	}
 
@@ -99,6 +102,11 @@ export default async function getAllBlogposts() {
 				body = body.replaceAll(`{asset:${id}}`, `![${asset.alt || ''}](${asset.url})`);
 			}
 		}
+
+		const postType = item.postType && item.postType.length ? item.postType[0].title : '';
+		// console.log({item, postType});
+
+		// const category = categories
 		return {
 			id: item.id,
 			date: item.postDate,
@@ -106,6 +114,7 @@ export default async function getAllBlogposts() {
 			slug: item.slug,
 			body,
 			rssOnly: item.rssOnly,
+			postType
 		};
 	});
 
