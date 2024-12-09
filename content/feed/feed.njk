@@ -24,18 +24,25 @@ eleventyExcludeFromCollections: true
             <width>88</width>
             <height>19</height>
         </image>
-        <atom:link href="{{ permalink | htmlBaseUrl(metadata.url) }}" rel="self" type="application/rss+xml" />
+        {# <atom:link href="{{ permalink | htmlBaseUrl(metadata.url) }}" rel="self" type="application/rss+xml" /> #}
 
         {%- for post in words  %}
-            {% set absolutePostUrl %}{% if post.rssOnly !== true %}{{ metadata.url }}words/{{ post.slug }}{% endif %}{% endset %}
-            {% set id %}{% if post.rssOnly === true %}{{ post.slug }}{% else %}{{ absolutePostUrl}}{% endif %}{% endset %}
+            {% set absolutePostUrl %}{{ metadata.url }}words/{{ post.slug }}{% endset %}
+            {% set id %}{{ absolutePostUrl}}{% endset %}
             <item>
                 <title>{{ post.title }}</title>
                 {% if absolutePostUrl %}<link>{{ absolutePostUrl }}</link>{% endif %}
                 <guid>{{ id }}</guid>
-                <pubdate>{{ post.date | toDate | dateToRfc3339 }}</pubdate>
+                <pubDate>{{ post.date | toDate | dateToRfc3339 }}</pubDate>
                 <description>
                 <![CDATA[
+                    {% if post.rssOnly %}
+                    <aside class="notice">
+                        <tt>🤫 This is a secret post!
+                            <a href="https://daverupert.com/2018/01/welcome-to-rss-club/">Read more about RSS Club</a>.
+                        </tt>
+                    </aside>
+                    {% endif %}
                     {{ post.body | markdown | transformWithHtmlBase(absolutePostUrl, post.url) | safe }}
                 ]]>
                 </description>

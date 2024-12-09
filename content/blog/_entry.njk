@@ -11,6 +11,9 @@ eleventyExcludeFromCollections: true
 {% css %}
 @layer page {
 	main {
+		display: flex;
+		{# flex-direction: column; #}
+		col-gap: var(--space-l);
 		padding-bottom: var(--space-3xl);
 	}
 
@@ -23,8 +26,16 @@ eleventyExcludeFromCollections: true
 		padding: 0 .25em;
 		opacity: 0;
 	}
+
+	aside {
+		{# font-size: var(--step--1); #}
+		background: light-dark(yellow, rgba(255, 255, 255, 0.2));
+		color: light-dark(var(--dark), var(--light));
+		padding: var(--space-3xs) var(--space-xs);
+	}
 }
 {% endcss %}
+
 
 {% block content %}
 	<heading-anchors>
