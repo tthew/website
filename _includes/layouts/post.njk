@@ -16,7 +16,7 @@ size: 1
 	}
 
 	article {
-		padding-top: var(--space-xl);
+		{# padding-top: var(--space-xl); #}
 	}
 
 	article> * + * {
@@ -72,31 +72,43 @@ size: 1
 	}
 
 	.post {
+		display: flex;
+		flex-direction: column;
+		row-gap: var(--space-s);
 		width: 65ch;
 		max-width: 100%;
 	}
 
 	.meta {
 		display: flex;
+		row-gap: var(--space-3xs);
 		font-size: var(--step--1);
 		color: light-dark(#333, #bbb);
 	}
 	.meta time {
 		font-size: var(--step--1);
 	}
+
+
 }
 {% endcss %}
 
 <div class="post">
-  <h1>{{ post.title }}</h1>
+	<div>
+	 	<h1>{{ post.title }}</h1> 
+		<p class="meta"> <time class="postlist-date" datetime="{{ post.date  }}">{{ post.date | readableDate("DD") }}</time>&nbsp;· {{ post.body | markdown | wordCount }} · {{ post.body | markdown | readingTime }}</p>
+	</div>
 
-  <p class="meta">
-    <div class="meta">
-      <time class="postlist-date" datetime="{{ post.date  }}">{{ post.date | readableDate("DD") }}</time>&nbsp;· {{ post.body | markdown | wordCount }} · {{ post.body | markdown | readingTime }}
-    </div>
-  </p>
+ 
+	{% if post.rssOnly %}
+		<aside class="notice">
+			<tt>You found a secret post!
+				<a href="https://daverupert.com/2018/01/welcome-to-rss-club/">Read more about RSS Club</a>.
+			</tt>
+		</aside>
+	{% endif %}
 
-  {{ content | safe }}
+	{{ content | safe }}
 </div>
 
 {%- js %}{% include "node_modules/@zachleat/heading-anchors/heading-anchors.js" %}{% endjs %}
