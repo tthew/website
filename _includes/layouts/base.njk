@@ -220,6 +220,8 @@
 				this.santaEl = document.createElement('flying-santa');
 				this.buttonEl = document.createElement('button');
 
+				window.localStorage.setItem('xmas-cancelled', true);
+
 				const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 				const {matches: preferesReducedMotion} = mediaQuery;
 				
