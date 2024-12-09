@@ -88,8 +88,8 @@ export default function (eleventyConfig) {
 		const p = dom.window.document.querySelector("p");
 		const textContent = p.textContent;
 
-		if (textContent.length > 200) {
-			return textContent.split(0, 200) + "…";
+		if (textContent.length > 300) {
+			return [...textContent].slice(0, 300).join('') + "…";
 		}
 
 		return textContent;
