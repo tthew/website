@@ -101,11 +101,13 @@ size: 1
 
  
 	{% if post.rssOnly %}
+	<div>
 		<aside class="notice">
 			<tt>You found a secret post!
 				<a href="https://daverupert.com/2018/01/welcome-to-rss-club/">Read more about RSS Club</a>.
 			</tt>
 		</aside>
+	</div>
 	{% endif %}
 
 	{{ content | safe }}

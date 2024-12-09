@@ -24,12 +24,12 @@ eleventyExcludeFromCollections: true
 
 	heading-anchors:not(:defined) :is(h2,h3,h4,h5,h6):after {
 		content: "#";
-		padding: 0 .25em;
+		padding: 0;
 		opacity: 0;
 	}
 
 	aside {
-		{# font-size: var(--step--1); #}
+		display: inline-block;
 		background: light-dark(yellow, rgba(255, 255, 255, 0.2));
 		color: light-dark(var(--dark), var(--light));
 		padding: var(--space-3xs) var(--space-xs);
