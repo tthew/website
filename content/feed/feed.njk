@@ -42,6 +42,7 @@ eleventyExcludeFromCollections: true
                             <a href="https://daverupert.com/2018/01/welcome-to-rss-club/">Read more about RSS Club</a>.
                         </tt>
                     </aside>
+                    <hr>
                     {% endif %}
                     {{ post.body | markdown | transformWithHtmlBase(absolutePostUrl, post.url) | safe }}
                 ]]>
