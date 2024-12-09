@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ metadata.language }}" style="theme: light dark">
+<html lang="{{ metadata.language }}" style="color-scheme: light dark">
 
 <head>
 	<meta charset="utf-8">
@@ -7,7 +7,11 @@
 	<title>{{ title or metadata.title }}</title>
 	<meta name="description" content="{{ description or metadata.description }}">
 	<meta name="fediverse:creator" content="@tthew@techhub.social">
-	{# <meta name="theme" content="light dark"> #}
+	<meta property="og:url" content="{{ metadata.url }}">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="@tthew">
+	<meta property="og:description" content="Hi, I'm Matt. A Senior Staff / Principal Software Engineer based in Berlin, Germany. I like HTML, CSS, Javascript (Typescript), people, and building great things with them!">
+	<meta property="og:image" content="/img/1564326180592.jpeg">
     <link rel="icon" type="image/svg+xml" href="/img/1564326180592.jpeg" />
 	<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="@tthew words: Feed">
 	
@@ -89,15 +93,9 @@
 			<toggle-xmas></toggle-xmas>
 			<theme-switcher>
 			<section aria-label="Color scheme switcher">
-				<button aria-pressed="false" value="light">
-				  Light
-				</button>
-				<button aria-pressed="false" value="light dark">
-				  Auto
-				</button>
-				<button aria-pressed="false" value="dark">
-				  Dark
-				</button>
+				<button aria-pressed="false" value="light">Light</button>
+				<button aria-pressed="false" value="light dark">Auto</button>
+				<button aria-pressed="false" value="dark">Dark</button>
 			  </section>
 			</theme-switcher>
 			<ul>
