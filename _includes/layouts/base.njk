@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ metadata.language }}">
+<html lang="{{ metadata.language }}" style="theme: light dark">
 
 <head>
 	<meta charset="utf-8">
@@ -7,6 +7,7 @@
 	<title>{{ title or metadata.title }}</title>
 	<meta name="description" content="{{ description or metadata.description }}">
 	<meta name="fediverse:creator" content="@tthew@techhub.social">
+	{# <meta name="theme" content="light dark"> #}
     <link rel="icon" type="image/svg+xml" href="/img/1564326180592.jpeg" />
 	<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="@tthew words: Feed">
 	
@@ -85,8 +86,20 @@
 		</div>
 
 		<div class="socials">
-
 			<toggle-xmas></toggle-xmas>
+			<theme-switcher>
+			<section aria-label="Color scheme switcher">
+				<button aria-pressed="false" value="light">
+				  Light
+				</button>
+				<button aria-pressed="false" value="light dark">
+				  Auto
+				</button>
+				<button aria-pressed="false" value="dark">
+				  Dark
+				</button>
+			  </section>
+			</theme-switcher>
 			<ul>
 				<li>
 					<a rel="me" href="https://techhub.social/@tthew">
@@ -143,6 +156,14 @@
 	<flying-santa></flying-santa>
 
 	<script>
+		const persistedColorScheme = window.localStorage.getItem('theme');
+		console.log(persistedColorScheme)
+		if (persistedColorScheme) {
+			document.documentElement.dataset['theme'] = persistedColorScheme;
+			document.documentElement.style = `color-scheme: ${persistedColorScheme};`;
+			document.querySelector(`theme-switcher button[value="${persistedColorScheme}"]`).setAttribute('aria-pressed', true);
+		}
+
 		console.group('Oh hai! 🐿️')
 		console.log(` ░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░▒▓█▓▒░▒▓█▓▒░ 
 ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░ 
@@ -196,12 +217,32 @@
 				this.update();
 
 				this.buttonEl.addEventListener('click', this.toggleXmas);
+				this.buttonEl.type = 'button';
 
 				this.appendChild(this.buttonEl);
 
 
 			}
 		})
+
+		const colorScheme = document.querySelector('meta[name=theme]');
+		const switchButtons = document.querySelectorAll('theme-switcher button');
+
+		switchButtons.forEach(button => {
+			button.addEventListener('click', () => {
+				const currentButton = button;
+
+				switchButtons.forEach(
+					button => button.setAttribute(
+						'aria-pressed', button === currentButton
+					)
+				);
+
+				document.documentElement.style = `color-scheme: ${button.value};`;
+				document.documentElement.dataset['theme'] = button.value;
+				window.localStorage.setItem('theme', button.value);
+  		});
+	});
 
 	</script>
 

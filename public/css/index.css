@@ -455,7 +455,6 @@
 		footer {
 			flex-direction: row;
 			justify-content: space-between;
-			align-items: flex-end;
 		}
 
 		footer .socials ul {
@@ -526,6 +525,39 @@
 			  background-repeat: no-repeat;
 			  background-attachment: fixed;
 		}
+	}
+
+	html[data-theme=dark] .illustration {
+		filter: brightness(5) hue-rotate(250deg);
+	}
+
+	html[data-theme=dark] body {
+		--hdr-gradient: radial-gradient(
+			farthest-corner circle at 50% 0% in oklab,
+			rgb(0% 0% 0%) 0%, rgb(17% 17% 17%) 100%
+		  );
+		  --sdr-gradient: radial-gradient(
+			farthest-corner circle at 50% 0%,
+			#000 0%, #2b2b2b 100%
+		  );
+		  background: var(--hdr-gradient);
+		  background-repeat: no-repeat;
+		  background-attachment: fixed;
+	}
+
+	theme-switcher button {
+		background: none;
+		border: none;
+		color: light-dark(var(--background),var(--text));
+		font-family: var(--feature-font);
+		padding: 0 var(--space-xs);
+
+	}
+
+	theme-switcher button[aria-pressed=true] {
+		background: light-dark(var(--background), var(--text));
+		color: light-dark(var(--text), var(--background));
+		border-radius: var(--step-0);
 	}
 
 	@media (prefers-reduced-motion) {
