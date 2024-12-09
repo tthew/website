@@ -152,16 +152,18 @@
 		</div>
 	</footer>
 
-	<snow-fall></snow-fall>	
-	<flying-santa></flying-santa>
+	{# <snow-fall></snow-fall>	
+	<flying-santa></flying-santa> #}
 
 	<script>
 		const persistedColorScheme = window.localStorage.getItem('theme');
-		console.log(persistedColorScheme)
+
 		if (persistedColorScheme) {
 			document.documentElement.dataset['theme'] = persistedColorScheme;
 			document.documentElement.style = `color-scheme: ${persistedColorScheme};`;
 			document.querySelector(`theme-switcher button[value="${persistedColorScheme}"]`).setAttribute('aria-pressed', true);
+		} else {
+			document.querySelector(`theme-switcher button[value="light dark"]`).setAttribute('aria-pressed', true);
 		}
 
 		console.group('Oh hai! 🐿️')
@@ -182,9 +184,15 @@
 		window.customElements.define('toggle-xmas', class extends HTMLElement {
 			constructor() {
 				super();
+
 				this.toggleXmas = this.toggleXmas.bind(this);
 				this.isXmasCancelled = this.isXmasCancelled.bind(this);
 				this.update = this.update.bind(this);
+
+				const {matches: preferesReducedMotion} = window.matchMedia('(prefers-reduced-motion: reduce)');
+				if (window.localStorage.getItem('xmas-cancelled') === undefined && preferesReducedMotion) {
+					window.localStorage.setItem('xmas-cancelled', true);
+				}
 			}
 
 			isXmasCancelled() {
@@ -197,7 +205,6 @@
 			}
 
 			update() {
-
 				if (this.isXmasCancelled()) {
 					this.santaEl.remove();
 					this.snowEl.remove();
@@ -210,9 +217,21 @@
 			}
 
 			connectedCallback() {
-				this.snowEl = document.querySelector('snow-fall');
-				this.santaEl = document.querySelector('flying-santa');
+				this.snowEl = document.createElement('snow-fall');
+				this.santaEl = document.createElement('flying-santa');
 				this.buttonEl = document.createElement('button');
+
+				const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+				const {matches: preferesReducedMotion} = mediaQuery;
+				
+				mediaQuery.addEventListener('change', () => {
+					const {matches: preferesReducedMotion} = window.matchMedia('(prefers-reduced-motion: reduce)');
+					
+					if (preferesReducedMotion) {
+						window.localStorage.setItem('xmas-cancelled', true);
+					}
+					this.update();
+				});
 
 				this.update();
 
@@ -220,8 +239,6 @@
 				this.buttonEl.type = 'button';
 
 				this.appendChild(this.buttonEl);
-
-
 			}
 		})
 
