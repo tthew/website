@@ -4,11 +4,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>{{ title or metadata.title }}</title>
+	<title>{%if post.title %}{{ post.title }} |  {{ metadata.description }}{% else %}{{ metadata.description }}{% endif %}</title>
 	<link rel="preload" href="/font/Staatliches-Regular.woff2" as="font" type="font/woff2" crossorigin>
 	<meta name="description" content="{{ description or metadata.description }}">
 	<meta name="fediverse:creator" content="@tthew@techhub.social">
-	<meta property="og:url" content="{{ metadata.url }}">
+	<meta property="og:url" content="{{ metadata.url }}{{ page.url  }}">
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="@tthew">
 	<meta property="og:description" content="Hi, I'm Matt. A Senior Staff / Principal Software Engineer based in Berlin, Germany. I like HTML, CSS, Javascript (Typescript), people, and building great things with them!">
