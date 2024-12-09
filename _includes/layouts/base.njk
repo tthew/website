@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>{%if post.title %}{{ post.title }} |  {{ metadata.description }}{% else %}{{ metadata.description }}{% endif %}</title>
+	<title>{%if post.title %}{{ post.title }} |  {{ metadata.description }}{% else %}{%if title %}{{ title }} | {% endif %}{{ metadata.description }}{% endif %}</title>
 	<link rel="preload" href="/font/Staatliches-Regular.woff2" as="font" type="font/woff2" crossorigin>
 	<meta name="description" content="{{ description or metadata.description }}">
 	<meta name="fediverse:creator" content="@tthew@techhub.social">
@@ -53,7 +53,6 @@
 
 <body>
 	<a href="#skip" class="visually-hidden">Skip to main content</a>
-
 
 	<header>
 		<div>
