@@ -275,7 +275,7 @@
 
 	header {
 		display: flex;
-		border-bottom: 1px dashed var(--color-gray-20);
+		flex-direction: column;
 	}
 
 	table {
@@ -322,12 +322,14 @@
 
 	/* Header */
 	header {
+		padding: 0 var(--space-s);
+	}
+	header > :first-child {
 		display: flex;
-		gap: 1em 0.5em;
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: space-between;
-		padding: var(--space-s);
+		/* padding: 0 var(--space-s);	 */
 		color: light-dark(#333, #fff);
 		height: var(--header-height);
 	}
@@ -397,7 +399,7 @@
 
 	footer {
 		display: flex;
-		row-gap: var(--space-s);
+		row-gap: var(--space-l);
 		flex-direction: column;
 		background: light-dark(var(--dark),transparent);
 		padding: var(--space-l) var(--space-s);
@@ -410,21 +412,36 @@
 		color: #999;
 	}
 
-	@media screen and (min-width: 600px) {
-		footer {
-			flex-direction: row;
-			justify-content: space-between;
-			align-items: flex-end;
-		}
-	}
+
 
 	footer .human {
 		font-family: var(--feature-font);
 	}
 
+	footer .socials {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-s);
+	}
+
+	toggle-xmas {
+		/* position: relative;
+		top: calc(-1 * var(--space-2xs)); */
+		display: flex;
+		justify-content: flex-start;
+	}
+	 toggle-xmas button {
+		border: none;
+		border-radius: var(--step--2);
+		padding: var(--space-3xs) var(--space-s);
+		font-family: var(--feature-font);
+		font-size: var(--step--1);
+	}
+
 	footer .socials ul {
 		display: flex;
 		column-gap: var(--space-2xs);
+		justify-content: flex-start;
 		padding: 0;
 		margin: 0;
 		list-style: none;
@@ -432,6 +449,22 @@
 
 	footer .socials ul li a {
 		fill: var(--light);
+	}
+
+	@media screen and (min-width: 600px) {
+		footer {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-end;
+		}
+
+		footer .socials ul {
+			justify-content: flex-end;
+		}
+
+		footer toggle-xmas {
+			justify-content: flex-end;
+		}
 	}
 
 	main {
