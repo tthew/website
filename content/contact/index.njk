@@ -50,10 +50,11 @@ before: function(data) { return data.filter(x => !x.rssOnly) }
     .field input,
     .field textarea {
         padding: var(--space-2xs);
-        border: 1px solid light-dark(#000, transparent);
+        border: 1px solid light-dark(#000, rgba(255, 255, 255, 0.2));
         border-radius: var(--space-3xs);
         background: light-dark(#fff, #000) ;
         color: light-dark(#000, #fff);
+        border: 
     }
 
     .controls {
