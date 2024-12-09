@@ -14,7 +14,7 @@ data:  words
 	</url>
 {%- endfor %}
 {%- for page in words | webWords %}
-	{% set url %}{{ metadata.url }}words/{{ page.slug }}{% endset %}
+	{% set url %}{{ metadata.url }}/words/{{ page.slug }}{% endset %}
 	{% set absoluteUrl %}{{ url | htmlBaseUrl(url) }}{% endset %}
 	<url>
 		<loc>{{ absoluteUrl }}</loc>
