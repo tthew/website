@@ -244,12 +244,16 @@
   		});
 	});
 
-	// I used to have a service worker on my old site. Let's remove them all:
+	// I used to have a service worker on my old site. Let's remove any we've
+	// got and then refresh the page:
 	navigator.serviceWorker.getRegistrations().then(registrations => {
-    for (const registration of registrations) {
-        registration.unregister();
-    } 
-});
+		if (registrations.length) {
+			for (const registration of registrations) {
+				registration.unregister();
+			}
+			window.location.assign(window.location.href);
+		}
+	});
 
 
 	</script>
