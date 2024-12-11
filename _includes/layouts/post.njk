@@ -58,12 +58,7 @@ size: 1
 		text-wrap: balance;
 	}
 
-	article p:first-child {
-		font-size: var(--step-1);
-		padding-bottom: var(--space-s);
-		color: light-dark(#333, #bbb);
-		text-wrap: balance;
-	}
+	
 
 
 	main:has(.post) {
@@ -95,7 +90,7 @@ size: 1
 
 <div class="post">
 	<div>
-	 	<h1>{{ post.title }}</h1> 
+	 	<h1>{% if post.postType == "TIL" %}<abbr title="Today I Learned">TIL</abbr>: {% endif %}{{ post.title }}</h1> 
 		<p class="meta"> <time class="postlist-date" datetime="{{ post.date  }}">{{ post.date | readableDate("DD") }}</time>&nbsp;· {{ post.body | markdown | wordCount }} · {{ post.body | markdown | readingTime }}</p>
 	</div>
 

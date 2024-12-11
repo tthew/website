@@ -3,7 +3,7 @@ pagination:
   data: words
   size: 1
   alias: post
-permalink: words/{{ post.slug }}/index.html
+permalink: til/{{ post.slug }}/index.html
 layout: layouts/post.njk
 eleventyExcludeFromCollections: true
 
@@ -13,7 +13,6 @@ eleventyExcludeFromCollections: true
 @layer page {
 	main {
 		display: flex;
-		{# flex-direction: column; #}
 		col-gap: var(--space-l);
 		padding-bottom: var(--space-3xl);
 	}
@@ -35,11 +34,9 @@ eleventyExcludeFromCollections: true
 		padding: var(--space-3xs) var(--space-xs);
 	}
 
-	article p:first-child {
-		font-size: var(--step-1);
-		padding-bottom: var(--space-s);
-		color: light-dark(#333, #bbb);
-		text-wrap: balance;
+    h1 abbr[title] {
+		border: none;
+		text-decoration: none;
 	}
 }
 {% endcss %}

@@ -79,8 +79,24 @@ export default function (eleventyConfig) {
 	});
 
 	eleventyConfig.addFilter("webWords", (words) => {
-		return words.filter(({ rssOnly }) => rssOnly !== true);
+		return words.filter(({ rssOnly, postType }) => {
+			if (rssOnly) {
+				return false;
+			}
+
+			if (postType === 'Note') {
+				return false;
+			}
+
+			if (postType === 'TIL') {
+				return false;
+			}
+
+			return true;
+		});
 	});
+	
+	eleventyConfig.addFilter("TIL", (words) => words.pageType === 'TIL')
 
 	eleventyConfig.addFilter("markdown", (content) => {
 		return markdown.render(content);

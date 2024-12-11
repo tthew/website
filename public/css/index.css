@@ -361,6 +361,10 @@
 		text-decoration: none;
 	}
 
+	.nav-item abbr[title] {
+		text-decoration: none;
+	}
+
 	.nav a[href][aria-current="page"] {
 		text-decoration: underline;
 	}
