@@ -29,6 +29,9 @@ const markdown = markdownParser({
 });
 
 export default function (eleventyConfig) {
+
+	eleventyConfig.addNunjucksFilter("limit", (arr, limit) => arr.slice(0, limit));
+
 	eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
 		// Formatting tokens for Luxon: https://moment.github.io/luxon/#/formatting?id=table-of-tokens
 		return DateTime.fromJSDate(new Date(dateObj), {

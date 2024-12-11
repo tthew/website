@@ -1,0 +1,39 @@
+---
+data: links
+eleventyExcludeFromCollections: true
+permalink: /feed/links.xml
+---
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="pretty-feed-v3.xsl" type="text/xsl"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"  xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>@tthew: links</title>
+        <description>{{ metadata.description }}</description>
+        <language>en</language>
+        <link>{{ metadata.url | addPathPrefixToFullUrl }}</link>
+        <managingEditor>{{ metadata.author.email }} ({{ metadata.author.name }})</managingEditor>
+        <webMaster>{{ metadata.author.email }} ({{ metadata.author.name }})</webMaster>
+        <image>
+            <title>@tthew: links</title>
+            <link>https://tthew.berlin/words/</link>
+            <url>https://tthew.berlin/img/1564326180592.jpeg</url>
+            <width>88</width>
+            <height>19</height>
+        </image>
+        <atom:link href="{{ permalink | htmlBaseUrl(metadata.url) }}" rel="self" type="application/rss+xml" />
+        {%- for post in links | limit(20)  %}
+            <item>
+                <title>{{ post.title }}</title>
+                <link>{{ post.link }}</link>
+                <guid>tthew-link-{{ post._id }}</guid>
+                <pubDate>{{ post.created | toDate | dateToRfc3339 }}</pubDate>
+                <description>
+                <![CDATA[
+                    {% if post.note %}{{ post.note | markdown | safe }}{% else %}{{ post.excerpt | markdown | safe }}{% endif %}
+                ]]>
+                </description>
+            </item>
+        {% endfor %}
+
+    </channel>
+</rss>

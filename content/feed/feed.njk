@@ -1,9 +1,7 @@
 ---
 # Metadata comes from _data/metadata.js
 permalink: /feed/feed.xml
-pagination:
-  data: words
-  size: 10
+data: words
 
 eleventyExcludeFromCollections: true
 ---
@@ -24,9 +22,9 @@ eleventyExcludeFromCollections: true
             <width>88</width>
             <height>19</height>
         </image>
-        {# <atom:link href="{{ permalink | htmlBaseUrl(metadata.url) }}" rel="self" type="application/rss+xml" /> #}
+        <atom:link href="{{ permalink | htmlBaseUrl(metadata.url) }}" rel="self" type="application/rss+xml" />
 
-        {%- for post in words  %}
+        {%- for post in words | limit(20)  %}
             {% set absolutePostUrl %}{{ metadata.url }}/words/{{ post.slug }}{% endset %}
             {% set id %}{{ absolutePostUrl}}{% endset %}
             <item>

@@ -14,37 +14,18 @@
 	<meta property="og:description" content="Hi, I'm Matt. A Senior Staff / Principal Software Engineer based in Berlin, Germany. I like HTML, CSS, Javascript (Typescript), people, and building great things with them!">
 	<meta property="og:image" content="/img/1564326180592.jpeg">
     <link rel="icon" type="image/svg+xml" href="/img/1564326180592.jpeg" />
-	<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="@tthew words: Feed">
-	
-	{#- Uncomment this if you’d like folks to know that you used Eleventy to build your site! #}
-	{#-
-	<meta name="generator" content="{{ eleventy.generator }}"> #}
+	<link rel="alternate" href="/feed/feed.xml" type="application/rss+xml" title="@tthew: words">
+	<link rel="alternate" href="/feed/links.xml" type="application/rss+xml" title="@tthew: links">
 
-	{#-
-	Plain-text bundles are provided via the `eleventy-plugin-bundle` plugin:
-	1. CSS:
-	* Add to a per-page bundle using `{% css %}{% endcss %}`
-	* Retrieve bundle content using `{% getBundle "css" %}` or `{% getBundleFileUrl "css" %}`
-	2. Or for JavaScript:
-	* Add to a per-page bundle using `{% js %}{% endjs %}`
-	* Retrieve via `{% getBundle "js" %}` or `{% getBundleFileUrl "js" %}`
-	3. Learn more: https://github.com/11ty/eleventy-plugin-bundle
-	#}
 	<style>
 		@layer reset, variables, main, page;
 	</style>
 
 	{%- css %}{% include "public/css/index.css" %}{% endcss %}
-	{#- Or you can add from node_modules #}
 
-	{#- Render the CSS bundle using inlined CSS (for the fastest site performance in production) #}
 	<style>
 		{% getBundle "css" %}
 	</style>
-
-	{#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
-	{#-
-	<link rel="stylesheet" href="{% getBundleFileUrl " css" %}"> #}
 
 	{%- js %}{% include "node_modules/@zachleat/snow-fall/snow-fall.js" %}{% endjs %}
 	<script type="module" src="https://unpkg.com/@divriots/flying-santa/dist/index.js?module"></script>
