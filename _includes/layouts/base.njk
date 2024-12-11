@@ -244,6 +244,14 @@
   		});
 	});
 
+	// I used to have a service worker on my old site. Let's remove them all:
+	navigator.serviceWorker.getRegistrations().then(registrations => {
+    for (const registration of registrations) {
+        registration.unregister();
+    } 
+});
+
+
 	</script>
 
 	<!-- This page `{{ page.url }}` was built on {% currentBuildDate %} -->
