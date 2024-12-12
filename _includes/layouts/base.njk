@@ -28,7 +28,7 @@
 	</style>
 
 	{%- js %}{% include "node_modules/@zachleat/snow-fall/snow-fall.js" %}{% endjs %}
-	<script type="module" src="https://unpkg.com/@divriots/flying-santa/dist/index.js?module"></script>
+	{# <script type="module" src="https://unpkg.com/@divriots/flying-santa/dist/index.js?module"></script> #}
 
 </head>
 
@@ -167,6 +167,8 @@
 			constructor() {
 				super();
 
+				
+
 				this.toggleXmas = this.toggleXmas.bind(this);
 				this.isXmasCancelled = this.isXmasCancelled.bind(this);
 				this.update = this.update.bind(this);
@@ -187,11 +189,21 @@
 			}
 
 			update() {
+
 				if (this.isXmasCancelled()) {
 					this.santaEl.remove();
 					this.snowEl.remove();
 					this.buttonEl.innerText = '🎄 Deck the halls!'
 				} else {
+					let scriptEl = window.document.querySelector('script[src="https://unpkg.com/@divriots/flying-santa/dist/index.js?module"]');
+					if (!scriptEl) {
+						scriptEl = document.createElement('script')	;
+						scriptEl.type = 'module';
+						scriptEl.async = true;
+						scriptEl.defer = true;
+						scriptEl.src = 'https://unpkg.com/@divriots/flying-santa/dist/index.js?module';
+						window.document.body.appendChild(scriptEl);
+					}
 					document.body.appendChild(this.santaEl);
 					document.body.appendChild(this.snowEl);
 					this.buttonEl.innerText = '👺 Cancel christmas'
@@ -199,6 +211,7 @@
 			}
 
 			connectedCallback() {
+
 				this.snowEl = document.createElement('snow-fall');
 				this.santaEl = document.createElement('flying-santa');
 				this.buttonEl = document.createElement('button');
