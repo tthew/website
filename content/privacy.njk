@@ -1,0 +1,42 @@
+---js
+const layout = "layouts/home.njk";  
+const title = 'Privacy Policy';
+---
+
+{% css %}
+@layer page {
+	main {
+		display: flex;
+		justify-content: center;
+		min-height: 100vh;
+		flex: 1;
+		padding-bottom: var(--space-xl);
+        {# row-gap: var(--space-l); #}
+	}
+
+	main > * {
+		width: 80ch;
+		max-width: 100%;
+		display: flex;
+		flex-direction: column;
+		
+	}
+
+	
+}
+{% endcss %}
+
+<div class="privacy flow">
+    <h1>Privacy Policy</h1>
+    <h2><strong>This website does not track you!</strong></h2>
+    <p>No cookies are set on this domain. On occasion I use <a href="https://glitch.com/">Glitch</a> in my <a href="/words">posts</a> for demos, which may attempt to set 3rd party cookies (hopefully your browser prevents that from happening).</p>
+    <p>This website does leverage the localStorage API to persist some preferences you might have set, like setting and persisting your preferred colour scheme across sessions for example.</p>
+    <p>This website doesn't collect any analytics.</p>
+    <h2>Contact Form Submissions</h2>
+    <p>The only data this website captures is any data you enter into and submit via the <a href="/contact">contact form</a>.</p>
+    <p>In order to submit the form you must consent to your data being processed by <a href="https://www.netlify.com/platform/core/forms/">Netlify Forms</a> and <a href="https://akismet.com/">Akismet</a>.</p>
+    <p>In order to request a copy of any data you have submitted via the contact form, or if you'd like to request a deletion of any data you've submitted via the content form, please <a href="/contact">contact me</a> via your preferred medium and I'll be happy to oblige.</p>
+    <p>Alternatively you can simply ping an email to <a href="mailto:gdpr@tthew.berlin">gdpr@tthew.berlin</a> and I'll take care of your request.</p>
+
+
+</div>

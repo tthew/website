@@ -63,6 +63,14 @@ const title = 'Get in touch';
         display: flex;
         justify-content: flex-end;
     }
+
+    .terms {
+        display: flex;
+        column-gap: var(--space-2xs);
+        flex-direction: row;
+        align-items: baseline;
+        font-size: var(--step--1);
+    }
 }
 {% endcss %}
 
@@ -82,28 +90,42 @@ const title = 'Get in touch';
     
     <form netlify data-netlify-honeypot="username" method="post" name="contact" action="/contact/sent">
         <input type="hidden" name="subject" value="[tthew.berlin] You Have A New Message!" />
-        <input name="username" class="visually-hidden" />
+        <div class="field visually-hidden">
+            <label for="contact-form-field__username">
+                Leave this field empty if you're a human:
+            </label>
+            <input id="contact-form-field__username" name="username" class="visually-hidden" />
+        </div>
         <div class="field">
             <label for="contact-form-field__name">
-                Name
+                Name:
             </label>
 
             <input id="contact-form-field__name" placeholder="e.g. Slavoj Žižek" name="name" type="text" required />
         </div>
         <div class="field">
             <label for="contact-form-field__email">
-                Email
+                Email:
             </label>
             <input id="contact-form-field__email" placeholder="e.g. you@example.com" name="email" type="email" required />
         </div>
         <div class="field">
             <label for="contact-form-field__message">
-                Message
+                Message:
             </label>
             <textarea id="contact-form-field__message" name="message" placeholder="How can I help?" rows="10"></textarea>
         </div>
+        <div class="field terms">
+            <input id="contact-form-field__terms" type="checkbox" name="agree_to_terms" required />
+            <label for="contact-form-field__terms">
+                I consent to the data entered into this form being processed by <a href="https://www.netlify.com/platform/core/forms/">Netlify Forms</a> and <a href="https://akismet.com/">Akismet</a> spam protection services.
+            </label>
+        </div>
 
+        
         <input type="hidden" name="form-name" value="contact" />
+        
+        
         <div class="controls">
             <button type="submit">
                 Hit me up!
