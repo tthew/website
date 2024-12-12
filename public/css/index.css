@@ -512,27 +512,7 @@
 		height: 64px;
 	}
 
-	@media (prefers-color-scheme: dark) {
-		html[data-theme="light dark"] .illustration,
-		html[data-theme="dark"] .illustration {
-			filter: brightness(5) hue-rotate(250deg);
-		}
 
-		html[data-theme="light dark"] body,
-		html[data-theme="dark"] body {
-			--hdr-gradient: radial-gradient(
-				farthest-corner circle at 50% 0% in oklab,
-				rgb(0% 0% 0%) 0%, rgb(17% 17% 17%) 100%
-			  );
-			  --sdr-gradient: radial-gradient(
-				farthest-corner circle at 50% 0%,
-				#000 0%, #2b2b2b 100%
-			  );
-			  background: var(--hdr-gradient);
-			  background-repeat: no-repeat;
-			  background-attachment: fixed;
-		}
-	}
 
 	html[data-theme=dark] .illustration {
 		filter: brightness(5) hue-rotate(250deg);
@@ -550,6 +530,31 @@
 		  background: var(--hdr-gradient);
 		  background-repeat: no-repeat;
 		  background-attachment: fixed;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		.illustration {
+			filter: brightness(5) hue-rotate(250deg);
+		}
+
+		html[data-theme="light"] .illustration {
+			filter: none;
+		}
+
+
+		html[data-theme*="dark"] body {
+			--hdr-gradient: radial-gradient(
+				farthest-corner circle at 50% 0% in oklab,
+				rgb(0% 0% 0%) 0%, rgb(17% 17% 17%) 100%
+			  );
+			  --sdr-gradient: radial-gradient(
+				farthest-corner circle at 50% 0%,
+				#000 0%, #2b2b2b 100%
+			  );
+			  background: var(--hdr-gradient);
+			  background-repeat: no-repeat;
+			  background-attachment: fixed;
+		}
 	}
 
 	theme-switcher button {
