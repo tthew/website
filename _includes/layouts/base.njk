@@ -10,8 +10,8 @@
 	<meta name="fediverse:creator" content="@tthew@hachyderm.io">
 	<meta property="og:url" content="{{ metadata.url }}{{ page.url  }}">
 	<meta property="og:type" content="website">
-	<meta property="og:title" content="@tthew">
-	<meta property="og:description" content="Hi, I'm Matt. A Senior Staff / Principal Software Engineer based in Berlin, Germany. I like HTML, CSS, Javascript (Typescript), people, and building great things with them!">
+	<meta property="og:title" content="{%if post.title %}{{ post.title }}{% else %}{%if title %}{{ title }}{% endif %}{% endif %}">
+	<meta property="og:description" content="{% if post.body %}{{ post.body | markdown | blurb }}{% else %}{{ metadata.description }}{% endif %}">
 	<meta property="og:image" content="/img/1564326180592.jpeg">
     <link rel="icon" type="image/jpeg" href="/img/1564326180592.jpeg" />
 	<link rel="alternate" href="/feed/feed.xml" type="application/rss+xml" title="@tthew: words">
