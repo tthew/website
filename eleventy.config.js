@@ -26,7 +26,6 @@ export default async function (eleventyConfig) {
 		.addPassthroughCopy({
 			"./public/": "/",
 		})
-		.addPassthroughCopy({"node_modules/@divriots/flying-santa/dist/index.js": "js/flying-santa/dist/index.js"})
 		.addPassthroughCopy("./content/feed/pretty-atom-feed.xsl")
 		.addPassthroughCopy("./content/feed/pretty-feed-v3.xsl");
 

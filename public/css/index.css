@@ -1,3 +1,5 @@
+@layer reset, variables, main, page;
+
 @layer reset {
 	/* 1. Use a more-intuitive box-sizing model */
 	*,
