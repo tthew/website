@@ -97,9 +97,11 @@ export default async function getAllBlogposts() {
 
 		if (assetTags) {
 			for (const assetMatch of assetTags) {
-				const [id] = assetMatch.match(/(\d.)/);
+				const [,,id] = assetMatch.match(/\{(asset:(\d+))\}/);
 				const asset = assets.find((asset) => `${asset.id}` === id);
-				body = body.replaceAll(`{asset:${id}}`, `![${asset.alt || ''}](${asset.url})`);
+				if (asset) {
+					body = body.replaceAll(`{asset:${id}}`, `![${asset.alt || ''}](${asset.url})`);
+				}
 			}
 		}
 
