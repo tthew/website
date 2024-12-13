@@ -1,0 +1,20 @@
+name: Netlify Scheduled Deployment
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # This runs every 24 hours at midnight UTC
+  workflow_dispatch: # Allows manual triggering of the action from GitHub Actions
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/main' # Specify the branch 'main' to trigger on
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Netlify Build with Cache Clearing
+        run: |
+          # Call the Netlify API to trigger a new build and clear the cache
+          curl -X POST \
+          -H "Content-Type: application/json" \
+          -d '{"clear_cache": true}' \
+           https://api.netlify.com/build_hooks/${{ secrets.NETLIFY_SECRET }}
