@@ -28,9 +28,6 @@
 		{% getBundle "css" %}
 	</style>
 
-	{%- js %}{% include "node_modules/@zachleat/snow-fall/snow-fall.js" %}{% endjs %}
-	{# <script type="module" src="https://unpkg.com/@divriots/flying-santa/dist/index.js?module"></script> #}
-
 </head>
 
 <body>
@@ -77,7 +74,6 @@
 		</div>
 
 		<div class="socials">
-			<toggle-xmas></toggle-xmas>
 			<theme-switcher>
 			<section aria-label="Color scheme switcher">
 				<button aria-pressed="false" value="light">Light</button>
@@ -166,100 +162,6 @@
 		console.log('https://ma.tthew.berlin/contact') 
 		console.groupEnd()
 
-		window.customElements.define('toggle-xmas', class extends HTMLElement {
-			constructor() {
-				super();
-
-				
-
-				this.toggleXmas = this.toggleXmas.bind(this);
-				this.isXmasCancelled = this.isXmasCancelled.bind(this);
-				this.update = this.update.bind(this);
-
-				const {matches: preferesReducedMotion} = window.matchMedia('(prefers-reduced-motion: reduce)');
-				if (window.localStorage.getItem('xmas-cancelled') === undefined && preferesReducedMotion) {
-					window.localStorage.setItem('xmas-cancelled', true);
-				}
-			}
-
-			isXmasCancelled() {
-				return window.localStorage.getItem('xmas-cancelled') === 'true';	
-			}
-			
-			toggleXmas() {
-				window.localStorage.setItem('xmas-cancelled', !this.isXmasCancelled());
-				this.update();
-			}
-
-			update() {
-
-				if (this.isXmasCancelled()) {
-					this.santaEl.remove();
-					this.snowEl.remove();
-					this.buttonEl.innerText = '🎄 Deck the halls!'
-				} else {
-					let scriptEl = window.document.querySelector('script[src="https://unpkg.com/@divriots/flying-santa/dist/index.js?module"]');
-					if (!scriptEl) {
-						scriptEl = document.createElement('script')	;
-						scriptEl.type = 'module';
-						scriptEl.async = true;
-						scriptEl.defer = true;
-						scriptEl.src = 'https://unpkg.com/@divriots/flying-santa/dist/index.js?module';
-						window.document.body.appendChild(scriptEl);
-					}
-					document.body.appendChild(this.santaEl);
-					document.body.appendChild(this.snowEl);
-					this.buttonEl.innerText = '👺 Cancel christmas'
-				}
-			}
-
-			connectedCallback() {
-
-				this.snowEl = document.createElement('snow-fall');
-				this.santaEl = document.createElement('flying-santa');
-				this.buttonEl = document.createElement('button');
-
-				window.localStorage.setItem('xmas-cancelled', true);
-
-				const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-				const {matches: preferesReducedMotion} = mediaQuery;
-				
-				mediaQuery.addEventListener('change', () => {
-					const {matches: preferesReducedMotion} = window.matchMedia('(prefers-reduced-motion: reduce)');
-					
-					if (preferesReducedMotion) {
-						window.localStorage.setItem('xmas-cancelled', true);
-					}
-					this.update();
-				});
-
-				this.update();
-
-				this.buttonEl.addEventListener('click', this.toggleXmas);
-				this.buttonEl.type = 'button';
-
-				this.appendChild(this.buttonEl);
-			}
-		})
-
-		const colorScheme = document.querySelector('meta[name=theme]');
-		const switchButtons = document.querySelectorAll('theme-switcher button');
-
-		switchButtons.forEach(button => {
-			button.addEventListener('click', () => {
-				const currentButton = button;
-
-				switchButtons.forEach(
-					button => button.setAttribute(
-						'aria-pressed', button === currentButton
-					)
-				);
-
-				document.documentElement.style = `color-scheme: ${button.value};`;
-				document.documentElement.dataset['theme'] = button.value;
-				window.localStorage.setItem('theme', button.value);
-  		});
-	});
 
 	// I used to have a service worker on my old site. Let's remove any we've
 	// got and then refresh the page:
