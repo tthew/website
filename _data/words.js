@@ -4,34 +4,20 @@ import fetch from "node-fetch";
 dotenv.config();
 const token = process.env.API_TOKEN;
 
-// get words
-export default async function getAllBlogposts() {
-	// max number of records to fetch per query
-	const recordsPerQuery = 100;
-
-	// number of records to skip (start at 0)
-	let recordsToSkip = 0;
-
-	// do we make a query ?
-	let makeNewQuery = true;
-
-	// Blogposts array
-	let blogposts = [];
+export default async function getPosts() {
+	let posts = [];
 	let assets = [];
 
-	// make queries until makeNewQuery is set to false
-	while (makeNewQuery) {
-		try {
-			// initiate fetch
-			const craft = await fetch(process.env.API_URL, {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-					Accept: "application/json",
-					Authorization: `Bearer ${token}`,
-				},
-				body: JSON.stringify({
-					query: `query {
+	try {
+		const craft = await fetch(process.env.API_URL, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+				Authorization: `Bearer ${token}`,
+			},
+			body: JSON.stringify({
+				query: `query {
 	wordsEntries {
 		... on article_Entry {
 			postDate
@@ -54,50 +40,37 @@ export default async function getAllBlogposts() {
 	}
 }
           `,
-				}),
+			}),
+		});
+
+		console.info("⏬ Fetching remote data...");
+
+		const response = await craft.json();
+
+		console.info("✅ Success");
+
+		if (response.errors) {
+			let errors = response.errors;
+			errors.map((error) => {
+				console.log(error.message);
 			});
-
-			console.info("⏬ Fetching remote data...");
-
-			// store the JSON response when promise resolves
-			const response = await craft.json();
-
-			console.info("✅ Success");
-
-			// handle CraftCMS errors
-			if (response.errors) {
-				let errors = response.errors;
-				errors.map((error) => {
-					console.log(error.message);
-				});
-				throw new Error("Aborting: CraftCMS errors");
-			}
-
-			// update blogpost array with the data from the JSON response
-			blogposts = blogposts.concat(response.data.wordsEntries);
-			assets = response.data.assets
-
-			// prepare for next query
-			recordsToSkip += recordsPerQuery;
-
-			// stop querying if we are getting back less than the records we fetch per query
-			if (response.data.wordsEntries.length < recordsPerQuery) {
-				makeNewQuery = false;
-			}
-		} catch (error) {
-			console.error("⛔️ Error");
-			throw new Error(error);
+			throw new Error("Aborting: CraftCMS errors");
 		}
+
+		posts = response.data.wordsEntries;
+		assets = response.data.assets
+	} catch (error) {
+		console.error("⛔️ Error");
+		throw new Error(error);
 	}
 
-	// format blogposts objects
-	const blogpostsFormatted = blogposts.map((item) => {
+	const formattedPosts = posts.map((item) => {
 		const assetTags = item.body.match((/\{asset\:(\d.*)\}/gm));
 		let body = item.body;
 
 		if (assetTags) {
 			for (const assetMatch of assetTags) {
-				const [,,id] = assetMatch.match(/\{(asset:(\d+))\}/);
+				const [, , id] = assetMatch.match(/\{(asset:(\d+))\}/);
 				const asset = assets.find((asset) => `${asset.id}` === id);
 				if (asset) {
 					body = body.replaceAll(`{asset:${id}}`, `![${asset.alt || ''}](${asset.url})`);
@@ -120,5 +93,5 @@ export default async function getAllBlogposts() {
 		};
 	});
 
-	return blogpostsFormatted;
+	return formattedPosts;
 }
