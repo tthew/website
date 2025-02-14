@@ -9,6 +9,8 @@ export default async function getPosts() {
 	let assets = [];
 
 	try {
+		console.info("⏬ Fetching words...");
+
 		const craft = await fetch(process.env.API_URL, {
 			method: "POST",
 			headers: {
@@ -43,7 +45,6 @@ export default async function getPosts() {
 			}),
 		});
 
-		console.info("⏬ Fetching remote data...");
 
 		const response = await craft.json();
 
@@ -79,9 +80,7 @@ export default async function getPosts() {
 		}
 
 		const postType = item.postType && item.postType.length ? item.postType[0].title : '';
-		// console.log({item, postType});
 
-		// const category = categories
 		return {
 			id: item.id,
 			date: item.postDate,
