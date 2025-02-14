@@ -18,22 +18,23 @@ const numberOfLatestPostsToShow = 3;
 	h1 {
 		font-size: calc(2 * var(--step-4));
 		line-height: calc(2 * var(--step-4) - 0.2em);
-		padding-top: var(--space-l);
+		
 	}
 
 	h1 span {
 		display: block;
 	}
 
-	@media screen and (min-width: 900px) {
+	@media screen and (min-width: 1400px) {
 		h1 {
 			font-size: calc(2 * var(--step-5));
 			line-height: calc(2 * var(--step-5) - 0.2em);
+			padding-top: var(--space-l);
 		}
 	}
 
 	.hero {
-		min-height: calc(100% - var(--header-height));
+		min-height: 100vh;
 	}
 
 	.hero > :last-child {
@@ -89,7 +90,7 @@ const numberOfLatestPostsToShow = 3;
 
 	@media screen and (min-width: 600px) {
 		.hero .wrapper {
-			min-height: 100vh;
+			max-height: calc(100vh - var(--header-height));
 		}
 	}
 
