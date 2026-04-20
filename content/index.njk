@@ -244,14 +244,12 @@ order: 1
 	.signal a::after { content: "  →"; }
 	.signal a:hover { opacity: 0.65; }
 
-	/* "Currently open for" — editorial services list
-	   (mirrors the All services pattern on /freelance-tech-lead-berlin/) */
+	/* "Currently open for" — full-width 3×2 CTA card grid
+	   (mirrors the signal-strip pattern above) */
 	.home-services {
 		margin-top: clamp(var(--space-xl), 6vw, var(--space-3xl));
 		padding-top: var(--space-l);
 		border-top: 1px solid var(--rule);
-		max-width: 64ch;
-		margin-inline: auto;
 	}
 
 	.home-services h2 {
@@ -264,37 +262,56 @@ order: 1
 		margin: 0 0 var(--space-m);
 	}
 
-	.home-services-list {
+	.home-services-grid {
 		list-style: none;
 		margin: 0;
 		padding: 0;
+		border-top: 1px solid var(--rule);
 		display: grid;
-		gap: var(--space-xs);
+		grid-template-columns: repeat(3, 1fr);
 	}
 
-	.home-services-list li {
-		line-height: 1.4;
+	.home-services-grid .service {
+		padding: var(--space-m);
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3xs);
+		border-right: 1px solid var(--rule);
 	}
 
-	.home-services-list a {
+	.home-services-grid .service:nth-child(3n+1) { padding-left: 0; }
+	.home-services-grid .service:nth-child(3n)   { padding-right: 0; border-right: 0; }
+	.home-services-grid .service:nth-child(n+4)  { border-top: 1px solid var(--rule); }
+
+	.home-services-grid .service-kicker {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.18em;
+		font-size: var(--step--2);
+		color: var(--fg-quiet);
+	}
+
+	.home-services-grid .service-head {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		font-size: var(--step-1);
+		line-height: 1;
+		letter-spacing: 0.01em;
+		margin: 0.1em 0 0.2em;
 		color: var(--fg);
-		text-decoration: none;
-		border-bottom: 1px solid var(--rule);
-		padding-bottom: 0.15em;
-		font-size: var(--step-0);
+		text-wrap: balance;
 	}
-	.home-services-list a:hover { border-color: currentColor; }
 
-	.home-services-list .sub {
-		display: block;
-		color: var(--fg-muted);
+	.home-services-grid .service-body {
 		font-size: var(--step--1);
-		margin-top: var(--space-3xs);
-		padding-left: 0;
+		color: var(--fg-muted);
+		line-height: 1.45;
+		margin: 0;
+		max-width: 32ch;
 	}
 
-	.home-services-cta {
-		margin-top: var(--space-l);
+	.home-services-grid .service a.cta {
+		margin-top: var(--space-2xs);
 		font-family: var(--feature-font);
 		text-transform: uppercase;
 		letter-spacing: 0.14em;
@@ -302,11 +319,25 @@ order: 1
 		text-decoration: none;
 		border-bottom: 1px solid currentColor;
 		padding-bottom: 0.2em;
+		align-self: start;
 		color: inherit;
-		display: inline-block;
 	}
-	.home-services-cta::after { content: "  →"; }
-	.home-services-cta:hover { opacity: 0.65; }
+	.home-services-grid .service a.cta::after { content: "  →"; }
+	.home-services-grid .service a.cta:hover { opacity: 0.65; }
+
+	@media (max-width: 720px) {
+		.home-services-grid {
+			grid-template-columns: 1fr;
+		}
+		.home-services-grid .service {
+			padding-inline: 0;
+			border-right: 0;
+			border-top: 0;
+		}
+		.home-services-grid .service:nth-child(n+2) {
+			border-top: 1px solid var(--rule);
+		}
+	}
 
 	/* Narrow viewports */
 	@media (max-width: 720px) {
@@ -405,32 +436,43 @@ order: 1
 
 	<section class="home-services" aria-labelledby="home-services-heading">
 		<h2 id="home-services-heading">Currently open for</h2>
-		<ul class="home-services-list">
-			<li>
-				<a href="/freelance-tech-lead-berlin/">Freelance tech lead, Berlin</a>
-				<span class="sub">Hands-on technical leadership</span>
+		<ul class="home-services-grid">
+			<li class="service">
+				<span class="service-kicker">&sect; 01</span>
+				<h3 class="service-head">Freelance tech lead</h3>
+				<p class="service-body">Hands-on technical leadership. Twenty years in. Berlin, EU, remote.</p>
+				<a class="cta" href="/freelance-tech-lead-berlin/">Freelance tech lead, Berlin</a>
 			</li>
-			<li>
-				<a href="/freelance-frontend-developer-berlin/">Freelance frontend developer, Berlin</a>
-				<span class="sub">React, TypeScript, design systems</span>
+			<li class="service">
+				<span class="service-kicker">&sect; 02</span>
+				<h3 class="service-head">Freelance frontend</h3>
+				<p class="service-body">React, TypeScript, modern CSS. Accessible, performant interfaces. Design systems that stay coherent.</p>
+				<a class="cta" href="/freelance-frontend-developer-berlin/">Freelance frontend in Berlin</a>
 			</li>
-			<li>
-				<a href="/freelance-full-stack-developer-berlin/">Freelance full-stack developer, Berlin</a>
-				<span class="sub">End-to-end product surfaces, TS/Node</span>
+			<li class="service">
+				<span class="service-kicker">&sect; 03</span>
+				<h3 class="service-head">Freelance full-stack</h3>
+				<p class="service-body">End-to-end product surfaces. TypeScript top to bottom. Node or BFF in the middle.</p>
+				<a class="cta" href="/freelance-full-stack-developer-berlin/">Freelance full-stack in Berlin</a>
 			</li>
-			<li>
-				<a href="/fractional-engineering-lead-berlin/">Fractional engineering lead, Berlin</a>
-				<span class="sub">Strategy, team shape, mentorship</span>
+			<li class="service">
+				<span class="service-kicker">&sect; 04</span>
+				<h3 class="service-head">Fractional engineering lead</h3>
+				<p class="service-body">Senior engineering leadership, part-time. Strategy, team shape, architecture, mentorship.</p>
+				<a class="cta" href="/fractional-engineering-lead-berlin/">Fractional engineering lead</a>
 			</li>
-			<li>
-				<a href="/software-architecture-review-berlin/">Software architecture &amp; codebase review</a>
-				<span class="sub">Two weeks, fixed-fee, decision-grade</span>
+			<li class="service">
+				<span class="service-kicker">&sect; 05</span>
+				<h3 class="service-head">Architecture review</h3>
+				<p class="service-body">Honest read on what's load-bearing, what's rot, what's worth the rewrite. Two weeks, fixed fee.</p>
+				<a class="cta" href="/software-architecture-review-berlin/">Software architecture review</a>
 			</li>
-			<li>
-				<a href="/ai-for-engineering-teams-berlin/">AI for engineering teams</a>
-				<span class="sub">Workflows, guardrails, team health</span>
+			<li class="service">
+				<span class="service-kicker">&sect; 06</span>
+				<h3 class="service-head">AI for engineering teams</h3>
+				<p class="service-body">Workflow design, guardrails, team health. AI every day, without rotting the codebase or the craft.</p>
+				<a class="cta" href="/ai-for-engineering-teams-berlin/">AI for engineering teams</a>
 			</li>
 		</ul>
-		<a class="home-services-cta" href="/freelance-tech-lead-berlin/">All freelance services</a>
 	</section>
 </section>
