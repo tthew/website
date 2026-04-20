@@ -63,28 +63,18 @@
 	</main>
 
 	<footer>
-		<div class="impressum">
-			<p class="human">Made by a human, with love, from berlin.</p>
-			<div class="small">
-				<div>
-					<p>All Rights Reserved.</p>
-					<p class="copyright">Copyright &copy; Matthew Richards {% year %}.</p>
-					<p>This website does not track you.</p>
-				</div>
-				<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1">Licence: CC BY-NC-SA 4.0</a></p>
-				<p><a href="/privacy">Privacy &amp; GDPR</a></p>
-			</div>
-		</div>
+		<div class="footer-bottom">
+			<p class="footer-legal">
+				<span>&copy; Matthew Richards {% year %}</span>
+				<span class="sep" aria-hidden="true">&middot;</span>
+				<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1">CC BY-NC-SA 4.0</a>
+				<span class="sep" aria-hidden="true">&middot;</span>
+				<a href="/privacy">Privacy &amp; GDPR</a>
+				<span class="sep" aria-hidden="true">&middot;</span>
+				<span>All rights reserved</span>
+			</p>
 
-		<div class="socials">
-			<theme-switcher>
-			<section aria-label="Color scheme switcher">
-				<button aria-pressed="false" value="light">Light</button>
-				<button aria-pressed="false" value="light dark">Auto</button>
-				<button aria-pressed="false" value="dark">Dark</button>
-			  </section>
-			</theme-switcher>
-			<ul>
+			<ul class="footer-socials">
 				<li>
 					<a rel="me" href="https://hachyderm.io/@tthew">
 						<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"
@@ -137,16 +127,6 @@
 	</footer>
 
 	<script>
-		const persistedColorScheme = window.localStorage.getItem('theme');
-
-		if (persistedColorScheme) {
-			document.documentElement.dataset['theme'] = persistedColorScheme;
-			document.documentElement.style = `color-scheme: ${persistedColorScheme};`;
-			document.querySelector(`theme-switcher button[value="${persistedColorScheme}"]`).setAttribute('aria-pressed', true);
-		} else {
-			document.querySelector(`theme-switcher button[value="light dark"]`).setAttribute('aria-pressed', true);
-		}
-
 		console.group('Oh hai! 🐿️')
 		console.log(` ░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░▒▓█▓▒░▒▓█▓▒░ 
 ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░ 

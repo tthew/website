@@ -145,12 +145,14 @@
 
 		--feature-font: "Staatliches", fallback-font;
 
+		--grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.7 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
 		--dark: #111;
 		--light: #fff;
 		
 		color-scheme: light dark;
 		
-		--background: light-dark(var(--light), var(--dark));
+		--background: light-dark(#faf9f6, var(--dark));
 		--text: light-dark(var(--dark),  hwb(213 78% 16% / 1));
 
 		--callout-bg: light-dark(rgba(0,0,0,0.02),rgba(255,255,255, 0.03));
@@ -208,6 +210,25 @@
 		font-family: var(--font-family);
 	}
 
+	body::before {
+		content: "";
+		position: fixed;
+		inset: 0;
+		background-image: var(--grain);
+		background-size: 180px 180px;
+		opacity: 0.035;
+		mix-blend-mode: multiply;
+		pointer-events: none;
+		z-index: 1;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		body::before {
+			mix-blend-mode: screen;
+			opacity: 0.06;
+		}
+	}
+
 	html {
 		overflow-y: scroll;
 		height: 100%;
@@ -220,6 +241,7 @@
 		font-size: var(--step-0);
 		background-color: var(--background);
 		color: var(--text);
+		isolation: isolate;
 	}
 
 	/* https://www.a11yproject.com/posts/how-to-hide-content/ */
@@ -401,75 +423,77 @@
 
 	footer {
 		display: flex;
-		row-gap: var(--space-l);
 		flex-direction: column;
-		background: light-dark(var(--dark),transparent);
-		padding: var(--space-l) var(--space-s);
-		color: var(--light);
-
+		row-gap: var(--space-s);
+		width: 100%;
+		margin-top: var(--space-3xl);
+		padding-block: var(--space-xl) var(--space-l);
+		padding-inline: clamp(var(--space-s), 4vw, var(--space-2xl));
+		color: light-dark(#666, #9a9a9a);
+		background: transparent;
+		border-top: 1px solid light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1));
 	}
 
-	footer .small {
+	.footer-bottom {
 		display: flex;
-		flex-direction: column;
-		row-gap: var(--space-2xs);
-		font-size: var(--step--2);
-		color: var(--light);
+		flex-wrap: wrap;
+		align-items: baseline;
+		justify-content: space-between;
+		column-gap: var(--space-l);
+		row-gap: var(--space-s);
 	}
 
-
-
-	footer .human {
-		font-family: var(--feature-font);
-	}
-
-	footer .socials {
+	.footer-socials {
 		display: flex;
-		flex-direction: column;
-		gap: var(--space-s);
-	}
-
-	toggle-xmas {
-		/* position: relative;
-		top: calc(-1 * var(--space-2xs)); */
-		display: flex;
-		justify-content: flex-start;
-	}
-	 toggle-xmas button {
-		border: none;
-		border-radius: var(--step--2);
-		padding: var(--space-3xs) var(--space-s);
-		font-family: var(--feature-font);
-		font-size: var(--step--1);
-	}
-
-	footer .socials ul {
-		display: flex;
-		column-gap: var(--space-2xs);
-		justify-content: flex-start;
+		gap: var(--space-xs);
 		padding: 0;
 		margin: 0;
 		list-style: none;
 	}
 
-	footer .socials ul li a {
-		fill: var(--light);
+	.footer-socials li a {
+		display: inline-flex;
+		fill: currentColor;
+		opacity: 0.45;
+		transition: opacity 0.2s ease;
 	}
 
-	@media screen and (min-width: 600px) {
-		footer {
-			flex-direction: row;
-			justify-content: space-between;
-		}
-
-		footer .socials ul {
-			justify-content: flex-end;
-		}
-
-		footer toggle-xmas {
-			justify-content: flex-end;
-		}
+	.footer-socials li a:hover,
+	.footer-socials li a:focus-visible {
+		opacity: 1;
 	}
+
+	.footer-socials li a svg {
+		width: 20px;
+		height: 20px;
+	}
+
+	.footer-legal {
+		margin: 0;
+		font-size: var(--step--2);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		column-gap: var(--space-2xs);
+		row-gap: var(--space-3xs);
+	}
+
+	.footer-legal .sep {
+		opacity: 0.5;
+	}
+
+	.footer-legal a {
+		color: inherit;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.3em;
+	}
+
+	.footer-legal a:hover {
+		color: var(--text);
+	}
+
 
 	main {
 		display: flex;
@@ -555,21 +579,6 @@
 			  background-repeat: no-repeat;
 			  background-attachment: fixed;
 		}
-	}
-
-	theme-switcher button {
-		background: none;
-		border: none;
-		color: light-dark(var(--background),var(--text));
-		font-family: var(--feature-font);
-		padding: 0 var(--space-xs);
-
-	}
-
-	theme-switcher button[aria-pressed=true] {
-		background: light-dark(var(--background), var(--text));
-		color: light-dark(var(--text), var(--background));
-		border-radius: var(--step-0);
 	}
 
 	@media (prefers-reduced-motion) {
