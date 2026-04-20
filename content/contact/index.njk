@@ -1,138 +1,265 @@
 ---js
 const layout = "layouts/home.njk";
-const pagination = {
-data: "words",
-size: 10,
-before: function(data) { return data.filter(x => !x.rssOnly) }
-};
 const title = 'Get in touch';
+const description = "Get in touch with Matt Richards — consulting, collaboration, or just a nice email.";
+const eleventyNavigation = {
+	key: "Contact",
+	order: 5
+};
 ---
-
 {% css %}
 @layer page {
-    main {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        flex: 1;
-    }
+	main {
+		display: block;
+	}
 
-    main > .contact {
-        display: flex;
-        flex-direction: column;
-        row-gap: var(--space-xl);
-        width: 80ch;
-        max-width: 100%;
-        padding: 0 var(--space-xs);
-    }
+	.contact {
+		width: 100%;
+		max-width: 80ch;
+		margin-inline: auto;
+		padding-inline: clamp(var(--space-s), 4vw, var(--space-l));
+		padding-block: var(--space-l) var(--space-3xl);
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--space-xl);
+	}
 
-    form {
-        display: flex;
-        flex-direction: column;
-        row-gap: var(--space-s);
-        padding-bottom: var(--space-2xl);
-    }
+	@media (min-width: 820px) {
+		.contact { grid-template-columns: 1fr 1fr; }
+	}
 
-    form button {
-        border: none;
-        background: light-dark(#000, #fff) ;
-        color: light-dark(#eee, #111);
-        font-family: var(--feature-font);
-        padding: var(--space-3xs) var(--space-l);
-        border-radius: var(--space-m);
-        font-size: var(--step-1);
-    }
+	.contact h1 {
+		font-family: var(--feature-font);
+		font-weight: 900;
+		text-transform: uppercase;
+		font-size: clamp(3rem, 9vw, 6rem);
+		line-height: 0.9;
+		letter-spacing: -0.015em;
+		color: var(--fg);
+		margin: 0;
+	}
 
-    .field {
-        display: flex;
-        flex-direction: column;
-    }
+	.contact .sub {
+		font-size: var(--step-1);
+		color: var(--fg-muted);
+		max-width: 32ch;
+		margin: var(--space-s) 0 var(--space-m);
+		line-height: 1.4;
+	}
 
-    .field input,
-    .field textarea {
-        padding: var(--space-2xs);
-        border: 1px solid light-dark(#000, rgba(255, 255, 255, 0.2));
-        border-radius: var(--space-3xs);
-        background: light-dark(#fff, #000) ;
-        color: light-dark(#000, #fff);
-        border: 
-    }
+	.contact-channels {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+	}
 
-    .controls {
-        flex: 1;
-        display: flex;
-        justify-content: flex-end;
-    }
+	.contact-channels li {
+		padding-block: var(--space-s);
+		border-top: 1px solid var(--rule);
+		display: grid;
+		grid-template-columns: 6rem 1fr auto;
+		gap: var(--space-m);
+		align-items: baseline;
+	}
 
-    .terms {
-        display: flex;
-        column-gap: var(--space-2xs);
-        flex-direction: row;
-        align-items: center;
-        font-size: var(--step--1);
-    }
+	.contact-channels li:last-child { border-bottom: 1px solid var(--rule); }
+
+	.contact-channels .channel {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		font-size: var(--step--1);
+		color: var(--fg-quiet);
+	}
+
+	.contact-channels .handle {
+		font-family: var(--font-family-monospace);
+		font-size: var(--step--1);
+		color: var(--fg);
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.contact-channels a {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.14em;
+		font-size: var(--step--2);
+		text-decoration: none;
+		border-bottom: 1px solid currentColor;
+		padding-bottom: 0.15em;
+		color: var(--fg);
+	}
+
+	.contact-channels a::after { content: "  →"; }
+	.contact-channels a:hover { opacity: 0.65; }
+
+	.contact-form {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-s);
+		padding-top: var(--space-m);
+	}
+
+	.contact-form .form-kicker {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.2em;
+		font-size: var(--step--2);
+		color: var(--fg-quiet);
+		margin: 0;
+	}
+
+	.contact-form label {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+	}
+
+	.contact-form label > span {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		font-size: var(--step--1);
+		letter-spacing: 0.1em;
+		color: var(--fg-quiet);
+	}
+
+	.contact-form input,
+	.contact-form textarea {
+		font: inherit;
+		border: 0;
+		border-bottom: 1px solid var(--rule);
+		background: transparent;
+		color: var(--fg);
+		padding: 0.2em 0;
+	}
+
+	.contact-form input:focus,
+	.contact-form textarea:focus {
+		outline: none;
+		border-bottom-color: var(--fg);
+	}
+
+	.contact-form textarea {
+		resize: vertical;
+		min-height: 6em;
+	}
+
+	.contact-form .terms {
+		flex-direction: row;
+		align-items: center;
+		gap: var(--space-2xs);
+		font-size: var(--step--1);
+	}
+
+	.contact-form .terms a { color: inherit; }
+
+	.contact-form .btn {
+		align-self: flex-start;
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		font-size: var(--step--1);
+		background: var(--fg);
+		color: var(--bg);
+		border: none;
+		padding: 0.6em 1.2em;
+		cursor: pointer;
+	}
+
+	.contact-form .btn:hover {
+		opacity: 0.85;
+	}
+
+	.contact-form .muted {
+		font-size: var(--step--2);
+		color: var(--fg-quiet);
+		margin: var(--space-2xs) 0 0;
+	}
+
+	.contact-form .honeypot { position: absolute; left: -9999px; }
+
+	@media (prefers-reduced-motion: no-preference) {
+		@keyframes contact-rise-in {
+			from { opacity: 0; transform: translateY(0.4rem); }
+			to   { opacity: 1; transform: translateY(0); }
+		}
+
+		.contact > * {
+			animation: 650ms cubic-bezier(0.22, 1, 0.36, 1) both contact-rise-in;
+		}
+
+		.contact > :nth-child(1) { animation-delay:   0ms; }
+		.contact > :nth-child(2) { animation-delay: 120ms; }
+	}
 }
 {% endcss %}
 
-<div class="contact ">
-    <!--
-    <div class="callout">
-		<img src="../../public/img/119.Advertise.png" alt="404 Not Found" width="32" height="32" class="icon illustration" alt="An illustration of a man making an announcement with a megaphone."/>
-		<p><strong>I'm currently open to exploring new opportunities for 2025.</strong></p>
+<section class="contact">
+	<div>
+		<h1>Say hello.</h1>
+		<p class="sub">Consulting, collaboration, or just a nice email &mdash; I'll reply in a day or two.</p>
+		<ul class="contact-channels">
+			<li>
+				<span class="channel">Email</span>
+				<span class="handle">hallo@tthew.berlin</span>
+				<a href="mailto:hallo@tthew.berlin" rel="me">Compose</a>
+			</li>
+			<li>
+				<span class="channel">Mastodon</span>
+				<span class="handle">@tthew@hachyderm.io</span>
+				<a href="https://hachyderm.io/@tthew" rel="me">Follow</a>
+			</li>
+			<li>
+				<span class="channel">LinkedIn</span>
+				<span class="handle">/in/tthew</span>
+				<a href="https://www.linkedin.com/in/tthew/" rel="me">Connect</a>
+			</li>
+			<li>
+				<span class="channel">GitHub</span>
+				<span class="handle">/tthew</span>
+				<a href="https://github.com/tthew" rel="me">View</a>
+			</li>
+			<li>
+				<span class="channel">RSS</span>
+				<span class="handle">/feed/feed.xml</span>
+				<a href="/feed/feed.xml">Subscribe</a>
+			</li>
+		</ul>
 	</div>
-    -->
-    <div class="flow">
-    <h1>Get in touch</h1>
 
-    {# <p>I'm currently open for new opportunties.</p> #}
-    <p>If you'd like to reach out, I'd love to hear from you.</p>
-    <p>
-        Feel free to send me a message using the contact form or alternatively   <a href="mailto:hallo@tthew.berlin" rel="me">drop me an email</a>.
-    </p>
-    
-    <form netlify data-netlify-honeypot="username" method="post" name="contact" action="/contact/sent">
-        <input type="hidden" name="subject" value="[tthew.berlin] You Have A New Message!" />
-        <div class="field visually-hidden">
-            <label for="contact-form-field__username">
-                Leave this field empty if you're a human:
-            </label>
-            <input id="contact-form-field__username" name="username" class="visually-hidden" />
-        </div>
-        <div class="field">
-            <label for="contact-form-field__name">
-                Name:
-            </label>
+	<form class="contact-form" netlify data-netlify-honeypot="username" method="post" name="contact" action="/contact/sent">
+		<p class="form-kicker">Or drop a message here</p>
 
-            <input id="contact-form-field__name" placeholder="e.g. Slavoj Žižek" name="name" type="text" required />
-        </div>
-        <div class="field">
-            <label for="contact-form-field__email">
-                Email:
-            </label>
-            <input id="contact-form-field__email" placeholder="e.g. you@example.com" name="email" type="email" required />
-        </div>
-        <div class="field">
-            <label for="contact-form-field__message">
-                Message:
-            </label>
-            <textarea id="contact-form-field__message" name="message" placeholder="How can I help?" rows="10"></textarea>
-        </div>
-        <div class="field terms">
-            <input id="contact-form-field__terms" type="checkbox" name="agree_to_terms" required />
-            <label for="contact-form-field__terms">
-                I consent to the data entered into this form being processed by <a href="https://www.netlify.com/platform/core/forms/">Netlify Forms</a> and <a href="https://akismet.com/">Akismet</a> spam protection services.
-            </label>
-        </div>
+		<input type="hidden" name="subject" value="[tthew.berlin] You Have A New Message!" />
+		<input type="hidden" name="form-name" value="contact" />
 
-        
-        <input type="hidden" name="form-name" value="contact" />
-        
-        
-        <div class="controls">
-            <button type="submit">
-                Hit me up!
-            </button>
-        </div>
-    </form>
-</div>
-</div>
+		<label class="honeypot" aria-hidden="true">
+			<span>Leave empty</span>
+			<input name="username" tabindex="-1" autocomplete="off" />
+		</label>
+
+		<label>
+			<span>Your name</span>
+			<input type="text" name="name" placeholder="e.g. Slavoj &Zcaron;i&zcaron;ek" required />
+		</label>
+		<label>
+			<span>Email</span>
+			<input type="email" name="email" placeholder="e.g. you@example.com" required />
+		</label>
+		<label>
+			<span>Message</span>
+			<textarea name="message" rows="6" placeholder="How can I help?" required></textarea>
+		</label>
+
+		<label class="terms">
+			<input type="checkbox" name="agree_to_terms" required />
+			<span>I consent to this message being processed by <a href="https://www.netlify.com/platform/core/forms/">Netlify Forms</a> and <a href="https://akismet.com/">Akismet</a>.</span>
+		</label>
+
+		<button type="submit" class="btn">Send</button>
+		<p class="muted">Submitted via Netlify Forms + Akismet. This site does not track you.</p>
+	</form>
+</section>
