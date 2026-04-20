@@ -95,8 +95,44 @@ export default function (eleventyConfig) {
 			return true;
 		});
 	});
-	
-	eleventyConfig.addFilter("TIL", (words) => words.pageType === 'TIL')
+
+	// Inclusive public-web filter: everything except rssOnly posts, so the
+	// Words index can surface Articles, TIL and Note kinds together.
+	eleventyConfig.addFilter("allWebWords", (words) => {
+		return (words || []).filter(({ rssOnly }) => !rssOnly);
+	});
+
+	// Group a sorted array of posts by year. Returns an array of
+	// { year, posts } pairs with years descending and posts within each
+	// year in the input order.
+	eleventyConfig.addFilter("groupByYear", (words) => {
+		const groups = new Map();
+		for (const post of words || []) {
+			const year = new Date(post.date).getUTCFullYear();
+			if (!groups.has(year)) groups.set(year, []);
+			groups.get(year).push(post);
+		}
+		return [...groups.entries()]
+			.sort((a, b) => b[0] - a[0])
+			.map(([year, posts]) => ({ year, posts }));
+	});
+
+	// Human-readable label for a post's kind; empty string when not set.
+	eleventyConfig.addFilter("postKindLabel", (postType) => {
+		switch (postType) {
+			case 'Article':
+			case '':
+			case undefined:
+			case null:
+				return 'Essay';
+			case 'TIL':
+				return 'TIL';
+			case 'Note':
+				return 'Note';
+			default:
+				return postType;
+		}
+	});
 
 	eleventyConfig.addFilter("markdown", (content) => {
 		return markdown.render(content);

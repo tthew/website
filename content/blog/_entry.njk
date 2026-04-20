@@ -6,57 +6,7 @@ pagination:
 permalink: words/{{ post.slug }}/index.html
 layout: layouts/post.njk
 eleventyExcludeFromCollections: true
-
 ---
-
-{% css %}
-@layer page {
-	main {
-		display: flex;
-		{# flex-direction: column; #}
-		col-gap: var(--space-l);
-		padding-bottom: var(--space-3xl);
-	}
-
-	article > * {
-		max-width: 65ch;
-	}
-
-	heading-anchors:not(:defined) :is(h2,h3,h4,h5,h6):after {
-		content: "#";
-		padding: 0;
-		opacity: 0;
-	}
-
-	aside {
-		display: inline-block;
-		background: light-dark(yellow, rgba(255, 255, 255, 0.2));
-		color: light-dark(var(--dark), var(--light));
-		padding: var(--space-3xs) var(--space-xs);
-	}
-
-	article p {
-		text-wrap: wrap;
-	}
-	
-	article p:first-child {
-		font-size: var(--step-1);
-		padding-bottom: var(--space-s);
-		color: light-dark(#333, #bbb);
-		text-wrap: balance;
-	}
-}
-{% endcss %}
-
-
-{% block content %}
-	<heading-anchors>
-		<article>
-    	  {{ post.body | markdown | safe }}
-		</article>
-	</heading-anchors>
-{% endblock %}
-
-<div class="callout">
-	<p><strong>This post doesn't support comments</strong> <br>(if you'd like to reach out, <a href="/contact">I'd love to hear from you!</a>)</p>
-</div>
+<heading-anchors>
+	{{ post.body | markdown | safe }}
+</heading-anchors>
