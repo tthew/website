@@ -9,49 +9,9 @@ const eleventyNavigation = {
 ---
 {% css %}
 @layer page {
-	main {
-		display: block;
-	}
+	{% include "css/landing.css" %}
 
-	.words {
-		width: 100%;
-		max-width: 80ch;
-		margin-inline: auto;
-		padding-inline: clamp(var(--space-s), 4vw, var(--space-l));
-		padding-block: var(--space-l) var(--space-3xl);
-	}
-
-	.words-head {
-		display: grid;
-		grid-template-columns: 1fr auto;
-		align-items: end;
-		gap: var(--space-m);
-		padding-bottom: var(--space-l);
-		border-bottom: 1px solid var(--rule);
-	}
-
-	.words-head h1 {
-		font-family: var(--feature-font);
-		font-weight: 900;
-		text-transform: uppercase;
-		font-size: clamp(3rem, 9vw, 6rem);
-		line-height: 0.9;
-		letter-spacing: -0.015em;
-		margin: 0;
-		color: var(--fg);
-	}
-
-	.words-head .words-sub {
-		font-size: var(--step-0);
-		color: var(--fg-muted);
-		max-width: 36ch;
-		margin: 0;
-		text-align: right;
-		line-height: 1.45;
-	}
-
-	.year-group { margin-top: var(--space-xl); }
-
+	/* Year group divider — display number above the postlist */
 	.year-label {
 		font-family: var(--feature-font);
 		font-weight: 900;
@@ -74,6 +34,7 @@ const eleventyNavigation = {
 		background: var(--rule);
 	}
 
+	/* Post list */
 	.postlist {
 		list-style: none;
 		margin: 0;
@@ -159,40 +120,26 @@ const eleventyNavigation = {
 	}
 
 	@media (max-width: 720px) {
-		.words-head {
-			grid-template-columns: 1fr;
-		}
-		.words-head .words-sub { text-align: left; }
-
 		.postlist-item {
 			grid-template-columns: 1fr;
 			gap: var(--space-3xs);
 		}
 		.postlist-meta { text-align: left; }
 	}
-
-	@media (prefers-reduced-motion: no-preference) {
-		@keyframes words-rise-in {
-			from { opacity: 0; transform: translateY(0.4rem); }
-			to   { opacity: 1; transform: translateY(0); }
-		}
-
-		.words > * {
-			animation: 650ms cubic-bezier(0.22, 1, 0.36, 1) both words-rise-in;
-		}
-
-		.words > :nth-child(1) { animation-delay:   0ms; }
-		.words > :nth-child(2) { animation-delay: 100ms; }
-		.words > :nth-child(3) { animation-delay: 180ms; }
-		.words > :nth-child(4) { animation-delay: 260ms; }
-	}
 }
 {% endcss %}
 
-<section class="words">
-	<header class="words-head">
-		<h1>Words</h1>
-		<p class="words-sub">Essays, notes and things learned. On product engineering, leadership, and keeping codebases humane.</p>
+<article class="landing">
+	<nav class="landing-crumbs" aria-label="Breadcrumb">
+		<a href="/">Home</a>
+		<span class="sep" aria-hidden="true">/</span>
+		<span aria-current="page">Words</span>
+	</nav>
+
+	<header class="landing-hero">
+		<p class="landing-eyebrow">Essays &middot; Notes &middot; TIL</p>
+		<h1><em>Words</em>.</h1>
+		<p class="lede">Essays, notes and things learned. On product engineering, leadership, and keeping codebases humane in the age of AI.</p>
 	</header>
 
 	{% set grouped = words | allWebWords | reverse | groupByYear %}
@@ -200,7 +147,7 @@ const eleventyNavigation = {
 		<p class="words-empty">Nothing here yet. Check back soon.</p>
 	{% else %}
 		{% for group in grouped %}
-			<div class="year-group">
+			<section class="year-group">
 				<h2 class="year-label">{{ group.year }}</h2>
 				<ol class="postlist">
 					{% for post in group.posts %}
@@ -218,7 +165,7 @@ const eleventyNavigation = {
 						</li>
 					{% endfor %}
 				</ol>
-			</div>
+			</section>
 		{% endfor %}
 	{% endif %}
-</section>
+</article>
