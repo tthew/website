@@ -1,0 +1,70 @@
+---js
+const layout = "layouts/home.njk";
+const title = 'Impressum';
+const description = "Legal notice for ma.tthew.berlin — service provider and contact details per § 5 TMG.";
+const sitemap = { priority: "0.2", changefreq: "yearly" };
+---
+{% css %}
+@layer page {
+	{% include "css/landing.css" %}
+}
+{% endcss %}
+
+<article class="landing">
+	<nav class="landing-crumbs" aria-label="Breadcrumb">
+		<a href="/">Home</a>
+		<span class="sep" aria-hidden="true">/</span>
+		<span aria-current="page">Impressum</span>
+	</nav>
+
+	<header class="landing-hero">
+		<p class="landing-eyebrow">Legal notice &middot; &sect; 5 TMG</p>
+		<h1><em>Impressum.</em></h1>
+		<p class="lede">Legal notice for ma.tthew.berlin, in accordance with &sect; 5 TMG (Telemediengesetz, Germany) and &sect; 18 Abs. 2 MStV.</p>
+	</header>
+
+	<section class="landing-section">
+		<h2><span class="ix">&sect; 01 &mdash; Service provider</span>Who runs this site</h2>
+		<div class="landing-body">
+			<p>Matthew Richards<br>Berlin, Germany</p>
+		</div>
+	</section>
+
+	<section class="landing-section">
+		<h2><span class="ix">&sect; 02 &mdash; Contact</span>How to reach me</h2>
+		<div class="landing-body">
+			<p>Email: <a href="mailto:hallo@tthew.berlin">hallo@tthew.berlin</a></p>
+			<p>For privacy / GDPR enquiries: <a href="mailto:gdpr@tthew.berlin">gdpr@tthew.berlin</a></p>
+			<p>A postal address is not published here. If a postal address is required for a specific legal purpose, please request it via email and I will provide it in reply.</p>
+		</div>
+	</section>
+
+	<section class="landing-section">
+		<h2><span class="ix">&sect; 03 &mdash; Responsible for content</span>&sect; 18 Abs. 2 MStV</h2>
+		<div class="landing-body">
+			<p>Matthew Richards (as above) is responsible under &sect; 18 Abs. 2 MStV for the editorial content of this site.</p>
+		</div>
+	</section>
+
+	<section class="landing-section">
+		<h2><span class="ix">&sect; 04 &mdash; Liability for content</span>&sect; 7 Abs. 1 TMG &amp; &sect;&sect; 8&ndash;10 TMG</h2>
+		<div class="landing-body">
+			<p>The content on this site is prepared with care, but I cannot guarantee its accuracy, completeness, or timeliness. As a service provider I am responsible for my own content on these pages in accordance with &sect; 7 Abs. 1 TMG and general laws. Per &sect;&sect; 8&ndash;10 TMG I am not obliged to monitor transmitted or stored third-party information, or to investigate circumstances that indicate unlawful activity.</p>
+			<p>Obligations to remove or block the use of information under general laws remain unaffected; any liability in this respect is only possible from the point in time at which a concrete infringement becomes known. Upon notification of any such infringements, I will remove the content immediately.</p>
+		</div>
+	</section>
+
+	<section class="landing-section">
+		<h2><span class="ix">&sect; 05 &mdash; Liability for links</span>External content</h2>
+		<div class="landing-body">
+			<p>This site contains links to external websites operated by third parties, over whose content I have no control. I therefore cannot accept any liability for this external content. The respective provider or operator of the linked pages is always responsible for their content. Linked pages were checked for possible legal violations at the time of linking; no unlawful content was apparent at that time. Permanent monitoring of the content of linked pages is not reasonable without concrete evidence of a violation. Upon notification of violations, I will remove such links immediately.</p>
+		</div>
+	</section>
+
+	<section class="landing-section">
+		<h2><span class="ix">&sect; 06 &mdash; Copyright</span>Reuse &amp; attribution</h2>
+		<div class="landing-body">
+			<p>Unless otherwise stated, content on this site is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>. Third-party content is marked as such. To report a copyright infringement, please email <a href="mailto:hallo@tthew.berlin">hallo@tthew.berlin</a>.</p>
+		</div>
+	</section>
+</article>
