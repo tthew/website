@@ -1,55 +1,14 @@
+---js
+const pagination = {
+	data: "words",
+	size: 1,
+	alias: "post",
+	before: function(items) { return items.filter(p => p.postType === 'TIL' && !p.rssOnly); }
+};
+const permalink = "til/{{ post.slug }}/index.html";
+const layout = "layouts/post.njk";
+const eleventyExcludeFromCollections = true;
 ---
-pagination:
-  data: words
-  size: 1
-  alias: post
-permalink: til/{{ post.slug }}/index.html
-layout: layouts/post.njk
-eleventyExcludeFromCollections: true
-
----
-
-{% css %}
-@layer page {
-	main {
-		display: flex;
-		col-gap: var(--space-l);
-		padding-bottom: var(--space-3xl);
-	}
-
-	article > * {
-		max-width: 65ch;
-	}
-
-	heading-anchors:not(:defined) :is(h2,h3,h4,h5,h6):after {
-		content: "#";
-		padding: 0;
-		opacity: 0;
-	}
-
-	aside {
-		display: inline-block;
-		background: light-dark(yellow, rgba(255, 255, 255, 0.2));
-		color: light-dark(var(--dark), var(--light));
-		padding: var(--space-3xs) var(--space-xs);
-	}
-
-    h1 abbr[title] {
-		border: none;
-		text-decoration: none;
-	}
-}
-{% endcss %}
-
-
-{% block content %}
-	<heading-anchors>
-		<article>
-    	  {{ post.body | markdown | safe }}
-		</article>
-	</heading-anchors>
-{% endblock %}
-
-<div class="callout">
-	<p><strong>This post doesn't support comments</strong> <br>(if you'd like to reach out, <a href="/contact">I'd love to hear from you!</a>)</p>
-</div>
+<heading-anchors>
+	{{ post.body | markdown | safe }}
+</heading-anchors>

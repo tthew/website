@@ -1,50 +1,224 @@
 ---js
 const layout = "layouts/home.njk";
-const pagination = {
-  data: "words",
-  size: 10,
-  before: function(data) { return data.filter(x => !x.rssOnly) }
-};
 const title = 'Words';
+const description = "Essays, TIL and notes from Matt Richards — on product engineering, engineering leadership, and keeping codebases humane in the age of AI.";
+const eleventyNavigation = {
+	key: "Words",
+	order: 4
+};
 ---
-
 {% css %}
 @layer page {
 	main {
-		display: flex;
-		justify-content: center;
-		min-height: 100vh;
-		flex: 1;
-		padding-bottom: var(--space-xl);
-	}
-
-	main > * {
-		width: 80ch;
-		max-width: 100%;
+		display: block;
 	}
 
 	.words {
-		display: flex;
-		flex-direction: column;
-		row-gap: var(--space-l);
+		width: 100%;
+		max-width: 80ch;
+		margin-inline: auto;
+		padding-inline: clamp(var(--space-s), 4vw, var(--space-l));
+		padding-block: var(--space-l) var(--space-3xl);
 	}
 
-	.pagination {
+	.words-head {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		align-items: end;
+		gap: var(--space-m);
+		padding-bottom: var(--space-l);
+		border-bottom: 1px solid var(--rule);
+	}
+
+	.words-head h1 {
+		font-family: var(--feature-font);
+		font-weight: 900;
+		text-transform: uppercase;
+		font-size: clamp(3rem, 9vw, 6rem);
+		line-height: 0.9;
+		letter-spacing: -0.015em;
+		margin: 0;
+		color: var(--fg);
+	}
+
+	.words-head .words-sub {
+		font-size: var(--step-0);
+		color: var(--fg-muted);
+		max-width: 36ch;
+		margin: 0;
+		text-align: right;
+		line-height: 1.45;
+	}
+
+	.year-group { margin-top: var(--space-xl); }
+
+	.year-label {
+		font-family: var(--feature-font);
+		font-weight: 900;
+		text-transform: uppercase;
+		font-size: var(--step-4);
+		letter-spacing: -0.01em;
+		color: var(--fg);
+		margin: 0 0 var(--space-s);
+		padding-bottom: var(--space-2xs);
+		position: relative;
+	}
+
+	.year-label::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: 1px;
+		background: var(--rule);
+	}
+
+	.postlist {
 		list-style: none;
-		margin: none;
+		margin: 0;
+		padding: 0;
 		display: flex;
-		justify-content: space-between;
+		flex-direction: column;
+	}
+
+	.postlist-item {
+		display: grid;
+		grid-template-columns: 6rem 1fr auto;
+		gap: var(--space-m);
+		padding-block: var(--space-m);
+		border-bottom: 1px solid var(--rule-soft);
+		align-items: baseline;
+	}
+
+	.postlist-item:last-child { border-bottom: 0; }
+
+	.postlist-date {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		font-size: var(--step--1);
+		color: var(--fg-quiet);
+		white-space: nowrap;
+	}
+
+	.postlist-main {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3xs);
+		min-width: 0;
+	}
+
+	.postlist-link {
+		font-family: var(--feature-font);
+		font-weight: 900;
+		text-transform: uppercase;
+		font-size: var(--step-2);
+		line-height: 1;
+		letter-spacing: 0.005em;
+		color: var(--fg);
+		text-decoration: none;
+	}
+
+	.postlist-link:hover {
+		text-decoration: underline;
+		text-underline-offset: 0.15em;
+	}
+
+	.postlist-blurb {
+		color: var(--fg-muted);
+		font-size: var(--step-0);
+		line-height: 1.45;
+		margin: var(--space-3xs) 0 0;
+		max-width: 60ch;
+	}
+
+	.postlist-meta {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		font-size: var(--step--2);
+		color: var(--fg-quiet);
+		text-align: right;
+		white-space: nowrap;
+	}
+
+	.postlist-meta .kind-tag {
+		display: inline-block;
+		padding: 0.2em 0.5em;
+		border: 1px solid currentColor;
+		letter-spacing: 0.12em;
+		margin-bottom: 0.4em;
+	}
+
+	.words-empty {
+		padding-block: var(--space-xl);
+		text-align: center;
+		color: var(--fg-subtle);
+		font-size: var(--step-0);
+	}
+
+	@media (max-width: 720px) {
+		.words-head {
+			grid-template-columns: 1fr;
+		}
+		.words-head .words-sub { text-align: left; }
+
+		.postlist-item {
+			grid-template-columns: 1fr;
+			gap: var(--space-3xs);
+		}
+		.postlist-meta { text-align: left; }
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		@keyframes words-rise-in {
+			from { opacity: 0; transform: translateY(0.4rem); }
+			to   { opacity: 1; transform: translateY(0); }
+		}
+
+		.words > * {
+			animation: 650ms cubic-bezier(0.22, 1, 0.36, 1) both words-rise-in;
+		}
+
+		.words > :nth-child(1) { animation-delay:   0ms; }
+		.words > :nth-child(2) { animation-delay: 100ms; }
+		.words > :nth-child(3) { animation-delay: 180ms; }
+		.words > :nth-child(4) { animation-delay: 260ms; }
 	}
 }
 {% endcss %}
 
-<div class="words">
-<h1>Words</h1>
+<section class="words">
+	<header class="words-head">
+		<h1>Words &amp; TIL</h1>
+		<p class="words-sub">Essays, notes and things learned. On product engineering, leadership, and keeping codebases humane.</p>
+	</header>
 
-{% set postslist = pagination.items | webWords | reverse  %}
-{% include "postslist.njk" %}
-<ol class="pagination">
-  {% if pagination.href.previous %}<li><a href="{{ pagination.href.previous }}">Previous Page</a></li>{% endif %}
-  {% if pagination.href.next %}<li><a href="{{ pagination.href.next }}">Next Page</a></li>{% endif %}
-</ol>
-</div>
+	{% set grouped = words | allWebWords | reverse | groupByYear %}
+	{% if grouped.length == 0 %}
+		<p class="words-empty">Nothing here yet. Check back soon.</p>
+	{% else %}
+		{% for group in grouped %}
+			<div class="year-group">
+				<h2 class="year-label">{{ group.year }}</h2>
+				<ol class="postlist">
+					{% for post in group.posts %}
+						{% set renderedBody = post.body | markdown %}
+						<li class="postlist-item">
+							<time class="postlist-date" datetime="{{ post.date }}">{{ post.date | readableDate("dd LLL") }}</time>
+							<div class="postlist-main">
+								<a class="postlist-link" href="/words/{{ post.slug }}/">{{ post.title }}</a>
+								<p class="postlist-blurb">{{ renderedBody | blurb }}</p>
+							</div>
+							<div class="postlist-meta">
+								{% if post.postType and post.postType != 'Article' %}<span class="kind-tag">{{ post.postType | postKindLabel }}</span><br>{% endif %}
+								<span>{{ renderedBody | readingTime }}</span>
+							</div>
+						</li>
+					{% endfor %}
+				</ol>
+			</div>
+		{% endfor %}
+	{% endif %}
+</section>

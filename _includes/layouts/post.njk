@@ -1,111 +1,357 @@
 ---
 layout: layouts/base.njk
-pagination:
-data: words
-size: 1
 ---
-{# Only include the syntax highlighter CSS on blog posts, included with the CSS per-page bundle #}
 {%- css %}{% include "public/css/prism-one-light.css" %}{% endcss %}
 {%- css %}{% include "public/css/prism-diff.css" %}{%- endcss %}
-	{#- Add the heading-anchors web component to the JavaScript bundle #}
-	
+
 {% css %}
 @layer page {
 	main {
-		flex: 1;
-	}
-
-	article {
-		{# padding-top: var(--space-xl); #}
-	}
-
-	article> * + * {
-		margin-top: var(--space-xs);
-	}
-
-	article > * + h2 {
-		margin-top: var(--space-l);
-	}
-
-	article > * + h3 {
-		margin-top: var(--space-m);
-	}
-
-	article > * + h4 {
-		margin-top: var(--space-s);
-	}
-
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		line-height: calc(1rem + .66em);
-	}
-
-	h1 {
-		font-size: calc(var(--step-4) * 2);
-		font-weight: 900;
-		text-transform: uppercase;
-		padding-top: var(--space-xs);
-		max-width: 15ch;
-	}
-
-	article {
-		font-size: var(--step-0);
-		padding-bottom: var(--space-2xl);
-		text-wrap: balance;
-	}
-
-	
-
-
-	main:has(.post) {
-		display: flex;
-		justify-content: center;
+		display: block;
 	}
 
 	.post {
+		width: 100%;
+		max-width: 72ch;
+		margin-inline: auto;
+		padding-inline: clamp(var(--space-s), 4vw, var(--space-l));
+		padding-block: var(--space-l) var(--space-3xl);
 		display: flex;
 		flex-direction: column;
-		row-gap: var(--space-s);
-		width: 65ch;
-		max-width: 100%;
+		row-gap: var(--space-l);
 	}
 
-	.meta {
+	.post-breadcrumbs {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		font-size: var(--step--2);
+		color: var(--fg-quiet);
+		margin: 0;
 		display: flex;
-		row-gap: var(--space-3xs);
-		font-size: var(--step--1);
-		color: light-dark(#333, #bbb);
-	}
-	.meta time {
-		font-size: var(--step--1);
+		flex-wrap: wrap;
+		gap: 0.6em;
 	}
 
+	.post-breadcrumbs a {
+		color: inherit;
+		text-decoration: none;
+		border-bottom: 1px solid transparent;
+	}
 
+	.post-breadcrumbs a:hover {
+		border-bottom-color: currentColor;
+		color: var(--fg);
+	}
+
+	.post-breadcrumbs .sep { opacity: 0.5; }
+
+	.post-kicker {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.25em;
+		font-size: var(--step--1);
+		color: var(--fg-quiet);
+		margin: 0;
+	}
+
+	.post-header {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-s);
+	}
+
+	.post-header h1 {
+		font-family: var(--feature-font);
+		font-weight: 900;
+		text-transform: uppercase;
+		font-size: clamp(2.25rem, 6.5vw, 4.5rem);
+		line-height: 0.9;
+		letter-spacing: -0.015em;
+		color: var(--fg);
+		margin: 0;
+		text-wrap: balance;
+	}
+
+	.post-meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-xs) var(--space-s);
+		align-items: baseline;
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		font-size: var(--step--1);
+		color: var(--fg-quiet);
+		margin: 0;
+	}
+
+	.post-meta .sep { opacity: 0.5; }
+
+	/* Body */
+	.post-body {
+		max-width: 62ch;
+		font-size: var(--step-0);
+		line-height: 1.65;
+		color: var(--fg);
+	}
+
+	.post-body heading-anchors { display: contents; }
+
+	.post-body p,
+	.post-body ul,
+	.post-body ol,
+	.post-body blockquote,
+	.post-body figure,
+	.post-body pre {
+		margin: 0 0 var(--space-m);
+	}
+
+	.post-body p:first-child {
+		font-size: var(--step-1);
+		line-height: 1.45;
+		color: var(--fg-muted);
+		text-wrap: balance;
+		padding-bottom: var(--space-xs);
+	}
+
+	.post-body h2 {
+		font-family: var(--feature-font);
+		font-weight: 900;
+		text-transform: uppercase;
+		font-size: var(--step-2);
+		line-height: 1;
+		letter-spacing: 0.005em;
+		margin: var(--space-l) 0 var(--space-s);
+	}
+
+	.post-body h3 {
+		font-family: var(--feature-font);
+		font-weight: 900;
+		text-transform: uppercase;
+		font-size: var(--step-1);
+		line-height: 1.05;
+		letter-spacing: 0.01em;
+		margin: var(--space-m) 0 var(--space-2xs);
+	}
+
+	.post-body h4 {
+		font-family: var(--feature-font);
+		font-weight: 900;
+		text-transform: uppercase;
+		font-size: var(--step-0);
+		letter-spacing: 0.02em;
+		margin: var(--space-m) 0 var(--space-2xs);
+	}
+
+	heading-anchors:not(:defined) :is(h2, h3, h4, h5, h6):after {
+		content: "#";
+		padding: 0;
+		opacity: 0;
+	}
+
+	.post-body code:not([class*="language-"]) {
+		background: var(--code-bg);
+		color: var(--code-fg);
+		padding: 0.1em 0.4em;
+		border-radius: 3px;
+		font-size: 0.92em;
+	}
+
+	.post-body pre {
+		border: 1px solid var(--rule-soft);
+		padding: var(--space-m);
+		overflow-x: auto;
+	}
+
+	.post-body mark,
+	.post-body .hl {
+		background-image: linear-gradient(transparent 60%, var(--accent) 60%);
+		background-color: transparent;
+		color: inherit;
+		padding: 0 0.05em;
+	}
+
+	.post-body blockquote {
+		border-left: 2px solid var(--rule);
+		padding: 0 var(--space-m);
+		color: var(--fg-muted);
+		font-style: italic;
+	}
+
+	.post-body .aside-note {
+		background: var(--highlight-bg);
+		color: var(--highlight-fg);
+		padding: var(--space-s) var(--space-m);
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		font-size: var(--step--1);
+		line-height: 1.35;
+	}
+
+	.post-body .callout {
+		background: var(--callout-bg);
+		color: var(--callout-fg);
+		border-radius: 4px;
+		padding: var(--space-m) var(--space-l);
+		margin-block: var(--space-m);
+	}
+
+	.post-body .callout p { margin: 0; line-height: 1.45; }
+
+	.post-body .callout.single {
+		text-align: center;
+		max-width: 50ch;
+		margin-inline: auto;
+	}
+
+	.post-body .margin-note {
+		font-size: var(--step--1);
+		line-height: 1.4;
+		color: var(--fg-subtle);
+		font-style: italic;
+		margin-block: var(--space-s);
+	}
+
+	@media (min-width: 1024px) {
+		.post-body .margin-note {
+			float: right;
+			clear: right;
+			width: 18ch;
+			margin: 0.4em -20ch 0 var(--space-m);
+		}
+	}
+
+	.post-body img,
+	.post-body picture {
+		margin-block: var(--space-m);
+	}
+
+	/* Inline "no comments" / footer callout */
+	.post-callout {
+		background: var(--callout-bg);
+		color: var(--callout-fg);
+		border-radius: 4px;
+		padding: var(--space-m) var(--space-l);
+		text-align: center;
+	}
+
+	.post-callout p { margin: 0; line-height: 1.45; }
+
+	/* Prev / next post navigation */
+	.post-footer {
+		margin-top: var(--space-xl);
+		padding-top: var(--space-m);
+		border-top: 1px solid var(--rule);
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--space-m);
+	}
+
+	.post-footer > a,
+	.post-footer > span {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		font-size: var(--step--1);
+		text-decoration: none;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3xs);
+		color: var(--fg);
+	}
+
+	.post-footer > :nth-child(2) { text-align: right; }
+
+	.post-footer .kicker {
+		font-size: var(--step--2);
+		letter-spacing: 0.15em;
+		color: var(--fg-quiet);
+	}
+
+	.post-footer .title {
+		font-size: var(--step-0);
+		text-wrap: balance;
+	}
+
+	.post-footer a:hover .title {
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		@keyframes post-rise-in {
+			from { opacity: 0; transform: translateY(0.4rem); }
+			to   { opacity: 1; transform: translateY(0); }
+		}
+
+		.post > * {
+			animation: 650ms cubic-bezier(0.22, 1, 0.36, 1) both post-rise-in;
+		}
+
+		.post > :nth-child(1) { animation-delay:   0ms; }
+		.post > :nth-child(2) { animation-delay:  80ms; }
+		.post > :nth-child(3) { animation-delay: 160ms; }
+		.post > :nth-child(4) { animation-delay: 240ms; }
+		.post > :nth-child(5) { animation-delay: 320ms; }
+		.post > :nth-child(6) { animation-delay: 400ms; }
+	}
 }
 {% endcss %}
 
-<div class="post">
-	<div>
-	 	<h1>{% if post.postType == "TIL" %}<abbr title="Today I Learned">TIL</abbr>: {% endif %}{{ post.title }}</h1> 
-		<p class="meta"> <time class="postlist-date" datetime="{{ post.date  }}">{{ post.date | readableDate("DD") }}</time>&nbsp;· {{ post.body | markdown | wordCount }} · {{ post.body | markdown | readingTime }}</p>
+<article class="post">
+	<p class="post-breadcrumbs">
+		<a href="/words">Words</a>
+		<span class="sep" aria-hidden="true">/</span>
+		<time datetime="{{ post.date }}">{{ post.date | readableDate("dd LLL yyyy") }}</time>
+	</p>
+
+	<p class="post-kicker">&sect; {{ post.postType | postKindLabel | upper }}</p>
+
+	<header class="post-header">
+		<h1>{{ post.title }}</h1>
+		<p class="post-meta">
+			<time datetime="{{ post.date }}">{{ post.date | readableDate("dd LLL yyyy") }}</time>
+			<span class="sep" aria-hidden="true">&middot;</span>
+			<span>{{ post.body | markdown | wordCount }}</span>
+			<span class="sep" aria-hidden="true">&middot;</span>
+			<span>{{ post.body | markdown | readingTime }}</span>
+			{% if post.rssOnly %}
+				<span class="sep" aria-hidden="true">&middot;</span>
+				<span>RSS Club</span>
+			{% endif %}
+		</p>
+	</header>
+
+	<div class="post-body">
+		{{ content | safe }}
 	</div>
 
- 
-	{% if post.rssOnly %}
-	<div>
-		<aside class="notice">
-			<tt>You found a secret post!
-				<a href="https://daverupert.com/2018/01/welcome-to-rss-club/">Read more about RSS Club</a>.
-			</tt>
-		</aside>
+	<div class="post-callout">
+		<p><strong>This post doesn't support comments.</strong> If you'd like to reach out, <a href="/contact">I'd love to hear from you</a>.</p>
 	</div>
+
+	{% if pagination.previousPageItem or pagination.nextPageItem %}
+	<nav class="post-footer" aria-label="Post navigation">
+		{% if pagination.previousPageItem %}
+			<a href="/words/{{ pagination.previousPageItem.slug }}/">
+				<span class="kicker">&larr; Previous</span>
+				<span class="title">{{ pagination.previousPageItem.title }}</span>
+			</a>
+		{% else %}
+			<span></span>
+		{% endif %}
+		{% if pagination.nextPageItem %}
+			<a href="/words/{{ pagination.nextPageItem.slug }}/">
+				<span class="kicker">Next &rarr;</span>
+				<span class="title">{{ pagination.nextPageItem.title }}</span>
+			</a>
+		{% else %}
+			<span></span>
+		{% endif %}
+	</nav>
 	{% endif %}
-
-	{{ content | safe }}
-</div>
+</article>
 
 {%- js %}{% include "node_modules/@zachleat/heading-anchors/heading-anchors.js" %}{% endjs %}
