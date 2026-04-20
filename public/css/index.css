@@ -391,10 +391,52 @@
 		font-weight: 700;
 		font-size: var(--step-1);
 		letter-spacing: 0.02em;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45em;
 	}
 
 	.home-link:link:not(:hover) {
 		text-decoration: none;
+	}
+
+	/* Reusable "online" indicator — used in the header @tthew brand
+	   and on the home hero's "Currently open to new work" locator. */
+	.online-dot {
+		display: inline-block;
+		width: 0.55em;
+		height: 0.55em;
+		border-radius: 50%;
+		background: #24a148;
+		flex-shrink: 0;
+		position: relative;
+	}
+
+	.online-dot::before,
+	.online-dot::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		border-radius: 50%;
+		background: inherit;
+		opacity: 0;
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		@keyframes online-dot-pulse {
+			0%   { transform: scale(1);   opacity: 0.55; }
+			15%  { transform: scale(2.4); opacity: 0;    }
+			100% { transform: scale(2.4); opacity: 0;    }
+		}
+
+		.online-dot::before {
+			animation: online-dot-pulse 5s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+		}
+
+		.online-dot::after {
+			animation: online-dot-pulse 5s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+			animation-delay: 2.5s;
+		}
 	}
 
 	/* Nav */
@@ -458,16 +500,13 @@
 
 
 	footer {
-		display: flex;
-		flex-direction: column;
-		row-gap: var(--space-s);
 		width: 100%;
-		margin-top: var(--space-3xl);
-		padding-block: var(--space-xl) var(--space-l);
-		padding-inline: clamp(var(--space-s), 4vw, var(--space-2xl));
-		color: light-dark(#666, #9a9a9a);
+		margin-top: var(--space-l);
+		padding-block: var(--space-m);
+		padding-inline: clamp(var(--space-s), 4vw, var(--space-l));
+		color: var(--fg-quiet);
 		background: transparent;
-		border-top: 1px solid light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1));
+		border-top: 1px solid var(--rule);
 	}
 
 	.footer-bottom {

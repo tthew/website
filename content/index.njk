@@ -17,7 +17,7 @@ order: 1
 		max-width: 80ch;
 		margin-inline: auto;
 		padding-inline: clamp(var(--space-s), 4vw, var(--space-l));
-		padding-block: clamp(var(--space-l), 6vw, var(--space-2xl)) var(--space-2xl);
+		padding-block: clamp(var(--space-l), 6vw, var(--space-xl)) var(--space-l);
 	}
 
 	@media (min-width: 1200px) {
@@ -28,7 +28,7 @@ order: 1
 		display: grid;
 		grid-template-columns: auto 1fr;
 		column-gap: clamp(var(--space-m), 4vw, var(--space-2xl));
-		align-items: end;
+		align-items: start;
 	}
 
 	.portrait {
@@ -172,29 +172,10 @@ order: 1
 		gap: 0.5em;
 	}
 
-	.hero-locator .dot {
-		width: 0.55em;
-		height: 0.55em;
-		border-radius: 50%;
-		background: #24a148;
-		display: inline-block;
-		box-shadow: 0 0 0 3px color-mix(in oklab, #24a148 30%, transparent);
-	}
 
-	/* Signal strip — aligned to the copy column via a mirroring grid */
-	.signal-align {
-		display: grid;
-		grid-template-columns: auto 1fr;
-		column-gap: clamp(var(--space-m), 4vw, var(--space-2xl));
-		margin-top: clamp(var(--space-xl), 6vw, var(--space-3xl));
-	}
-
-	.signal-align > :first-child {
-		/* invisible spacer matching the portrait column width */
-		width: clamp(11rem, 22vw, 17.5rem);
-	}
-
+	/* Signal strip — full hero-wrap width, three equal cells */
 	.signal-strip {
+		margin-top: clamp(var(--space-xl), 6vw, var(--space-3xl));
 		border-top: 1px solid var(--rule);
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
@@ -267,11 +248,6 @@ order: 1
 			font-size: clamp(2rem, 10vw, 3rem);
 		}
 
-		.signal-align {
-			display: block;
-		}
-		.signal-align > :first-child { display: none; }
-
 		.signal-strip {
 			grid-template-columns: 1fr;
 		}
@@ -311,40 +287,36 @@ order: 1
 			<img src="../public/img/1564326180592.jpeg" alt="" width="500" height="500" loading="eager" decoding="sync" fetchpriority="high" />
 		</figure>
 		<div class="hero-content">
-			<p class="hero-eyebrow">Matt Richards &middot; Berlin &middot; {% year %}</p>
 			<h1 id="hero-heading" class="display">
 				<span class="line-a">Hi. I'm Matt.</span>
 				<span class="line-b">Engineering lead. Building for the <em class="accent">next</em> iteration of the web.</span>
 			</h1>
-			<p class="lede">I do product engineering and management. I build for the web, and lead teams that do the same. I know how to keep humans, products, and codebases healthy in the age of AI.</p>
+			<p class="lede">I do product engineering and management. I build for the web, and lead teams that do the same. I know how to keep humans, products, and codebases healthy in times like these.</p>
 			<div class="hero-meta">
 				<a class="eyebrow-link" href="/about">More about me</a>
-				<span class="hero-locator"><span class="dot" aria-hidden="true"></span>Currently open to new work</span>
+				<span class="hero-locator"><span class="online-dot" aria-hidden="true"></span>Currently open to new work</span>
 			</div>
 		</div>
 	</div>
 
-	<div class="signal-align">
-		<div aria-hidden="true"></div>
-		<div class="signal-strip">
-			<div class="signal">
-				<span class="signal-kicker">What I do</span>
-				<h2 class="signal-head">Product engineering</h2>
-				<p class="signal-body">Platform-first. HTML, CSS and the DOM before any framework. Coherent systems that outlive the hype cycle.</p>
-				<a href="/about">Read more</a>
-			</div>
-			<div class="signal">
-				<span class="signal-kicker">How I lead</span>
-				<h2 class="signal-head">Trust, don't meddle</h2>
-				<p class="signal-body">Backing the team's outcome with their autonomy left intact. Leading and interfering aren't the same thing.</p>
-				<a href="/about">Read more</a>
-			</div>
-			<div class="signal">
-				<span class="signal-kicker">Writing</span>
-				<h2 class="signal-head">Words &amp; TIL</h2>
-				<p class="signal-body">Notes on craft, leadership, and keeping codebases humane in the age of autocomplete.</p>
-				<a href="/words">Read the archive</a>
-			</div>
+	<div class="signal-strip">
+		<div class="signal">
+			<span class="signal-kicker">What I do</span>
+			<h2 class="signal-head">Product engineering</h2>
+			<p class="signal-body">Platform-first. HTML, CSS and the DOM before any framework. Coherent systems that outlive the hype cycle.</p>
+			<a href="/about">Read more</a>
+		</div>
+		<div class="signal">
+			<span class="signal-kicker">How I lead</span>
+			<h2 class="signal-head">Trust, don't meddle</h2>
+			<p class="signal-body">Backing the team's outcome with their autonomy left intact. Leading and interfering aren't the same thing.</p>
+			<a href="/about">Read more</a>
+		</div>
+		<div class="signal">
+			<span class="signal-kicker">Writing</span>
+			<h2 class="signal-head">Words &amp; TIL</h2>
+			<p class="signal-body">Notes on craft, leadership, and keeping codebases humane in the age of autocomplete.</p>
+			<a href="/words">Read the archive</a>
 		</div>
 	</div>
 </section>
