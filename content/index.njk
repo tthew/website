@@ -123,22 +123,17 @@ const numberOfLatestPostsToShow = 3;
 		opacity: 0.65;
 	}
 
-	/* Narrow viewports: stack, portrait full column width */
+	/* Narrow viewports: stack, portrait sized sensibly */
 	@media (max-width: 640px) {
 		.hero-grid {
 			grid-template-columns: 1fr;
-			justify-items: stretch;
+			justify-items: start;
 			row-gap: var(--space-m);
 		}
 
-		.portrait {
-			width: 100%;
-		}
-
 		.portrait img {
-			width: 100%;
-			height: auto;
-			aspect-ratio: 1 / 1;
+			width: clamp(8rem, 36vw, 11rem);
+			height: clamp(8rem, 36vw, 11rem);
 		}
 
 		.display {

@@ -1,290 +1,196 @@
 ---
-
 layout: 'layouts/home'
 eleventyNavigation:
   key: "About"
   order: 3
 title: 'About'
-
+description: "Matt Richards — Senior Staff Product Engineer and engineering lead in Berlin. Hands-on leadership, product engineering, and building humane teams and codebases in the age of AI."
 ---
 {% set title ="About" %}
 {% css %}
 @layer page {
 	main {
-		padding-top: var(--space-l);
 		display: flex;
-		flex-direction: column;
-		align-items: center;
+		justify-content: center;
 		flex: 1 0 100%;
 	}
 
-	main > * {
-		max-width: 80ch;
-	}
-
-	.columns {
+	.about {
+		width: 100%;
+		max-width: 72ch;
+		padding-inline: var(--space-s);
+		padding-block: var(--space-l) var(--space-2xl);
 		display: flex;
+		flex-direction: column;
+		row-gap: var(--space-xl);
+	}
+
+	.about-hero {
+		display: flex;
+		flex-direction: column;
 		align-items: flex-start;
-		gap: var(--space-l);
+		row-gap: var(--space-m);
 	}
 
-	hr {
-		border: 0;
-		height: 1px
+	.portrait {
+		position: relative;
+		margin: 0;
 	}
 
-	figure {
+	.portrait img {
+		width: clamp(8rem, 14vw, 10rem);
+		height: clamp(8rem, 14vw, 10rem);
+		object-fit: cover;
+		border-radius: 50%;
+	}
+
+	.portrait::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		border-radius: 50%;
+		background-image: var(--grain);
+		background-size: 180px 180px;
+		opacity: 0.18;
+		mix-blend-mode: multiply;
+		pointer-events: none;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		.portrait::after {
+			mix-blend-mode: screen;
+			opacity: 0.14;
+		}
+	}
+
+	.about-hero-text {
 		display: flex;
 		flex-direction: column;
 		row-gap: var(--space-s);
-		align-items: center;
 	}
 
-	figure figcaption {
-		font-style: italic;
+	.about-hero h1 {
+		font-size: clamp(2.5rem, 6.5vw, 4rem);
+		line-height: 0.95;
+		letter-spacing: -0.015em;
+		margin: 0;
 	}
 
-	.main-flow {
+	.about-hero .lede {
+		font-size: clamp(var(--step-1), 0.8vw + 1.05rem, var(--step-2));
+		line-height: 1.4;
+		color: light-dark(#333, #c4c4c4);
+		margin: 0;
+		text-wrap: pretty;
+		max-width: 45ch;
+	}
+
+	.about-section {
 		display: flex;
 		flex-direction: column;
-		row-gap: var(--space-l);
-		padding: 0 var(--space-s);
-		padding-bottom: var(--space-2xl);
+		row-gap: var(--space-s);
 	}
 
-	.skills {
-		flex-wrap: wrap;
+	.about-section h2 {
+		font-size: var(--step-2);
+		letter-spacing: 0.01em;
+		padding-top: var(--space-m);
+		margin-bottom: var(--space-3xs);
+		border-top: 1px solid light-dark(rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.12));
 	}
 
-	@media screen and (min-width: 800px) {
-		.skills {
-			flex-wrap: nowrap;
+	.about p {
+		line-height: 1.6;
+		text-wrap: pretty;
+	}
+
+	.about strong {
+		font-weight: 600;
+	}
+
+	.about a[href] {
+		text-underline-offset: 0.2em;
+	}
+
+	.about-colophon {
+		font-size: var(--step--1);
+		color: light-dark(#555, #9a9a9a);
+	}
+
+	.about-colophon h2 {
+		font-size: var(--step-1);
+	}
+
+	@media (max-width: 560px) {
+		.portrait img {
+			width: clamp(7rem, 28vw, 9rem);
+			height: clamp(7rem, 28vw, 9rem);
 		}
 
-		.skills > * {
-			flex-basis: 50%;
+		.about-hero h1 {
+			font-size: clamp(2rem, 10vw, 3rem);
 		}
 	}
 
-	.skills ul {
-		list-style: none;
-		padding: 0;
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--space-s);
-	}
-
-	.skills ul li {
-		display: flex;
-		background: var(--callout-bg);
-		color: var(--callout-fg);
-		max-width: 150px;
-		padding: var(--space-2xs);
-		border-radius: var(--space-2xs);
-	}
-
-	.with-sidebar {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--space-l);
-	}
-
-	.with-sidebar > :first-child {
-		flex-grow: 1;
-	}
-
-	.with-sidebar > :last-child {
-		flex-basis: 0;
-		flex-grow: 999;
-		min-inline-size: 40%;
-	}
-
-	.with-sidebar img.me	 {
-		border-radius: 50%;
-		max-width: 300px;
-	}
-
-	.icon {
-		width: 64px;
-		height: 64px;
-	}
-
-	.switcher {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--space-l);
-	}
-	
-	.switcher > * {
-		flex-grow: 1;
-		flex-basis: calc(( 50rem - 100%) * 999);
-	}
-	
-	.switcher > :nth-last-child(n+ 3),
-	.switcher > :nth-last-child(n+ 3) ~ * {
-		flex-basis: 100%;
-		order:0
-	}
-		
-	@media screen and (max-width: 50rem) {
-		.flip :first-child {
-			order: 1;
+	@media (prefers-reduced-motion: no-preference) {
+		@keyframes about-rise-in {
+			from { opacity: 0; transform: translateY(0.4rem); }
+			to   { opacity: 1; transform: translateY(0); }
 		}
 
-		.flip :last-child {
-			order: 0;
+		.about > * {
+			animation: 650ms cubic-bezier(0.22, 1, 0.36, 1) both about-rise-in;
 		}
+
+		.about > :nth-child(1) { animation-delay:   0ms; }
+		.about > :nth-child(2) { animation-delay:  80ms; }
+		.about > :nth-child(3) { animation-delay: 180ms; }
+		.about > :nth-child(4) { animation-delay: 280ms; }
+		.about > :nth-child(5) { animation-delay: 380ms; }
+		.about > :nth-child(6) { animation-delay: 480ms; }
 	}
 }
-
 {% endcss %}
 
-<div class="main-flow">
-	
-	<div class="with-sidebar">
-		<div class="image">
-			<figure>
-				<img class="me" src="../public/img/1564326180592.jpeg" alt="A photograph of me,  wearing shades, with beach grass in the background" />
-				<figcaption>Fig 1. It's me!</figcaption>
-			</figure>
+<article class="about">
+	<header class="about-hero">
+		<figure class="portrait">
+			<img src="../public/img/1564326180592.jpeg" alt="Matt Richards, wearing shades, with beach grass in the background" width="500" height="500" loading="eager" decoding="sync" />
+		</figure>
+		<div class="about-hero-text">
+			<h1>About Matt Richards</h1>
+			<p class="lede">Hi. I'm Matt &mdash; a Senior+ Product Engineer and engineering lead based in Berlin. I build products for the web, and lead the teams that do the same.</p>
 		</div>
-		<div class="content flow">
-			<h1>Tthew who?!</h1>
-			<p>Hi. I'm Matt. A Senior Staff Product Engineer / Front End Developer based in Berlin, Germany.</p>
-			<p>I do software engineering, engineering management &amp; leadership. I build for, and lead teams that
-				build for the web.</p>
-			<p>I like HTML, CSS, Javascript/Typescript, people and achieving great things for, and with them. I thrive in divese
-				teams, ambitious contexts and fast paced environments.</p>
-			<p>I also enjoy writing about web development &amp; software engineering over in my <a
-					href="/words">blog</a>.</p>
-		</div>
-	</div>
+	</header>
 
-	<!--
-	<div class="callout">
-		<img src="../public/img/119.Advertise.png"  width="64" height="64" class="icon illustration" alt="An illustration of a man making an announcement with a megaphone."/>
-		<p>I'm currently open to exploring new opportunities for 2025. <a href="/contact">Get in touch!</a></p>
-	</div>
-	-->
-	<div class="switcher flip">
+	<section class="about-section">
+		<p>Over twenty years in, I work across both product engineering and engineering leadership: technical strategy and architecture; org and roadmap design; the direct contributions that move a team's work forward.</p>
+		<p>My work sits between craft and leadership. I care about the people I build alongside as much as what gets built. I'm at home in ambitious contexts, diverse teams, and environments where the work has to matter.</p>
+	</section>
 
-		<div class="flow">
-			<h2>Profile</h2>
-			<p>I'm a seasoned software developer who's been building, designing and leading teams that build for the web for
-				over twenty years.</p>
-			<p>I have a broad and varied experience right across the stack, with an emphasis on the front end. Over the
-				years I've been exposed to a wide array of industries, technologies and architechtures, with a heavy focus on
-				client-side web application development for startups &amp; NGOs working with componenent driven front-end
-				libraries, frameworks and paradigms like React &amp; Next.js for a large proportion of the latter part
-				of my career.</p>
-			
-		</div>
-		<div>
-			<img src="../public/img/360.Carpenter.png"  alt="An illustration of person creating a wooden robot toy." class="illustration" />
-			</div>
-	</div>
-	<div class="switcher">
-		<div>
-			<img src="../public/img/354.Pros-And-Cons.png"  alt="An illustration of two people looking at a chart of pros & cons."  class="illustration" />
-			</div>
-		<div class="flow">
-			<p>I am a capable and adaptable personality, just as comfortable with rolling up my sleeves and gettting my hands
-				dirty as I am operating at the strategic and people managment levels.</p>
-			<p><strong>It's important to me that my work aligns with my values</strong> and has real purpose beyond pure capatalistic gain, ideally producing an overall net
-				positive for humanity.</p>
-		  <p>I'm particularly interested in, and have so far been privileged to have had the
-				opportunity to work on a number of projects in the global, public and private health space.</p>
-		</div>
+	<section class="about-section">
+		<h2>What I do</h2>
+		<p>Fundamentals matter to me far more than the framework of the month. SOLID principles, clean boundaries, appropriate coupling, and systems that stay coherent as they grow. The web platform comes first: HTML, CSS, the DOM and Web APIs do most of the heavy lifting before I reach for an abstraction.</p>
+		<p>On the leadership side, I set direction, bring product ambition into engineering reality, and hold teams to SMART goals over vanity metrics. Mentoring engineers through the parts of a career that actually compound: craft, judgement, and the soft skills that don't fit on a sprint board.</p>
+		<p>Mostly startups and NGOs, with a long run in global public and private health. Values-led work isn't a nice-to-have. I want what I ship to do something more useful than add a line to an investor deck. My work history is on <a href="https://linkedin.com/in/tthew">LinkedIn</a>.</p>
+	</section>
 
-	</div>
-	
+	<section class="about-section">
+		<h2>How I work</h2>
+		<p>Most of what I bring to a team at this point is judgement. Ownership matters to me: backing the team's outcome, with their autonomy left intact. Leading and interfering aren't the same thing. Stay close to the work. Stay out of the team's way.</p>
+		<p>The best leaders I've worked with held that balance without making a thing of it. I try to do the same.</p>
+		<p>Accessibility and UX as defaults. Design and systems thinking belong inside the engineering. A bias toward coherence and clarity over cleverness.</p>
+	</section>
 
-	<div class="columns skills">
-		<div class="flow">
-			<h2>Primary Skillset:</h2>
-			<ul>
-				<li>Web Platform (HTML, CSS, Javascript, DOM & Web APIs)</li>
-				<li>Component Architechture (React + Ecosystem, et al)</li>
-				<li>Typescript</li>
-				<li>Code Review &amp; Stewardship</li>
-				<li>Engineering Management</li>
-				<li>Systems &amp; Software Design</li>
-				<li>Technical Leadership</li>
-				<li>Code Review & Stewardship</li>
-				<li>Design Handoff, Design Systems &amp; Documentation</li>
-				<li>Mentoring</li>
-				<li><abbr title="Accessibility" >A11y</abbr>&nbsp;&amp;&nbsp;<abbr title="User Experience">Ux</abbr></li>
-			</ul>
-			<h2>Other Skills:</h2>
-			<ul>
-				<li>Offline-first & Distibuted Systems</li>
-				<li>Visual &amp; Web Design</li>
-				<li>Leader in company values, standards &amp; culture</li>
-				<li>DJing &amp; Audio Production</li>
-				<li>Baking Sourdough</li>
-			</ul>
-		</div>
-		<div class="flow">
-			<h2>Things I'm good at (and like doing):</h2>
-			<ul>
-				<li>Building scalable Frontend Codebases</li>
-				<li>Building & Leading Cross Functional Engineering Teams</li>
-				<li>Technical Strategy</li>
-				<li>Mentoring &amp; Supporting Career Development</li>
-				<li>Systems Design</li>
-				<li>Developer experience &amp; tooling</li>
-				<li>Project bootstrapping</li>
-				<li>Building things from scratch</li>
-				<li>Maintaining & improving legacy systems</li>
-				<li>Managing tech debt</li>
-				<li>Testing strategy</li>
-				<li>Design Systems &amp; Component Libraries</li>
-				<li>Scaling codebases</li>
-				<li>Technical Writing</li>
-			</ul>
-		</div>
-	</div>
-	<div class="switcher">
-		<div class="flow">
-			<h2>My developer story</h2>
-			<p>Starting out building table based layouts and CGI backends as a teenager in the mid nineties, the journey
-				ever since has been of continual self-learning, re-learning and iteration.</p>
-			<p>Fast forward over two decades and you can find me building and leading teams that build high quality,
-				highly performant, accessible and engaging web applications and web sites with the <strong>web platform first</strong>, with a little help from the likes of Solid, Preact, React, Astro, 11ty, Next.js, Remix, Storybook, Zustand, Tanstack
-				Query, REST, RPC, GraphQL, SQL Databases &amp; Document Stores.</p>
-		</div>
-	<div>
-		<img src="../public/img/310.Fast-Internet.png" alt="An illustration of a person riding a rocket, holding a laptop, looking and pointing upwards." class="illustration" />
-		</div>
-	</div>
-	<div class="switcher flip">
-		<div>
-			<img src="../public/img/428.Route.png" alt="An illustration of a person drawing a line on the ground with location markers at intervals along the line." class="illustration" />
-			</div>
-	<div class="flow">
-		<p>I've had a wide exposure to an array of technologies and methodologies over the years, having worked for
-			Software Houses, Creative &amp; Digital Agencies, Startups &amp; NGOs as well as running my own small
-			businesses.</p>
-		<p>I have an eye for detail and an appreciation for aesthetics & try my best to apply design thinking to all
-			areas of my work.</p>
-		<p>You can find out more <a href="https://linkedin.com/in/tthew">over on LinkedIn</a>.
-	</div>
+	<section class="about-section">
+		<h2>The next iteration of the web</h2>
+		<p>AI is part of how I build now. I use it every day, study the research, and watch closely what it's doing to the craft &mdash; to team shape, to code quality, to how junior engineers grow up in a world where the easy work is suddenly cheap.</p>
+		<p>Keeping humans, products and codebases healthy in the age of AI is the engineering problem of the decade. I help teams avoid both failure modes: getting left behind, and letting an autocomplete quietly rot the codebase.</p>
+	</section>
 
-	</div>
-	<div class="switcher">
-		<div class="flow">
-			<h2>About this Website</h2>
-			<p>This website was hand made by a human (me!). The front-end is a static build, built with <a
-					href="https://11ty.dev">11ty</a> which is in turn hooked up to a <a href="https://craftcms.com/">Craft
-					CMS</a> backend that exposes a GraphQL endpoint that I self host on a Raspberry Pi in my apartment configured with a
-				webhook to trigger re-build & deployment whenever the data changes.</p>
-			<p>You'll be able to read about all the details soon in an upcoming blog post on how I designed and built
-				this site.</p>
-			<p>Illustrations from the <a href="https://notioly.com/">Notioly</a> pack by the talented <a href="https://bio.link/maryamato">Mary Mato</a>.</p>
-			<p><strong><a href="/privacy">This website does not track you.</a></strong></p>
-		</div>
-		<div>
-			<img src="../public/img/315.Knowledge-Base.png" alt="An illustration of a person opening a chest that revealing a speach bubble containing the letter 'i'." class="illustration" />
-		</div>
-	</div>
-</div>
+	<section class="about-section about-colophon">
+		<h2>About this website</h2>
+		<p>Hand-made by a human (me, with a little help from <a href="https://claude.com/claude-code">Claude</a>). The front end is a static build with <a href="https://11ty.dev">11ty</a>, sourcing content from a self-hosted <a href="https://craftcms.com/">Craft CMS</a> GraphQL endpoint running on a Raspberry Pi in my apartment. A webhook triggers rebuild and redeploy whenever the data changes.</p>
+		<p><strong><a href="/privacy">This website does not track you.</a></strong></p>
+	</section>
+</article>
