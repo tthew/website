@@ -1,0 +1,217 @@
+---js
+const layout = "layouts/home.njk";
+const title = "Freelance Tech Lead Berlin";
+const description = "Matt Richards — freelance tech lead in Berlin. Senior+ product engineer with twenty years in. Hands-on technical leadership, product engineering, architecture and team shape for ambitious product teams.";
+const sitemap = { priority: "0.9", changefreq: "monthly" };
+---
+{% css %}
+@layer page {
+	{% include "css/landing.css" %}
+
+	/* Hub-only: a full "all services" list under the two body sections. */
+	.landing-also {
+		max-width: 64ch;
+		margin-inline: auto;
+		padding-top: var(--space-l);
+		border-top: 1px solid var(--rule);
+	}
+
+	.landing-also h2 {
+		font-family: var(--feature-font);
+		font-weight: 400;
+		text-transform: uppercase;
+		font-size: var(--step--1);
+		letter-spacing: 0.25em;
+		color: var(--fg-quiet);
+		margin: 0 0 var(--space-s);
+	}
+
+	.landing-also-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: var(--space-2xs);
+	}
+
+	.landing-also-list li { line-height: 1.5; }
+
+	.landing-also-list a {
+		color: var(--fg);
+		text-decoration: none;
+		border-bottom: 1px solid var(--rule);
+		padding-bottom: 0.15em;
+		font-size: var(--step-0);
+	}
+	.landing-also-list a:hover { border-color: currentColor; }
+	.landing-also-list .sub {
+		color: var(--fg-muted);
+		font-size: var(--step--1);
+		margin-left: 0.6em;
+	}
+}
+{% endcss %}
+
+<article class="landing">
+	<nav class="landing-crumbs" aria-label="Breadcrumb">
+		<a href="/">Home</a>
+		<span class="sep" aria-hidden="true">/</span>
+		<span aria-current="page">Freelance tech lead, Berlin</span>
+	</nav>
+
+	<header class="landing-hero">
+		<p class="landing-eyebrow">Matt Richards &middot; Berlin</p>
+		<h1>Freelance tech lead. <em>Berlin.</em></h1>
+		<p class="lede">Senior+ product engineer for hire &mdash; hands-on technical leadership across web, frontend and full-stack. Twenty years in, based in Berlin, working with teams across Germany, the EU and remote. The judgement calls that are hard to make from inside the org, made close to the code.</p>
+		<div class="landing-meta">
+			<a class="eyebrow-link" href="/contact">Start a conversation</a>
+			<span class="landing-locator"><span class="online-dot" aria-hidden="true"></span>Currently open to new work</span>
+		</div>
+	</header>
+
+	<section class="landing-services" aria-label="Primary services">
+		<div class="service">
+			<span class="service-kicker">&sect; 01</span>
+			<h2 class="service-head">Freelance frontend</h2>
+			<p class="service-body">React, TypeScript, modern CSS. Accessible, performant interfaces that hold up outside a demo. Design systems that stay coherent as they grow.</p>
+			<a class="cta" href="/freelance-frontend-developer-berlin/">Freelance frontend in Berlin</a>
+		</div>
+		<div class="service">
+			<span class="service-kicker">&sect; 02</span>
+			<h2 class="service-head">Freelance full-stack</h2>
+			<p class="service-body">End-to-end product engineering on the web: DOM to database, Node or BFF, the unglamorous middle where most product value actually lives.</p>
+			<a class="cta" href="/freelance-full-stack-developer-berlin/">Freelance full-stack in Berlin</a>
+		</div>
+		<div class="service">
+			<span class="service-kicker">&sect; 03</span>
+			<h2 class="service-head">Engineering lead</h2>
+			<p class="service-body">Fractional engineering leadership, architecture reviews, team shape and hiring. The judgement calls that are hard to make from inside the org.</p>
+			<a class="cta" href="/fractional-engineering-lead-berlin/">Fractional engineering lead</a>
+		</div>
+	</section>
+
+	<section class="landing-section">
+		<h2><span class="ix">&sect; 04 &mdash; What I'm for</span>The engagements that fit</h2>
+		<div class="landing-body">
+			<p>I work best with product teams that take the web platform seriously and want an engineer who can move between code, architecture and leadership without needing a translator. I'm based in Berlin and available across the EU and remote.</p>
+			<ul>
+				<li><strong>Freelance senior frontend engineer</strong> &mdash; embedded on a product team, shipping features and levelling the rest of the frontend craft while I'm there.</li>
+				<li><strong>Freelance full-stack / software engineer</strong> &mdash; owning a product surface end-to-end, TypeScript top to bottom, Node or an adjacent stack.</li>
+				<li><strong>Fractional engineering lead</strong> &mdash; technical strategy, roadmap shape, org design, hiring, mentorship. Close to the work, out of the team's way.</li>
+				<li><strong><a href="/software-architecture-review-berlin/">Architecture &amp; codebase review</a></strong> &mdash; honest, scoped, written up. A senior read on what's load-bearing, what's rot, and what's worth the rewrite.</li>
+				<li><strong><a href="/ai-for-engineering-teams-berlin/">AI for engineering teams</a></strong> &mdash; workflow design and guardrails for engineering orgs using AI every day without rotting the codebase or the craft.</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="landing-section">
+		<h2><span class="ix">&sect; 05 &mdash; How I work</span>Fundamentals, first.</h2>
+		<div class="landing-body">
+			<p>Platform-first. HTML, CSS and the DOM before any framework. SOLID principles, clean boundaries, appropriate coupling, systems that stay coherent as they grow. Accessibility and UX as defaults, not retrofits.</p>
+			<p>AI is part of how I build now &mdash; used every day, kept on a short leash. Keeping humans, products and codebases healthy in the age of AI is the engineering problem of the decade, and I've thought about it a lot. <a href="/about">More about how I work &rarr;</a></p>
+			<p>I write about this &mdash; craft, leadership, and keeping codebases humane &mdash; on <a href="/words">the words archive</a>.</p>
+		</div>
+	</section>
+
+	<section class="landing-also" aria-label="All services">
+		<h2>All services</h2>
+		<ul class="landing-also-list">
+			<li><a href="/freelance-frontend-developer-berlin/">Freelance frontend developer, Berlin</a><span class="sub">React, TypeScript, design systems</span></li>
+			<li><a href="/freelance-full-stack-developer-berlin/">Freelance full-stack developer, Berlin</a><span class="sub">End-to-end product surfaces, TS/Node</span></li>
+			<li><a href="/fractional-engineering-lead-berlin/">Fractional engineering lead, Berlin</a><span class="sub">Strategy, team shape, mentorship</span></li>
+			<li><a href="/software-architecture-review-berlin/">Software architecture &amp; codebase review</a><span class="sub">Two weeks, fixed-fee, decision-grade</span></li>
+			<li><a href="/ai-for-engineering-teams-berlin/">AI for engineering teams</a><span class="sub">Workflows, guardrails, team health</span></li>
+		</ul>
+	</section>
+
+	<section class="landing-next" aria-label="Where to go next">
+		<div class="next">
+			<span class="next-kicker">Background</span>
+			<h3>About</h3>
+			<p>Twenty years, two sides of the bench: product engineering and engineering leadership.</p>
+			<a class="cta" href="/about">Read the long version</a>
+		</div>
+		<div class="next">
+			<span class="next-kicker">Writing</span>
+			<h3>Words</h3>
+			<p>Notes on craft, leadership, and the age of AI. The archive &mdash; dated, unvarnished.</p>
+			<a class="cta" href="/words">Open the archive</a>
+		</div>
+		<div class="next">
+			<span class="next-kicker">Work together</span>
+			<h3>Contact</h3>
+			<p>Email, Signal, or the form. Tell me what you're building and what's in the way.</p>
+			<a class="cta" href="/contact">Get in touch</a>
+		</div>
+	</section>
+</article>
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "Person",
+			"@id": "{{ metadata.url }}/#matt",
+			"name": "Matt Richards",
+			"jobTitle": "Freelance Tech Lead",
+			"description": "Freelance tech lead in Berlin, available for hands-on technical leadership, product engineering, architecture and team shape engagements across web, frontend and full-stack.",
+			"url": "{{ metadata.url }}/",
+			"email": "mailto:hallo@tthew.berlin",
+			"image": "{{ metadata.url }}/img/1564326180592.jpeg",
+			"sameAs": [
+				"https://hachyderm.io/@tthew",
+				"https://www.linkedin.com/in/tthew/",
+				"https://github.com/tthew"
+			],
+			"address": {
+				"@type": "PostalAddress",
+				"addressLocality": "Berlin",
+				"addressCountry": "DE"
+			},
+			"knowsAbout": [
+				"Freelance web development",
+				"Frontend engineering",
+				"TypeScript",
+				"React",
+				"Web performance",
+				"Accessibility",
+				"Design systems",
+				"Product engineering",
+				"Engineering leadership",
+				"Software architecture"
+			]
+		},
+		{
+			"@type": "ProfessionalService",
+			"@id": "{{ metadata.url }}{{ page.url }}#service",
+			"name": "Matt Richards — Freelance Tech Lead, Berlin",
+			"description": "Freelance tech lead engagements: hands-on technical leadership, product engineering, architecture reviews and team shape. Berlin-based, available across the EU and remote.",
+			"url": "{{ metadata.url }}{{ page.url }}",
+			"image": "{{ metadata.url }}/img/1564326180592.jpeg",
+			"provider": { "@id": "{{ metadata.url }}/#matt" },
+			"areaServed": [
+				{ "@type": "City", "name": "Berlin" },
+				{ "@type": "Country", "name": "Germany" },
+				{ "@type": "Place", "name": "European Union" },
+				{ "@type": "Place", "name": "Remote" }
+			],
+			"serviceType": [
+				"Freelance tech lead",
+				"Freelance engineering lead",
+				"Freelance frontend developer",
+				"Freelance full-stack engineer",
+				"Freelance software engineer",
+				"Fractional engineering lead"
+			]
+		},
+		{
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{ "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ metadata.url }}/" },
+				{ "@type": "ListItem", "position": 2, "name": "Freelance tech lead, Berlin", "item": "{{ metadata.url }}{{ page.url }}" }
+			]
+		}
+	]
+}
+</script>

@@ -1,0 +1,159 @@
+---js
+const layout = "layouts/home.njk";
+const title = "Fractional Engineering Lead Berlin";
+const description = "Matt Richards — fractional engineering lead in Berlin. Senior engineering leadership, part-time: technical strategy, team shape, architecture and mentorship for scale-up product orgs.";
+const sitemap = { priority: "0.9", changefreq: "monthly" };
+---
+{% css %}
+@layer page {
+	{% include "css/landing.css" %}
+}
+{% endcss %}
+
+<article class="landing">
+	<nav class="landing-crumbs" aria-label="Breadcrumb">
+		<a href="/">Home</a>
+		<span class="sep" aria-hidden="true">/</span>
+		<a href="/freelance-tech-lead-berlin/">Freelance</a>
+		<span class="sep" aria-hidden="true">/</span>
+		<span aria-current="page">Fractional engineering lead</span>
+	</nav>
+
+	<header class="landing-hero">
+		<p class="landing-eyebrow">Matt Richards &middot; Berlin</p>
+		<h1>Fractional engineering lead. <em>Berlin.</em></h1>
+		<p class="lede">Senior engineering leadership, part-time. Technical strategy, team shape, architecture and mentorship for scale-ups and product orgs that need a senior hand without a full-time hire. Berlin, EU, remote.</p>
+		<div class="landing-meta">
+			<a class="eyebrow-link" href="/contact">Start a conversation</a>
+			<span class="landing-locator"><span class="online-dot" aria-hidden="true"></span>Currently open to new work</span>
+		</div>
+	</header>
+
+	<section class="landing-services" aria-label="What I do as a fractional engineering lead">
+		<div class="service">
+			<span class="service-kicker">&sect; 01</span>
+			<h2 class="service-head">Strategy &amp; architecture</h2>
+			<p class="service-body">The judgement calls that are hard to make from inside the org. Roadmap sequencing. Tech decisions with compounding cost. A peer-level second read.</p>
+		</div>
+		<div class="service">
+			<span class="service-kicker">&sect; 02</span>
+			<h2 class="service-head">Team shape &amp; hiring</h2>
+			<p class="service-body">Org design, interview loops, levelling, reviews. Hiring the people the team actually needs, not the ones the ATS nudges you toward.</p>
+		</div>
+		<div class="service">
+			<span class="service-kicker">&sect; 03</span>
+			<h2 class="service-head">Mentorship &amp; ICs</h2>
+			<p class="service-body">One-to-one with tech leads and senior engineers. Coaching through the career steps that don't fit on a sprint board.</p>
+		</div>
+	</section>
+
+	<section class="landing-section">
+		<h2><span class="ix">&sect; 04 &mdash; What &ldquo;fractional&rdquo; looks like</span>Close to the work. Out of the way.</h2>
+		<div class="landing-body">
+			<p>Fractional means the leadership without the headcount. A day or two a week, a quarterly engagement, a standing office-hours seat. Close enough to do the work. Not in the way of your team.</p>
+			<ul>
+				<li><strong>Embedded fractional</strong> &mdash; 1&ndash;2 days a week, on Slack, in reviews, at the planning table. The default shape.</li>
+				<li><strong>Quarterly engagement</strong> &mdash; a scoped quarter: strategy reset, org redesign, hiring plan, technical roadmap. Handover-ready.</li>
+				<li><strong>Standing advisory</strong> &mdash; a weekly call for founders and heads of product carrying engineering responsibility. A second pair of eyes on the decisions that compound.</li>
+				<li><strong>Project lead</strong> &mdash; leading a specific technical initiative end-to-end, alongside your team. Architecture, delivery, and the write-up.</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="landing-section">
+		<h2><span class="ix">&sect; 05 &mdash; When it helps</span>The moments a fractional lead earns their keep</h2>
+		<div class="landing-body">
+			<ul>
+				<li><strong>Series A&ndash;C scale-up</strong>, growing engineering faster than the leadership bench. A fractional engineering lead keeps the judgement bar up while you hire.</li>
+				<li><strong>First-time technical founder</strong> carrying CTO responsibility without a peer in the room. A sparring partner with twenty years of receipts.</li>
+				<li><strong>Head of product</strong> carrying engineering too. Someone who can translate product ambition into engineering reality &mdash; and back again.</li>
+				<li><strong>Between-stages CTO</strong> who wants a second read on the decisions that compound: architecture, org shape, hiring bar.</li>
+				<li><strong>Engineering lead on a gap</strong> &mdash; parental leave, sabbatical, a role in flux. A known quantity holding the line.</li>
+			</ul>
+			<p>My positioning: senior+ product engineer and engineering lead, twenty years across product and platform. I care about the people I build alongside as much as what gets built. <a href="/about">More about how I work &rarr;</a></p>
+		</div>
+	</section>
+
+	<section class="landing-related" aria-label="Related services">
+		<h2>Related services</h2>
+		<ul class="landing-related-list">
+			<li><a href="/software-architecture-review-berlin/">Software architecture &amp; codebase review</a><span class="sub">Two weeks, fixed-fee, decision-grade</span></li>
+			<li><a href="/ai-for-engineering-teams-berlin/">AI for engineering teams</a><span class="sub">Workflows, guardrails, team health</span></li>
+			<li><a href="/freelance-tech-lead-berlin/">Freelance tech lead, Berlin</a><span class="sub">Hands-on technical leadership</span></li>
+		</ul>
+	</section>
+
+	<section class="landing-next" aria-label="Where to go next">
+		<div class="next">
+			<span class="next-kicker">Background</span>
+			<h3>About</h3>
+			<p>Twenty years, two sides of the bench: product engineering and engineering leadership.</p>
+			<a class="cta" href="/about">Read the long version</a>
+		</div>
+		<div class="next">
+			<span class="next-kicker">Writing</span>
+			<h3>Words</h3>
+			<p>Notes on craft, leadership, and the age of AI. The archive &mdash; dated, unvarnished.</p>
+			<a class="cta" href="/words">Open the archive</a>
+		</div>
+		<div class="next">
+			<span class="next-kicker">Work together</span>
+			<h3>Contact</h3>
+			<p>Email, Signal, or the form. Tell me what you're building and what's in the way.</p>
+			<a class="cta" href="/contact">Get in touch</a>
+		</div>
+	</section>
+</article>
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "Person",
+			"@id": "{{ metadata.url }}/#matt",
+			"name": "Matt Richards",
+			"jobTitle": "Fractional Engineering Lead",
+			"url": "{{ metadata.url }}/",
+			"email": "mailto:hallo@tthew.berlin",
+			"image": "{{ metadata.url }}/img/1564326180592.jpeg",
+			"sameAs": [
+				"https://hachyderm.io/@tthew",
+				"https://www.linkedin.com/in/tthew/",
+				"https://github.com/tthew"
+			],
+			"address": { "@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE" }
+		},
+		{
+			"@type": "ProfessionalService",
+			"@id": "{{ metadata.url }}{{ page.url }}#service",
+			"name": "Matt Richards — Fractional Engineering Lead, Berlin",
+			"description": "Fractional engineering leadership: technical strategy, team shape, architecture and mentorship for scale-up product orgs. Berlin-based, EU and remote.",
+			"url": "{{ metadata.url }}{{ page.url }}",
+			"image": "{{ metadata.url }}/img/1564326180592.jpeg",
+			"provider": { "@id": "{{ metadata.url }}/#matt" },
+			"areaServed": [
+				{ "@type": "City", "name": "Berlin" },
+				{ "@type": "Country", "name": "Germany" },
+				{ "@type": "Place", "name": "European Union" },
+				{ "@type": "Place", "name": "Remote" }
+			],
+			"serviceType": [
+				"Fractional engineering lead",
+				"Fractional head of engineering",
+				"Fractional CTO",
+				"Engineering leadership consultant",
+				"Technical strategy advisor"
+			]
+		},
+		{
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{ "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ metadata.url }}/" },
+				{ "@type": "ListItem", "position": 2, "name": "Freelance tech lead, Berlin", "item": "{{ metadata.url }}/freelance-tech-lead-berlin/" },
+				{ "@type": "ListItem", "position": 3, "name": "Fractional engineering lead, Berlin", "item": "{{ metadata.url }}{{ page.url }}" }
+			]
+		}
+	]
+}
+</script>

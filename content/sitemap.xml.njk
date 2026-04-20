@@ -7,11 +7,16 @@ data:  words
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 {%- for page in collections.all %}
+	{%- set sm = page.data.sitemap or {} %}
+	{%- if not sm.exclude %}
 	{% set absoluteUrl %}{{ page.url | htmlBaseUrl(metadata.url) }}{% endset %}
 	<url>
 		<loc>{{ absoluteUrl }}</loc>
 		<lastmod>{{ page.date | htmlDateString }}</lastmod>
+		<changefreq>{{ sm.changefreq or "monthly" }}</changefreq>
+		<priority>{{ sm.priority or "0.5" }}</priority>
 	</url>
+	{%- endif %}
 {%- endfor %}
 {%- for page in words | webWords %}
 	{% set url %}{{ metadata.url }}/words/{{ page.slug }}/{% endset %}
@@ -19,6 +24,8 @@ data:  words
 	<url>
 		<loc>{{ absoluteUrl }}</loc>
 		<lastmod>{{ page.date | toDate | htmlDateString }}</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.6</priority>
 	</url>
 {%- endfor %}
 </urlset>
