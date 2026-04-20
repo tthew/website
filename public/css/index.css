@@ -295,7 +295,7 @@
 		margin-top: 0;
 	}
 
-	header {
+	body > header {
 		display: flex;
 		flex-direction: column;
 	}
@@ -343,10 +343,10 @@
 	}
 
 	/* Header */
-	header {
+	body > header {
 		padding: 0 var(--space-s);
 	}
-	header > :first-child {
+	body > header > :first-child {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -411,7 +411,7 @@
 		font-family: var(--feature-font);
 	}
 
-	header {
+	body > header {
 		font-family: var(--feature-font);
 		text-transform: uppercase;
 	}
