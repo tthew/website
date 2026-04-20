@@ -6,6 +6,10 @@ const token = process.env.LINKS_SERVICE_TOKEN;
 const linksServiceUrl = process.env.LINKS_SERVICE_URL
 
 export default async function() {
+    if (!linksServiceUrl) {
+        console.info("⚠️  Skipping links fetch (no LINKS_SERVICE_URL set) — local dev stub");
+        return [];
+    }
     let links = [];
     try {
 		console.info("⏬ Fetching links...");
