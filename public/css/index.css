@@ -149,14 +149,39 @@
 
 		--dark: #111;
 		--light: #fff;
-		
-		color-scheme: light dark;
-		
-		--background: light-dark(#faf9f6, var(--dark));
-		--text: light-dark(var(--dark),  hwb(213 78% 16% / 1));
+		--paper: #faf9f6;
+		--ink-blue: hwb(213 78% 16% / 1);
 
-		--callout-bg: light-dark(rgba(0,0,0,0.02),rgba(255,255,255, 0.03));
+		color-scheme: light dark;
+
+		/* Semantic colour tokens — use these in new rules. */
+		--bg: light-dark(var(--paper), var(--dark));
+		--fg: light-dark(var(--dark), var(--ink-blue));
+		--fg-muted: light-dark(#333, #c4c4c4);
+		--fg-subtle: light-dark(#555, #9a9a9a);
+		--fg-quiet: light-dark(#666, #9a9a9a);
+		--rule: light-dark(rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.12));
+		--rule-soft: light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1));
+
+		/* Back-compat aliases for pre-redesign rules. */
+		--background: var(--bg);
+		--text: var(--fg);
+
+		--callout-bg: light-dark(rgba(0,0,0,0.02), rgba(255,255,255, 0.03));
 		--callout-fg: light-dark(#555, hsl(230, 1%, 98%));
+
+		--code-bg: hsl(230, 1%, 98%);
+		--code-fg: #555;
+
+		--highlight-bg: light-dark(yellow, rgba(255, 255, 255, 0.2));
+		--highlight-fg: light-dark(var(--dark), var(--light));
+
+		/* Accent swatches. Default = peach; swap via [data-accent] on <html>. */
+		--accent-yellow: #ffd900;
+		--accent-peach: #ffb78a;
+		--accent-mint: #a6ecc7;
+		--accent-lilac: #cbb3ff;
+		--accent: var(--accent-peach);
 
 		--font-family: -apple-system, system-ui, sans-serif;
 		--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT,
@@ -165,9 +190,14 @@
 			Courier, monospace;
 
 		--syntax-tab-size: 2;
-		
+
 		--header-height: 70px;
 	}
+
+	[data-accent="yellow"] { --accent: var(--accent-yellow); }
+	[data-accent="peach"]  { --accent: var(--accent-peach); }
+	[data-accent="mint"]   { --accent: var(--accent-mint); }
+	[data-accent="lilac"]  { --accent: var(--accent-lilac); }
 }
 
 @layer main {
@@ -295,11 +325,6 @@
 		margin-top: 0;
 	}
 
-	body > header {
-		display: flex;
-		flex-direction: column;
-	}
-
 	table {
 		margin: 1em 0;
 	}
@@ -342,22 +367,30 @@
 		padding: 1rem;
 	}
 
-	/* Header */
+	/* Site header — sticky, translucent, 1px bottom hairline */
 	body > header {
-		padding: 0 var(--space-s);
-	}
-	body > header > :first-child {
+		position: sticky;
+		top: 0;
+		z-index: 50;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: space-between;
-		/* padding: 0 var(--space-s);	 */
-		color: light-dark(#333, #fff);
+		column-gap: var(--space-m);
+		padding-inline: clamp(var(--space-s), 3vw, var(--space-l));
 		height: var(--header-height);
+		background: color-mix(in oklab, var(--bg) 88%, transparent);
+		backdrop-filter: saturate(1.1);
+		border-bottom: 1px solid var(--rule);
+		color: light-dark(#333, #fff);
+		font-family: var(--feature-font);
+		text-transform: uppercase;
 	}
 
 	.home-link {
 		font-weight: 700;
+		font-size: var(--step-1);
+		letter-spacing: 0.02em;
 	}
 
 	.home-link:link:not(:hover) {
@@ -370,12 +403,18 @@
 		padding: 0;
 		margin: 0;
 		list-style: none;
-		column-gap: var(--space-s);
+		column-gap: clamp(var(--space-s), 2vw, var(--space-m));
 	}
 
 	.nav-item {
 		display: inline-block;
 		text-align: right;
+	}
+
+	.nav-item a {
+		font-size: var(--step--1);
+		letter-spacing: 0.08em;
+		padding: 0.25em 0;
 	}
 
 	.nav-item a[href]:not(:hover) {
@@ -388,6 +427,8 @@
 
 	.nav a[href][aria-current="page"] {
 		text-decoration: underline;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.4em;
 	}
 
 	/* Posts list */
@@ -409,11 +450,6 @@
 		text-underline-offset: 0;
 		text-decoration-thickness: 1px;
 		font-family: var(--feature-font);
-	}
-
-	body > header {
-		font-family: var(--feature-font);
-		text-transform: uppercase;
 	}
 
 	.flow > * + * {
