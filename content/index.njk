@@ -9,7 +9,14 @@ order: 1
 {% css %}
 @layer page {
 	main {
-		display: block;
+		display: flex;
+		flex-direction: column;
+	}
+
+	@media (min-width: 721px) {
+		main {
+			justify-content: center;
+		}
 	}
 
 	.hero-wrap {
@@ -252,7 +259,11 @@ order: 1
 			grid-template-columns: 1fr;
 		}
 
-		.signal { border-right: 0; border-bottom: 1px solid var(--rule); }
+		.signal {
+			border-right: 0;
+			border-bottom: 1px solid var(--rule);
+			padding-inline: 0;
+		}
 		.signal:last-child { border-bottom: 0; }
 		.signal:first-child { padding-top: var(--space-m); }
 	}

@@ -176,12 +176,14 @@
 		--highlight-bg: light-dark(yellow, rgba(255, 255, 255, 0.2));
 		--highlight-fg: light-dark(var(--dark), var(--light));
 
-		/* Accent swatches. Default = peach; swap via [data-accent] on <html>. */
+		/* Accent swatches. Default = peach; swap via [data-accent] on <html>.
+		   Dark-mode variants are translucent so the accent reads as a
+		   highlight overlay rather than a jarring solid against the ink. */
 		--accent-yellow: #ffd900;
 		--accent-peach: #ffb78a;
 		--accent-mint: #a6ecc7;
 		--accent-lilac: #cbb3ff;
-		--accent: var(--accent-peach);
+		--accent: light-dark(var(--accent-peach), rgba(255, 190, 120, 0.28));
 
 		--font-family: -apple-system, system-ui, sans-serif;
 		--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT,
@@ -194,10 +196,10 @@
 		--header-height: 70px;
 	}
 
-	[data-accent="yellow"] { --accent: var(--accent-yellow); }
-	[data-accent="peach"]  { --accent: var(--accent-peach); }
-	[data-accent="mint"]   { --accent: var(--accent-mint); }
-	[data-accent="lilac"]  { --accent: var(--accent-lilac); }
+	[data-accent="yellow"] { --accent: light-dark(var(--accent-yellow), rgba(255, 255, 255, 0.2)); }
+	[data-accent="peach"]  { --accent: light-dark(var(--accent-peach),  rgba(255, 190, 120, 0.28)); }
+	[data-accent="mint"]   { --accent: light-dark(var(--accent-mint),   rgba(120, 220, 170, 0.28)); }
+	[data-accent="lilac"]  { --accent: light-dark(var(--accent-lilac),  rgba(200, 180, 255, 0.30)); }
 }
 
 @layer main {
@@ -570,8 +572,9 @@
 	}
 
 
+	/* Sticky footer: main grows to push footer to the viewport bottom. */
 	main {
-		display: flex;
+		flex: 1 0 auto;
 	}
 
 	.container {
