@@ -191,6 +191,7 @@ main { display: block; }
 
 /* Body sections */
 .landing-section {
+	width: 100%;
 	max-width: 64ch;
 	margin-inline: auto;
 	padding-block: var(--space-l) 0;
