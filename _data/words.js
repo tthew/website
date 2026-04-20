@@ -5,6 +5,10 @@ dotenv.config();
 const token = process.env.API_TOKEN;
 
 export default async function getPosts() {
+	if (!process.env.API_URL) {
+		console.info("⚠️  Skipping words fetch (no API_URL set) — local dev stub");
+		return [];
+	}
 	let posts = [];
 	let assets = [];
 
