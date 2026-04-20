@@ -1,42 +1,51 @@
 ---js
-const layout = "layouts/home.njk";  
-const title = 'Privacy Policy';
+const layout = "layouts/home.njk";
+const title = 'Privacy & GDPR';
+const description = "Privacy notice for ma.tthew.berlin — no tracking, no analytics, brief note on contact form data and GDPR rights.";
+const sitemap = { priority: "0.3", changefreq: "yearly" };
 ---
-
 {% css %}
 @layer page {
-	main {
-		display: flex;
-		justify-content: center;
-		min-height: 100vh;
-		flex: 1;
-		padding-bottom: var(--space-xl);
-        {# row-gap: var(--space-l); #}
-	}
-
-	main > * {
-		width: 80ch;
-		max-width: 100%;
-		display: flex;
-		flex-direction: column;
-		
-	}
-
-	
+	{% include "css/landing.css" %}
 }
 {% endcss %}
 
-<div class="privacy flow">
-    <h1>Privacy Policy</h1>
-    <h2><strong>This website does not track you!</strong></h2>
-    <p>No cookies are set on this domain. On occasion I use <a href="https://glitch.com/">Glitch</a> in my <a href="/words">posts</a> for demos, which may attempt to set 3rd party cookies (hopefully your browser prevents that from happening).</p>
-    <p>This website does leverage the localStorage API to persist some preferences you might have set, like setting and persisting your preferred colour scheme across sessions for example.</p>
-    <p>This website doesn't collect any analytics.</p>
-    <h2>Contact Form Submissions</h2>
-    <p>The only data this website captures is any data you enter into and submit via the <a href="/contact">contact form</a>.</p>
-    <p>In order to submit the form you must consent to your data being processed by <a href="https://www.netlify.com/platform/core/forms/">Netlify Forms</a> and <a href="https://akismet.com/">Akismet</a>.</p>
-    <p>In order to request a copy of any data you have submitted via the contact form, or if you'd like to request a deletion of any data you've submitted via the content form, please <a href="/contact">contact me</a> via your preferred medium and I'll be happy to oblige.</p>
-    <p>Alternatively you can simply ping an email to <a href="mailto:gdpr@tthew.berlin">gdpr@tthew.berlin</a> and I'll take care of your request.</p>
+<article class="landing">
+	<nav class="landing-crumbs" aria-label="Breadcrumb">
+		<a href="/">Home</a>
+		<span class="sep" aria-hidden="true">/</span>
+		<span aria-current="page">Privacy &amp; GDPR</span>
+	</nav>
 
+	<header class="landing-hero">
+		<p class="landing-eyebrow">Privacy &middot; GDPR</p>
+		<h1>Privacy &amp; <em>GDPR.</em></h1>
+		<p class="lede">This website does not track you. No cookies, no analytics. A short note on what is collected via the contact form, and how to get a copy or a deletion request processed.</p>
+	</header>
 
-</div>
+	<section class="landing-section">
+		<h2><span class="ix">&sect; 01 &mdash; Tracking</span>This site doesn't track you</h2>
+		<div class="landing-body">
+			<p>No cookies are set on this domain. No analytics. No third-party trackers.</p>
+			<p>The one exception: occasional embedded demos from <a href="https://glitch.com/">Glitch</a> in blog <a href="/words">posts</a> may attempt to set third-party cookies. Your browser will likely block those. Nothing on this domain tries to set any.</p>
+			<p>A small number of preferences (like your preferred colour scheme) are persisted via the browser's <code>localStorage</code> API so they survive across sessions. That's local to your browser &mdash; nothing leaves your device.</p>
+		</div>
+	</section>
+
+	<section class="landing-section">
+		<h2><span class="ix">&sect; 02 &mdash; Contact form</span>The only data this site collects</h2>
+		<div class="landing-body">
+			<p>The <a href="/contact">contact form</a> is the only place this website collects data, and only what you enter yourself (name, email, message).</p>
+			<p>Submitting the form requires consent to processing by <a href="https://www.netlify.com/platform/core/forms/">Netlify Forms</a> (which hosts the form endpoint) and <a href="https://akismet.com/">Akismet</a> (spam filtering).</p>
+			<p>Submissions are forwarded to my inbox. Nothing is stored on this domain.</p>
+		</div>
+	</section>
+
+	<section class="landing-section">
+		<h2><span class="ix">&sect; 03 &mdash; Your rights</span>Access, correction, deletion</h2>
+		<div class="landing-body">
+			<p>Under the GDPR you can request a copy of, correction of, or deletion of any data you've submitted. You can also withdraw consent at any time.</p>
+			<p>Email <a href="mailto:gdpr@tthew.berlin">gdpr@tthew.berlin</a> and I'll handle the request. Alternatively, use the <a href="/contact">contact form</a> and tell me which data you'd like processed.</p>
+		</div>
+	</section>
+</article>
