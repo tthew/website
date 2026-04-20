@@ -4,132 +4,145 @@ eleventyNavigation:
   key: "About"
   order: 3
 title: 'About'
-description: "Matt Richards — Senior Staff Product Engineer and engineering lead in Berlin. Hands-on leadership, product engineering, and building humane teams and codebases in the age of AI."
+description: "Matt Richards — Senior+ Product Engineer and engineering lead in Berlin. Hands-on leadership, product engineering, and building humane teams and codebases in the age of AI."
 ---
 {% set title ="About" %}
 {% css %}
 @layer page {
 	main {
-		display: flex;
-		justify-content: center;
-		flex: 1 0 100%;
+		display: block;
 	}
 
 	.about {
 		width: 100%;
-		max-width: 72ch;
-		padding-inline: var(--space-s);
-		padding-block: var(--space-l) var(--space-2xl);
+		max-width: 80ch;
+		margin-inline: auto;
+		padding-inline: clamp(var(--space-s), 4vw, var(--space-l));
+		padding-block: var(--space-l) var(--space-3xl);
 		display: flex;
 		flex-direction: column;
-		row-gap: var(--space-xl);
+		row-gap: var(--space-2xl);
 	}
 
+	/* Chapter opener */
 	.about-hero {
+		max-width: 52ch;
+		margin-inline: auto;
+		text-align: center;
+		padding-block: var(--space-xl);
+		border-bottom: 1px solid var(--rule);
+	}
+
+	.about-dateline {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		font-size: var(--step--1);
+		letter-spacing: 0.22em;
+		color: var(--fg-quiet);
+		margin: 0 0 var(--space-m);
 		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		row-gap: var(--space-m);
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.6em;
 	}
 
-	.portrait {
-		position: relative;
-		margin: 0;
-	}
-
-	.portrait img {
-		width: clamp(8rem, 14vw, 10rem);
-		height: clamp(8rem, 14vw, 10rem);
-		object-fit: cover;
-		border-radius: 50%;
-	}
-
-	.portrait::after {
-		content: "";
-		position: absolute;
-		inset: 0;
-		border-radius: 50%;
-		background-image: var(--grain);
-		background-size: 180px 180px;
-		opacity: 0.18;
-		mix-blend-mode: multiply;
-		pointer-events: none;
-	}
-
-	@media (prefers-color-scheme: dark) {
-		.portrait::after {
-			mix-blend-mode: screen;
-			opacity: 0.14;
-		}
-	}
-
-	.about-hero-text {
-		display: flex;
-		flex-direction: column;
-		row-gap: var(--space-s);
-	}
+	.about-dateline .sep { opacity: 0.45; }
 
 	.about-hero h1 {
-		font-size: clamp(2.5rem, 6.5vw, 4rem);
-		line-height: 0.95;
-		letter-spacing: -0.015em;
-		margin: 0;
+		font-family: var(--feature-font);
+		font-weight: 900;
+		text-transform: uppercase;
+		font-size: clamp(4rem, 12vw, 9rem);
+		line-height: 0.9;
+		letter-spacing: -0.02em;
+		margin: 0 0 var(--space-m);
+		color: var(--fg);
 	}
 
 	.about-hero .lede {
-		font-size: clamp(var(--step-1), 0.8vw + 1.05rem, var(--step-2));
-		line-height: 1.4;
-		color: light-dark(#333, #c4c4c4);
-		margin: 0;
-		text-wrap: pretty;
-		max-width: 45ch;
+		font-size: clamp(var(--step-1), 0.6vw + 1.05rem, var(--step-2));
+		line-height: 1.45;
+		color: var(--fg-muted);
+		text-wrap: balance;
+		max-width: 34ch;
+		margin: 0 auto;
 	}
 
+	/* Numbered body sections */
 	.about-section {
-		display: flex;
-		flex-direction: column;
-		row-gap: var(--space-s);
+		max-width: 64ch;
+		margin-inline: auto;
+		padding-block: var(--space-xl) 0;
+	}
+
+	.about-section + .about-section {
+		margin-top: var(--space-l);
+		padding-top: var(--space-xl);
+		border-top: 1px solid var(--rule);
 	}
 
 	.about-section h2 {
-		font-size: var(--step-2);
-		letter-spacing: 0.01em;
-		padding-top: var(--space-m);
-		margin-bottom: var(--space-3xs);
-		border-top: 1px solid light-dark(rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.12));
+		font-family: var(--feature-font);
+		font-weight: 900;
+		text-transform: uppercase;
+		font-size: clamp(2.25rem, 4.6vw, 3.75rem);
+		line-height: 0.95;
+		letter-spacing: -0.005em;
+		color: var(--fg);
+		margin: 0 0 var(--space-m);
 	}
 
-	.about p {
-		line-height: 1.6;
+	.about-section h2 .ix {
+		display: block;
+		font-family: var(--feature-font);
+		font-weight: 400;
+		font-size: var(--step--1);
+		letter-spacing: 0.25em;
+		color: var(--fg-quiet);
+		margin-bottom: var(--space-s);
+	}
+
+	.about-section-body {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-m);
+	}
+
+	.about-section-body p {
+		margin: 0;
+		line-height: 1.65;
+		font-size: var(--step-0);
+		color: var(--fg);
 		text-wrap: pretty;
 	}
 
-	.about strong {
-		font-weight: 600;
-	}
-
-	.about a[href] {
-		text-underline-offset: 0.2em;
+	.about-section-body p:first-child {
+		font-size: var(--step-1);
+		line-height: 1.45;
 	}
 
 	.about-colophon {
+		max-width: 64ch;
+		margin: var(--space-xl) auto 0;
+		padding-top: var(--space-l);
+		border-top: 1px solid var(--rule);
 		font-size: var(--step--1);
-		color: light-dark(#555, #9a9a9a);
+		color: var(--fg-subtle);
 	}
 
 	.about-colophon h2 {
+		font-family: var(--feature-font);
+		font-weight: 900;
+		text-transform: uppercase;
 		font-size: var(--step-1);
+		letter-spacing: 0.01em;
+		color: var(--fg);
+		margin: 0 0 var(--space-s);
 	}
 
-	@media (max-width: 560px) {
-		.portrait img {
-			width: clamp(7rem, 28vw, 9rem);
-			height: clamp(7rem, 28vw, 9rem);
-		}
-
-		.about-hero h1 {
-			font-size: clamp(2rem, 10vw, 3rem);
-		}
+	.about-colophon p {
+		margin: 0 0 var(--space-s);
+		line-height: 1.55;
 	}
 
 	@media (prefers-reduced-motion: no-preference) {
@@ -143,54 +156,64 @@ description: "Matt Richards — Senior Staff Product Engineer and engineering le
 		}
 
 		.about > :nth-child(1) { animation-delay:   0ms; }
-		.about > :nth-child(2) { animation-delay:  80ms; }
-		.about > :nth-child(3) { animation-delay: 180ms; }
-		.about > :nth-child(4) { animation-delay: 280ms; }
-		.about > :nth-child(5) { animation-delay: 380ms; }
-		.about > :nth-child(6) { animation-delay: 480ms; }
+		.about > :nth-child(2) { animation-delay: 120ms; }
+		.about > :nth-child(3) { animation-delay: 220ms; }
+		.about > :nth-child(4) { animation-delay: 320ms; }
+		.about > :nth-child(5) { animation-delay: 420ms; }
+		.about > :nth-child(6) { animation-delay: 520ms; }
 	}
 }
 {% endcss %}
 
 <article class="about">
 	<header class="about-hero">
-		<figure class="portrait">
-			<img src="../public/img/1564326180592.jpeg" alt="Matt Richards, wearing shades, with beach grass in the background" width="500" height="500" loading="eager" decoding="sync" />
-		</figure>
-		<div class="about-hero-text">
-			<h1>About Matt Richards</h1>
-			<p class="lede">Hi. I'm Matt &mdash; a Senior+ Product Engineer and engineering lead based in Berlin. I build products for the web, and lead the teams that do the same.</p>
-		</div>
+		<p class="about-dateline">
+			<span>Matt Richards</span>
+			<span class="sep" aria-hidden="true">&middot;</span>
+			<span>Senior+ Product Engineer</span>
+			<span class="sep" aria-hidden="true">&middot;</span>
+			<span>Berlin</span>
+		</p>
+		<h1>Hello.</h1>
+		<p class="lede">Hi. I'm Matt &mdash; a Senior+ Product Engineer and engineering lead based in Berlin. I build products for the web, and lead the teams that do the same.</p>
 	</header>
 
 	<section class="about-section">
-		<p>Over twenty years in, I work across both product engineering and engineering leadership: technical strategy and architecture; org and roadmap design; the direct contributions that move a team's work forward.</p>
-		<p>My work sits between craft and leadership. I care about the people I build alongside as much as what gets built. I'm at home in ambitious contexts, diverse teams, and environments where the work has to matter.</p>
+		<h2><span class="ix">&sect; 01 &mdash; The work</span>The work</h2>
+		<div class="about-section-body">
+			<p>Over twenty years in, I work across both product engineering and engineering leadership: technical strategy and architecture; org and roadmap design; the direct contributions that move a team's work forward.</p>
+			<p>My work sits between craft and leadership. I care about the people I build alongside as much as what gets built. I'm at home in ambitious contexts, diverse teams, and environments where the work has to matter.</p>
+		</div>
 	</section>
 
 	<section class="about-section">
-		<h2>What I do</h2>
-		<p>Fundamentals matter to me far more than the framework of the month. SOLID principles, clean boundaries, appropriate coupling, and systems that stay coherent as they grow. The web platform comes first: HTML, CSS, the DOM and Web APIs do most of the heavy lifting before I reach for an abstraction.</p>
-		<p>On the leadership side, I set direction, bring product ambition into engineering reality, and hold teams to SMART goals over vanity metrics. Mentoring engineers through the parts of a career that actually compound: craft, judgement, and the soft skills that don't fit on a sprint board.</p>
-		<p>Mostly startups and NGOs, with a long run in global public and private health. Values-led work isn't a nice-to-have. I want what I ship to do something more useful than add a line to an investor deck. My work history is on <a href="https://linkedin.com/in/tthew">LinkedIn</a>.</p>
+		<h2><span class="ix">&sect; 02 &mdash; Craft</span>Craft</h2>
+		<div class="about-section-body">
+			<p>Fundamentals matter to me far more than the framework of the month. SOLID principles, clean boundaries, appropriate coupling, and systems that stay coherent as they grow.</p>
+			<p>The web platform comes first: HTML, CSS, the DOM and Web APIs do most of the heavy lifting before I reach for an abstraction.</p>
+			<p>On the leadership side, I set direction, bring product ambition into engineering reality, and hold teams to SMART goals over vanity metrics. Mentoring engineers through the parts of a career that actually compound: craft, judgement, and the soft skills that don't fit on a sprint board.</p>
+		</div>
 	</section>
 
 	<section class="about-section">
-		<h2>How I work</h2>
-		<p>Most of what I bring to a team at this point is judgement. Ownership matters to me: backing the team's outcome, with their autonomy left intact. Leading and interfering aren't the same thing. Stay close to the work. Stay out of the team's way.</p>
-		<p>The best leaders I've worked with held that balance without making a thing of it. I try to do the same.</p>
-		<p>Accessibility and UX as defaults. Design and systems thinking belong inside the engineering. A bias toward coherence and clarity over cleverness.</p>
+		<h2><span class="ix">&sect; 03 &mdash; How I work</span>How I work</h2>
+		<div class="about-section-body">
+			<p>Most of what I bring to a team at this point is judgement. Ownership matters to me: backing the team's outcome, with their autonomy left intact.</p>
+			<p>Leading and interfering aren't the same thing. Stay close to the work. Stay out of the team's way.</p>
+			<p>Accessibility and UX as defaults. Design and systems thinking belong inside the engineering. A bias toward coherence and clarity over cleverness.</p>
+		</div>
 	</section>
 
 	<section class="about-section">
-		<h2>The next iteration of the web</h2>
-		<p>AI is part of how I build now. I use it every day, study the research, and watch closely what it's doing to the craft &mdash; to team shape, to code quality, to how junior engineers grow up in a world where the easy work is suddenly cheap.</p>
-		<p>Keeping humans, products and codebases healthy in the age of AI is the engineering problem of the decade. I help teams avoid both failure modes: getting left behind, and letting an autocomplete quietly rot the codebase.</p>
+		<h2><span class="ix">&sect; 04 &mdash; The next iteration</span>The next iteration</h2>
+		<div class="about-section-body">
+			<p>AI is part of how I build now. I use it every day, study the research, and watch closely what it's doing to the craft &mdash; to team shape, to code quality, to how junior engineers grow up in a world where the easy work is suddenly cheap.</p>
+			<p>Keeping humans, products and codebases healthy in the age of AI is the engineering problem of the decade. I help teams avoid both failure modes: getting left behind, and letting an autocomplete quietly rot the codebase.</p>
+		</div>
 	</section>
 
-	<section class="about-section about-colophon">
+	<section class="about-colophon">
 		<h2>About this website</h2>
 		<p>Hand-made by a human (me, with a little help from <a href="https://claude.com/claude-code">Claude</a>). The front end is a static build with <a href="https://11ty.dev">11ty</a>, sourcing content from a self-hosted <a href="https://craftcms.com/">Craft CMS</a> GraphQL endpoint running on a Raspberry Pi in my apartment. A webhook triggers rebuild and redeploy whenever the data changes.</p>
-		<p><strong><a href="/privacy">This website does not track you.</a></strong></p>
 	</section>
 </article>
