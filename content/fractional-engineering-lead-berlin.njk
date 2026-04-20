@@ -7,6 +7,7 @@ const sitemap = { priority: "0.9", changefreq: "monthly" };
 {% css %}
 @layer page {
 	{% include "css/landing.css" %}
+	{% include "css/services-grid.css" %}
 }
 {% endcss %}
 
@@ -74,12 +75,27 @@ const sitemap = { priority: "0.9", changefreq: "monthly" };
 		</div>
 	</section>
 
-	<section class="landing-related" aria-label="Related services">
-		<h2>Related services</h2>
-		<ul class="landing-related-list">
-			<li><a href="/software-architecture-review-berlin/">Software architecture &amp; codebase review</a><span class="sub">Scoped, two weeks, decision-grade</span></li>
-			<li><a href="/ai-for-engineering-teams-berlin/">AI for engineering teams</a><span class="sub">Workflows, guardrails, team health</span></li>
-			<li><a href="/freelance-tech-lead-berlin/">Freelance tech lead, Berlin</a><span class="sub">Hands-on technical leadership</span></li>
+	<section class="services-section" aria-labelledby="related-services-heading">
+		<h2 id="related-services-heading">Related services</h2>
+		<ul class="services-grid">
+			<li class="service">
+				<span class="service-kicker">&sect; 01</span>
+				<h3 class="service-head">Architecture review</h3>
+				<p class="service-body">Honest read on what's load-bearing, what's rot, what's worth the rewrite. Scoped, two weeks.</p>
+				<a class="cta" href="/software-architecture-review-berlin/">Software architecture review</a>
+			</li>
+			<li class="service">
+				<span class="service-kicker">&sect; 02</span>
+				<h3 class="service-head">AI for engineering teams</h3>
+				<p class="service-body">Workflow design, guardrails, team health. AI every day, without rotting the codebase or the craft.</p>
+				<a class="cta" href="/ai-for-engineering-teams-berlin/">AI for engineering teams</a>
+			</li>
+			<li class="service">
+				<span class="service-kicker">&sect; 03</span>
+				<h3 class="service-head">Freelance tech lead</h3>
+				<p class="service-body">Hands-on technical leadership. Twenty years in. Berlin, EU, remote.</p>
+				<a class="cta" href="/freelance-tech-lead-berlin/">Freelance tech lead, Berlin</a>
+			</li>
 		</ul>
 	</section>
 
