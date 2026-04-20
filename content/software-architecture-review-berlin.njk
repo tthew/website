@@ -1,0 +1,160 @@
+---js
+const layout = "layouts/home.njk";
+const title = "Software Architecture & Codebase Review — Berlin";
+const description = "Honest, scoped software architecture and codebase review in Berlin. Two weeks, fixed fee, decision-grade deliverable: what's load-bearing, what's rot, what's worth the rewrite.";
+const sitemap = { priority: "0.9", changefreq: "monthly" };
+---
+{% css %}
+@layer page {
+	{% include "css/landing.css" %}
+}
+{% endcss %}
+
+<article class="landing">
+	<nav class="landing-crumbs" aria-label="Breadcrumb">
+		<a href="/">Home</a>
+		<span class="sep" aria-hidden="true">/</span>
+		<a href="/freelance-tech-lead-berlin/">Freelance</a>
+		<span class="sep" aria-hidden="true">/</span>
+		<span aria-current="page">Architecture &amp; codebase review</span>
+	</nav>
+
+	<header class="landing-hero">
+		<p class="landing-eyebrow">Matt Richards &middot; Berlin</p>
+		<h1>Software architecture &amp; codebase <em>review.</em></h1>
+		<p class="lede">An honest, senior read on what's load-bearing, what's rot, and what's worth the rewrite. Scoped, written up, handed over &mdash; a decision-grade document you can actually use. Berlin, EU, remote.</p>
+		<div class="landing-meta">
+			<a class="eyebrow-link" href="/contact">Request a review</a>
+			<span class="landing-locator"><span class="online-dot" aria-hidden="true"></span>Currently open to new work</span>
+		</div>
+	</header>
+
+	<section class="landing-services" aria-label="What an architecture review looks like">
+		<div class="service">
+			<span class="service-kicker">&sect; 01</span>
+			<h2 class="service-head">Honest read</h2>
+			<p class="service-body">No consulting theatre. A senior engineer reading your codebase the way you would, if you had a month to stare at it.</p>
+		</div>
+		<div class="service">
+			<span class="service-kicker">&sect; 02</span>
+			<h2 class="service-head">Scoped deliverable</h2>
+			<p class="service-body">A written review, a read-out with the team, a prioritised list of what to do next. Two weeks. Fixed fee. No open-ended scope creep.</p>
+		</div>
+		<div class="service">
+			<span class="service-kicker">&sect; 03</span>
+			<h2 class="service-head">Decision support</h2>
+			<p class="service-body">Rewrite or refactor? Monolith or split? Buy or build? The call is yours; the second opinion is mine &mdash; with receipts.</p>
+		</div>
+	</section>
+
+	<section class="landing-section">
+		<h2><span class="ix">&sect; 04 &mdash; What you get</span>A document you can act on</h2>
+		<div class="landing-body">
+			<p>A codebase review earns its keep when it tells you something you couldn't see from inside. The deliverable is shaped for the people who'll read it &mdash; engineers, leadership, investors &mdash; not as a box-ticking exercise.</p>
+			<ul>
+				<li><strong>Executive summary</strong> &mdash; one page. The headline read on health, risk and next best move.</li>
+				<li><strong>Architecture diagram</strong> &mdash; what's actually in the system, not what the wiki thinks is in the system.</li>
+				<li><strong>Risk register</strong> &mdash; the parts that will bite you, ranked by likelihood and blast radius.</li>
+				<li><strong>Prioritised backlog</strong> &mdash; concrete, sized items. What to do first, what to defer, what to stop doing.</li>
+				<li><strong>Read-out</strong> &mdash; a working session with your team. Questions answered. Disagreements welcome.</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="landing-section">
+		<h2><span class="ix">&sect; 05 &mdash; When it helps</span>The moments a second read pays off</h2>
+		<div class="landing-body">
+			<ul>
+				<li><strong>Pre-raise or pre-sale diligence</strong> &mdash; you want a clean story before investors or acquirers bring their own.</li>
+				<li><strong>New engineering lead starting</strong> &mdash; ninety days in, with an independent map of the terrain.</li>
+				<li><strong>Rewrite or refactor?</strong> &mdash; the quarterly debate your team can't settle. A grounded outside take.</li>
+				<li><strong>Post-acquisition landing</strong> &mdash; you bought a codebase. Now you have to live in it.</li>
+				<li><strong>Scaling pain</strong> &mdash; things that worked at 10 engineers are breaking at 40. Where the cracks are.</li>
+			</ul>
+			<p>Twenty years across product engineering and leadership, platform-first. I've written, shipped and inherited enough codebases to tell rot from rough edges. <a href="/about">More about how I work &rarr;</a></p>
+		</div>
+	</section>
+
+	<section class="landing-related" aria-label="Related services">
+		<h2>Related services</h2>
+		<ul class="landing-related-list">
+			<li><a href="/fractional-engineering-lead-berlin/">Fractional engineering lead, Berlin</a><span class="sub">Strategy, team shape, mentorship</span></li>
+			<li><a href="/ai-for-engineering-teams-berlin/">AI for engineering teams</a><span class="sub">Workflows, guardrails, team health</span></li>
+			<li><a href="/freelance-tech-lead-berlin/">Freelance tech lead, Berlin</a><span class="sub">Hands-on technical leadership</span></li>
+		</ul>
+	</section>
+
+	<section class="landing-next" aria-label="Where to go next">
+		<div class="next">
+			<span class="next-kicker">Background</span>
+			<h3>About</h3>
+			<p>Twenty years, two sides of the bench: product engineering and engineering leadership.</p>
+			<a class="cta" href="/about">Read the long version</a>
+		</div>
+		<div class="next">
+			<span class="next-kicker">Writing</span>
+			<h3>Words</h3>
+			<p>Notes on craft, leadership, and the age of AI. The archive &mdash; dated, unvarnished.</p>
+			<a class="cta" href="/words">Open the archive</a>
+		</div>
+		<div class="next">
+			<span class="next-kicker">Work together</span>
+			<h3>Contact</h3>
+			<p>Email, Signal, or the form. Tell me what you're building and what's in the way.</p>
+			<a class="cta" href="/contact">Get in touch</a>
+		</div>
+	</section>
+</article>
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "Person",
+			"@id": "{{ metadata.url }}/#matt",
+			"name": "Matt Richards",
+			"jobTitle": "Freelance Tech Lead",
+			"url": "{{ metadata.url }}/",
+			"email": "mailto:hallo@tthew.berlin",
+			"image": "{{ metadata.url }}/img/1564326180592.jpeg",
+			"sameAs": [
+				"https://hachyderm.io/@tthew",
+				"https://www.linkedin.com/in/tthew/",
+				"https://github.com/tthew"
+			],
+			"address": { "@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE" }
+		},
+		{
+			"@type": "ProfessionalService",
+			"@id": "{{ metadata.url }}{{ page.url }}#service",
+			"name": "Matt Richards — Software Architecture & Codebase Review, Berlin",
+			"description": "Scoped, fixed-fee software architecture and codebase review: executive summary, architecture diagram, risk register, prioritised backlog, read-out. Two-week turnaround.",
+			"url": "{{ metadata.url }}{{ page.url }}",
+			"image": "{{ metadata.url }}/img/1564326180592.jpeg",
+			"provider": { "@id": "{{ metadata.url }}/#matt" },
+			"areaServed": [
+				{ "@type": "City", "name": "Berlin" },
+				{ "@type": "Country", "name": "Germany" },
+				{ "@type": "Place", "name": "European Union" },
+				{ "@type": "Place", "name": "Remote" }
+			],
+			"serviceType": [
+				"Software architecture review",
+				"Codebase review",
+				"Architecture audit",
+				"Technical due diligence",
+				"Code quality review"
+			]
+		},
+		{
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{ "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ metadata.url }}/" },
+				{ "@type": "ListItem", "position": 2, "name": "Freelance tech lead, Berlin", "item": "{{ metadata.url }}/freelance-tech-lead-berlin/" },
+				{ "@type": "ListItem", "position": 3, "name": "Software architecture & codebase review", "item": "{{ metadata.url }}{{ page.url }}" }
+			]
+		}
+	]
+}
+</script>

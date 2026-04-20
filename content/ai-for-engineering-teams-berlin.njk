@@ -1,0 +1,155 @@
+---js
+const layout = "layouts/home.njk";
+const title = "AI for Engineering Teams — Berlin";
+const description = "Matt Richards — AI adoption for engineering teams, from Berlin. Workflow design, guardrails, and team health for engineering orgs using AI every day without rotting the codebase or the craft.";
+const sitemap = { priority: "0.9", changefreq: "monthly" };
+---
+{% css %}
+@layer page {
+	{% include "css/landing.css" %}
+}
+{% endcss %}
+
+<article class="landing">
+	<nav class="landing-crumbs" aria-label="Breadcrumb">
+		<a href="/">Home</a>
+		<span class="sep" aria-hidden="true">/</span>
+		<a href="/freelance-tech-lead-berlin/">Freelance</a>
+		<span class="sep" aria-hidden="true">/</span>
+		<span aria-current="page">AI for engineering teams</span>
+	</nav>
+
+	<header class="landing-hero">
+		<p class="landing-eyebrow">Matt Richards &middot; Berlin</p>
+		<h1><em>AI</em> for engineering teams.</h1>
+		<p class="lede">Keeping humans, products and codebases healthy in the age of AI is the engineering problem of the decade. I help engineering leaders use AI every day &mdash; without rotting the codebase or the craft.</p>
+		<div class="landing-meta">
+			<a class="eyebrow-link" href="/contact">Start a conversation</a>
+			<span class="landing-locator"><span class="online-dot" aria-hidden="true"></span>Currently open to new work</span>
+		</div>
+	</header>
+
+	<section class="landing-services" aria-label="What I help engineering teams with">
+		<div class="service">
+			<span class="service-kicker">&sect; 01</span>
+			<h2 class="service-head">Workflow design</h2>
+			<p class="service-body">Where AI helps. Where it hurts. Where it quietly lies. Setting up the rails your team can actually live with, not the demo-ware your vendor is selling.</p>
+		</div>
+		<div class="service">
+			<span class="service-kicker">&sect; 02</span>
+			<h2 class="service-head">Guardrails</h2>
+			<p class="service-body">Review discipline, test coverage, refactor hygiene. Stopping autocomplete from silently compounding debt. Shipping at speed without shipping rot.</p>
+		</div>
+		<div class="service">
+			<span class="service-kicker">&sect; 03</span>
+			<h2 class="service-head">Team health</h2>
+			<p class="service-body">Junior engineers still need to grow up. Seniors still need time to think. AI changes both shapes &mdash; and I've thought about this one a lot.</p>
+		</div>
+	</section>
+
+	<section class="landing-section">
+		<h2><span class="ix">&sect; 04 &mdash; What I help with</span>The engagements that fit</h2>
+		<div class="landing-body">
+			<p>I use AI every day, read the research, and watch closely what it's doing to the craft &mdash; to team shape, to code quality, to how junior engineers grow up in a world where the easy work is suddenly cheap. Most of what engineering leaders need now isn't another tool demo; it's a clear-eyed take on what's actually changing.</p>
+			<ul>
+				<li><strong>Tool evaluation</strong> &mdash; Claude Code, Copilot, Cursor, and the rest. An honest read on what fits your team, your code and your risk appetite.</li>
+				<li><strong>Team playbooks</strong> &mdash; how your team actually uses AI. Prompts, workflows, review norms, the little rules that keep quality up.</li>
+				<li><strong>Hiring &amp; levelling</strong> &mdash; what to hire for now. How to read a senior when the easy signals are cheaper than ever. How juniors grow up in the new shape.</li>
+				<li><strong>Code review practices</strong> &mdash; the human work that matters more, not less. Stopping autocomplete from slipping past the gate.</li>
+				<li><strong>Metric design</strong> &mdash; what to measure, what to ignore. Velocity is mostly a lie; a few things are worth tracking.</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="landing-section">
+		<h2><span class="ix">&sect; 05 &mdash; Where I'm coming from</span>Twenty years of craft, in the new weather</h2>
+		<div class="landing-body">
+			<p>I'm a senior+ product engineer and engineering lead with twenty years in. Platform-first. SOLID by default. Allergic to framework-of-the-month thinking. Which is exactly why the AI conversation matters to me: the fundamentals that used to take years to pick up are the things most at risk of being quietly skipped.</p>
+			<p>Keeping humans, products and codebases healthy in the age of AI is the engineering problem of the decade. I help teams avoid both failure modes: getting left behind, and letting an autocomplete quietly rot the codebase.</p>
+			<p>I write about this &mdash; craft, leadership, and keeping codebases humane in the age of autocomplete. <a href="/words">The words archive &rarr;</a></p>
+		</div>
+	</section>
+
+	<section class="landing-related" aria-label="Related services">
+		<h2>Related services</h2>
+		<ul class="landing-related-list">
+			<li><a href="/fractional-engineering-lead-berlin/">Fractional engineering lead, Berlin</a><span class="sub">Strategy, team shape, mentorship</span></li>
+			<li><a href="/software-architecture-review-berlin/">Software architecture &amp; codebase review</a><span class="sub">Two weeks, fixed-fee, decision-grade</span></li>
+			<li><a href="/freelance-tech-lead-berlin/">Freelance tech lead, Berlin</a><span class="sub">Hands-on technical leadership</span></li>
+		</ul>
+	</section>
+
+	<section class="landing-next" aria-label="Where to go next">
+		<div class="next">
+			<span class="next-kicker">Background</span>
+			<h3>About</h3>
+			<p>Twenty years, two sides of the bench: product engineering and engineering leadership.</p>
+			<a class="cta" href="/about">Read the long version</a>
+		</div>
+		<div class="next">
+			<span class="next-kicker">Writing</span>
+			<h3>Words</h3>
+			<p>Notes on craft, leadership, and the age of AI. The archive &mdash; dated, unvarnished.</p>
+			<a class="cta" href="/words">Open the archive</a>
+		</div>
+		<div class="next">
+			<span class="next-kicker">Work together</span>
+			<h3>Contact</h3>
+			<p>Email, Signal, or the form. Tell me what you're building and what's in the way.</p>
+			<a class="cta" href="/contact">Get in touch</a>
+		</div>
+	</section>
+</article>
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "Person",
+			"@id": "{{ metadata.url }}/#matt",
+			"name": "Matt Richards",
+			"jobTitle": "Freelance Tech Lead",
+			"url": "{{ metadata.url }}/",
+			"email": "mailto:hallo@tthew.berlin",
+			"image": "{{ metadata.url }}/img/1564326180592.jpeg",
+			"sameAs": [
+				"https://hachyderm.io/@tthew",
+				"https://www.linkedin.com/in/tthew/",
+				"https://github.com/tthew"
+			],
+			"address": { "@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE" }
+		},
+		{
+			"@type": "ProfessionalService",
+			"@id": "{{ metadata.url }}{{ page.url }}#service",
+			"name": "Matt Richards — AI for Engineering Teams, Berlin",
+			"description": "AI adoption for software engineering teams: workflow design, guardrails, hiring, review practices, and team health. For engineering orgs using AI every day without rotting the codebase.",
+			"url": "{{ metadata.url }}{{ page.url }}",
+			"image": "{{ metadata.url }}/img/1564326180592.jpeg",
+			"provider": { "@id": "{{ metadata.url }}/#matt" },
+			"areaServed": [
+				{ "@type": "City", "name": "Berlin" },
+				{ "@type": "Country", "name": "Germany" },
+				{ "@type": "Place", "name": "European Union" },
+				{ "@type": "Place", "name": "Remote" }
+			],
+			"serviceType": [
+				"AI adoption consultant",
+				"AI engineering advisor",
+				"AI for engineering teams",
+				"AI coding workflow consultant",
+				"Engineering leadership in the age of AI"
+			]
+		},
+		{
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{ "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ metadata.url }}/" },
+				{ "@type": "ListItem", "position": 2, "name": "Freelance tech lead, Berlin", "item": "{{ metadata.url }}/freelance-tech-lead-berlin/" },
+				{ "@type": "ListItem", "position": 3, "name": "AI for engineering teams", "item": "{{ metadata.url }}{{ page.url }}" }
+			]
+		}
+	]
+}
+</script>

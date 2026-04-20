@@ -1,0 +1,163 @@
+---js
+const layout = "layouts/home.njk";
+const title = "Freelance Frontend Developer Berlin";
+const description = "Matt Richards — freelance frontend developer in Berlin. React, TypeScript, modern CSS at senior depth. Accessible, performant interfaces and design systems that stay coherent as they grow.";
+const sitemap = { priority: "0.9", changefreq: "monthly" };
+---
+{% css %}
+@layer page {
+	{% include "css/landing.css" %}
+}
+{% endcss %}
+
+<article class="landing">
+	<nav class="landing-crumbs" aria-label="Breadcrumb">
+		<a href="/">Home</a>
+		<span class="sep" aria-hidden="true">/</span>
+		<a href="/freelance-tech-lead-berlin/">Freelance</a>
+		<span class="sep" aria-hidden="true">/</span>
+		<span aria-current="page">Freelance frontend developer, Berlin</span>
+	</nav>
+
+	<header class="landing-hero">
+		<p class="landing-eyebrow">Matt Richards &middot; Berlin</p>
+		<h1>Freelance frontend developer. <em>Berlin.</em></h1>
+		<p class="lede">Senior freelance frontend engineer in Berlin. React, TypeScript, modern CSS. Accessible, performant interfaces that hold up outside a demo. Design systems that stay coherent as they grow.</p>
+		<div class="landing-meta">
+			<a class="eyebrow-link" href="/contact">Start a conversation</a>
+			<span class="landing-locator"><span class="online-dot" aria-hidden="true"></span>Currently open to new work</span>
+		</div>
+	</header>
+
+	<section class="landing-services" aria-label="What I bring as a freelance frontend developer">
+		<div class="service">
+			<span class="service-kicker">&sect; 01</span>
+			<h2 class="service-head">React &amp; TypeScript</h2>
+			<p class="service-body">Component design that ages well. Types that actually hold the shape of the product. No ambient <code>any</code>, no ceremony for its own sake.</p>
+		</div>
+		<div class="service">
+			<span class="service-kicker">&sect; 02</span>
+			<h2 class="service-head">Design systems</h2>
+			<p class="service-body">Tokens, primitives, composable patterns. A system the product team actually reaches for, not the one they route around.</p>
+		</div>
+		<div class="service">
+			<span class="service-kicker">&sect; 03</span>
+			<h2 class="service-head">Performance &amp; a11y</h2>
+			<p class="service-body">Core Web Vitals as defaults. WCAG as defaults. Keyboard, screen reader, reduced motion &mdash; shipped, not retrofitted.</p>
+		</div>
+	</section>
+
+	<section class="landing-section">
+		<h2><span class="ix">&sect; 04 &mdash; What I'm for</span>The engagements that fit</h2>
+		<div class="landing-body">
+			<p>I work best with product teams that take the web platform seriously. HTML, CSS and the DOM before any framework. React and TypeScript on top of that foundation, not around it. Senior depth across the whole frontend surface &mdash; architecture, patterns, tooling, performance, accessibility.</p>
+			<ul>
+				<li><strong>Embedded senior frontend</strong> &mdash; on a product team, shipping features and levelling the rest of the frontend craft while I'm there.</li>
+				<li><strong>Design system lead</strong> &mdash; starting one, rescuing one, or extending one that's outgrown its seams.</li>
+				<li><strong>Frontend rewrite</strong> &mdash; taking a tired codebase somewhere better, without the quarter-long greenfield fantasy.</li>
+				<li><strong>Performance &amp; accessibility pass</strong> &mdash; scoped engagements on the metrics that actually move revenue and compliance.</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="landing-section">
+		<h2><span class="ix">&sect; 05 &mdash; How I work</span>Fundamentals, first.</h2>
+		<div class="landing-body">
+			<p>Platform-first. HTML, CSS and the DOM do most of the heavy lifting before I reach for an abstraction. SOLID principles. Clean boundaries. Coupling where it earns its keep, decoupling where it doesn't.</p>
+			<p>AI is part of how I build now &mdash; used every day, kept on a short leash. The fundamentals that used to take years to pick up are the things most at risk of being quietly skipped, so I watch closely. <a href="/ai-for-engineering-teams-berlin/">More on AI for engineering teams &rarr;</a></p>
+			<p>Twenty years across product engineering and leadership, with the frontend as my home ground. <a href="/about">More about how I work &rarr;</a></p>
+		</div>
+	</section>
+
+	<section class="landing-related" aria-label="Related services">
+		<h2>Related services</h2>
+		<ul class="landing-related-list">
+			<li><a href="/freelance-full-stack-developer-berlin/">Freelance full-stack developer, Berlin</a><span class="sub">End-to-end product surfaces, TS/Node</span></li>
+			<li><a href="/fractional-engineering-lead-berlin/">Fractional engineering lead, Berlin</a><span class="sub">Strategy, team shape, mentorship</span></li>
+			<li><a href="/freelance-tech-lead-berlin/">Freelance tech lead, Berlin</a><span class="sub">Hands-on technical leadership</span></li>
+		</ul>
+	</section>
+
+	<section class="landing-next" aria-label="Where to go next">
+		<div class="next">
+			<span class="next-kicker">Background</span>
+			<h3>About</h3>
+			<p>Twenty years, two sides of the bench: product engineering and engineering leadership.</p>
+			<a class="cta" href="/about">Read the long version</a>
+		</div>
+		<div class="next">
+			<span class="next-kicker">Writing</span>
+			<h3>Words</h3>
+			<p>Notes on craft, leadership, and the age of AI. The archive &mdash; dated, unvarnished.</p>
+			<a class="cta" href="/words">Open the archive</a>
+		</div>
+		<div class="next">
+			<span class="next-kicker">Work together</span>
+			<h3>Contact</h3>
+			<p>Email, Signal, or the form. Tell me what you're building and what's in the way.</p>
+			<a class="cta" href="/contact">Get in touch</a>
+		</div>
+	</section>
+</article>
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "Person",
+			"@id": "{{ metadata.url }}/#matt",
+			"name": "Matt Richards",
+			"jobTitle": "Freelance Frontend Developer",
+			"url": "{{ metadata.url }}/",
+			"email": "mailto:hallo@tthew.berlin",
+			"image": "{{ metadata.url }}/img/1564326180592.jpeg",
+			"sameAs": [
+				"https://hachyderm.io/@tthew",
+				"https://www.linkedin.com/in/tthew/",
+				"https://github.com/tthew"
+			],
+			"address": { "@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE" },
+			"knowsAbout": [
+				"Frontend engineering",
+				"React",
+				"TypeScript",
+				"Design systems",
+				"Web performance",
+				"Accessibility",
+				"CSS"
+			]
+		},
+		{
+			"@type": "ProfessionalService",
+			"@id": "{{ metadata.url }}{{ page.url }}#service",
+			"name": "Matt Richards — Freelance Frontend Developer, Berlin",
+			"description": "Senior freelance frontend engineering: React, TypeScript, modern CSS, design systems, performance and accessibility. Berlin, EU, remote.",
+			"url": "{{ metadata.url }}{{ page.url }}",
+			"image": "{{ metadata.url }}/img/1564326180592.jpeg",
+			"provider": { "@id": "{{ metadata.url }}/#matt" },
+			"areaServed": [
+				{ "@type": "City", "name": "Berlin" },
+				{ "@type": "Country", "name": "Germany" },
+				{ "@type": "Place", "name": "European Union" },
+				{ "@type": "Place", "name": "Remote" }
+			],
+			"serviceType": [
+				"Freelance frontend developer",
+				"Freelance React developer",
+				"Freelance TypeScript engineer",
+				"Design system consultant",
+				"Senior frontend engineer"
+			]
+		},
+		{
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{ "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ metadata.url }}/" },
+				{ "@type": "ListItem", "position": 2, "name": "Freelance tech lead, Berlin", "item": "{{ metadata.url }}/freelance-tech-lead-berlin/" },
+				{ "@type": "ListItem", "position": 3, "name": "Freelance frontend developer, Berlin", "item": "{{ metadata.url }}{{ page.url }}" }
+			]
+		}
+	]
+}
+</script>

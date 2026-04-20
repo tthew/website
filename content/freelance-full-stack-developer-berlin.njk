@@ -1,0 +1,163 @@
+---js
+const layout = "layouts/home.njk";
+const title = "Freelance Full-Stack Developer Berlin";
+const description = "Matt Richards — freelance full-stack developer in Berlin. End-to-end product engineering, TypeScript top to bottom, Node and BFFs. Twenty years in. Available for ambitious product teams.";
+const sitemap = { priority: "0.9", changefreq: "monthly" };
+---
+{% css %}
+@layer page {
+	{% include "css/landing.css" %}
+}
+{% endcss %}
+
+<article class="landing">
+	<nav class="landing-crumbs" aria-label="Breadcrumb">
+		<a href="/">Home</a>
+		<span class="sep" aria-hidden="true">/</span>
+		<a href="/freelance-tech-lead-berlin/">Freelance</a>
+		<span class="sep" aria-hidden="true">/</span>
+		<span aria-current="page">Freelance full-stack developer, Berlin</span>
+	</nav>
+
+	<header class="landing-hero">
+		<p class="landing-eyebrow">Matt Richards &middot; Berlin</p>
+		<h1>Freelance full-stack developer. <em>Berlin.</em></h1>
+		<p class="lede">Senior freelance full-stack engineer in Berlin. End-to-end product engineering on the web: DOM to database, Node or BFF, the unglamorous middle where most product value actually lives. TypeScript top to bottom, shipped.</p>
+		<div class="landing-meta">
+			<a class="eyebrow-link" href="/contact">Start a conversation</a>
+			<span class="landing-locator"><span class="online-dot" aria-hidden="true"></span>Currently open to new work</span>
+		</div>
+	</header>
+
+	<section class="landing-services" aria-label="What I bring as a freelance full-stack developer">
+		<div class="service">
+			<span class="service-kicker">&sect; 01</span>
+			<h2 class="service-head">Product surface ownership</h2>
+			<p class="service-body">One engineer, one vertical, end-to-end. A feature or a product surface I'll own from schema to pixel, with senior judgement at every layer.</p>
+		</div>
+		<div class="service">
+			<span class="service-kicker">&sect; 02</span>
+			<h2 class="service-head">TypeScript, top to bottom</h2>
+			<p class="service-body">React on the front. Node, tRPC, BFFs and API layers in the middle. One shared type system across the whole stack, held taut.</p>
+		</div>
+		<div class="service">
+			<span class="service-kicker">&sect; 03</span>
+			<h2 class="service-head">Data &amp; API design</h2>
+			<p class="service-body">Schemas that survive the next three features. APIs that read like product, not like an ORM's stack trace. The boring parts, taken seriously.</p>
+		</div>
+	</section>
+
+	<section class="landing-section">
+		<h2><span class="ix">&sect; 04 &mdash; What I'm for</span>The engagements that fit</h2>
+		<div class="landing-body">
+			<p>I work best with product teams small enough that one senior engineer owning a product surface end-to-end actually pays off &mdash; founders, early-stage scale-ups, product orgs running lean. Senior depth across the full web stack, platform-first, without the translation tax.</p>
+			<ul>
+				<li><strong>Embedded full-stack engineer</strong> &mdash; on a product team, shipping features across the whole stack while I'm there.</li>
+				<li><strong>Product surface owner</strong> &mdash; a feature, a vertical, a new product. From schema and API to UI and polish.</li>
+				<li><strong>Greenfield build</strong> &mdash; a new product or service, from first commit to first customers. Sensible stack choices, boring where boring pays.</li>
+				<li><strong>Technical co-founder surrogate</strong> &mdash; short-term, scoped, while you hire. Enough to keep momentum without locking you in.</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="landing-section">
+		<h2><span class="ix">&sect; 05 &mdash; How I work</span>Fundamentals, first.</h2>
+		<div class="landing-body">
+			<p>Platform-first. HTML, CSS and the DOM do most of the heavy lifting on the front end. On the back end: clean boundaries, appropriate coupling, schemas and APIs that age well. SOLID where it earns its keep; pragmatism where it doesn't.</p>
+			<p>AI is part of how I build now &mdash; used every day, kept on a short leash. Shipping at speed without shipping rot. <a href="/ai-for-engineering-teams-berlin/">More on AI for engineering teams &rarr;</a></p>
+			<p>Twenty years across product and platform. I know how to keep humans, products and codebases healthy in times like these. <a href="/about">More about how I work &rarr;</a></p>
+		</div>
+	</section>
+
+	<section class="landing-related" aria-label="Related services">
+		<h2>Related services</h2>
+		<ul class="landing-related-list">
+			<li><a href="/freelance-frontend-developer-berlin/">Freelance frontend developer, Berlin</a><span class="sub">React, TypeScript, design systems</span></li>
+			<li><a href="/fractional-engineering-lead-berlin/">Fractional engineering lead, Berlin</a><span class="sub">Strategy, team shape, mentorship</span></li>
+			<li><a href="/freelance-tech-lead-berlin/">Freelance tech lead, Berlin</a><span class="sub">Hands-on technical leadership</span></li>
+		</ul>
+	</section>
+
+	<section class="landing-next" aria-label="Where to go next">
+		<div class="next">
+			<span class="next-kicker">Background</span>
+			<h3>About</h3>
+			<p>Twenty years, two sides of the bench: product engineering and engineering leadership.</p>
+			<a class="cta" href="/about">Read the long version</a>
+		</div>
+		<div class="next">
+			<span class="next-kicker">Writing</span>
+			<h3>Words</h3>
+			<p>Notes on craft, leadership, and the age of AI. The archive &mdash; dated, unvarnished.</p>
+			<a class="cta" href="/words">Open the archive</a>
+		</div>
+		<div class="next">
+			<span class="next-kicker">Work together</span>
+			<h3>Contact</h3>
+			<p>Email, Signal, or the form. Tell me what you're building and what's in the way.</p>
+			<a class="cta" href="/contact">Get in touch</a>
+		</div>
+	</section>
+</article>
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "Person",
+			"@id": "{{ metadata.url }}/#matt",
+			"name": "Matt Richards",
+			"jobTitle": "Freelance Full-Stack Developer",
+			"url": "{{ metadata.url }}/",
+			"email": "mailto:hallo@tthew.berlin",
+			"image": "{{ metadata.url }}/img/1564326180592.jpeg",
+			"sameAs": [
+				"https://hachyderm.io/@tthew",
+				"https://www.linkedin.com/in/tthew/",
+				"https://github.com/tthew"
+			],
+			"address": { "@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE" },
+			"knowsAbout": [
+				"Full-stack engineering",
+				"TypeScript",
+				"Node.js",
+				"React",
+				"API design",
+				"Data modelling",
+				"Product engineering"
+			]
+		},
+		{
+			"@type": "ProfessionalService",
+			"@id": "{{ metadata.url }}{{ page.url }}#service",
+			"name": "Matt Richards — Freelance Full-Stack Developer, Berlin",
+			"description": "Senior freelance full-stack engineering on the web: end-to-end product surfaces, TypeScript across the stack, Node, BFFs, API and data design. Berlin, EU, remote.",
+			"url": "{{ metadata.url }}{{ page.url }}",
+			"image": "{{ metadata.url }}/img/1564326180592.jpeg",
+			"provider": { "@id": "{{ metadata.url }}/#matt" },
+			"areaServed": [
+				{ "@type": "City", "name": "Berlin" },
+				{ "@type": "Country", "name": "Germany" },
+				{ "@type": "Place", "name": "European Union" },
+				{ "@type": "Place", "name": "Remote" }
+			],
+			"serviceType": [
+				"Freelance full-stack developer",
+				"Freelance full-stack engineer",
+				"Freelance TypeScript engineer",
+				"Freelance Node.js developer",
+				"Freelance software engineer"
+			]
+		},
+		{
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{ "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ metadata.url }}/" },
+				{ "@type": "ListItem", "position": 2, "name": "Freelance tech lead, Berlin", "item": "{{ metadata.url }}/freelance-tech-lead-berlin/" },
+				{ "@type": "ListItem", "position": 3, "name": "Freelance full-stack developer, Berlin", "item": "{{ metadata.url }}{{ page.url }}" }
+			]
+		}
+	]
+}
+</script>
