@@ -15,20 +15,21 @@ const eleventyNavigation = {
 
 	.contact {
 		width: 100%;
-		max-width: 80ch;
+		max-width: 90ch;
 		margin-inline: auto;
 		padding-inline: clamp(var(--space-s), 4vw, var(--space-l));
 		padding-block: var(--space-l) var(--space-3xl);
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: var(--space-xl);
+		display: flex;
+		flex-direction: column;
+		row-gap: var(--space-xl);
 	}
 
-	@media (min-width: 820px) {
-		.contact { grid-template-columns: 1fr 1fr; }
+	/* Hero: full-width above both columns */
+	.contact-hero {
+		max-width: 60ch;
 	}
 
-	.contact h1 {
+	.contact-hero h1 {
 		font-family: var(--feature-font);
 		font-weight: 900;
 		text-transform: uppercase;
@@ -39,12 +40,27 @@ const eleventyNavigation = {
 		margin: 0;
 	}
 
-	.contact .sub {
+	.contact-hero .sub {
 		font-size: var(--step-1);
 		color: var(--fg-muted);
-		max-width: 32ch;
-		margin: var(--space-s) 0 var(--space-m);
-		line-height: 1.4;
+		max-width: 48ch;
+		margin: var(--space-m) 0 0;
+		line-height: 1.5;
+	}
+
+	/* Two-column block: channels on the left, form on the right. */
+	.contact-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--space-xl);
+		align-items: start;
+	}
+
+	@media (min-width: 820px) {
+		.contact-grid {
+			grid-template-columns: 1fr 1fr;
+			gap: clamp(var(--space-xl), 6vw, var(--space-3xl));
+		}
 	}
 
 	.contact-channels {
@@ -100,7 +116,6 @@ const eleventyNavigation = {
 		display: flex;
 		flex-direction: column;
 		gap: var(--space-s);
-		padding-top: var(--space-m);
 	}
 
 	.contact-form .form-kicker {
@@ -198,9 +213,12 @@ const eleventyNavigation = {
 {% endcss %}
 
 <section class="contact">
-	<div>
+	<header class="contact-hero">
 		<h1>Say hello.</h1>
-		<p class="sub">Consulting, collaboration, or just a nice email &mdash; I'll reply in a day or two.</p>
+		<p class="sub">Consulting, collaboration, or just a nice email &mdash; I usually reply within a day or two.</p>
+	</header>
+
+	<div class="contact-grid">
 		<ul class="contact-channels">
 			<li>
 				<span class="channel">Email</span>
@@ -228,38 +246,38 @@ const eleventyNavigation = {
 				<a href="/feed/feed.xml">Subscribe</a>
 			</li>
 		</ul>
+
+		<form class="contact-form" netlify data-netlify-honeypot="username" method="post" name="contact" action="/contact/sent">
+			<p class="form-kicker">Or drop a message here</p>
+
+			<input type="hidden" name="subject" value="[tthew.berlin] You Have A New Message!" />
+			<input type="hidden" name="form-name" value="contact" />
+
+			<label class="honeypot" aria-hidden="true">
+				<span>Leave empty</span>
+				<input name="username" tabindex="-1" autocomplete="off" />
+			</label>
+
+			<label>
+				<span>Your name</span>
+				<input type="text" name="name" placeholder="e.g. Slavoj &Zcaron;i&zcaron;ek" required />
+			</label>
+			<label>
+				<span>Email</span>
+				<input type="email" name="email" placeholder="e.g. you@example.com" required />
+			</label>
+			<label>
+				<span>Message</span>
+				<textarea name="message" rows="6" placeholder="How can I help?" required></textarea>
+			</label>
+
+			<label class="terms">
+				<input type="checkbox" name="agree_to_terms" required />
+				<span>I consent to this message being processed by <a href="https://www.netlify.com/platform/core/forms/">Netlify Forms</a> and <a href="https://akismet.com/">Akismet</a>.</span>
+			</label>
+
+			<button type="submit" class="btn">Send</button>
+			<p class="muted">Submitted via Netlify Forms + Akismet. This site does not track you.</p>
+		</form>
 	</div>
-
-	<form class="contact-form" netlify data-netlify-honeypot="username" method="post" name="contact" action="/contact/sent">
-		<p class="form-kicker">Or drop a message here</p>
-
-		<input type="hidden" name="subject" value="[tthew.berlin] You Have A New Message!" />
-		<input type="hidden" name="form-name" value="contact" />
-
-		<label class="honeypot" aria-hidden="true">
-			<span>Leave empty</span>
-			<input name="username" tabindex="-1" autocomplete="off" />
-		</label>
-
-		<label>
-			<span>Your name</span>
-			<input type="text" name="name" placeholder="e.g. Slavoj &Zcaron;i&zcaron;ek" required />
-		</label>
-		<label>
-			<span>Email</span>
-			<input type="email" name="email" placeholder="e.g. you@example.com" required />
-		</label>
-		<label>
-			<span>Message</span>
-			<textarea name="message" rows="6" placeholder="How can I help?" required></textarea>
-		</label>
-
-		<label class="terms">
-			<input type="checkbox" name="agree_to_terms" required />
-			<span>I consent to this message being processed by <a href="https://www.netlify.com/platform/core/forms/">Netlify Forms</a> and <a href="https://akismet.com/">Akismet</a>.</span>
-		</label>
-
-		<button type="submit" class="btn">Send</button>
-		<p class="muted">Submitted via Netlify Forms + Akismet. This site does not track you.</p>
-	</form>
 </section>
