@@ -1,0 +1,516 @@
+---js
+const layout = "layouts/home.njk";
+const title = "Freelance Web Developer Berlin";
+const description = "Matt Richards — freelance senior+ web, frontend and software engineer in Berlin. Twenty years in. Product engineering and engineering leadership for ambitious teams.";
+---
+{% css %}
+@layer page {
+	main {
+		display: block;
+	}
+
+	.freelance {
+		width: 100%;
+		max-width: 80ch;
+		margin-inline: auto;
+		padding-inline: clamp(var(--space-s), 4vw, var(--space-l));
+		padding-block: var(--space-l) var(--space-3xl);
+		display: flex;
+		flex-direction: column;
+		row-gap: var(--space-2xl);
+	}
+
+	@media (min-width: 1200px) {
+		.freelance { max-width: 90ch; }
+	}
+
+	/* Breadcrumb */
+	.freelance-crumbs {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.22em;
+		font-size: var(--step--2);
+		color: var(--fg-quiet);
+		margin: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.6em;
+	}
+
+	.freelance-crumbs a {
+		color: inherit;
+		text-decoration: none;
+		border-bottom: 1px solid currentColor;
+		padding-bottom: 0.1em;
+	}
+
+	.freelance-crumbs a:hover { opacity: 0.65; }
+	.freelance-crumbs .sep { opacity: 0.45; }
+
+	/* Hero */
+	.freelance-hero {
+		max-width: 60ch;
+	}
+
+	.freelance-eyebrow {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.22em;
+		font-size: var(--step--2);
+		color: var(--fg-subtle);
+		display: inline-flex;
+		align-items: center;
+		gap: 0.75em;
+		margin: 0 0 var(--space-s);
+	}
+
+	.freelance-eyebrow::before {
+		content: "";
+		width: 2.5em;
+		height: 1px;
+		background: currentColor;
+	}
+
+	.freelance-hero h1 {
+		font-family: var(--feature-font);
+		font-weight: 900;
+		text-transform: uppercase;
+		font-size: clamp(2.75rem, 8vw, 5.5rem);
+		line-height: 0.9;
+		letter-spacing: -0.015em;
+		color: var(--fg);
+		margin: 0;
+		text-wrap: balance;
+	}
+
+	.freelance-hero h1 em {
+		font-style: normal;
+		display: inline-block;
+		position: relative;
+		color: var(--fg);
+	}
+
+	.freelance-hero h1 em::before {
+		content: "";
+		position: absolute;
+		left: -0.05em;
+		right: -0.05em;
+		top: 0.35em;
+		bottom: 0.15em;
+		background: var(--accent);
+		z-index: -1;
+	}
+
+	.freelance-hero .lede {
+		font-size: clamp(var(--step-0), 0.8vw + 0.95rem, var(--step-1));
+		line-height: 1.5;
+		color: var(--fg-muted);
+		max-width: 52ch;
+		margin: var(--space-m) 0 0;
+		text-wrap: pretty;
+	}
+
+	.freelance-meta {
+		margin-top: var(--space-m);
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-s) var(--space-m);
+		align-items: baseline;
+	}
+
+	.freelance-meta .eyebrow-link {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.15em;
+		font-size: var(--step--1);
+		text-decoration: none;
+		border-bottom: 1px solid currentColor;
+		padding-bottom: 0.2em;
+	}
+
+	.freelance-meta .eyebrow-link::after { content: "  →"; }
+	.freelance-meta .eyebrow-link:hover { opacity: 0.65; }
+
+	.freelance-locator {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.15em;
+		font-size: var(--step--2);
+		color: var(--fg-muted);
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5em;
+	}
+
+	/* Service strip */
+	.freelance-services {
+		border-top: 1px solid var(--rule);
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.service {
+		padding: var(--space-m);
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3xs);
+		border-right: 1px solid var(--rule);
+	}
+	.service:first-child { padding-left: 0; }
+	.service:last-child  { padding-right: 0; border-right: 0; }
+
+	.service-kicker {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.18em;
+		font-size: var(--step--2);
+		color: var(--fg-quiet);
+	}
+
+	.service-head {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		font-size: var(--step-1);
+		line-height: 1;
+		letter-spacing: 0.01em;
+		margin: 0.1em 0 0.2em;
+		color: var(--fg);
+	}
+
+	.service-body {
+		font-size: var(--step--1);
+		color: var(--fg-muted);
+		line-height: 1.45;
+		margin: 0;
+		max-width: 32ch;
+	}
+
+	/* Body sections */
+	.freelance-section {
+		max-width: 64ch;
+		margin-inline: auto;
+		padding-block: var(--space-l) 0;
+	}
+
+	.freelance-section + .freelance-section {
+		margin-top: var(--space-m);
+		padding-top: var(--space-l);
+		border-top: 1px solid var(--rule);
+	}
+
+	.freelance-section h2 {
+		font-family: var(--feature-font);
+		font-weight: 900;
+		text-transform: uppercase;
+		font-size: clamp(2rem, 4vw, 3.25rem);
+		line-height: 0.95;
+		letter-spacing: -0.005em;
+		color: var(--fg);
+		margin: 0 0 var(--space-m);
+	}
+
+	.freelance-section h2 .ix {
+		display: block;
+		font-family: var(--feature-font);
+		font-weight: 400;
+		font-size: var(--step--1);
+		letter-spacing: 0.25em;
+		color: var(--fg-quiet);
+		margin-bottom: var(--space-s);
+	}
+
+	.freelance-body {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-m);
+	}
+
+	.freelance-body p {
+		margin: 0;
+		line-height: 1.65;
+		font-size: var(--step-0);
+		color: var(--fg);
+		text-wrap: pretty;
+	}
+
+	.freelance-body ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: var(--space-xs);
+	}
+
+	.freelance-body li {
+		position: relative;
+		padding-left: 1.6em;
+		line-height: 1.55;
+		color: var(--fg);
+	}
+
+	.freelance-body li::before {
+		content: "§";
+		position: absolute;
+		left: 0;
+		top: 0;
+		font-family: var(--feature-font);
+		color: var(--fg-quiet);
+		line-height: inherit;
+	}
+
+	.freelance-body li strong {
+		font-weight: 700;
+	}
+
+	.freelance-body a {
+		color: inherit;
+		text-underline-offset: 0.2em;
+	}
+
+	/* Next up */
+	.freelance-next {
+		margin-top: var(--space-l);
+		border-top: 1px solid var(--rule);
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.next {
+		padding: var(--space-m);
+		border-right: 1px solid var(--rule);
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2xs);
+	}
+	.next:first-child { padding-left: 0; }
+	.next:last-child  { padding-right: 0; border-right: 0; }
+
+	.next-kicker {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.18em;
+		font-size: var(--step--2);
+		color: var(--fg-quiet);
+	}
+
+	.next h3 {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		font-size: var(--step-1);
+		line-height: 1;
+		letter-spacing: 0.01em;
+		margin: 0;
+		color: var(--fg);
+	}
+
+	.next p {
+		font-size: var(--step--1);
+		color: var(--fg-muted);
+		line-height: 1.45;
+		margin: 0;
+		max-width: 28ch;
+	}
+
+	.next a.cta {
+		margin-top: var(--space-2xs);
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.14em;
+		font-size: var(--step--2);
+		text-decoration: none;
+		border-bottom: 1px solid currentColor;
+		padding-bottom: 0.2em;
+		align-self: start;
+		color: inherit;
+	}
+	.next a.cta::after { content: "  →"; }
+	.next a.cta:hover { opacity: 0.65; }
+
+	/* Narrow viewports */
+	@media (max-width: 720px) {
+		.freelance-hero h1 {
+			font-size: clamp(2.25rem, 11vw, 3.5rem);
+		}
+
+		.freelance-services,
+		.freelance-next {
+			grid-template-columns: 1fr;
+		}
+
+		.service,
+		.next {
+			border-right: 0;
+			border-bottom: 1px solid var(--rule);
+			padding-inline: 0;
+		}
+		.service:last-child,
+		.next:last-child { border-bottom: 0; }
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		@keyframes freelance-rise-in {
+			from { opacity: 0; transform: translateY(0.4rem); }
+			to   { opacity: 1; transform: translateY(0); }
+		}
+
+		.freelance > * {
+			animation: 650ms cubic-bezier(0.22, 1, 0.36, 1) both freelance-rise-in;
+		}
+
+		.freelance > :nth-child(1) { animation-delay:   0ms; }
+		.freelance > :nth-child(2) { animation-delay:  80ms; }
+		.freelance > :nth-child(3) { animation-delay: 180ms; }
+		.freelance > :nth-child(4) { animation-delay: 280ms; }
+		.freelance > :nth-child(5) { animation-delay: 380ms; }
+		.freelance > :nth-child(6) { animation-delay: 480ms; }
+	}
+}
+{% endcss %}
+
+<article class="freelance">
+	<nav class="freelance-crumbs" aria-label="Breadcrumb">
+		<a href="/">Home</a>
+		<span class="sep" aria-hidden="true">/</span>
+		<span aria-current="page">Freelance</span>
+	</nav>
+
+	<header class="freelance-hero">
+		<p class="freelance-eyebrow">Matt Richards &middot; Berlin</p>
+		<h1>Freelance web developer. <em>Berlin.</em></h1>
+		<p class="lede">Senior+ product engineer for hire &mdash; web, frontend, full-stack. Twenty years in, based in Berlin, working with teams across Germany, the EU and remote. Freelance software engineering and engineering leadership for ambitious products.</p>
+		<div class="freelance-meta">
+			<a class="eyebrow-link" href="/contact">Start a conversation</a>
+			<span class="freelance-locator"><span class="online-dot" aria-hidden="true"></span>Currently open to new work</span>
+		</div>
+	</header>
+
+	<section class="freelance-services" aria-label="Services">
+		<div class="service">
+			<span class="service-kicker">&sect; 01</span>
+			<h2 class="service-head">Freelance frontend</h2>
+			<p class="service-body">React, TypeScript, modern CSS. Accessible, performant interfaces that hold up outside a demo. Design systems that stay coherent as they grow.</p>
+		</div>
+		<div class="service">
+			<span class="service-kicker">&sect; 02</span>
+			<h2 class="service-head">Freelance full-stack</h2>
+			<p class="service-body">End-to-end product engineering on the web: DOM to database, Node or BFF, the unglamorous middle where most product value actually lives.</p>
+		</div>
+		<div class="service">
+			<span class="service-kicker">&sect; 03</span>
+			<h2 class="service-head">Engineering lead</h2>
+			<p class="service-body">Fractional engineering leadership, architecture reviews, team shape and hiring. The judgement calls that are hard to make from inside the org.</p>
+		</div>
+	</section>
+
+	<section class="freelance-section">
+		<h2><span class="ix">&sect; 04 &mdash; What I'm for</span>The engagements that fit</h2>
+		<div class="freelance-body">
+			<p>I work best with product teams that take the web platform seriously and want an engineer who can move between code, architecture and leadership without needing a translator. I'm based in Berlin and available across the EU and remote.</p>
+			<ul>
+				<li><strong>Freelance senior frontend engineer</strong> &mdash; embedded on a product team, shipping features and levelling the rest of the frontend craft while I'm there.</li>
+				<li><strong>Freelance full-stack / software engineer</strong> &mdash; owning a product surface end-to-end, TypeScript top to bottom, Node or an adjacent stack.</li>
+				<li><strong>Fractional engineering lead</strong> &mdash; technical strategy, roadmap shape, org design, hiring, mentorship. Close to the work, out of the team's way.</li>
+				<li><strong>Architecture &amp; codebase review</strong> &mdash; honest read on what's load-bearing, what's rot, and what's worth the rewrite.</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="freelance-section">
+		<h2><span class="ix">&sect; 05 &mdash; How I work</span>Fundamentals, first.</h2>
+		<div class="freelance-body">
+			<p>Platform-first. HTML, CSS and the DOM before any framework. SOLID principles, clean boundaries, appropriate coupling, systems that stay coherent as they grow. Accessibility and UX as defaults, not retrofits.</p>
+			<p>AI is part of how I build now &mdash; used every day, kept on a short leash. Keeping humans, products and codebases healthy in the age of AI is the engineering problem of the decade, and I've thought about it a lot. <a href="/about">More about how I work &rarr;</a></p>
+			<p>I write about this &mdash; craft, leadership, and keeping codebases humane &mdash; on <a href="/words">the words archive</a>.</p>
+		</div>
+	</section>
+
+	<section class="freelance-next" aria-label="Where to go next">
+		<div class="next">
+			<span class="next-kicker">Background</span>
+			<h3>About</h3>
+			<p>Twenty years, two sides of the bench: product engineering and engineering leadership.</p>
+			<a class="cta" href="/about">Read the long version</a>
+		</div>
+		<div class="next">
+			<span class="next-kicker">Writing</span>
+			<h3>Words</h3>
+			<p>Notes on craft, leadership, and the age of AI. The archive &mdash; dated, unvarnished.</p>
+			<a class="cta" href="/words">Open the archive</a>
+		</div>
+		<div class="next">
+			<span class="next-kicker">Work together</span>
+			<h3>Contact</h3>
+			<p>Email, Signal, or the form. Tell me what you're building and what's in the way.</p>
+			<a class="cta" href="/contact">Get in touch</a>
+		</div>
+	</section>
+</article>
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "Person",
+			"@id": "{{ metadata.url }}/#matt",
+			"name": "Matt Richards",
+			"jobTitle": "Freelance Senior+ Product Engineer",
+			"description": "Freelance senior+ product engineer in Berlin, available for web, frontend and software engineering engagements as well as engineering leadership.",
+			"url": "{{ metadata.url }}/",
+			"email": "mailto:hallo@tthew.berlin",
+			"image": "{{ metadata.url }}/img/1564326180592.jpeg",
+			"sameAs": [
+				"https://hachyderm.io/@tthew",
+				"https://www.linkedin.com/in/tthew/",
+				"https://github.com/tthew"
+			],
+			"address": {
+				"@type": "PostalAddress",
+				"addressLocality": "Berlin",
+				"addressCountry": "DE"
+			},
+			"knowsAbout": [
+				"Freelance web development",
+				"Frontend engineering",
+				"TypeScript",
+				"React",
+				"Web performance",
+				"Accessibility",
+				"Design systems",
+				"Product engineering",
+				"Engineering leadership",
+				"Software architecture"
+			]
+		},
+		{
+			"@type": "ProfessionalService",
+			"@id": "{{ metadata.url }}{{ page.url }}#service",
+			"name": "Matt Richards — Freelance Web Developer, Berlin",
+			"description": "Freelance web, frontend and software engineering for ambitious product teams. Berlin-based, available across the EU and remote.",
+			"url": "{{ metadata.url }}{{ page.url }}",
+			"image": "{{ metadata.url }}/img/1564326180592.jpeg",
+			"provider": { "@id": "{{ metadata.url }}/#matt" },
+			"areaServed": [
+				{ "@type": "City", "name": "Berlin" },
+				{ "@type": "Country", "name": "Germany" },
+				{ "@type": "Place", "name": "European Union" },
+				{ "@type": "Place", "name": "Remote" }
+			],
+			"serviceType": [
+				"Freelance web developer",
+				"Freelance frontend developer",
+				"Freelance software engineer",
+				"Freelance full-stack engineer",
+				"Fractional engineering lead"
+			]
+		},
+		{
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{ "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ metadata.url }}/" },
+				{ "@type": "ListItem", "position": 2, "name": "Freelance", "item": "{{ metadata.url }}{{ page.url }}" }
+			]
+		}
+	]
+}
+</script>
