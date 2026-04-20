@@ -121,6 +121,8 @@ description: "Matt Richards — Senior+ Product Engineer and engineering lead in
 		line-height: 1.45;
 	}
 
+	{% include "css/services-grid.css" %}
+
 	.about-colophon {
 		max-width: none;
 		margin: var(--space-l) 0 0;
@@ -169,6 +171,7 @@ description: "Matt Richards — Senior+ Product Engineer and engineering lead in
 		.about > :nth-child(4) { animation-delay: 320ms; }
 		.about > :nth-child(5) { animation-delay: 420ms; }
 		.about > :nth-child(6) { animation-delay: 520ms; }
+		.about > :nth-child(7) { animation-delay: 620ms; }
 	}
 }
 {% endcss %}
@@ -219,6 +222,8 @@ description: "Matt Richards — Senior+ Product Engineer and engineering lead in
 			<p>Keeping humans, products and codebases healthy in the age of AI is the engineering problem of the decade. I help teams avoid both failure modes: getting left behind, and letting an autocomplete quietly rot the codebase.</p>
 		</div>
 	</section>
+
+	{% include "partials/services-grid.njk" %}
 
 	<aside class="about-colophon">
 		<span class="ix">Colophon</span>
