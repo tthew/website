@@ -94,9 +94,13 @@ const eleventyNavigation = {
 		font-family: var(--font-family-monospace);
 		font-size: var(--step--1);
 		color: var(--fg);
+		min-width: 0;
+		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
+
+	.contact-channels .channel { white-space: nowrap; }
 
 	.contact-channels a {
 		font-family: var(--feature-font);
@@ -107,9 +111,10 @@ const eleventyNavigation = {
 		border-bottom: 1px solid currentColor;
 		padding-bottom: 0.15em;
 		color: var(--fg);
+		white-space: nowrap;
 	}
 
-	.contact-channels a::after { content: "  →"; }
+	.contact-channels a::after { content: "\00a0\00a0\2192"; }
 	.contact-channels a:hover { opacity: 0.65; }
 
 	.contact-form {
@@ -196,6 +201,8 @@ const eleventyNavigation = {
 
 	.contact-form .honeypot { position: absolute; left: -9999px; }
 
+	{% include "css/services-grid.css" %}
+
 	@media (prefers-reduced-motion: no-preference) {
 		@keyframes contact-rise-in {
 			from { opacity: 0; transform: translateY(0.4rem); }
@@ -208,6 +215,7 @@ const eleventyNavigation = {
 
 		.contact > :nth-child(1) { animation-delay:   0ms; }
 		.contact > :nth-child(2) { animation-delay: 120ms; }
+		.contact > :nth-child(3) { animation-delay: 240ms; }
 	}
 }
 {% endcss %}
@@ -280,4 +288,6 @@ const eleventyNavigation = {
 			<p class="muted">Submitted via Netlify Forms + Akismet. This site does not track you.</p>
 		</form>
 	</div>
+
+	{% include "partials/services-grid.njk" %}
 </section>

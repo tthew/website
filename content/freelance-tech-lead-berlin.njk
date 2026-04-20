@@ -7,48 +7,7 @@ const sitemap = { priority: "0.9", changefreq: "monthly" };
 {% css %}
 @layer page {
 	{% include "css/landing.css" %}
-
-	/* Hub-only: a full "all services" list under the two body sections. */
-	.landing-also {
-		max-width: 64ch;
-		margin-inline: auto;
-		padding-top: var(--space-l);
-		border-top: 1px solid var(--rule);
-	}
-
-	.landing-also h2 {
-		font-family: var(--feature-font);
-		font-weight: 400;
-		text-transform: uppercase;
-		font-size: var(--step--1);
-		letter-spacing: 0.25em;
-		color: var(--fg-quiet);
-		margin: 0 0 var(--space-s);
-	}
-
-	.landing-also-list {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		display: grid;
-		gap: var(--space-2xs);
-	}
-
-	.landing-also-list li { line-height: 1.5; }
-
-	.landing-also-list a {
-		color: var(--fg);
-		text-decoration: none;
-		border-bottom: 1px solid var(--rule);
-		padding-bottom: 0.15em;
-		font-size: var(--step-0);
-	}
-	.landing-also-list a:hover { border-color: currentColor; }
-	.landing-also-list .sub {
-		color: var(--fg-muted);
-		font-size: var(--step--1);
-		margin-left: 0.6em;
-	}
+	{% include "css/services-grid.css" %}
 }
 {% endcss %}
 
@@ -113,16 +72,8 @@ const sitemap = { priority: "0.9", changefreq: "monthly" };
 		</div>
 	</section>
 
-	<section class="landing-also" aria-label="All services">
-		<h2>All services</h2>
-		<ul class="landing-also-list">
-			<li><a href="/freelance-frontend-developer-berlin/">Freelance frontend developer, Berlin</a><span class="sub">React, TypeScript, design systems</span></li>
-			<li><a href="/freelance-full-stack-developer-berlin/">Freelance full-stack developer, Berlin</a><span class="sub">End-to-end product surfaces, TS/Node</span></li>
-			<li><a href="/fractional-engineering-lead-berlin/">Fractional engineering lead, Berlin</a><span class="sub">Strategy, team shape, mentorship</span></li>
-			<li><a href="/software-architecture-review-berlin/">Software architecture &amp; codebase review</a><span class="sub">Two weeks, fixed-fee, decision-grade</span></li>
-			<li><a href="/ai-for-engineering-teams-berlin/">AI for engineering teams</a><span class="sub">Workflows, guardrails, team health</span></li>
-		</ul>
-	</section>
+	{% set servicesHeading = "All services" %}
+	{% include "partials/services-grid.njk" %}
 
 	<section class="landing-next" aria-label="Where to go next">
 		<div class="next">

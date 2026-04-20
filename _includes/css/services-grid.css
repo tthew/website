@@ -1,0 +1,97 @@
+/* "Currently open for" services grid — shared across /about, /contact,
+   and anywhere else the block is dropped. Scoped under .services-section
+   / .services-grid so it coexists with other .service-* rules on the
+   same page. Meant to be included inside `@layer page { ... }`. */
+
+.services-section {
+	padding-top: var(--space-l);
+	border-top: 1px solid var(--rule);
+}
+
+.services-section > h2 {
+	font-family: var(--feature-font);
+	font-weight: 400;
+	text-transform: uppercase;
+	font-size: var(--step--1);
+	letter-spacing: 0.25em;
+	color: var(--fg-quiet);
+	margin: 0 0 var(--space-m);
+	text-align: left;
+}
+
+.services-grid {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	border-top: 1px solid var(--rule);
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.services-grid .service {
+	padding: var(--space-m);
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-3xs);
+	border-right: 1px solid var(--rule);
+}
+
+.services-grid .service:nth-child(3n+1) { padding-left: 0; }
+.services-grid .service:nth-child(3n)   { padding-right: 0; border-right: 0; }
+.services-grid .service:nth-child(n+4)  { border-top: 1px solid var(--rule); }
+
+.services-grid .service-kicker {
+	font-family: var(--feature-font);
+	text-transform: uppercase;
+	letter-spacing: 0.18em;
+	font-size: var(--step--2);
+	color: var(--fg-quiet);
+}
+
+.services-grid .service-head {
+	font-family: var(--feature-font);
+	text-transform: uppercase;
+	font-size: var(--step-1);
+	line-height: 1;
+	letter-spacing: 0.01em;
+	margin: 0.1em 0 0.2em;
+	color: var(--fg);
+	text-wrap: balance;
+}
+
+.services-grid .service-body {
+	font-size: var(--step--1);
+	color: var(--fg-muted);
+	line-height: 1.45;
+	margin: 0;
+	max-width: 32ch;
+}
+
+.services-grid .service a.cta {
+	margin-top: var(--space-2xs);
+	font-family: var(--feature-font);
+	text-transform: uppercase;
+	letter-spacing: 0.14em;
+	font-size: var(--step--2);
+	text-decoration: none;
+	border-bottom: 1px solid currentColor;
+	padding-bottom: 0.2em;
+	align-self: start;
+	color: inherit;
+}
+.services-grid .service a.cta::after { content: "  →"; }
+.services-grid .service a.cta:hover { opacity: 0.65; }
+
+@media (max-width: 720px) {
+	.services-grid {
+		grid-template-columns: 1fr;
+	}
+	.services-grid .service {
+		padding-inline: 0;
+		border-right: 0;
+		border-top: 0;
+	}
+	.services-grid .service:nth-child(n+2) {
+		border-top: 1px solid var(--rule);
+	}
+}
