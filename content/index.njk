@@ -179,6 +179,12 @@ order: 1
 		gap: 0.5em;
 	}
 
+	a.hero-locator {
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+	a.hero-locator:hover { color: var(--fg); }
+
 
 	/* Signal strip — full hero-wrap width, three equal cells */
 	.signal-strip {
@@ -238,6 +244,70 @@ order: 1
 	.signal a::after { content: "  →"; }
 	.signal a:hover { opacity: 0.65; }
 
+	/* "Currently open for" — editorial services list
+	   (mirrors the All services pattern on /freelance-tech-lead-berlin/) */
+	.home-services {
+		margin-top: clamp(var(--space-xl), 6vw, var(--space-3xl));
+		padding-top: var(--space-l);
+		border-top: 1px solid var(--rule);
+		max-width: 64ch;
+		margin-inline: auto;
+	}
+
+	.home-services h2 {
+		font-family: var(--feature-font);
+		font-weight: 400;
+		text-transform: uppercase;
+		font-size: var(--step--1);
+		letter-spacing: 0.25em;
+		color: var(--fg-quiet);
+		margin: 0 0 var(--space-m);
+	}
+
+	.home-services-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: var(--space-xs);
+	}
+
+	.home-services-list li {
+		line-height: 1.4;
+	}
+
+	.home-services-list a {
+		color: var(--fg);
+		text-decoration: none;
+		border-bottom: 1px solid var(--rule);
+		padding-bottom: 0.15em;
+		font-size: var(--step-0);
+	}
+	.home-services-list a:hover { border-color: currentColor; }
+
+	.home-services-list .sub {
+		display: block;
+		color: var(--fg-muted);
+		font-size: var(--step--1);
+		margin-top: var(--space-3xs);
+		padding-left: 0;
+	}
+
+	.home-services-cta {
+		margin-top: var(--space-l);
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.14em;
+		font-size: var(--step--2);
+		text-decoration: none;
+		border-bottom: 1px solid currentColor;
+		padding-bottom: 0.2em;
+		color: inherit;
+		display: inline-block;
+	}
+	.home-services-cta::after { content: "  →"; }
+	.home-services-cta:hover { opacity: 0.65; }
+
 	/* Narrow viewports */
 	@media (max-width: 720px) {
 		.hero-grid {
@@ -276,7 +346,8 @@ order: 1
 
 		.portrait,
 		.hero-content > *,
-		.signal {
+		.signal,
+		.home-services {
 			animation: 650ms cubic-bezier(0.22, 1, 0.36, 1) both rise-in;
 		}
 
@@ -288,6 +359,7 @@ order: 1
 		.signal:nth-child(1) { animation-delay: 420ms; }
 		.signal:nth-child(2) { animation-delay: 500ms; }
 		.signal:nth-child(3) { animation-delay: 580ms; }
+		.home-services { animation-delay: 660ms; }
 	}
 }
 {% endcss %}
@@ -305,7 +377,7 @@ order: 1
 			<p class="lede">I do product engineering and management. I build for the web, and lead teams that do the same. I know how to keep humans, products, and codebases healthy in times like these.</p>
 			<div class="hero-meta">
 				<a class="eyebrow-link" href="/about">More about me</a>
-				<span class="hero-locator"><span class="online-dot" aria-hidden="true"></span>Currently open to new work</span>
+				<a class="hero-locator" href="/freelance-tech-lead-berlin/"><span class="online-dot" aria-hidden="true"></span>Currently open to new work</a>
 			</div>
 		</div>
 	</div>
@@ -330,4 +402,35 @@ order: 1
 			<a href="/words">Read the archive</a>
 		</div>
 	</div>
+
+	<section class="home-services" aria-labelledby="home-services-heading">
+		<h2 id="home-services-heading">Currently open for</h2>
+		<ul class="home-services-list">
+			<li>
+				<a href="/freelance-tech-lead-berlin/">Freelance tech lead, Berlin</a>
+				<span class="sub">Hands-on technical leadership</span>
+			</li>
+			<li>
+				<a href="/freelance-frontend-developer-berlin/">Freelance frontend developer, Berlin</a>
+				<span class="sub">React, TypeScript, design systems</span>
+			</li>
+			<li>
+				<a href="/freelance-full-stack-developer-berlin/">Freelance full-stack developer, Berlin</a>
+				<span class="sub">End-to-end product surfaces, TS/Node</span>
+			</li>
+			<li>
+				<a href="/fractional-engineering-lead-berlin/">Fractional engineering lead, Berlin</a>
+				<span class="sub">Strategy, team shape, mentorship</span>
+			</li>
+			<li>
+				<a href="/software-architecture-review-berlin/">Software architecture &amp; codebase review</a>
+				<span class="sub">Two weeks, fixed-fee, decision-grade</span>
+			</li>
+			<li>
+				<a href="/ai-for-engineering-teams-berlin/">AI for engineering teams</a>
+				<span class="sub">Workflows, guardrails, team health</span>
+			</li>
+		</ul>
+		<a class="home-services-cta" href="/freelance-tech-lead-berlin/">All freelance services</a>
+	</section>
 </section>
