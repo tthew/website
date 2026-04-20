@@ -9,44 +9,8 @@ const eleventyNavigation = {
 ---
 {% css %}
 @layer page {
-	main {
-		display: block;
-	}
-
-	.contact {
-		width: 100%;
-		max-width: 90ch;
-		margin-inline: auto;
-		padding-inline: clamp(var(--space-s), 4vw, var(--space-l));
-		padding-block: var(--space-l) var(--space-3xl);
-		display: flex;
-		flex-direction: column;
-		row-gap: var(--space-xl);
-	}
-
-	/* Hero: full-width above both columns */
-	.contact-hero {
-		max-width: 60ch;
-	}
-
-	.contact-hero h1 {
-		font-family: var(--feature-font);
-		font-weight: 900;
-		text-transform: uppercase;
-		font-size: clamp(3rem, 9vw, 6rem);
-		line-height: 0.9;
-		letter-spacing: -0.015em;
-		color: var(--fg);
-		margin: 0;
-	}
-
-	.contact-hero .sub {
-		font-size: var(--step-1);
-		color: var(--fg-muted);
-		max-width: 48ch;
-		margin: var(--space-m) 0 0;
-		line-height: 1.5;
-	}
+	{% include "css/landing.css" %}
+	{% include "css/services-grid.css" %}
 
 	/* Two-column block: channels on the left, form on the right. */
 	.contact-grid {
@@ -88,6 +52,7 @@ const eleventyNavigation = {
 		letter-spacing: 0.12em;
 		font-size: var(--step--1);
 		color: var(--fg-quiet);
+		white-space: nowrap;
 	}
 
 	.contact-channels .handle {
@@ -99,8 +64,6 @@ const eleventyNavigation = {
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
-
-	.contact-channels .channel { white-space: nowrap; }
 
 	.contact-channels a {
 		font-family: var(--feature-font);
@@ -200,30 +163,20 @@ const eleventyNavigation = {
 	}
 
 	.contact-form .honeypot { position: absolute; left: -9999px; }
-
-	{% include "css/services-grid.css" %}
-
-	@media (prefers-reduced-motion: no-preference) {
-		@keyframes contact-rise-in {
-			from { opacity: 0; transform: translateY(0.4rem); }
-			to   { opacity: 1; transform: translateY(0); }
-		}
-
-		.contact > * {
-			animation: 650ms cubic-bezier(0.22, 1, 0.36, 1) both contact-rise-in;
-		}
-
-		.contact > :nth-child(1) { animation-delay:   0ms; }
-		.contact > :nth-child(2) { animation-delay: 120ms; }
-		.contact > :nth-child(3) { animation-delay: 240ms; }
-	}
 }
 {% endcss %}
 
-<section class="contact">
-	<header class="contact-hero">
-		<h1>Say hello.</h1>
-		<p class="sub">Consulting, collaboration, or just a nice email.<br>I usually reply within a day or two.</p>
+<article class="landing">
+	<nav class="landing-crumbs" aria-label="Breadcrumb">
+		<a href="/">Home</a>
+		<span class="sep" aria-hidden="true">/</span>
+		<span aria-current="page">Contact</span>
+	</nav>
+
+	<header class="landing-hero">
+		<p class="landing-eyebrow">Get in touch &middot; Berlin</p>
+		<h1>Say <em>hello</em>.</h1>
+		<p class="lede">Consulting, collaboration, or just a nice email. I usually reply within a day or two.</p>
 	</header>
 
 	<div class="contact-grid">
@@ -290,4 +243,4 @@ const eleventyNavigation = {
 	</div>
 
 	{% include "partials/services-grid.njk" %}
-</section>
+</article>

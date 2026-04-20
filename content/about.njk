@@ -9,123 +9,13 @@ description: "Matt Richards — Senior+ Product Engineer and engineering lead in
 {% set title ="About" %}
 {% css %}
 @layer page {
-	main {
-		display: block;
-	}
-
-	.about {
-		width: 100%;
-		max-width: 80ch;
-		margin-inline: auto;
-		padding-inline: clamp(var(--space-s), 4vw, var(--space-l));
-		padding-block: var(--space-l) var(--space-3xl);
-		display: flex;
-		flex-direction: column;
-		row-gap: var(--space-2xl);
-	}
-
-	/* Chapter opener */
-	.about-hero {
-		max-width: 52ch;
-		margin-inline: auto;
-		text-align: center;
-		padding-block: var(--space-xl);
-		border-bottom: 1px solid var(--rule);
-	}
-
-	.about-dateline {
-		font-family: var(--feature-font);
-		text-transform: uppercase;
-		font-size: var(--step--1);
-		letter-spacing: 0.22em;
-		color: var(--fg-quiet);
-		margin: 0 0 var(--space-m);
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		gap: 0.6em;
-	}
-
-	.about-dateline .sep { opacity: 0.45; }
-
-	.about-hero h1 {
-		font-family: var(--feature-font);
-		font-weight: 900;
-		text-transform: uppercase;
-		font-size: clamp(4rem, 12vw, 9rem);
-		line-height: 0.9;
-		letter-spacing: -0.02em;
-		margin: 0 0 var(--space-m);
-		color: var(--fg);
-	}
-
-	.about-hero .lede {
-		font-size: clamp(var(--step-1), 0.5vw + 1.15rem, var(--step-2));
-		line-height: 1.55;
-		color: var(--fg-muted);
-		text-wrap: pretty;
-		max-width: 44ch;
-		margin: var(--space-s) auto 0;
-	}
-
-	/* Numbered body sections */
-	.about-section {
-		max-width: 64ch;
-		margin-inline: auto;
-		padding-block: var(--space-xl) 0;
-	}
-
-	.about-section + .about-section {
-		margin-top: var(--space-l);
-		padding-top: var(--space-xl);
-		border-top: 1px solid var(--rule);
-	}
-
-	.about-section h2 {
-		font-family: var(--feature-font);
-		font-weight: 900;
-		text-transform: uppercase;
-		font-size: clamp(2.25rem, 4.6vw, 3.75rem);
-		line-height: 0.95;
-		letter-spacing: -0.005em;
-		color: var(--fg);
-		margin: 0 0 var(--space-m);
-	}
-
-	.about-section h2 .ix {
-		display: block;
-		font-family: var(--feature-font);
-		font-weight: 400;
-		font-size: var(--step--1);
-		letter-spacing: 0.25em;
-		color: var(--fg-quiet);
-		margin-bottom: var(--space-s);
-	}
-
-	.about-section-body {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-m);
-	}
-
-	.about-section-body p {
-		margin: 0;
-		line-height: 1.65;
-		font-size: var(--step-0);
-		color: var(--fg);
-		text-wrap: pretty;
-	}
-
-	.about-section-body p:first-child {
-		font-size: var(--step-1);
-		line-height: 1.45;
-	}
-
+	{% include "css/landing.css" %}
 	{% include "css/services-grid.css" %}
 
+	/* Colophon — centered meta block at the foot of the article. */
 	.about-colophon {
 		max-width: none;
-		margin: var(--space-l) 0 0;
+		margin: 0;
 		padding-top: var(--space-m);
 		border-top: 1px solid var(--rule-soft);
 		font-size: var(--step-0);
@@ -154,70 +44,51 @@ description: "Matt Richards — Senior+ Product Engineer and engineering lead in
 		color: inherit;
 		text-underline-offset: 0.2em;
 	}
-
-	@media (prefers-reduced-motion: no-preference) {
-		@keyframes about-rise-in {
-			from { opacity: 0; transform: translateY(0.4rem); }
-			to   { opacity: 1; transform: translateY(0); }
-		}
-
-		.about > * {
-			animation: 650ms cubic-bezier(0.22, 1, 0.36, 1) both about-rise-in;
-		}
-
-		.about > :nth-child(1) { animation-delay:   0ms; }
-		.about > :nth-child(2) { animation-delay: 120ms; }
-		.about > :nth-child(3) { animation-delay: 220ms; }
-		.about > :nth-child(4) { animation-delay: 320ms; }
-		.about > :nth-child(5) { animation-delay: 420ms; }
-		.about > :nth-child(6) { animation-delay: 520ms; }
-		.about > :nth-child(7) { animation-delay: 620ms; }
-	}
 }
 {% endcss %}
 
-<article class="about">
-	<header class="about-hero">
-		<p class="about-dateline">
-			<span>Matt Richards</span>
-			<span class="sep" aria-hidden="true">&middot;</span>
-			<span>Senior+ Product Engineer</span>
-			<span class="sep" aria-hidden="true">&middot;</span>
-			<span>Berlin</span>
-		</p>
-		<h1>A Story.<br>In Four Parts.</h1>
-		<p class="lede">Hi. I'm Matt &mdash; a Senior+ Product Engineer and engineering lead based in Berlin. I build products for the web, and lead the teams that do the same.</p>
+<article class="landing">
+	<nav class="landing-crumbs" aria-label="Breadcrumb">
+		<a href="/">Home</a>
+		<span class="sep" aria-hidden="true">/</span>
+		<span aria-current="page">About</span>
+	</nav>
+
+	<header class="landing-hero">
+		<p class="landing-eyebrow">Matt Richards &middot; Senior+ Product Engineer &middot; Berlin</p>
+		<h1>About <em>Matt</em>.</h1>
+		<p class="lede">Senior+ Product Engineer and engineering lead based in Berlin. I build products for the web, and lead the teams that do the same.</p>
 	</header>
 
-	<section class="about-section">
+	<section class="landing-section">
 		<h2><span class="ix">&sect; 01 &mdash; The work</span>Two sides of the bench</h2>
-		<div class="about-section-body">
+		<div class="landing-body">
 			<p>Over twenty years in, I work across both product engineering and engineering leadership: technical strategy and architecture; org and roadmap design; the direct contributions that move a team's work forward.</p>
 			<p>My work sits between craft and leadership. I care about the people I build alongside as much as what gets built. I'm at home in ambitious contexts, diverse teams, and environments where the work has to matter.</p>
 		</div>
 	</section>
 
-	<section class="about-section">
+	<section class="landing-section">
 		<h2><span class="ix">&sect; 02 &mdash; Craft</span>Fundamentals, first</h2>
-		<div class="about-section-body">
+		<div class="landing-body">
 			<p>Fundamentals matter to me far more than the framework of the month. SOLID principles, clean boundaries, appropriate coupling, and systems that stay coherent as they grow.</p>
 			<p>The web platform comes first: HTML, CSS, the DOM and Web APIs do most of the heavy lifting before I reach for an abstraction.</p>
 			<p>On the leadership side, I set direction, bring product ambition into engineering reality, and hold teams to SMART goals over vanity metrics. Mentoring engineers through the parts of a career that actually compound: craft, judgement, and the soft skills that don't fit on a sprint board.</p>
 		</div>
 	</section>
 
-	<section class="about-section">
+	<section class="landing-section">
 		<h2><span class="ix">&sect; 03 &mdash; How I work</span>Ownership, not overreach</h2>
-		<div class="about-section-body">
+		<div class="landing-body">
 			<p>Most of what I bring to a team at this point is judgement. Ownership matters to me: backing the team's outcome, with their autonomy left intact.</p>
 			<p>Leading and interfering aren't the same thing. Stay close to the work. Stay out of the team's way.</p>
 			<p>Accessibility and UX as defaults. Design and systems thinking belong inside the engineering. A bias toward coherence and clarity over cleverness.</p>
 		</div>
 	</section>
 
-	<section class="about-section">
+	<section class="landing-section">
 		<h2><span class="ix">&sect; 04 &mdash; On what's changing</span>The next iteration</h2>
-		<div class="about-section-body">
+		<div class="landing-body">
 			<p>AI is part of how I build now. I use it every day, study the research, and watch closely what it's doing to the craft &mdash; to team shape, to code quality, to how junior engineers grow up in a world where the easy work is suddenly cheap.</p>
 			<p>Keeping humans, products and codebases healthy in the age of AI is the engineering problem of the decade. I help teams avoid both failure modes: getting left behind, and letting an autocomplete quietly rot the codebase.</p>
 		</div>
