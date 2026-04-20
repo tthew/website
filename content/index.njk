@@ -5,45 +5,44 @@ const eleventyNavigation = {
 key: "Home",
 order: 1
 };
-
-const numberOfLatestPostsToShow = 3;
 ---
 {% css %}
 @layer page {
 	main {
-		display: flex;
-		justify-content: center;
+		display: block;
 	}
 
-	.hero {
-		flex: 1;
+	.hero-wrap {
 		width: 100%;
-		display: grid;
-		place-items: center;
-		min-height: 100svh;
-		min-height: 100dvh;
-		padding-block: clamp(var(--space-l), 5svh, var(--space-2xl));
-		padding-inline: var(--space-s);
+		max-width: 80ch;
+		margin-inline: auto;
+		padding-inline: clamp(var(--space-s), 4vw, var(--space-l));
+		padding-block: clamp(var(--space-l), 6vw, var(--space-2xl)) var(--space-2xl);
+	}
+
+	@media (min-width: 1200px) {
+		.hero-wrap { max-width: 90ch; }
 	}
 
 	.hero-grid {
 		display: grid;
 		grid-template-columns: auto 1fr;
-		column-gap: clamp(var(--space-m), 5vw, var(--space-2xl));
-		align-items: start;
-		max-width: 80ch;
+		column-gap: clamp(var(--space-m), 4vw, var(--space-2xl));
+		align-items: end;
 	}
 
 	.portrait {
 		position: relative;
 		margin: 0;
+		width: fit-content;
 	}
 
 	.portrait img {
-		width: clamp(11rem, 28vw, 26rem);
-		height: clamp(11rem, 28vw, 26rem);
+		width: clamp(11rem, 22vw, 17.5rem);
+		height: clamp(11rem, 22vw, 17.5rem);
 		object-fit: cover;
 		border-radius: 50%;
+		filter: grayscale(1);
 	}
 
 	.portrait::after {
@@ -71,40 +70,84 @@ const numberOfLatestPostsToShow = 3;
 		row-gap: var(--space-s);
 	}
 
-	.display {
-		font-size: clamp(2rem, 5.8vw, 4.25rem);
-		line-height: 0.95;
-		letter-spacing: -0.01em;
-		max-width: 16ch;
+	.hero-eyebrow {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.22em;
+		font-size: var(--step--2);
+		color: var(--fg-subtle);
+		display: inline-flex;
+		align-items: center;
+		gap: 0.75em;
 		margin: 0;
+	}
+
+	.hero-eyebrow::before {
+		content: "";
+		width: 2.5em;
+		height: 1px;
+		background: currentColor;
+	}
+
+	.display {
+		font-family: var(--feature-font);
+		font-weight: 900;
+		text-transform: uppercase;
+		font-size: clamp(2.5rem, 7vw, 5.25rem);
+		line-height: 0.9;
+		letter-spacing: -0.015em;
+		margin: 0;
+		text-wrap: balance;
+		color: var(--fg);
 	}
 
 	.display span {
 		display: block;
 	}
 
-	.display span + span {
-		margin-top: 0.12em;
+	.display .line-b {
+		margin-top: 0.08em;
 	}
 
 	.display em {
 		font-style: normal;
 	}
 
+	.display em.accent {
+		display: inline-block;
+		position: relative;
+		color: var(--fg);
+	}
+
+	.display em.accent::before {
+		content: "";
+		position: absolute;
+		left: -0.05em;
+		right: -0.05em;
+		top: 0.35em;
+		bottom: 0.15em;
+		background: var(--accent);
+		z-index: -1;
+	}
+
 	.lede {
 		font-size: clamp(var(--step-0), 1vw + 0.9rem, var(--step-1));
 		line-height: 1.5;
-		max-width: 42ch;
-		color: light-dark(#333, #c4c4c4);
-		margin: var(--space-2xs) 0 0 0;
+		max-width: 56ch;
+		color: var(--fg-muted);
+		margin: 0;
 		text-wrap: pretty;
 	}
 
-	.learn-more {
-		margin: var(--space-xs) 0 0 0;
+	.hero-meta {
+		margin-top: var(--space-2xs);
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-s) var(--space-m);
+		align-items: baseline;
 	}
 
-	.learn-more a {
+	.hero-meta .eyebrow-link {
 		font-family: var(--feature-font);
 		text-transform: uppercase;
 		letter-spacing: 0.15em;
@@ -115,20 +158,104 @@ const numberOfLatestPostsToShow = 3;
 		transition: opacity 0.2s ease;
 	}
 
-	.learn-more a::after {
-		content: '  →';
+	.hero-meta .eyebrow-link::after { content: "  →"; }
+	.hero-meta .eyebrow-link:hover { opacity: 0.65; }
+
+	.hero-locator {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.15em;
+		font-size: var(--step--2);
+		color: var(--fg-muted);
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5em;
 	}
 
-	.learn-more a:hover {
-		opacity: 0.65;
+	.hero-locator .dot {
+		width: 0.55em;
+		height: 0.55em;
+		border-radius: 50%;
+		background: #24a148;
+		display: inline-block;
+		box-shadow: 0 0 0 3px color-mix(in oklab, #24a148 30%, transparent);
 	}
 
-	/* Narrow viewports: stack, portrait sized sensibly */
-	@media (max-width: 640px) {
+	/* Signal strip — aligned to the copy column via a mirroring grid */
+	.signal-align {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		column-gap: clamp(var(--space-m), 4vw, var(--space-2xl));
+		margin-top: clamp(var(--space-xl), 6vw, var(--space-3xl));
+	}
+
+	.signal-align > :first-child {
+		/* invisible spacer matching the portrait column width */
+		width: clamp(11rem, 22vw, 17.5rem);
+	}
+
+	.signal-strip {
+		border-top: 1px solid var(--rule);
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.signal {
+		padding: var(--space-m);
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3xs);
+		border-right: 1px solid var(--rule);
+	}
+	.signal:first-child { padding-left: 0; }
+	.signal:last-child  { padding-right: 0; border-right: 0; }
+
+	.signal-kicker {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.18em;
+		font-size: var(--step--2);
+		color: var(--fg-quiet);
+	}
+
+	.signal-head {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		font-size: var(--step-1);
+		line-height: 1;
+		letter-spacing: 0.01em;
+		margin: 0.1em 0 0.2em;
+		color: var(--fg);
+	}
+
+	.signal-body {
+		font-size: var(--step--1);
+		color: var(--fg-muted);
+		line-height: 1.45;
+		margin: 0;
+		max-width: 28ch;
+	}
+
+	.signal a {
+		margin-top: var(--space-2xs);
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.14em;
+		font-size: var(--step--2);
+		text-decoration: none;
+		border-bottom: 1px solid currentColor;
+		padding-bottom: 0.2em;
+		align-self: start;
+	}
+	.signal a::after { content: "  →"; }
+	.signal a:hover { opacity: 0.65; }
+
+	/* Narrow viewports */
+	@media (max-width: 720px) {
 		.hero-grid {
 			grid-template-columns: 1fr;
-			justify-items: start;
 			row-gap: var(--space-m);
+			align-items: start;
 		}
 
 		.portrait img {
@@ -137,37 +264,21 @@ const numberOfLatestPostsToShow = 3;
 		}
 
 		.display {
-			font-size: clamp(1.8rem, 8.5vw, 2.8rem);
-			max-width: none;
-		}
-	}
-
-	/* Short viewports (horizontal only): compress vertical rhythm */
-	@media (max-height: 700px) and (min-width: 641px) {
-		.hero {
-			padding-block: var(--space-m);
+			font-size: clamp(2rem, 10vw, 3rem);
 		}
 
-		.hero-content {
-			row-gap: var(--space-2xs);
+		.signal-align {
+			display: block;
+		}
+		.signal-align > :first-child { display: none; }
+
+		.signal-strip {
+			grid-template-columns: 1fr;
 		}
 
-		.display {
-			font-size: clamp(1.65rem, 4.5vw, 2.5rem);
-		}
-
-		.portrait img {
-			width: clamp(7rem, 22vh, 14rem);
-			height: clamp(7rem, 22vh, 14rem);
-		}
-	}
-
-	/* Wider viewports: loosen */
-	@media (min-width: 1200px) {
-		.hero-grid {
-			column-gap: var(--space-3xl);
-			max-width: 90ch;
-		}
+		.signal { border-right: 0; border-bottom: 1px solid var(--rule); }
+		.signal:last-child { border-bottom: 0; }
+		.signal:first-child { padding-top: var(--space-m); }
 	}
 
 	@media (prefers-reduced-motion: no-preference) {
@@ -177,31 +288,63 @@ const numberOfLatestPostsToShow = 3;
 		}
 
 		.portrait,
-		.hero-content > * {
+		.hero-content > *,
+		.signal {
 			animation: 650ms cubic-bezier(0.22, 1, 0.36, 1) both rise-in;
 		}
 
 		.portrait                     { animation-delay:   0ms; }
 		.hero-content > :nth-child(1) { animation-delay:  80ms; }
-		.hero-content > :nth-child(2) { animation-delay: 180ms; }
-		.hero-content > :nth-child(3) { animation-delay: 320ms; }
-		.hero-content > :nth-child(4) { animation-delay: 440ms; }
+		.hero-content > :nth-child(2) { animation-delay: 160ms; }
+		.hero-content > :nth-child(3) { animation-delay: 240ms; }
+		.hero-content > :nth-child(4) { animation-delay: 320ms; }
+		.signal:nth-child(1) { animation-delay: 420ms; }
+		.signal:nth-child(2) { animation-delay: 500ms; }
+		.signal:nth-child(3) { animation-delay: 580ms; }
 	}
 }
 {% endcss %}
 
-<section class="hero" aria-labelledby="hero-heading">
+<section class="hero-wrap" aria-labelledby="hero-heading">
 	<div class="hero-grid">
 		<figure class="portrait">
 			<img src="../public/img/1564326180592.jpeg" alt="" width="500" height="500" loading="eager" decoding="sync" fetchpriority="high" />
 		</figure>
 		<div class="hero-content">
+			<p class="hero-eyebrow">Matt Richards &middot; Berlin &middot; {% year %}</p>
 			<h1 id="hero-heading" class="display">
-				<span>Hi. I'm Matt.</span>
-				<span>Engineering lead. Building for the<br><em>next</em> iteration of the web.</span>
+				<span class="line-a">Hi. I'm Matt.</span>
+				<span class="line-b">Engineering lead. Building for the <em class="accent">next</em> iteration of the web.</span>
 			</h1>
 			<p class="lede">I do product engineering and management. I build for the web, and lead teams that do the same. I know how to keep humans, products, and codebases healthy in the age of AI.</p>
-			<p class="learn-more"><a href="/about">More about me</a></p>
+			<div class="hero-meta">
+				<a class="eyebrow-link" href="/about">More about me</a>
+				<span class="hero-locator"><span class="dot" aria-hidden="true"></span>Currently open to new work</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="signal-align">
+		<div aria-hidden="true"></div>
+		<div class="signal-strip">
+			<div class="signal">
+				<span class="signal-kicker">What I do</span>
+				<h2 class="signal-head">Product engineering</h2>
+				<p class="signal-body">Platform-first. HTML, CSS and the DOM before any framework. Coherent systems that outlive the hype cycle.</p>
+				<a href="/about">Read more</a>
+			</div>
+			<div class="signal">
+				<span class="signal-kicker">How I lead</span>
+				<h2 class="signal-head">Trust, don't meddle</h2>
+				<p class="signal-body">Backing the team's outcome with their autonomy left intact. Leading and interfering aren't the same thing.</p>
+				<a href="/about">Read more</a>
+			</div>
+			<div class="signal">
+				<span class="signal-kicker">Writing</span>
+				<h2 class="signal-head">Words &amp; TIL</h2>
+				<p class="signal-body">Notes on craft, leadership, and keeping codebases humane in the age of autocomplete.</p>
+				<a href="/words">Read the archive</a>
+			</div>
 		</div>
 	</div>
 </section>
