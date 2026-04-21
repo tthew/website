@@ -27,6 +27,7 @@ export default async function getPosts() {
 	wordsEntries {
 		... on article_Entry {
 			postDate
+			dateUpdated
 			title
 			body
 			slug
@@ -88,6 +89,7 @@ export default async function getPosts() {
 		return {
 			id: item.id,
 			date: item.postDate,
+			dateUpdated: item.dateUpdated || item.postDate,
 			title: item.title,
 			slug: item.slug,
 			body,

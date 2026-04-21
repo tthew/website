@@ -1,11 +1,13 @@
 ---js
 const layout = "layouts/home.njk";
-const title = 'Words';
+const title = 'Words — essays on engineering';
 const description = "Essays, TIL and notes from Matt Richards — on product engineering, engineering leadership, and keeping codebases humane in the age of AI.";
 const eleventyNavigation = {
 	key: "Words",
 	order: 4
 };
+
+const sitemap = { priority: "0.8", changefreq: "weekly" };
 ---
 {% css %}
 @layer page {
@@ -169,3 +171,42 @@ const eleventyNavigation = {
 		{% endfor %}
 	{% endif %}
 </article>
+
+{% set archivePosts = words | allWebWords | reverse | limit(20) %}
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "Blog",
+			"@id": "{{ metadata.url }}{{ page.url }}#blog",
+			"name": "Words",
+			"description": "Essays, TIL and notes from Matt Richards — on product engineering, engineering leadership, and keeping codebases humane in the age of AI.",
+			"url": "{{ metadata.url }}{{ page.url }}",
+			"inLanguage": "en",
+			"author": { "@id": "{{ metadata.url }}/#matt" },
+			"publisher": { "@id": "{{ metadata.url }}/#matt" },
+			"isPartOf": { "@id": "{{ metadata.url }}/#website" },
+			"blogPost": [
+				{%- for post in archivePosts %}
+					{
+						"@type": "BlogPosting",
+						"@id": "{{ metadata.url }}/words/{{ post.slug }}/#post",
+						"headline": {{ post.title | dump | safe }},
+						"url": "{{ metadata.url }}/words/{{ post.slug }}/",
+						"datePublished": "{{ post.date | toDate | htmlDateString }}",
+						"author": { "@id": "{{ metadata.url }}/#matt" }
+					}{% if not loop.last %},{% endif %}
+				{%- endfor %}
+			]
+		},
+		{
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{ "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ metadata.url }}/" },
+				{ "@type": "ListItem", "position": 2, "name": "Words", "item": "{{ metadata.url }}{{ page.url }}" }
+			]
+		}
+	]
+}
+</script>

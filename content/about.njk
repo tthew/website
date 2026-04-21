@@ -3,11 +3,10 @@ layout: 'layouts/home'
 eleventyNavigation:
   key: "About"
   order: 3
-title: 'About'
-description: "Matt Richards — Senior+ Product Engineer and engineering lead in Berlin. Hands-on leadership, product engineering, and building humane teams and codebases in the age of AI."
+title: 'About — senior+ engineering lead'
+description: "Matt Richards — Senior+ product engineer and engineering lead in Berlin. Hands-on leadership and building humane teams and codebases in the AI era."
 accent: mint
 ---
-{% set title ="About" %}
 {% css %}
 @layer page {
 	{% include "css/landing.css" %}
@@ -510,3 +509,69 @@ accent: mint
 		<p>Built by a human (me, with a little help from <a href="https://claude.com/claude-code">Claude</a>). Static build via <a href="https://11ty.dev">11ty</a>, sourcing content from a self-hosted <a href="https://craftcms.com/">Craft CMS</a> on a Raspberry Pi in my flat. A webhook rebuilds whenever the data changes.</p>
 	</aside>
 </article>
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "Person",
+			"@id": "{{ metadata.url }}/#matt",
+			"name": "Matt Richards",
+			"alternateName": "tthew",
+			"jobTitle": "Engineering Lead",
+			"description": "Senior+ product engineer and engineering lead in Berlin. Twenty-five years at the web platform, across product engineering and engineering leadership.",
+			"url": "{{ metadata.url }}/",
+			"mainEntityOfPage": "{{ metadata.url }}{{ page.url }}",
+			"email": "mailto:hallo@tthew.berlin",
+			"image": "{{ metadata.url }}/img/1564326180592.jpeg",
+			"sameAs": [
+				"https://hachyderm.io/@tthew",
+				"https://www.linkedin.com/in/tthew/",
+				"https://github.com/tthew"
+			],
+			"address": {
+				"@type": "PostalAddress",
+				"addressLocality": "Berlin",
+				"addressCountry": "DE"
+			},
+			"knowsAbout": [
+				"Product engineering",
+				"Engineering leadership",
+				"Frontend engineering",
+				"TypeScript",
+				"React",
+				"Software architecture",
+				"Web performance",
+				"Accessibility",
+				"Design systems",
+				"AI for engineering teams"
+			],
+			"alumniOf": [
+				{ "@type": "Organization", "name": "doctorly" },
+				{ "@type": "Organization", "name": "Sesame" },
+				{ "@type": "Organization", "name": "Médecins Sans Frontières" },
+				{ "@type": "Organization", "name": "eHealth Systems Africa" }
+			]
+		},
+		{
+			"@type": "AboutPage",
+			"@id": "{{ metadata.url }}{{ page.url }}#aboutpage",
+			"url": "{{ metadata.url }}{{ page.url }}",
+			"name": "About Matt Richards",
+			"description": "Matt Richards — Senior+ Product Engineer and engineering lead in Berlin. Hands-on leadership, product engineering, and building humane teams and codebases in the age of AI.",
+			"inLanguage": "en",
+			"dateModified": "{{ page.date | htmlDateString }}",
+			"mainEntity": { "@id": "{{ metadata.url }}/#matt" },
+			"isPartOf": { "@id": "{{ metadata.url }}/#website" }
+		},
+		{
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{ "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ metadata.url }}/" },
+				{ "@type": "ListItem", "position": 2, "name": "About", "item": "{{ metadata.url }}{{ page.url }}" }
+			]
+		}
+	]
+}
+</script>

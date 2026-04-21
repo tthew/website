@@ -1,6 +1,6 @@
 ---js
 const layout = "layouts/home.njk";
-const title = 'Get in touch';
+const title = 'Contact — engineering consulting';
 const description = "Get in touch with Matt Richards — consulting, collaboration, or just a nice email.";
 const eleventyNavigation = {
 	key: "Contact",
@@ -244,3 +244,50 @@ const eleventyNavigation = {
 
 	{% include "partials/services-grid.njk" %}
 </article>
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "ContactPage",
+			"@id": "{{ metadata.url }}{{ page.url }}#contactpage",
+			"url": "{{ metadata.url }}{{ page.url }}",
+			"name": "Get in touch with Matt Richards",
+			"description": "Get in touch with Matt Richards — consulting, collaboration, or just a nice email.",
+			"mainEntity": { "@id": "{{ metadata.url }}/#matt" },
+			"isPartOf": { "@id": "{{ metadata.url }}/#website" },
+			"inLanguage": "en"
+		},
+		{
+			"@type": "Person",
+			"@id": "{{ metadata.url }}/#matt",
+			"name": "Matt Richards",
+			"alternateName": "tthew",
+			"url": "{{ metadata.url }}/",
+			"email": "mailto:hallo@tthew.berlin",
+			"image": "{{ metadata.url }}/img/1564326180592.jpeg",
+			"address": { "@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE" },
+			"contactPoint": {
+				"@type": "ContactPoint",
+				"contactType": "business enquiries",
+				"email": "hallo@tthew.berlin",
+				"areaServed": ["DE", "EU", "Remote"],
+				"availableLanguage": ["en", "de"]
+			},
+			"sameAs": [
+				"https://hachyderm.io/@tthew",
+				"https://www.linkedin.com/in/tthew/",
+				"https://github.com/tthew"
+			]
+		},
+		{
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{ "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ metadata.url }}/" },
+				{ "@type": "ListItem", "position": 2, "name": "Contact", "item": "{{ metadata.url }}{{ page.url }}" }
+			]
+		}
+	]
+}
+</script>

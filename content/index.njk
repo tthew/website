@@ -1,15 +1,21 @@
 ---js
 const layout = 'layouts/home.njk';
 
+const title = "Engineering Lead · Product Engineer";
+const description = "Matt Richards — engineering lead and senior+ product engineer in Berlin. Two sides of the bench: platform-first craft, hands-on leadership.";
+
 const eleventyNavigation = {
 key: "Home",
 order: 1
 };
 
 const accent = "lilac";
+
+const sitemap = { priority: "1.0", changefreq: "weekly" };
 ---
 {% css %}
 @layer page {
+
 	main {
 		display: flex;
 		flex-direction: column;
@@ -313,7 +319,7 @@ const accent = "lilac";
 <section class="hero-wrap" aria-labelledby="hero-heading">
 	<div class="hero-grid">
 		<figure class="portrait">
-			<img src="../public/img/1564326180592.jpeg" alt="" width="500" height="500" loading="eager" decoding="sync" fetchpriority="high" />
+			<img src="../public/img/1564326180592.jpeg" alt="Portrait of Matt Richards" width="500" height="500" loading="eager" decoding="sync" fetchpriority="high" />
 		</figure>
 		<div class="hero-content">
 			<h1 id="hero-heading" class="display">
@@ -333,13 +339,13 @@ const accent = "lilac";
 			<span class="signal-kicker">What I do</span>
 			<h2 class="signal-head">Product engineering</h2>
 			<p class="signal-body">Platform-first. HTML, CSS and the DOM as a foundation. Coherent systems that outlive the hype.</p>
-			<a href="/about">Read more</a>
+			<a href="/freelance-tech-lead-berlin/">Freelance tech lead</a>
 		</div>
 		<div class="signal">
 			<span class="signal-kicker">How I lead</span>
 			<h2 class="signal-head">Ownership, not overreach</h2>
 			<p class="signal-body">Backing the team's outcome, autonomy intact. Close to the work, out of the way.</p>
-			<a href="/about">Read more</a>
+			<a href="/fractional-engineering-lead-berlin/">Fractional engineering lead</a>
 		</div>
 		<div class="signal">
 			<span class="signal-kicker">Writing</span>
@@ -349,3 +355,89 @@ const accent = "lilac";
 		</div>
 	</div>
 </section>
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "Person",
+			"@id": "{{ metadata.url }}/#matt",
+			"name": "Matt Richards",
+			"alternateName": "tthew",
+			"jobTitle": "Engineering Lead",
+			"description": "Senior+ product engineer and engineering lead based in Berlin. Two sides of the bench: platform-first product engineering, hands-on engineering leadership.",
+			"url": "{{ metadata.url }}/",
+			"email": "mailto:hallo@tthew.berlin",
+			"image": "{{ metadata.url }}/img/1564326180592.jpeg",
+			"sameAs": [
+				"https://hachyderm.io/@tthew",
+				"https://www.linkedin.com/in/tthew/",
+				"https://github.com/tthew"
+			],
+			"address": {
+				"@type": "PostalAddress",
+				"addressLocality": "Berlin",
+				"addressCountry": "DE"
+			},
+			"knowsAbout": [
+				"Product engineering",
+				"Engineering leadership",
+				"Frontend engineering",
+				"TypeScript",
+				"React",
+				"Software architecture",
+				"Web performance",
+				"Accessibility",
+				"Design systems",
+				"AI for engineering teams"
+			]
+		},
+		{
+			"@type": "WebSite",
+			"@id": "{{ metadata.url }}/#website",
+			"url": "{{ metadata.url }}/",
+			"name": "{{ metadata.siteName }}",
+			"description": "Matt Richards — engineering lead and senior+ product engineer in Berlin. Essays, notes, and services.",
+			"inLanguage": "en",
+			"publisher": { "@id": "{{ metadata.url }}/#matt" }
+		},
+		{
+			"@type": "ProfessionalService",
+			"@id": "{{ metadata.url }}/#service",
+			"name": "Matt Richards — engineering leadership & product engineering, Berlin",
+			"description": "Senior+ product engineer and engineering lead based in Berlin. Freelance tech lead, fractional engineering lead, full-stack and frontend, software architecture review, and AI for engineering teams.",
+			"url": "{{ metadata.url }}/",
+			"image": "{{ metadata.url }}/img/1564326180592.jpeg",
+			"provider": { "@id": "{{ metadata.url }}/#matt" },
+			"areaServed": [
+				{ "@type": "City", "name": "Berlin" },
+				{ "@type": "Country", "name": "Germany" },
+				{ "@type": "Place", "name": "European Union" },
+				{ "@type": "Place", "name": "Remote" }
+			],
+			"serviceType": [
+				"Freelance tech lead",
+				"Fractional engineering lead",
+				"Fractional CTO",
+				"Freelance full-stack developer",
+				"Freelance frontend developer",
+				"Software architecture review",
+				"AI for engineering teams"
+			],
+			"hasOfferCatalog": {
+				"@type": "OfferCatalog",
+				"name": "Services",
+				"itemListElement": [
+					{ "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Freelance tech lead", "url": "{{ metadata.url }}/freelance-tech-lead-berlin/" } },
+					{ "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Fractional engineering lead", "url": "{{ metadata.url }}/fractional-engineering-lead-berlin/" } },
+					{ "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Freelance full-stack developer", "url": "{{ metadata.url }}/freelance-full-stack-developer-berlin/" } },
+					{ "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Freelance frontend developer", "url": "{{ metadata.url }}/freelance-frontend-developer-berlin/" } },
+					{ "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Software architecture review", "url": "{{ metadata.url }}/software-architecture-review-berlin/" } },
+					{ "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI for engineering teams", "url": "{{ metadata.url }}/ai-for-engineering-teams-berlin/" } }
+				]
+			}
+		}
+	]
+}
+</script>

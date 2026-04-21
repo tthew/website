@@ -150,6 +150,13 @@ export default function (eleventyConfig) {
 		return textContent;
 	});
 
+	eleventyConfig.addFilter("firstImage", (htmlString) => {
+		if (!htmlString) return null;
+		const dom = new jsdom.JSDOM(htmlString);
+		const img = dom.window.document.querySelector("img");
+		return img ? img.getAttribute("src") : null;
+	});
+
 	eleventyConfig.addFilter("readingTime", (content) => {
 		const dom = new jsdom.JSDOM(content);
 		const textContent = dom.window.document.body.textContent;
@@ -164,19 +171,22 @@ export default function (eleventyConfig) {
 		granularity: 'word'
 	  });
 	
-	  eleventyConfig.addFilter("wordCount", (content) => {
-		
-
+	  const countWords = (content) => {
 		const dom = new jsdom.JSDOM(content);
-		const textContent = dom.window.document.body.textContent;		
-		const formatter = new Intl.NumberFormat();
-		const words = Array.from(segmenter.segment(textContent))
+		const textContent = dom.window.document.body.textContent;
+		return Array.from(segmenter.segment(textContent))
 		.reduce((total,v) => {
 			if(v.isWordLike) total++;
 			return total;
 		},0);
-		return `${formatter.format(words)} words`;
+	  };
+
+	  eleventyConfig.addFilter("wordCount", (content) => {
+		const formatter = new Intl.NumberFormat();
+		return `${formatter.format(countWords(content))} words`;
 	  });
+
+	  eleventyConfig.addFilter("wordCountNumber", (content) => countWords(content));
 
 	eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 

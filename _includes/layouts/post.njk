@@ -392,4 +392,56 @@ layout: layouts/base.njk
 	{% endif %}
 </article>
 
+{% set renderedPostBody = post.body | markdown %}
+{% set postBlurb = renderedPostBody | blurb %}
+{% set postFirstImage = renderedPostBody | firstImage %}
+{% set postImage = postFirstImage or (metadata.url ~ "/img/1564326180592.jpeg") %}
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "BlogPosting",
+			"@id": "{{ metadata.url }}/words/{{ post.slug }}/#post",
+			"headline": {{ post.title | dump | safe }},
+			"description": {{ postBlurb | dump | safe }},
+			"datePublished": "{{ post.date | toDate | htmlDateString }}",
+			"dateModified": "{{ (post.dateUpdated or post.date) | toDate | htmlDateString }}",
+			"wordCount": {{ renderedPostBody | wordCountNumber }},
+			"url": "{{ metadata.url }}/words/{{ post.slug }}/",
+			"mainEntityOfPage": {
+				"@type": "WebPage",
+				"@id": "{{ metadata.url }}/words/{{ post.slug }}/"
+			},
+			"inLanguage": "en",
+			"image": "{{ postImage }}",
+			"author": { "@id": "{{ metadata.url }}/#matt" },
+			"publisher": { "@id": "{{ metadata.url }}/#matt" },
+			"isPartOf": { "@id": "{{ metadata.url }}/#website" },
+			"articleSection": {{ (post.postType | postKindLabel) | dump | safe }}
+		},
+		{
+			"@type": "Person",
+			"@id": "{{ metadata.url }}/#matt",
+			"name": "Matt Richards",
+			"url": "{{ metadata.url }}/",
+			"image": "{{ metadata.url }}/img/1564326180592.jpeg",
+			"sameAs": [
+				"https://hachyderm.io/@tthew",
+				"https://www.linkedin.com/in/tthew/",
+				"https://github.com/tthew"
+			]
+		},
+		{
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{ "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ metadata.url }}/" },
+				{ "@type": "ListItem", "position": 2, "name": "Words", "item": "{{ metadata.url }}/words/" },
+				{ "@type": "ListItem", "position": 3, "name": {{ post.title | dump | safe }}, "item": "{{ metadata.url }}/words/{{ post.slug }}/" }
+			]
+		}
+	]
+}
+</script>
+
 {%- js %}{% include "node_modules/@zachleat/heading-anchors/heading-anchors.js" %}{% endjs %}

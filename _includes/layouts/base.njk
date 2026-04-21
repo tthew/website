@@ -2,18 +2,43 @@
 <html lang="{{ metadata.language }}" style="color-scheme: light dark">
 
 <head>
+	{%- set pageImage = metadata.url ~ "/img/1564326180592.jpeg" -%}
+	{%- set pageImageIsPortrait = true -%}
+	{%- if post.body -%}
+		{%- set postFirstImage = post.body | markdown | firstImage -%}
+		{%- if postFirstImage -%}
+			{%- set pageImage = postFirstImage -%}
+			{%- set pageImageIsPortrait = false -%}
+		{%- endif -%}
+	{%- endif -%}
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>{%if post.title %}{{ post.title }} |  {{ metadata.description }}{% else %}{%if title %}{{ title }} | {% endif %}{{ metadata.description }}{% endif %}</title>
+	<title>{% if post.title %}{{ post.title }} | {{ metadata.siteName }}{% elif title %}{{ title }} | {{ metadata.siteName }}{% else %}{{ metadata.siteName }}{% endif %}</title>
 	<link rel="preload" href="/font/Staatliches-Regular.woff2" as="font" type="font/woff2" crossorigin>
-	<meta name="description" content="{{ description or metadata.description }}">
-	<link rel="canonical" href="{{ metadata.url }}{{ page.url }}">
+	{% if noindex %}<meta name="robots" content="noindex">{% endif %}
+	<meta name="description" content="{% if description %}{{ description }}{% elif post.body %}{{ post.body | markdown | blurb }}{% else %}{{ metadata.description }}{% endif %}">
+	{% if not noCanonical %}<link rel="canonical" href="{{ metadata.url }}{{ page.url }}">
+	<link rel="alternate" hreflang="en" href="{{ metadata.url }}{{ page.url }}">
+	<link rel="alternate" hreflang="x-default" href="{{ metadata.url }}{{ page.url }}">{% endif %}
 	<meta name="fediverse:creator" content="@tthew@hachyderm.io">
-	<meta property="og:url" content="{{ metadata.url }}{{ page.url  }}">
-	<meta property="og:type" content="website">
-	<meta property="og:title" content="{%if post.title %}{{ post.title }}{% else %}{%if title %}{{ title }}{% endif %}{% endif %}">
-	<meta property="og:description" content="{% if post.body %}{{ post.body | markdown | blurb }}{% else %}{{ metadata.description }}{% endif %}">
-	<meta property="og:image" content="/img/1564326180592.jpeg">
+	<meta property="og:url" content="{{ metadata.url }}{{ page.url }}">
+	<meta property="og:type" content="{% if post.title %}article{% else %}website{% endif %}">
+	<meta property="og:site_name" content="{{ metadata.siteName }}">
+	<meta property="og:title" content="{% if post.title %}{{ post.title }}{% elif title %}{{ title }}{% else %}{{ metadata.siteName }}{% endif %}">
+	<meta property="og:description" content="{% if post.body %}{{ post.body | markdown | blurb }}{% elif description %}{{ description }}{% else %}{{ metadata.description }}{% endif %}">
+	<meta property="og:image" content="{{ pageImage }}">
+	{% if pageImageIsPortrait %}<meta property="og:image:width" content="500">
+	<meta property="og:image:height" content="500">{% endif %}
+	<meta property="og:image:alt" content="{% if post.title %}{{ post.title }}{% else %}Portrait of Matt Richards{% endif %}">
+	{% if post.title %}<meta property="article:published_time" content="{{ post.date | toDate | htmlDateString }}">
+	<meta property="article:author" content="Matt Richards">
+	<meta property="article:section" content="{{ post.postType | postKindLabel }}">{% endif %}
+	<meta name="twitter:card" content="{% if post.title and not pageImageIsPortrait %}summary_large_image{% else %}summary{% endif %}">
+	<meta name="twitter:site" content="@tthew">
+	<meta name="twitter:creator" content="@tthew">
+	<meta name="twitter:title" content="{% if post.title %}{{ post.title }}{% elif title %}{{ title }}{% else %}{{ metadata.siteName }}{% endif %}">
+	<meta name="twitter:description" content="{% if post.body %}{{ post.body | markdown | blurb }}{% elif description %}{{ description }}{% else %}{{ metadata.description }}{% endif %}">
+	<meta name="twitter:image" content="{{ pageImage }}">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
@@ -46,7 +71,7 @@
 			<h2 class="visually-hidden">Top level navigation menu</h2>
 			<ul class="nav">
 				<li class="nav-item"><a href="/" {% if "/"==page.url %}aria-current="page"{% endif %}>Home</a></li>
-				<li class="nav-item"><a href="/about" {% if page.url and page.url.startsWith("/about") %}aria-current="page"{% endif %}>About</a></li>
+				<li class="nav-item"><a href="/about" rel="author" {% if page.url and page.url.startsWith("/about") %}aria-current="page"{% endif %}>About</a></li>
 				<li class="nav-item"><a href="/words" {% if page.url and page.url.startsWith("/words") %}aria-current="page"{% endif %}>Words</a></li>
 				<li class="nav-item"><a href="/contact" {% if page.url and page.url.startsWith("/contact") %}aria-current="page"{% endif %}>Contact</a></li>
 			</ul>

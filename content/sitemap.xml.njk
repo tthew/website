@@ -23,7 +23,7 @@ data:  words
 	{% set absoluteUrl %}{{ url | htmlBaseUrl(url) }}{% endset %}
 	<url>
 		<loc>{{ absoluteUrl }}</loc>
-		<lastmod>{{ page.date | toDate | htmlDateString }}</lastmod>
+		<lastmod>{{ (page.dateUpdated or page.date) | toDate | htmlDateString }}</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.6</priority>
 	</url>
