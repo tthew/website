@@ -89,6 +89,17 @@ main { display: block; }
 	bottom: 0.15em;
 	background: var(--hero-accent, var(--accent));
 	z-index: -1;
+	transform-origin: left center;
+	animation: hero-em-wipe 950ms cubic-bezier(0.22, 1, 0.36, 1) 550ms both;
+}
+
+@keyframes hero-em-wipe {
+	from { transform: scaleX(0); }
+	to   { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.landing-hero h1 em::before { animation: none; }
 }
 
 .landing-hero .lede {
