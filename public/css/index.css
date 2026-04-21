@@ -574,10 +574,19 @@
 		color: inherit;
 		text-decoration-thickness: 1px;
 		text-underline-offset: 0.3em;
+		display: inline-block;
+		padding-block: 1rem;
+		margin-block: -1rem;
 	}
 
 	.footer-legal a:hover {
 		color: var(--text);
+	}
+
+	@media (max-width: 560px) {
+		.footer-legal {
+			row-gap: var(--space-2xs);
+		}
 	}
 
 
