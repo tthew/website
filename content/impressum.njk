@@ -68,3 +68,28 @@ const sitemap = { priority: "0.2", changefreq: "yearly" };
 		</div>
 	</section>
 </article>
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "WebPage",
+			"@id": "{{ metadata.url }}{{ page.url }}#webpage",
+			"url": "{{ metadata.url }}{{ page.url }}",
+			"name": "Impressum",
+			"description": "Legal notice for ma.tthew.berlin — service provider and contact details per § 5 TMG.",
+			"inLanguage": "en",
+			"isPartOf": { "@id": "{{ metadata.url }}/#website" },
+			"about": { "@id": "{{ metadata.url }}/#matt" }
+		},
+		{
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{ "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ metadata.url }}/" },
+				{ "@type": "ListItem", "position": 2, "name": "Impressum", "item": "{{ metadata.url }}{{ page.url }}" }
+			]
+		}
+	]
+}
+</script>

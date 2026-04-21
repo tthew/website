@@ -1,7 +1,7 @@
 ---js
 const layout = "layouts/home.njk";
-const title = "Software Architecture & Codebase Review — Berlin";
-const description = "Honest, scoped software architecture and codebase review in Berlin. Two-week engagement, decision-grade deliverable: what's load-bearing, what's rot, what's worth the rewrite.";
+const title = "Architecture & Codebase Review";
+const description = "Honest software architecture and codebase review in Berlin. Two-week engagement, decision-grade deliverable: load-bearing code, rot, and rewrite calls.";
 const sitemap = { priority: "0.9", changefreq: "monthly" };
 ---
 {% css %}
@@ -130,7 +130,9 @@ const sitemap = { priority: "0.9", changefreq: "monthly" };
 			"@type": "Person",
 			"@id": "{{ metadata.url }}/#matt",
 			"name": "Matt Richards",
+			"alternateName": "tthew",
 			"jobTitle": "Freelance Tech Lead",
+			"description": "Senior+ engineering lead in Berlin. Architecture and codebase reviews with a decision-grade deliverable — scoped, written up, handed over.",
 			"url": "{{ metadata.url }}/",
 			"email": "mailto:hallo@tthew.berlin",
 			"image": "{{ metadata.url }}/img/1564326180592.jpeg",
@@ -139,7 +141,15 @@ const sitemap = { priority: "0.9", changefreq: "monthly" };
 				"https://www.linkedin.com/in/tthew/",
 				"https://github.com/tthew"
 			],
-			"address": { "@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE" }
+			"address": { "@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE" },
+			"knowsAbout": [
+				"Software architecture",
+				"Codebase review",
+				"Technical due diligence",
+				"Architecture audit",
+				"Product engineering",
+				"Engineering leadership"
+			]
 		},
 		{
 			"@type": "ProfessionalService",

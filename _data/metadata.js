@@ -1,8 +1,9 @@
 export default {
 	title: "tthew",
+	siteName: "Matt Richards, Berlin",
 	url: "https://ma.tthew.berlin",
 	language: "en",
-	description: "Matt Richards - Senior Staff Product Engineer / Engineering Lead based in Berlin.",
+	description: "Matt Richards — engineering lead and senior+ product engineer in Berlin.",
 	author: {
 		name: "Matt Richards",
 		email: "hallo@tthew.berlin",
