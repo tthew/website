@@ -87,7 +87,7 @@ main { display: block; }
 	right: -0.05em;
 	top: 0.35em;
 	bottom: 0.15em;
-	background: var(--accent);
+	background: var(--hero-accent, var(--accent));
 	z-index: -1;
 }
 
@@ -145,7 +145,6 @@ main { display: block; }
 	gap: var(--space-3xs);
 	border-right: 1px solid var(--rule);
 }
-.service:first-child { padding-left: 0; }
 .service:last-child  { padding-right: 0; border-right: 0; }
 
 .service-kicker {
@@ -288,7 +287,6 @@ main { display: block; }
 	flex-direction: column;
 	gap: var(--space-2xs);
 }
-.next:first-child { padding-left: 0; }
 .next:last-child  { padding-right: 0; border-right: 0; }
 
 .next-kicker {

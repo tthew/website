@@ -200,6 +200,15 @@
 	[data-accent="peach"]  { --accent: light-dark(var(--accent-peach),  rgba(255, 190, 120, 0.28)); }
 	[data-accent="mint"]   { --accent: light-dark(var(--accent-mint),   rgba(120, 220, 170, 0.28)); }
 	[data-accent="lilac"]  { --accent: light-dark(var(--accent-lilac),  rgba(200, 180, 255, 0.30)); }
+
+	/* Per-page hero highlight. Scoped to the hero <em> treatments so the
+	   global --accent (focus rings, service strips, pill fills) stays under
+	   user control. Picked deterministically from the page URL by the
+	   `heroAccent` filter — see _config/filters.js. */
+	[data-hero-accent="yellow"] { --hero-accent: light-dark(var(--accent-yellow), rgba(255, 255, 255, 0.2)); }
+	[data-hero-accent="peach"]  { --hero-accent: light-dark(var(--accent-peach),  rgba(255, 190, 120, 0.28)); }
+	[data-hero-accent="mint"]   { --hero-accent: light-dark(var(--accent-mint),   rgba(120, 220, 170, 0.28)); }
+	[data-hero-accent="lilac"]  { --hero-accent: light-dark(var(--accent-lilac),  rgba(200, 180, 255, 0.30)); }
 }
 
 @layer main {

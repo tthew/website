@@ -36,7 +36,6 @@
 	border-right: 1px solid var(--rule);
 }
 
-.services-grid .service:nth-child(3n+1) { padding-left: 0; }
 .services-grid .service:nth-child(3n)   { padding-right: 0; border-right: 0; }
 .services-grid .service:nth-child(n+4)  { border-top: 1px solid var(--rule); }
 
