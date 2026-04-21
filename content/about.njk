@@ -12,37 +12,291 @@ description: "Matt Richards — Senior+ Product Engineer and engineering lead in
 	{% include "css/landing.css" %}
 	{% include "css/services-grid.css" %}
 
-	/* Colophon — centered meta block at the foot of the article. */
-	.about-colophon {
-		max-width: none;
+	/* Experience — native <details> accordion wrapped in an editorial
+	   timeline. Each row collapses to year + role + company; the body
+	   carries the short description. First item opens by default.
+	   Overrides .landing-body li::before so the § bullet doesn't collide
+	   with the row layout. */
+	.experience-list {
+		list-style: none;
 		margin: 0;
-		padding-top: var(--space-m);
-		border-top: 1px solid var(--rule-soft);
+		padding: 0;
+		border-top: 1px solid var(--rule);
+	}
+
+	.experience-list > li {
+		border-bottom: 1px solid var(--rule);
+		padding: 0;
+	}
+
+	.experience-list > li::before { content: none; }
+
+	.experience-list details { width: 100%; }
+
+	.experience-list summary {
+		list-style: none;
+		cursor: pointer;
+		display: grid;
+		grid-template-columns: 11ch 1fr auto;
+		column-gap: clamp(var(--space-m), 4vw, var(--space-xl));
+		align-items: baseline;
+		padding: var(--space-m) 0;
+		transition: color 0.2s ease;
+	}
+
+	.experience-list summary::-webkit-details-marker { display: none; }
+	.experience-list summary::marker { content: ""; }
+
+	.experience-list summary:hover .experience-role,
+	.experience-list summary:focus-visible .experience-role {
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+	.experience-list summary:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 0.25rem;
+	}
+
+	.experience-year {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.18em;
+		font-size: var(--step--2);
+		color: var(--fg-quiet);
+		margin: 0;
+		padding-top: 0.25em;
+		white-space: nowrap;
+	}
+
+	.experience-meta {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3xs);
+		min-width: 0;
+	}
+
+	.experience-role {
+		font-family: var(--feature-font);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.01em;
 		font-size: var(--step-0);
+		line-height: 1.15;
+		color: var(--fg);
+		margin: 0;
+		text-wrap: balance;
+	}
+
+	.experience-where {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.18em;
+		font-size: var(--step--2);
+		color: var(--fg-muted);
+		margin: 0;
+	}
+
+	.experience-where .sep { opacity: 0.45; margin: 0 0.4em; }
+
+	/* Metadata stack in the year column — lets the arrangement marker
+	   sit beside the date range instead of interrupting the role /
+	   company reading line. */
+	.experience-when {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-2xs);
+		padding-top: 0.25em;
+	}
+
+	.experience-when .experience-year { padding-top: 0; }
+
+	/* Arrangement marker (e.g. Freelance). Knocked-back mint pill —
+	   softer fill and muted text, undersized so it reads as a quiet
+	   qualifier beside the date range rather than competing with
+	   the role. */
+	.experience-tag {
+		display: inline-block;
+		background: light-dark(rgba(166, 236, 199, 0.4), rgba(120, 220, 170, 0.16));
+		color: var(--fg-muted);
+		font-family: var(--feature-font);
+		font-weight: 400;
+		text-transform: uppercase;
+		letter-spacing: 0.16em;
+		font-size: 0.72em;
+		padding: 0.2em 0.5em 0.16em;
+		line-height: 1;
+	}
+
+	.experience-toggle {
+		font-family: var(--feature-font);
+		font-size: var(--step-0);
+		line-height: 1;
+		color: var(--fg-quiet);
+		align-self: center;
+		transition: color 0.2s ease, transform 0.25s ease;
+		user-select: none;
+	}
+
+	.experience-toggle::before { content: "+"; }
+
+	details[open] .experience-toggle {
+		transform: rotate(45deg);
 		color: var(--fg-subtle);
-		text-align: center;
+	}
+
+	summary:hover .experience-toggle { color: var(--fg); }
+
+	.experience-body {
+		padding: 0 0 var(--space-m) calc(11ch + clamp(var(--space-m), 4vw, var(--space-xl)));
+	}
+
+	.experience-what {
+		margin: 0;
+		font-size: var(--step--1);
+		line-height: 1.55;
+		color: var(--fg-muted);
+		max-width: 56ch;
+		text-wrap: pretty;
+	}
+
+	/* Progressive enhancement: smoothly animate height on browsers
+	   that support it. Falls back to instant toggle everywhere else. */
+	@supports (interpolate-size: allow-keywords) {
+		.experience-list details {
+			interpolate-size: allow-keywords;
+		}
+
+		.experience-list details::details-content {
+			height: 0;
+			overflow: clip;
+			transition: height 0.3s ease, content-visibility 0.3s allow-discrete;
+		}
+
+		.experience-list details[open]::details-content {
+			height: auto;
+		}
+	}
+
+	/* Terminal "earlier" row — same rhythm as the accordion rows, but
+	   a single link instead of a toggle. Acts as the sign-off for the
+	   timeline and points out to the full CV. */
+	.experience-list > li.experience-more { padding: 0; }
+
+	.experience-list > li.experience-more > a {
+		display: grid;
+		grid-template-columns: 11ch 1fr auto;
+		column-gap: clamp(var(--space-m), 4vw, var(--space-xl));
+		align-items: baseline;
+		padding: var(--space-m) 0;
+		color: var(--fg-muted);
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+
+	.experience-list > li.experience-more > a:hover,
+	.experience-list > li.experience-more > a:focus-visible {
+		color: var(--fg);
+	}
+
+	.experience-list > li.experience-more > a:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 0.25rem;
+	}
+
+	.experience-list > li.experience-more .experience-role {
+		color: inherit;
+	}
+
+	.experience-list > li.experience-more .experience-toggle {
+		transition: transform 0.2s ease, color 0.2s ease;
+	}
+
+	.experience-list > li.experience-more .experience-toggle::before {
+		content: none;
+	}
+
+	.experience-list > li.experience-more > a:hover .experience-toggle,
+	.experience-list > li.experience-more > a:focus-visible .experience-toggle {
+		transform: translateX(0.2em);
+		color: var(--fg);
+	}
+
+	@media (max-width: 560px) {
+		.experience-list summary,
+		.experience-list > li.experience-more > a {
+			grid-template-columns: 1fr auto;
+			row-gap: var(--space-3xs);
+			padding: var(--space-s) 0;
+		}
+		.experience-list .experience-when,
+		.experience-list .experience-year {
+			grid-column: 1 / -1;
+			padding-top: 0;
+		}
+		.experience-list .experience-when {
+			flex-direction: row;
+			align-items: baseline;
+			gap: var(--space-xs);
+		}
+		.experience-list .experience-meta { grid-column: 1; }
+		.experience-list .experience-toggle { grid-column: 2; grid-row: 2; }
+		.experience-body { padding-left: 0; }
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.experience-toggle { transition: none; }
+		.experience-list details::details-content { transition: none; }
+	}
+
+	/* Colophon — quiet editorial meta block at the foot of the article.
+	   Kicker + prose in two columns, matching the /words correspondence
+	   block so every small aside shares the same rhythm. */
+	.about-colophon {
+		margin-top: var(--space-l);
+		padding-top: var(--space-m);
+		border-top: 1px solid var(--rule);
+		display: grid;
+		grid-template-columns: auto 1fr;
+		column-gap: clamp(var(--space-m), 4vw, var(--space-xl));
+		align-items: baseline;
 	}
 
 	.about-colophon .ix {
-		display: block;
 		font-family: var(--feature-font);
-		font-weight: 400;
-		font-size: var(--step--1);
-		letter-spacing: 0.25em;
-		color: var(--fg-quiet);
-		margin-bottom: var(--space-2xs);
 		text-transform: uppercase;
+		letter-spacing: 0.22em;
+		font-size: var(--step--2);
+		color: var(--fg-quiet);
+		white-space: nowrap;
+		margin: 0;
 	}
 
 	.about-colophon p {
-		margin: 0 auto;
-		max-width: 64ch;
+		margin: 0;
+		max-width: 72ch;
+		font-size: var(--step--1);
 		line-height: 1.6;
+		color: var(--fg-muted);
+		text-wrap: pretty;
 	}
 
 	.about-colophon a {
 		color: inherit;
-		text-underline-offset: 0.2em;
+		text-decoration: none;
+		border-bottom: 1px solid currentColor;
+		padding-bottom: 0.05em;
+		transition: opacity 0.2s ease;
+	}
+
+	.about-colophon a:hover { opacity: 0.65; }
+
+	@media (max-width: 560px) {
+		.about-colophon {
+			grid-template-columns: 1fr;
+			gap: var(--space-2xs);
+		}
 	}
 }
 {% endcss %}
@@ -57,7 +311,7 @@ description: "Matt Richards — Senior+ Product Engineer and engineering lead in
 	<header class="landing-hero">
 		<p class="landing-eyebrow">Matt Richards &middot; Senior+ Product Engineer &middot; Berlin</p>
 		<h1>About <em>Matt</em>.</h1>
-		<p class="lede">Senior+ Product Engineer and engineering lead based in Berlin. I build products for the web, and lead the teams that do the same.</p>
+		<p class="lede">Senior+ Product Engineer and engineering lead based in Berlin. Builds products for the web, and leads the teams that do the same.</p>
 	</header>
 
 	<section class="landing-section">
@@ -94,10 +348,149 @@ description: "Matt Richards — Senior+ Product Engineer and engineering lead in
 		</div>
 	</section>
 
+	<section class="landing-section">
+		<h2><span class="ix">&sect; 05 &mdash; Experience</span>Selected work</h2>
+		<div class="landing-body">
+			<p>A brief selection. Open a row for the short version.</p>
+			<ol class="experience-list">
+				<li>
+					<details open>
+						<summary>
+							<span class="experience-year">2021 &ndash; 2024</span>
+							<span class="experience-meta">
+								<span class="experience-role">Principal Frontend Engineer &middot; Frontend &amp; Team Lead</span>
+								<span class="experience-where">doctorly<span class="sep" aria-hidden="true">&middot;</span>Berlin</span>
+							</span>
+							<span class="experience-toggle" aria-hidden="true"></span>
+						</summary>
+						<div class="experience-body">
+							<p class="experience-what">Cloud practice-management software for Germany's 130,000 medical practices. Built the frontend team, set the architecture, shipped KBV-compliant features through the Series A.</p>
+						</div>
+					</details>
+				</li>
+				<li>
+					<details>
+						<summary>
+							<span class="experience-when">
+								<span class="experience-year">2020 &ndash; 2021</span>
+								<span class="experience-tag">Freelance</span>
+							</span>
+							<span class="experience-meta">
+								<span class="experience-role">Senior Software Developer</span>
+								<span class="experience-where">Kianava<span class="sep" aria-hidden="true">&middot;</span>Berlin</span>
+							</span>
+							<span class="experience-toggle" aria-hidden="true"></span>
+						</summary>
+						<div class="experience-body">
+							<p class="experience-what">GDPR-compliant WebRTC video consultation and real-time chat for an integrative-medicine platform. Early-stage contributions through a formative period for the company.</p>
+						</div>
+					</details>
+				</li>
+				<li>
+					<details>
+						<summary>
+							<span class="experience-year">2019 &ndash; 2020</span>
+							<span class="experience-meta">
+								<span class="experience-role">Lead Frontend Developer</span>
+								<span class="experience-where">Sesame<span class="sep" aria-hidden="true">&middot;</span>Berlin / NYC</span>
+							</span>
+							<span class="experience-toggle" aria-hidden="true"></span>
+						</summary>
+						<div class="experience-body">
+							<p class="experience-what">Direct-pay healthcare marketplace, hired in early. Built the team, shipped the React &amp; Next architecture, carried the platform through to its initial launch.</p>
+						</div>
+					</details>
+				</li>
+				<li>
+					<details>
+						<summary>
+							<span class="experience-when">
+								<span class="experience-year">2018 &ndash; 2019</span>
+								<span class="experience-tag">Freelance</span>
+							</span>
+							<span class="experience-meta">
+								<span class="experience-role">Senior Software Developer</span>
+								<span class="experience-where">Field Intelligence<span class="sep" aria-hidden="true">&middot;</span>Berlin / remote</span>
+							</span>
+							<span class="experience-toggle" aria-hidden="true"></span>
+						</summary>
+						<div class="experience-body">
+							<p class="experience-what">Offline-first PWA for pharmacy and vaccine supply chains across 500+ healthcare facilities in sub-Saharan Africa.</p>
+						</div>
+					</details>
+				</li>
+				<li>
+					<details>
+						<summary>
+							<span class="experience-when">
+								<span class="experience-year">2017 &ndash; 2018</span>
+								<span class="experience-tag">Freelance</span>
+							</span>
+							<span class="experience-meta">
+								<span class="experience-role">Field ICT Consultant</span>
+								<span class="experience-where">M&eacute;decins Sans Fronti&egrave;res<span class="sep" aria-hidden="true">&middot;</span>Brussels / Berlin / Amsterdam</span>
+							</span>
+							<span class="experience-toggle" aria-hidden="true"></span>
+						</summary>
+						<div class="experience-body">
+							<p class="experience-what">Field-operations dashboard deployed across twenty-plus countries. Designed for remote areas, intermittent connectivity, and humanitarian teams in the field.</p>
+						</div>
+					</details>
+				</li>
+				<li>
+					<details>
+						<summary>
+							<span class="experience-when">
+								<span class="experience-year">2016</span>
+								<span class="experience-tag">Freelance</span>
+							</span>
+							<span class="experience-meta">
+								<span class="experience-role">Senior Frontend Developer</span>
+								<span class="experience-where">immmr<span class="sep" aria-hidden="true">&middot;</span>Deutsche Telekom</span>
+							</span>
+							<span class="experience-toggle" aria-hidden="true"></span>
+						</summary>
+						<div class="experience-body">
+							<p class="experience-what">WebRTC-based unified communications PWA for Deutsche Telekom's European market expansion. Voice, messaging and video across devices.</p>
+						</div>
+					</details>
+				</li>
+				<li>
+					<details>
+						<summary>
+							<span class="experience-when">
+								<span class="experience-year">2015 &ndash; 2016</span>
+								<span class="experience-tag">Freelance</span>
+							</span>
+							<span class="experience-meta">
+								<span class="experience-role">Senior Software Developer</span>
+								<span class="experience-where">eHealth Systems Africa<span class="sep" aria-hidden="true">&middot;</span>Berlin</span>
+							</span>
+							<span class="experience-toggle" aria-hidden="true"></span>
+						</summary>
+						<div class="experience-body">
+							<p class="experience-what">Contact-tracing tools and real-time surveillance dashboards supporting the 2014 &ndash; 2016 West Africa Ebola response, funded by the WHO, the Gates Foundation and the CDC.</p>
+						</div>
+					</details>
+				</li>
+				<li class="experience-more">
+					<a href="https://linkedin.com/in/tthew">
+						<span class="experience-year">Earlier</span>
+						<span class="experience-meta">
+							<span class="experience-role">Start-ups, agencies &amp; the odd NGO</span>
+							<span class="experience-where">Full thread on LinkedIn</span>
+						</span>
+						<span class="experience-toggle" aria-hidden="true">&rarr;</span>
+					</a>
+				</li>
+			</ol>
+		</div>
+	</section>
+
 	{% include "partials/services-grid.njk" %}
 
-	<aside class="about-colophon">
-		<span class="ix">Colophon</span>
-		<p>Hand-made by a human (me, with a little help from <a href="https://claude.com/claude-code">Claude</a>). Static build with <a href="https://11ty.dev">11ty</a>, sourcing content from a self-hosted <a href="https://craftcms.com/">Craft CMS</a> on a Raspberry Pi in my apartment. A webhook rebuilds the site whenever the data changes.</p>
+	<aside class="about-colophon" aria-label="Colophon">
+		<span class="ix">&sect; Colophon</span>
+		<p>Built by a human (me, with a little help from <a href="https://claude.com/claude-code">Claude</a>). Static build via <a href="https://11ty.dev">11ty</a>, sourcing content from a self-hosted <a href="https://craftcms.com/">Craft CMS</a> on a Raspberry Pi in my flat. A webhook rebuilds whenever the data changes.</p>
 	</aside>
 </article>

@@ -228,16 +228,53 @@ layout: layouts/base.njk
 		margin-block: var(--space-m);
 	}
 
-	/* Inline "no comments" / footer callout */
-	.post-callout {
-		background: var(--callout-bg);
-		color: var(--callout-fg);
-		border-radius: 4px;
-		padding: var(--space-m) var(--space-l);
-		text-align: center;
+	/* Editorial "correspondence" block — replaces the old .post-callout
+	   so the "no comments" note sits inside the site's rule-based
+	   editorial rhythm instead of a floating pill. */
+	.post-reply {
+		margin-top: var(--space-l);
+		padding-top: var(--space-m);
+		border-top: 1px solid var(--rule);
+		display: grid;
+		grid-template-columns: auto 1fr;
+		column-gap: clamp(var(--space-m), 4vw, var(--space-xl));
+		align-items: baseline;
+		max-width: 62ch;
 	}
 
-	.post-callout p { margin: 0; line-height: 1.45; }
+	.post-reply .ix {
+		font-family: var(--feature-font);
+		text-transform: uppercase;
+		letter-spacing: 0.22em;
+		font-size: var(--step--2);
+		color: var(--fg-quiet);
+		white-space: nowrap;
+	}
+
+	.post-reply p {
+		margin: 0;
+		font-size: var(--step--1);
+		line-height: 1.55;
+		color: var(--fg-muted);
+		text-wrap: pretty;
+	}
+
+	.post-reply a {
+		color: inherit;
+		text-decoration: none;
+		border-bottom: 1px solid currentColor;
+		padding-bottom: 0.1em;
+		transition: opacity 0.2s ease;
+	}
+
+	.post-reply a:hover { opacity: 0.65; }
+
+	@media (max-width: 560px) {
+		.post-reply {
+			grid-template-columns: 1fr;
+			gap: var(--space-2xs);
+		}
+	}
 
 	/* Prev / next post navigation */
 	.post-footer {
@@ -328,9 +365,10 @@ layout: layouts/base.njk
 		{{ content | safe }}
 	</div>
 
-	<div class="post-callout">
-		<p><strong>This post doesn't support comments.</strong> If you'd like to reach out, <a href="/contact">I'd love to hear from you</a>.</p>
-	</div>
+	<aside class="post-reply" aria-label="Correspondence">
+		<span class="ix">&sect; Correspondence</span>
+		<p>This one doesn't take comments &mdash; the site's hand-built and static. If something here sparked a thought, <a href="/contact">I'd love to hear from you</a>.</p>
+	</aside>
 
 	{% if pagination.previousPageItem or pagination.nextPageItem %}
 	<nav class="post-footer" aria-label="Post navigation">
