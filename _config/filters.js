@@ -179,4 +179,17 @@ export default function (eleventyConfig) {
 	  });
 
 	eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
+
+	// Deterministic per-URL hero accent. Each page gets a stable colour from
+	// the palette (yellow / peach / mint / lilac) so the hero highlight varies
+	// across the site while staying consistent for any given page.
+	const HERO_ACCENTS = ["yellow", "peach", "mint", "lilac"];
+	eleventyConfig.addFilter("heroAccent", (url) => {
+		const str = String(url || "");
+		let h = 5381;
+		for (let i = 0; i < str.length; i++) {
+			h = ((h * 33) ^ str.charCodeAt(i)) >>> 0;
+		}
+		return HERO_ACCENTS[h % HERO_ACCENTS.length];
+	});
 }

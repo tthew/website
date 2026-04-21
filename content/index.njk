@@ -5,6 +5,8 @@ const eleventyNavigation = {
 key: "Home",
 order: 1
 };
+
+const accent = "lilac";
 ---
 {% css %}
 @layer page {
@@ -133,7 +135,7 @@ order: 1
 		right: -0.05em;
 		top: 0.35em;
 		bottom: 0.15em;
-		background: var(--accent);
+		background: var(--hero-accent, var(--accent));
 		z-index: -1;
 	}
 
@@ -201,7 +203,6 @@ order: 1
 		gap: var(--space-3xs);
 		border-right: 1px solid var(--rule);
 	}
-	.signal:first-child { padding-left: 0; }
 	.signal:last-child  { padding-right: 0; border-right: 0; }
 
 	.signal-kicker {
