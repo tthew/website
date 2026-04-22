@@ -152,7 +152,7 @@ const sitemap = { priority: "0.8", changefreq: "weekly" };
 			<section class="year-group">
 				<h2 class="year-label">{{ group.year }}</h2>
 				<ol class="postlist">
-					{% for post in group.posts %}
+					{% for post in group.posts | reverse %}
 						{% set renderedBody = post.body | markdown %}
 						<li class="postlist-item">
 							<time class="postlist-date" datetime="{{ post.date }}">{{ post.date | readableDate("dd LLL") }}</time>
