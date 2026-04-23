@@ -518,6 +518,20 @@
 		color: var(--fg-quiet);
 		background: transparent;
 		border-top: 1px solid var(--rule);
+		flex-wrap:wrap;
+	}
+
+	.footer-nav {
+		/* flex: 1;	 */
+		/* flex-wrap: wrap; */
+		font-size: var(--step--2);
+				letter-spacing: 0.08em;
+						text-transform: uppercase;
+		
+	}
+
+	.footer-nav .sep {
+		
 	}
 
 	.footer-bottom {

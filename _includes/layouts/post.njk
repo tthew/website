@@ -4,7 +4,8 @@ const pagination = {
   reverse: true,
 	before: function(items) { return items.filter(p => !p.rssOnly) }
 };
-const layout = "layouts/base.njk"
+const layout = "layouts/base.njk";
+const data = "post";
 ---
 
 {%- css %}{% include "public/css/prism-one-light.css" %}{% endcss %}
