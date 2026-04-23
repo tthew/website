@@ -1,9 +1,10 @@
 ---
 layout: layouts/base.njk
+data: globalDataSet.articles
 pagination:
-  data: globalDataSet.words
+  data: globalDataSet.articles
   reverse: true
-
+  size: 2
 ---
 
 {%- css %}{% include "public/css/prism-one-light.css" %}{% endcss %}
@@ -87,6 +88,7 @@ pagination:
     letter-spacing: 0.1em;
     font-size: var(--step--1);
     color: var(--fg-quiet);
+    line-height: var(--step--1);
     margin: 0;
   }
 
@@ -340,6 +342,17 @@ pagination:
     .post > :nth-child(5) { animation-delay: 320ms; }
     .post > :nth-child(6) { animation-delay: 400ms; }
   }
+
+  .tag {
+		display: inline-block;
+		background: light-dark(rgba(166, 236, 199, 0.4), rgba(120, 220, 170, 0.16));
+		color: var(--fg-muted);
+		font-family: var(--feature-font);
+		font-weight: 400;
+		text-transform: uppercase;
+		padding: 0.2em 0.5em 0.16em;
+		
+	}
 }
 {% endcss %}
 
@@ -362,7 +375,7 @@ pagination:
       <span>{{ post.body | markdown | readingTime }}</span>
       {% if post.rssOnly %}
         <span class="sep" aria-hidden="true">&middot;</span>
-        <span>RSS Club</span>
+        <span class="tag">RSS Club</span>
       {% endif %}
     </p>
   </header>
