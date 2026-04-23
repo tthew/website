@@ -1,9 +1,7 @@
 ---js
 const pagination = {
 	data: "words",
-	size: 2,
   reverse: true,
-	alias: "post",
 	before: function(items) { return items.filter(p => !p.rssOnly) }
 };
 const layout = "layouts/base.njk"
